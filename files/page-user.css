@@ -1,0 +1,18 @@
+/*** Страницы: ЛК ***/
+.client, .form__client {width: 100%;display: flex;flex-wrap: wrap;justify-content: space-between;}
+.client__blocks {width: 50%;display: flex;flex-wrap: wrap;justify-content: space-between;align-items: flex-start;}
+.client__block {width: calc(50% - 2rem);margin: 0 1rem;}
+.client__title {font-size: 1.75rem;margin-bottom: 2rem;display: flex;align-items: center;width: 100%;}
+.client .form__fields label {display: none;}
+.client .form__fields {max-width: 360px;}
+.client__buttons {width: 100%;display: block;}
+.client__buttons .button {margin: 1rem 1rem 0 0;}
+@media all and (max-width: 1199.98px) {
+.client__blocks {width: 100%;}
+.client__blocks + .client__blocks {margin-top: 2rem;}
+}
+@media all and (max-width: 639.98px) {
+.client__block {width: 100%;}
+.client__block + .client__block {margin-top: 2rem;}
+.client__title {margin-bottom: 1rem;}
+}

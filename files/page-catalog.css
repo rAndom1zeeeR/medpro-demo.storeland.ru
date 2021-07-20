@@ -1,0 +1,10 @@
+/*** Тулбар ***/
+.toolbar {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.row + .toolbar {
+	margin-top: 2rem;
+}

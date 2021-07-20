@@ -1,0 +1,10 @@
+
+/*** Страница: Связь с администрацией ***/
+.pageFeedback .maps {width: 100%;margin-top: 2rem;}
+/* Страница: Связь с администрацией. Контакты */
+.pageFeedback .contacts__content {margin: 0;padding: 0;list-style: none;width: 100%;}
+.pageFeedback .contacts__content > div {margin-bottom: 0.5rem;}
+.pageFeedback .contacts__content a {display: block;padding: 0.25rem 0;line-height: 20px;margin-bottom: 1rem;}
+.pageFeedback .contacts__content a b {display: none;}
+.pageFeedback .contacts__content a i {margin-right: 0.625rem;font-size: 1.5rem;vertical-align: middle;}
+.pageFeedback .contacts__content a span {vertical-align: middle;}

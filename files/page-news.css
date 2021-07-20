@@ -1,0 +1,14 @@
+/*** Страница: Список новостей ***/
+.news__list .news__item {border-bottom: 1px solid #d2d9cd;margin-bottom: 2rem;padding-bottom: 2rem;border-radius: 0;}
+.news__list .news__item:last-child {margin-bottom: 0;}
+.news__list .news__title {margin: 0 0 1rem 0;font-weight: bold;}
+.news__list .news__text {word-break: break-all;font-size: 0.875rem;}
+.news__list .news__date {margin: .5rem 0 0 0;position: relative;text-align: right;}
+.news__list + .pages {margin-top: 2rem;}
+
+/*** Страница: Просмотр новости ***/
+.news__buttons {margin-top: 1.5rem;}
+.news__buttons a {padding: 0 1.5rem;}
+.newsListBlockItemFiles {margin-top: 1rem;overflow: hidden;word-break: break-all;}
+.pageNews .news__date {position: relative;text-align: right;margin-top: 1rem;}
+.pageNews .htmlDataBlock img {margin-bottom: 1rem;}

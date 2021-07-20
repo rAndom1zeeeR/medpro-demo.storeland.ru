@@ -1,0 +1,44 @@
+/*** Страница: Сравнение ***/
+.CompareGoods .buttons {margin: 2rem 0 0;}
+.CompareGoods .buttons i {margin-right: 6px;vertical-align: middle;}
+.CompareGoods .buttons span {margin-left: 3px;vertical-align: middle;}
+.CompareGoods__nav {width: 100%;margin-bottom: 2rem;position: relative;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
+.CompareGoods__nav .owl-nav {position: relative;}
+.CompareGoods__filter {display: -ms-flexbox;display: -webkit-flex;display: flex;line-height: 30px;}
+.CompareGoods__filter .button {padding: 0 1rem;}
+.CompareGoods__filter .hide {margin-left: 3px;}
+.CompareGoods__switch {background: #bfbfbf;display: inline-block;position: relative;width: 60px;height: 30px;border-radius: 1.5rem;z-index: 0;margin: 0 0.625rem 0 0;padding: 0;border: none;cursor: pointer;transition-duration: 300ms;}
+.CompareGoods__switch:after {background: #ffffff;content: '';position: absolute;top: 3px;left: 3px;height: 1.5rem;width: 1.5rem;border-radius: 17px;transition-duration: 300ms;z-index: 1;}
+.CompareGoods__switch.switch-on {background: #6aa344;}
+.CompareGoods__switch.switch-on:after {left: 33px;}
+.CompareGoods .price__now {margin: 0;}
+.CompareGoods .price__old {margin-right: 1rem;}
+/** Таблица сравнений **/
+.CompareGoodsTableTbody {width: 100%;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
+.CompareGoodsTableTbody > div {border-top: 1px solid #d2d9cd;width: 100%;margin-bottom: 1rem;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;}
+.CompareGoodsTableTbody > div:not(.CompareGoodsTableTbodyComparisonLine) {border: 0;text-align: center;}
+.CompareGoodsTableTbody > div:not(.CompareGoodsTableTbodyComparisonLine) .cell {display: none;}
+.CompareGoodsTableTbody > div .cell {width: 100%;padding: 1rem 0 0.625rem;}
+.CompareGoodsTableTbody > div .cell label {font-weight: bold;}
+.CompareGoodsTableTbody > div .cell input {display: none;}
+.CompareGoodsTableTbody .image a:not(.remove) {display: block;line-height: 130px;}
+.CompareGoodsTableTbody .owl-item .image img {display: inline-block;width: auto;max-width: 100%;}
+.CompareGoodsTableTbody .remove {color: #e0e0e0;background: #ffffff;border: 1px solid #d2d9cd;position: absolute;top: 0;right: 0;z-index: 2;width: 2rem;height: 2rem;}
+.CompareGoodsTableTbody .remove:hover {color: #ffffff;background: #231803;border-color: #231803;}
+.CompareGoodsTableTbody .remove i {display: block;font-size: 1rem;line-height: 1.95rem;}
+.CompareGoodsTableTbody .CompareCheckbox {display: none;margin: 0 0.625rem 0 0;vertical-align: middle;}
+.CompareGoodsTableTbody .htmlDataBlock {text-align: left;overflow: hidden;}
+.CompareGoodsTableTbody .CompareGoodsHeader .title {display: block;max-height: 72px;line-height: 1.125rem;overflow: hidden;text-align: left;}
+.CompareGoodsTableTbody .CompareGoodsHeader .mod {display: block;margin-top: 5px;font-size: 13px;line-height: 15px;text-align: left;}
+.CompareGoodsTableTbody .actions {width: 100%;padding: 3px;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-webkit-justify-content: space-between;justify-content: space-between;}
+.CompareGoodsTableTbody .actions [class^="add-"] {font-size: 1.5rem;}
+.CompareGoodsTableTbody .actions [class^="add-"] span {display: none;}
+.CompareGoodsTableTbody .product__price {border: 0;}
+.CompareGoodsTableTbody .owl-stage-outer {margin-right: -1px;}
+@media all and (max-width: 479px) {
+.CompareGoods__filter .label {display: none;}
+.CompareGoods .price__old {margin-right: 0.5rem;}
+.CompareGoodsTableTbody .actions .price-box {width: 100%;margin-bottom: 1rem;}
+.CompareGoodsTableTbody .actions .price-box .price__old {display: block;margin-top: 5px;}
+.CompareGoodsTableTbody .actions .add-notify:before {display: none;}
+}
