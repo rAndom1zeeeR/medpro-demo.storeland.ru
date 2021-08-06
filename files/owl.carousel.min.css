@@ -11,12 +11,12 @@
 .owl-nav .owl-next {float: right;right: 0;border-radius: 0 2rem 2rem 0;}
 .owl-nav .owl-prev:before {content: '\e92c';}
 .owl-nav .owl-next:before {content: '\e932';}
-.owl-nav.disable, .owl-nav [class^="owl-"].disable:hover {cursor: default;color: #d2d9cd;}
+.owl-nav.disable, .owl-nav [class^="owl-"].disable:hover {cursor: default;color: #dae6ec;}
 .owl-nav.disabled {display: none;}
 /*** Навигация точками ***/
 .owl-dots {text-align: center;}
 .owl-dots.disabled {display: none;}
-.owl-dots .owl-dot {margin: 0 .375rem;width: .75rem;height: .75rem;background-color: #d2d9cd;border-radius: 100%;border: 0;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;}
+.owl-dots .owl-dot {margin: 0 .375rem;width: .75rem;height: .75rem;background-color: #dae6ec;border-radius: 100%;border: 0;padding: 0;line-height: 1;display: inline-block;vertical-align: middle;}
 .owl-dots .owl-dot.active, .owl-dots .owl-dot:hover {background-color: #6aa344;}
 
 @media all and (max-width: 479.98px) {

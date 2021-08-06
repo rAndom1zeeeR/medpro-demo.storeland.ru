@@ -134,3 +134,37 @@ to {opacity: 0;-webkit-transform: translate3d(0, 100%, 0);transform: translate3d
 .goods-cat-image-other{max-width:{SETTINGS_GOODS_IMAGES_SIZE_CAT_OTHER | divide('2')}px; max-height:{SETTINGS_GOODS_IMAGES_SIZE_CAT_OTHER | divide('2')}px;}
 .goods-cat-image-other-square {width: {SETTINGS_GOODS_IMAGES_SIZE_CAT_OTHER}px; height:{SETTINGS_GOODS_IMAGES_SIZE_CAT_OTHER}px;}
 /* END Настройки максимальных размеров генерируемых изображений */
+
+
+/* Иконки форматов файлов */
+.file_extension_icon {width: 1rem;height: 1rem;display: block;float: left;margin-right: 0.625rem;background: #ffffff url('{ASSEST_IMAGES_PATH}icons-files-extensions.gif?design=THEMENAME') no-repeat left top;}
+.file_extension_icon.torrent {background-position: -1rem 0}
+.file_extension_icon.xls {background-position: -2rem 0}
+.file_extension_icon.ie7 {background-position: -48px 0}
+.file_extension_icon.ppt {background-position: -64px 0}
+.file_extension_icon.htm, .file_extension_icon.html {background-position: 0 -1rem}
+.file_extension_icon.avi {background-position: -1rem -1rem}
+.file_extension_icon.bmp, .file_extension_icon.gif {background-position: -2rem -1rem}
+.file_extension_icon.js, .file_extension_icon.css, .file_extension_icon.txt {background-position: -48px -1rem}
+.file_extension_icon.pptm {background-position: -64px -1rem}
+.file_extension_icon.rtf, .file_extension_icon.doc {background-position: 0 -2rem}
+.file_extension_icon.jpg {background-position: -1rem -2rem}
+.file_extension_icon.png {background-position: -2rem -2rem}
+.file_extension_icon.ini {background-position: -48px -2rem}
+.file_extension_icon.pptx {background-position: -64px -2rem}
+.file_extension_icon.php {background-position: 0 -48px}
+.file_extension_icon.mht, .file_extension_icon.mhtml {background-position: -1rem -48px}
+.file_extension_icon.psd {background-position: -2rem -48px}
+.file_extension_icon.zip {background-position: -48px -48px}
+.file_extension_icon.xps {background-position: -64px -48px}
+.file_extension_icon.exe {background-position: 0 -64px}
+.file_extension_icon.xml {background-position: -1rem -64px}
+.file_extension_icon.wma, .file_extension_icon.mp3 {background-position: -2rem -64px}
+.file_extension_icon.xlsx {background-position: -48px -64px}
+.file_extension_icon.xlsb {background-position: -64px -64px}
+.file_extension_icon.pdf {background-position: 0 -80px}
+.file_extension_icon.csv {background-position: -1rem -80px}
+.file_extension_icon.docx {background-position: -2rem -80px}
+.file_extension_icon.accdb {background-position: -48px -80px}
+.file_extension_icon.xlsm {background-position: -64px -80px}
+.file_extension_icon.dll {background-position: 0 -96px}

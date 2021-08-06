@@ -1,8 +1,2 @@
 /*** Категории товаров ***/
-.categories__list {
-	margin: 0;
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: stretch;
-}
+
