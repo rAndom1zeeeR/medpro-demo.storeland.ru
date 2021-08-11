@@ -21,7 +21,7 @@ body {background-color: #f0f7f5;color: #656d72;font-family: 'Ubuntu', sans-serif
 *******************************************************************************/
 a {color: #656d72;text-decoration: none;outline: 0;cursor: pointer;transition: all 0.3s ease;}
 a:hover, a.active {color: #00acc5;text-decoration: none;outline: 0;}
-img {}
+img {max-width: 100%;max-height: 100%;width: auto;}
 p {margin-bottom: 1rem;line-height: 1.5;}
 ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 .required em {color: red;}
@@ -163,10 +163,12 @@ header .contacts {width: 27rem;}
 
 
 
-
-
-
-
+/*** Слайдшоу ***/
+#slideshow {height: 28rem;overflow: hidden;}
+.slider__item {height: 28rem;overflow: hidden;}
+.slider__title {font-size: 2rem;font-weight: bold;}
+.slider__subtitle {margin-top: 3rem;}
+.slider__buttons {margin-top: 3rem;}
 
 
 

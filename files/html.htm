@@ -86,15 +86,9 @@
 	{% IF MOD_LNAME = goods %}
 	<link id="page-goods-css" rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	<link id="page-orderfast-css"
-	      rel="stylesheet"
-	      type="text/css"
-	      data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
+	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
 	{% ELSE %}
-	<link id="page-goods-css"
-	      rel="stylesheet"
-	      type="text/css"
-	      data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
+	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
 	{% ENDIF %}
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=THEMENAME"></script>
@@ -110,16 +104,18 @@
 		});
 	</script>
 </head>
+
 <body class="nojs
-			{% IF index_page %}index{% ENDIF %}
-			{% IF MOD_LNAME=user && ACT=favorites %}page-favorites{% ENDIF %}
-			{% IF MOD_LNAME = cart %}page-cart{% ENDIF %}
-			{% IF MOD_LNAME = user %}page-user{% ENDIF %}
-			{% IF MOD_LNAME = goods %}page-goods{% ENDIF %}
-      {% IF MOD_LNAME = discount %}page-discount{% ENDIF %}"
+	{% IF index_page %}index{% ENDIF %}
+	{% IF MOD_LNAME=user && ACT=favorites %}page-favorites{% ENDIF %}
+	{% IF MOD_LNAME = cart %}page-cart{% ENDIF %}
+	{% IF MOD_LNAME = user %}page-user{% ENDIF %}
+	{% IF MOD_LNAME = goods %}page-goods{% ENDIF %}
+	{% IF MOD_LNAME = discount %}page-discount{% ENDIF %}"
 >
+	<!--  -->
 	<div class="wrapper">
-		
+
 		<!-- Сообщение для инвалидов. Если не работает JS -->
 		<noscript>
 			<div class="noscript">
@@ -128,111 +124,75 @@
 					<h5>Необходимо включить его для корректной работы сайта.</h5>
 				</div>
 			</div>
-			
+
 			<style>
 				.nojs .preloader {
 					display: none;
 				}
 			</style>
-			
+
 			<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}fix-nojs.css?design=THEMENAME">
 		</noscript>
-		
+
 		<!-- Фон для закрытия всплывающих окон -->
 		<div id="overlay"></div>
-		
+
 		<!-- Шапка -->
 		<header id="header">
 			<div class="container">
+				<!-- Верхняя часть шапки -->
 				<div class="header__top flex">
 					<!-- Контакты-->
 					<div class="contacts flex">
 						<!-- Телефон 1 -->
 						{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
 						<div class="contacts__block phone flex">
-							<a class="contacts__block-icon"
-							   href="javascript:;"
-							   data-fancybox
-							   data-src="#fancybox__callback"
-							>
+							<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__callback">
 								<i class="icon-call"></i>
 							</a>
 							<div class="contacts__block-content">
-								<a class="contacts__block-link phone"
-								   href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}"
-								   title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}"
-								>
+								<a class="contacts__block-link phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
 									<span>{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
 								</a>
-								<a class="contacts__block-fancy"
-								   href="javascript:;"
-								   data-fancybox
-								   data-src="#fancybox__callback"
-								>
+								<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__callback">
 									<span>заказать звонок</span>
 								</a>
 							</div>
 						</div><!-- //END Телефон 1 -->
 						{% ENDIF SETTINGS_STORE_PHONE_NUMBER1 %}
-						
+
 						<!-- Почта -->
 						{% IF SETTINGS_STORE_EMAIL_MAIN %}
 						<div class="contacts__block email flex">
-							<a class="contacts__block-icon"
-							   href="javascript:;"
-							   data-fancybox
-							   data-src="#fancybox__feedback"
-							>
+							<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
 								<i class="icon-mail"></i>
 							</a>
 							<div class="contacts__block-content">
-								<a class="contacts__block-link email"
-								   href="mailto:{SETTINGS_STORE_EMAIL_MAIN}"
-								   title="{SETTINGS_STORE_EMAIL_MAIN}"
-								>
+								<a class="contacts__block-link email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
 									<span>{SETTINGS_STORE_EMAIL_MAIN}</span>
 								</a>
-								<a class="contacts__block-fancy"
-								   href="javascript:;"
-								   data-fancybox
-								   data-src="#fancybox__feedback"
-								>
+								<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
 									<span>написать нам</span>
 								</a>
 							</div>
 						</div><!-- //END Почта -->
 						{% ENDIF SETTINGS_STORE_EMAIL_MAIN %}
-					</div>
-					
+					</div><!-- //END Контакты-->
+
 					<!-- Поиск -->
 					<div class="search" itemscope itemtype="https://schema.org/WebSite">
-						
 						<link itemprop="url" href="{INDEX_PAGE_URL}" />
 						<!-- Форма поиска -->
-						<form
-							class="search__form"
-							action="{QUICK_SEARCH_URL}"
-							method="get"
-							title="Поиск по магазину"
-							itemprop="potentialAction"
-							itemscope itemtype="https://schema.org/SearchAction"
-						>
+						<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
 							<meta itemprop="target" content="{SEARCH_URL}?q={{EMPTY}q}" />
 							<input type="hidden" name="goods_search_field_id" value="0" />
-							<input type="text"
-							       name="q"
-							       value="{FORM_SEARCH_Q}"
-							       class="search__input"
-							       placeholder="Искать"
-							       autocomplete="off"
-							       itemprop="query-input"
-							/>
-							
+							<input type="text" name="q" value="{FORM_SEARCH_Q}" class="search__input" placeholder="Искать" autocomplete="off" itemprop="query-input" />
+
 							<!-- Найти -->
 							<button type="submit" class="search__submit" title="Искать">
 								<i class="icon-search"></i>
 							</button>
-							
+
 							<!-- Кружок обновления -->
 							<div class="lds-ring">
 								<div></div>
@@ -240,14 +200,14 @@
 								<div></div>
 								<div></div>
 							</div>
-							
+
 							<!-- Закрыть -->
 							<a href="javascript:;" class="search__reset">
 								<i class="icon-close"></i>
 							</a>
-						
+
 						</form><!-- //END Форма поиска -->
-						
+
 						<!-- Результаты поиска -->
 						<div id="search__result" style="display: none;">
 							<div class="inner">
@@ -256,50 +216,32 @@
 								<div class="result__showAll button">все результаты</div>
 							</div>
 						</div>
-					
+
 					</div><!-- //END Поиск -->
-					
+
 					<!-- ЛК, Избр, Срав -->
 					<div class="addto flex">
 						<!-- Войти -->
 						{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
 						<div class="addto__block login">
-							<a class="addto__label login__icon"
-							   href="{USER_LOGIN_URL}"
-							   title="Личный кабинет"
-							   data-open="login"
-							   data-fancybox
-							   data-src="#fancybox__login"
-							>
+							<a class="addto__label login__icon" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login" data-fancybox data-src="#fancybox__login">
 								<i class="icon-user"></i>
 							</a>
 						</div>
 						{% ENDIF %}
-						
+
 						<!-- Избранное -->
 						<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-							<a class="addto__label favorites__icon"
-							   href="{FAVORITES_URL}"
-							   title="Избранное"
-							   data-open="favorites"
-							   data-fancybox
-							   data-src="#fancybox__favorites"
-							>
+							<a class="addto__label favorites__icon" href="{FAVORITES_URL}" title="Избранное" data-open="favorites" data-fancybox data-src="#fancybox__favorites">
 								<i class="icon-favorites"></i>
 								<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 							</a>
 						</div>
-						
+
 						<!-- Сравнение -->
 						{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
 						<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-							<a class="addto__label compare__icon"
-							   href="{COMPARE_URL}"
-							   title="Сравнение"
-							   data-open="compare"
-							   data-fancybox
-							   data-src="#fancybox__compare"
-							>
+							<a class="addto__label compare__icon" href="{COMPARE_URL}" title="Сравнение" data-open="compare" data-fancybox data-src="#fancybox__compare">
 								<i class="icon-compare"></i>
 								<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
 							</a>
@@ -307,7 +249,8 @@
 						{% ENDIF %}
 					</div><!-- //END ЛК, Избр, Срав -->
 				</div>
-				
+
+				<!-- Центральная часть шапки -->
 				<div class="header__middle flex">
 					<!-- Логотип -->
 					<div class="logo" itemscope itemtype="http://schema.org/Organization">
@@ -319,40 +262,30 @@
 							</span>
 						</a>
 					</div>
-					
+
 					<!-- Меню -->
 					<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
 						<!-- Меню. Верхнее -->
 						<ul class="mainnav__list unstyled flex">
 							{% FOR menu %}
-							{% FOR header %}
-							{% FOR links %}
-							<li>
-								<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}"
-								   href="{menu.header.links.URL}"
-								   title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}"
-								   itemprop="url"
-								>
-									<span itemprop="name">{menu.header.links.NAME}</span>
-								</a>
-							</li>
-							{% ENDFOR %}
-							{% ENDFOR %}
+								{% FOR header %}
+									{% FOR links %}
+									<li>
+										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+											<span itemprop="name">{menu.header.links.NAME}</span>
+										</a>
+									</li>
+									{% ENDFOR %}
+								{% ENDFOR %}
 							{% ENDFOR %}
 						</ul>
 						<!-- Меню. Еще -->
 						<ul class="overflowMenu unstyled"></ul>
 					</nav><!-- //END Меню -->
-					
+
 					<!-- Корзина -->
 					<div class="cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
-						<a href="{CART_URL}"
-						   class="cart__block button2 flex"
-						   title="Корзина"
-						   data-open="cart"
-						   data-fancybox
-						   data-src="#fancybox__cart"
-						>
+						<a class="cart__block button2 flex" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
 							<div class="cart__block-icon flex">
 								<i class="icon-cart"></i>
 							</div>
@@ -365,552 +298,72 @@
 				</div>
 			</div>
 		</header>
-		
+
+
 		<!-- Слайдшоу -->
 		<section id="slideshow">
 			<div class="container">
-				<!-- Слайдер -->
+				<!-- Слайды -->
 				<div class="slider owl-carousel">
-					<div class="slider__item">
-						Скидка на всё стоматологическое
-						оборудование 7%
-						длинный заголовок слайда
-						
-						Срок проведения акции с 12.02.2020 по 3.04.2020
-						
-						Подробнее Навигация
+					<!-- Слайд 1 -->
+					<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.png?design=THEMENAME">
+						<a href="{CATALOG_URL}" class="slider__title">Скидка на всё стоматологическое оборудование 7% длинный заголовок слайда</a>
+						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
+						<div class="slider__buttons">
+							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
+					</div>
+
+					<!-- Слайд 2 -->
+					<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_2.png?design=THEMENAME">
+						<a href="{CATALOG_URL}" class="slider__title">До конца месяца все инвалидные коляски по одной цене</a>
+						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
+						<div class="slider__buttons">
+							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
+					</div>
+
+					<!-- Слайд 3 -->
+					<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_3.png?design=THEMENAME">
+						<a href="{CATALOG_URL}" class="slider__title">При покупке от 20000 рублей мы дарим вам тонометр</a>
+						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
+						<div class="slider__buttons">
+							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
+							<div class="owl-nav"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<!-- Модальные окна -->
 		<noindex>
-			
-			<!-- Каталог -->
-			<div id="fancybox__catalog"
-			     class="modal addto__catalog"
-			     data-content="catalog"
-			     style="display: none"
-			>
-				<div class="modal__title block__title">
-					<a href="{CATALOG_URL}" class="title">Каталог</a>
-				</div>
-				<div class="modal__content">
-					<div class="catalog__items">
-						{% FOR catalog_full %}
-						{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}
-						<div data-level="{catalog_full.LEVEL}" class="sub">{% ENDIF %}{% ENDIF %}
-							<div class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}"
-							     data-level="{catalog_full.LEVEL}"
-							     {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %}
-				      >
-								<a class="catalog__link {% IF catalog_full.CURRENT %}opened{% ENDIF %}"
-								   href="{catalog_full.URL}"
-								   data-level="{catalog_full.LEVEL}"
-								>
-									<span>{catalog_full.NAME}</span>
-									{% IF catalog_full.ISSET_VISIBLE_SUB %}<span class="open"></span>{% ENDIF %}
-								</a>
-								{% IF catalog_full.ISSET_SUB=0 %}
-							</div>
-							{% ENDIF %}
-							{% IF catalog_full.LAST %}{%FOR out%}
-						</div>
-						{%IFNOT catalog_full.out.LAST%}
-					</div>
-					{%ENDIF%}{%ENDFOR%}{% ENDIF %}
-					{% ENDFOR %}
-				</div>
-			</div>
-			
-			<!-- Корзина -->
-			{% IFNOT MOD_LNAME = cart %}
-			<div id="fancybox__cart"
-			     class="modal addto__cart cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}"
-			     data-content="cart"
-			     style="display: none"
-			>
-				<div class="modal__title block__title">
-					<a href="{CART_URL}" class="title">Корзина</a>
-				</div>
-				<div class="modal__content">
-					{% IFNOT cart_items_empty %}
-					<div class="addto__items">
-						{% FOR cart_items %}
-						<div class="addto__item" data-id="{cart_items.GOODS_ID}">
-							<a href="{cart_items.GOODS_URL}"
-							   title="{cart_items.GOODS_NAME}"
-							   class="addto__image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}"
-							                             alt="{cart_items.GOODS_NAME}"
-							                             class="goods-image-icon" /></a>
-							<div class="addto__shop">
-								<!-- Название -->
-								<a href="{cart_items.GOODS_URL}"
-								   class="addto__name"
-								   title="{cart_items.GOODS_NAME}"><span>{cart_items.GOODS_NAME}</span></a>
-								{% IFNOT cart_items.distinctive_properties_empty %}
-								<div class="addto__mod">({% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %}, {% ENDIF %}{% ENDFOR %})</div>
-								{% ENDIF %}
-								<!-- Цена -->
-								<div class="addto__price {CURRENCY_CHAR_CODE}">
-									<span class="price__qty">{cart_items.ORDER_LINE_QUANTITY} x </span>
-									<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">
-										{cart_items.GOODS_MOD_PRICE_NOW | money_format}
-									</span>
-									<!-- Удаление -->
-									<a class="addto__remove remove"
-									   href="{cart_items.ORDER_LINE_DELETE_URL}"
-									   title="Удалить позицию"
-									   data-qty="{cart_items.ORDER_LINE_QUANTITY}"
-									   data-id="{cart_items.GOODS_ID}"
-									   onclick="removeFromCart($(this))">
-										<span>Удалить</span>
-									</a>
-								</div>
-							</div>
-						</div>
-						{% ENDFOR %}
-					</div>
-					<div class="addto__total {CURRENCY_CHAR_CODE}">
-						<span class="cartCountTotal">
-							<span class="cart__count">{CART_COUNT_TOTAL}</span>
-							<span class="cart__word">товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")}</span>
-						</span>
-						<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
-					</div>
-					{% ENDIF %}
-					<div class="addto__empty">
-						<div class="addto__title">В корзине пока ничего нет</div>
-						<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Каталог</a>
-					</div>
-					<div class="addto__buttons">
-						<a href="{CART_TRUNCATE_URL}"
-						   onclick="removeFromCartAll($(this))"
-						   class="button button4 removeAll"
-						   title="Очистить корзину"><span>Очистить</span></a>
-						<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
-					</div>
-				</div>
-			</div>
-			{% ENDIF %}
-			
-			<!-- Сравнение -->
-			{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
-			<div id="fancybox__compare"
-			     class="modal addto__compare compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}"
-			     data-content="compare"
-			     style="display: none"
-			>
-				<div class="modal__title block__title">
-					<a href="{COMPARE_URL}" class="title">В Сравнении</a>
-				</div>
-				<div class="modal__content">
-					<div class="addto__items">
-						{% FOR compare_goods %}
-						<div class="addto__item" data-id="{compare_goods.ID}">
-							<a href="{compare_goods.URL}"
-							   title="{compare_goods.NAME}"
-							   class="addto__image"><img src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}"
-							                             class="goods-image-icon" /></a>
-							<div class="addto__shop">
-								<!-- Название -->
-								<a href="{compare_goods.URL}"
-								   class="addto__name"
-								   title="{compare_goods.NAME}"><span>{compare_goods.NAME}</span></a>
-								<!-- Цена -->
-								<div class="addto__price {CURRENCY_CHAR_CODE}">
-									<div class="price__now">{compare_goods.MIN_PRICE_NOW | money_format}</div>
-									<!-- Удаление -->
-									<a href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}"
-									   data-goods-mod-id="{compare_goods.MIN_PRICE_NOW_ID}"
-									   class="addto__remove remove"
-									   title="Убрать товар из списка сравнения"
-									   onclick="removeFromCompare($(this))"><span>Удалить</span></a>
-								</div>
-							</div>
-						</div>
-						{% ENDFOR %}
-					</div>
-					<div class="addto__empty">
-						<div class="addto__title">Ваш список сравнения пуст</div>
-						<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Каталог</a>
-					</div>
-					<div class="addto__buttons">
-						<a class="button button4 removeAll"
-						   href="{COMPARE_RESET_URL}"
-						   onclick="removeFromCompareAll($(this))"
-						   title="Очистить список сравнения"><span>Очистить</span></a>
-						<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">В Сравнение</a>
-					</div>
-				</div>
-			</div>
-			{% ENDIF %}
-			
-			<!-- Избранное -->
-			<div id="fancybox__favorites"
-			     class="modal addto__favorites favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}"
-			     data-content="favorites"
-			     style="display: none"
-			>
-				<div class="modal__title block__title">
-					<a href="{FAVORITES_URL}" class="title">В Избранном</a>
-				</div>
-				
-				<div class="modal__content">
-					<div class="addto__items">
-						{% FOR favorites_goods %}
-						<div class="addto__item" data-id="{favorites_goods.ID}">
-							<a href="{favorites_goods.URL}"
-							   title="{favorites_goods.NAME}"
-							   class="addto__image">
-								<img class="goods-image-icon" src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" />
-							</a>
-							<div class="addto__shop">
-								<!-- Название -->
-								<a class="addto__name"
-								   href="{favorites_goods.URL}"
-								   title="{favorites_goods.NAME}">{favorites_goods.NAME}</a>
-								<!-- Цена -->
-								<div class="addto__price {CURRENCY_CHAR_CODE}">
-									<div class="price__now">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
-									<!-- Удаление -->
-									<a class="addto__remove remove"
-										 href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}"
-									   data-goods-mod-id="{favorites_goods.MIN_PRICE_NOW_ID}"
-									   title="Убрать товар из списка избранного"
-									   onclick="removeFromFavorites($(this))"><span>Удалить</span></a>
-								</div>
-							</div>
-						</div>
-						{% ENDFOR %}
-					</div>
-					<div class="addto__empty">
-						<div class="addto__title">Ваш список избранного пуст</div>
-						<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Каталог</a>
-					</div>
-					<div class="addto__buttons">
-						<a class="button button4 removeAll"
-						   href="{FAVORITES_RESET_URL}"
-						   onclick="removeFromFavoritesAll($(this))"
-						   title="Очистить список Избранного"><span>Очистить</span></a>
-						<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранному">В Избранное</a>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Личный кабинет -->
-			{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
-			<div id="fancybox__login" class="modal" data-content="login" style="display:none">
-				<div class="modal__title block__title">
-					<a href="{USER_SETTINGS_URL}" class="title">Личный кабинет</a>
-				</div>
-				
-				<div class="modal__content">
-					{% IF CLIENT_IS_LOGIN %}
-					<!-- ЛК для авторизованных пользователей -->
-					<ul class="mainnav__links">
-						<li><a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a></li>
-						<li><a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a></li>
-						<li><a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a></li>
-						{% IF SETTINGS_COMPARE_DISABLE=0 %}<li><a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a></li>{% ENDIF %}
-						<li><a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a></li>
-					</ul>
-					{% ELSE %}
-					<!-- Форма входа и регистрации -->
-					<form action="{USER_LOGIN_URL}" method="post" class="form__client">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<input type="hidden" name="from" value="{FROM}" />
-						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-						{ANTISPAM_CODE}
-						<div class="form__icon">
-							<i class="icon-user"></i>
-						</div>
-						<div class="form__text">
-							<p>Для входа в аккаунт введите свои данные</p>
-						</div>
-						<div class="form__list">
-							<div class="form__fields">
-								<div class="form__field">
-									<input type="email"
-									       name="form[sites_client_mail]"
-									       value="{FORM_SITES_CLIENT_MAIL}"
-									       maxlength="255"
-									       class="form__input sites_client_mail email"
-									       placeholder="Email"
-									       required />
-									<i class="icon-mail"></i>
-								</div>
-							</div>
-							<div class="form__fields">
-								<div class="form__field">
-									<input type="password"
-									       name="form[sites_client_pass]"
-									       value="{FORM_SITES_CLIENT_PASS}"
-									       maxlength="50"
-									       minlength="6"
-									       class="form__input sites_client_pass"
-									       placeholder="Пароль"
-									       onkeyup="checkCapsWarning(event)"
-									       onfocus="checkCapsWarning(event)"
-									       onblur="removeCapsWarning()"
-									       required />
-									<i class="icon-padlock"></i>
-								</div>
-								{% IFNOT user_agent_ie %}
-								<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
-								{% ENDIF %}
-								<div id="capslock">
-									<div><i class="icon-warning"></i></div>
-									<div><strong>Caps Lock включен.</strong></div>
-									<div>Пароль может быть введен неверно.</div>
-								</div>
-							</div>
-						</div>
-						<div class="client__buttons addto__buttons">
-							<button type="submit" name="send" class="button" title="Войти">Войти</button>
-							<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
-						</div>
-						<div class="form__text">
-							<p>У Вас еще нет аккаунта?</p>
-						</div>
-						<div class="client__buttons addto__buttons">
-							<a href="{USER_REGISTER_URL}" class="button button3">Зарегистрироваться</a>
-						</div>
-					</form>
-					{% ENDIF %}
-				</div>
-			</div>
-			{% ENDIF %}
-			
-			<!-- Политика конфиденциальности в модальном окне -->
-			<div id="fancybox__pp" class="modal" style="display:none">
-				<div class="modal__title block__title">
-					<div class="title">Политика приватности</div>
-				</div>
-				
-				<div class="modal__content">
-					<div>
-						<h4 class="title">Общие положения</h4>
-						<br />
-						<p>Некоторые объекты, размещенные на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
-						<p>На сайте StoreLand имеются ссылки, позволяющие перейти на другие сайты. Компания StoreLand не несет ответственности за сведения, публикуемые на этих сайтах и предоставляет ссылки на них только в целях обеспечения удобства для посетителей своего сайта.</p>
-					</div>
-					<br />
-					<div>
-						<h4 class="title">Личные сведения и безопасность</h4>
-						<br />
-						<p>Компания StoreLand гарантирует, что никакая полученная от Вас информация никогда и ни при каких условиях не будет предоставлена третьим лицам, за исключением случаев, предусмотренных действующим законодательством Российской Федерации.</p>
-						<p>В определенных обстоятельствах компания StoreLand может попросить Вас зарегистрироваться и предоставить личные сведения. Предоставленная информация используется исключительно в служебных целях, а также для предоставления доступа к специальной информации.</p>
-						<p>Личные сведения можно изменить, обновить или удалить в любое время в разделе "Аккаунт" > "Профиль".</p>
-						<p>Чтобы обеспечить Вас информацией определенного рода, компания StoreLand с Вашего явного согласия может присылать на указанный при регистрации адрес электронный почты информационные сообщения. В любой момент Вы можете изменить тематику такой рассылки или отказаться от нее.</p>
-						<p>Как и многие другие сайты, StoreLand использует технологию cookie, которая может быть использована для продвижения нашего продукта и измерения эффективности рекламы. Кроме того, с помощь этой технологии StoreLand настраивается на работу лично с Вами. В частности без этой технологии невозможна работа с авторизацией в панели управления.</p>
-						<p>Сведения на данном сайте имеют чисто информативный характер, в них могут быть внесены любые изменения без какого-либо предварительного уведомления.</p>
-						<p>Чтобы отказаться от дальнейших коммуникаций с нашей компанией, изменить или удалить свою личную информацию, напишите нам через форму обратной связи</p>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Обратный звонок в модальном окне -->
-			<div id="fancybox__callback" class="modal" style="display:none">
-				<div class="modal__title block__title">
-					<div class="title">Заказать звонок</div>
-				</div>
-				
-				<div class="modal__content">
-					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
-						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-						{ANTISPAM_CODE}
-						
-						<div class="form__icon">
-							<i class="icon-call"></i>
-						</div>
-						
-						<div class="form__text">
-							<p>Оставьте свой номер телефона и наши специалисты презвонят Вам в ближайшее время</p>
-						</div>
-						<div class="form__fields">
-							<div class="form__field">
-								<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
-								       class="form__input form__person"
-								       type="text"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
-								       value="{FORM_CALLBACK_PERSON}"
-								       placeholder="Владимир П."
-								       autocomplete="off" />
-								<i class="icon-user"></i>
-							</div>
-						</div>
-						<div class="form__fields">
-							<div class="form__field">
-								<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]"
-								       class="form__input form__phone"
-								       type="tel"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]"
-								       value="{FORM_CALLBACK_PHONE}"
-								       placeholder="+7 (987) 654-3210"
-								       autocomplete="off" />
-								<i class="icon-phone"></i>
-							</div>
-						</div>
-						
-						<div class="form__buttons">
-							<button type="submit" title="Заказать звонок" class="form__button button">Заказать звонок</button>
-						</div>
-						
-						<div class="form__pp">
-							<span>Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с</span>
-							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
-						</div>
-						
-					</form>
-				</div>
-			</div>
-			
-			<!-- Обратный звонок в модальном окне -->
-			<div id="fancybox__feedback" class="modal" style="display:none">
-				<div class="modal__title block__title">
-					<div class="title">Обратная связь</div>
-				</div>
-				
-				<div class="modal__content">
-					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
-						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-						{ANTISPAM_CODE}
-						
-						<div class="form__icon">
-							<i class="icon-mail"></i>
-						</div>
-						
-						<div class="form__fields">
-							<div class="form__field">
-								<input class="form__input form__person form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
-								       type="text"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
-								       value="{FORM_CALLBACK_PERSON}"
-								       placeholder="Владимир П."
-								       autocomplete="off" />
-								<i class="icon-user"></i>
-							</div>
-						</div>
-						
-						<div class="form__fields">
-							<div class="form__field">
-								<input class="form__input form__phone form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]"
-								       type="tel"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]"
-								       value="{FORM_CALLBACK_PHONE}"
-								       placeholder="+7 (987) 654-3210"
-								       autocomplete="off" />
-								<i class="icon-phone"></i>
-							</div>
-						</div>
-						
-						<div class="form__fields">
-							<textarea class="textarea callback__comment"
-							          rows="3"
-							          name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]"
-							          placeholder="Текст запроса">{FORM_CALLBACK_COMMENT}</textarea>
-						</div>
-						
-						<div class="form__buttons">
-							<button type="submit" title=">Заказать звонок" class="form__button button">Отправить</button>
-						</div>
-						
-						<div class="form__pp">
-							<span>Нажимая на кнопку &laquo;Отправить&raquo;, Вы соглашаетесь с</span>
-							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
-						</div>
-						
-					</form>
-				</div>
-			</div>
-			
-			<!-- Уведомить о поступлении в модальном окне -->
-			<div id="fancybox__notify" class="modal" style="display:none">
-				<div class="modal__title block__title">
-					<div class="title">Уведомить о поступлении</div>
-				</div>
-				
-				<div class="modal__content">
-					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect" />
-						<input type="hidden"
-						       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]"
-						       value="Уведомить -- {GOODS_NAME}"
-						       id="fancy__info" />
-						<input type="hidden" name="form[Имя_Товара]" value="{GOODS_NAME}" id="fancy__name" />
-						<input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy__art" />
-						<!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->
-						<!-- input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /-->
-						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
-						{ANTISPAM_CODE}
-						<!-- Для использования почты для уведомлений необходимо удалить блок с телефоном -->
-						<div class="form__fields">
-							<div class="form__field">
-								<input class="form__input form__phone"
-								       type="tel"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]"
-								       value="{FORM_CALLBACK_PHONE}"
-								       placeholder="+7 (987) 654-3210"
-								       autocomplete="off" />
-								<i class="icon-phone"></i>
-							</div>
-						</div>
-						<!-- Для использования почты для уведомлений необходимо удалить ниже style="display: none;" -->
-						<div class="form__fields" style="display: none;">
-							<div class="form__field">
-								<input class="form__input form__email"
-								       type="email"
-								       name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]"
-								       value="{FORM_CALLBACK_EMAIL}"
-								       placeholder="email@email.ru *"
-								       autocomplete="off" />
-								<i class="icon-mail"></i>
-							</div>
-						</div>
-						
-						<div class="form__buttons">
-							<button type="submit" title="Уведомить" class="form__button button">Уведомить</button>
-						</div>
-						
-						<div class="form__pp">
-							<span>Нажимая на кнопку &laquo;Уведомить&raquo;, Вы соглашаетесь с</span>
-							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
-						</div>
-						
-					</form>
-				</div>
-			</div>
-			
+
 			<!-- Скрытое обновление корзины -->
 			<div class="hiddenUpdate" style="display: none;"></div>
-			
+
 		</noindex>
 	</div>
-	
+
 <!-- Фиксы для IE -->
 {% IF user_agent_ie || user_agent_mozilla %}
 <script src="https://polyfill.io/v3/polyfill.min.js?features=Array.prototype.find,Promise,Object.assign"></script>
@@ -928,16 +381,16 @@
 <script type="text/javascript" src="{JAVASCRIPT_BUG_HUNTING_URL}"></script>
 {% ENDIF %}
 <!-- ВНИМАНИЕ! Если Вы удалите код ниже, то это повлияет на работу вашего сайта. Пожалуйста ничего не удаляйте без консультации у специалистов. -->
+{% IF FORM_NOTICE %}
 <script async type="text/javascript">
 	// Модальное окно уведомления при отправке сообщения
-	{% IF FORM_NOTICE %}
 	var type = '{% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}';
 	var text = '<div class="noty__addto"><i class="icon-{% IF FORM_NOTICE_IS_GOOD %}check{% ELSE %}warning{% ENDIF %}"></i><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
 	setTimeout(function () {
 		notyStart(text, type)
 	}, 1000);
-	{% ENDIF %}
 </script>
+{% ENDIF %}
 <!-- Слайдер. Карусель -->
 <link rel="preload"
       type="text/css"
