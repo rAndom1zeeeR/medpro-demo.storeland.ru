@@ -1,1 +1,32 @@
 /*** Слайдшоу ***/
+/* TODO увеличить изображение слайдов до 440px
+/* TODO какой ховер при наведении на кнопку slider__catalog-icon
+/* TODO какой функционал у кнопки slider__catalog-icon
+/* TODO В макете есть тени у слайдера, нельзя просто раскидать теней по странице, нужно привязать их к какому то элементу. Какая тень у кнопки Подробнее?
+***/
+#slideshow {height: 27.5rem;overflow: hidden;}
+.slider__item {height: 27.5rem;overflow: hidden;background-repeat: no-repeat;background-size: contain;display: flex;align-items: center;}
+.slider__content {width: 55%;margin: 0 0 0 auto;padding: 2rem 2rem 2rem 0;}
+.slider__title {font-size: 2rem;font-weight: bold;}
+.slider__subtitle {margin-top: 3rem;}
+.slider__buttons {margin-top: 3rem;}
+.slider__catalog {position: absolute;bottom: 1rem;left: 1rem;}
+.slider__catalog-icon {width: 7rem;height: 7rem;font-size: 2rem;color: #ffffff;background-color: #0066a0;border: .375rem solid #ffffff;border-radius: 100%;display: flex;align-items: center;justify-content: center;}
+.slider__nav {margin: 0 2rem;}
+.slider__nav .owl-dots {margin: 0 1rem;}
+.slider__nav .owl-count {margin-left: 2rem;}
+.slider__nav .owl-count .count {transform: rotate(-90deg);display: inline-block;}
+
+
+/*** Промо ***/
+.promo__item {width: 25%;padding: 0 1rem;align-items: center;}
+.promo__icon {font-size: 3rem;}
+.promo__text {width: calc(100% - 3rem);padding-left: 2rem;}
+
+
+/*** Баннеры ***/
+.banners__item {width: calc(50% - 2rem);margin: 0 1rem;background-repeat: no-repeat;background-size: contain;}
+.banners__content {padding: 3rem;}
+.banners__title {font-size: 1.5rem;font-weight: bold;display: block;line-height: 2.5rem;}
+.banners__title span {display: block;}
+.banners__button {margin-top: 2rem;}

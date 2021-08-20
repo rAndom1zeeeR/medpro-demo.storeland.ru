@@ -16,9 +16,9 @@ body {background-color: #f0f7f5;color: #656d72;font-family: 'Ubuntu', sans-serif
 ::-webkit-scrollbar-track {border-radius: 0;background-color: #dae6ec;}
 
 
-/******************************************************************************
+/**************************************************
 Вспомогательные классы
-*******************************************************************************/
+***************************************************/
 a {color: #656d72;text-decoration: none;outline: 0;cursor: pointer;transition: all 0.3s ease;}
 a:hover, a.active {color: #00acc5;text-decoration: none;outline: 0;}
 img {max-width: 100%;max-height: 100%;width: auto;}
@@ -61,7 +61,6 @@ input:focus, select:focus, textarea:focus {
 }
 
 
-
 /*** Кнопки ***/
 .button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {
 	color: #ffffff;
@@ -85,7 +84,12 @@ input:focus, select:focus, textarea:focus {
 .button2 {color: #ffffff;background-color: #0066a0;}
 .button2:hover {color: #ffffff;background-color: #00acc5;}
 
+.button3 {color: #656d72;background-color: #ffffff;}
+.button3:hover {color: #ffffff;background-color: #00acc5;}
 
+
+/*** Общие блоки ***/
+section {margin: 2rem 0;}
 
 /*** Шапка ***/
 .header__top {padding: 2rem 0;position: relative;}
@@ -163,12 +167,50 @@ header .contacts {width: 27rem;}
 
 
 
-/*** Слайдшоу ***/
-#slideshow {height: 28rem;overflow: hidden;}
-.slider__item {height: 28rem;overflow: hidden;}
-.slider__title {font-size: 2rem;font-weight: bold;}
-.slider__subtitle {margin-top: 3rem;}
-.slider__buttons {margin-top: 3rem;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

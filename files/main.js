@@ -1,43 +1,12 @@
 ///////////////////////////////////////////////////////
 /* Общие функции */
 //////////////////////////////////////////////////////
-// Возвращает правильное окончание для слова
-function genWordEnd(num, e, m, mm) {
-  // Если забыли указать окончания
-  if(typeof (e) == "undefined") { e = ''; }
-  if(typeof (m) == "undefined") { e = 'а'; }
-  if(typeof (mm) == "undefined"){ e = 'oв'; }
-  // Если передали пустую строку, вместо цифры
-  if(0 == num.length) { num = 0; }
-  // Превращаем цифру в правильный INT
-  num = GetSum(num).toString();
-  // Получаем последний символ цифры
-  ch1 = num.substring(num.length-1);
-  // Получаем последний символ цифры
-  ch2 = num.length == 1 ? 0 : num.substring(num.length-2, num.length-1);
-  // Если последняя цифра - 1, вернем единственное число
-  if(ch2!=1 && ch1==1)               {return e;}
-  // Если последняя цифра - от 2 до 4х , вернем множественное чило из массива с индексом 2
-  else if(ch2!=1 && ch1>1 && ch1<=4) {return m;}
-  // Если последняя цифра - от 5 до 0 , вернем множественное чило из массива с индексом 3
-  else if(ch2==1 || ch1>4 || ch1==0) {return mm;}
-}
-
-// Считает сумму  33 599,65 + 2000 - 1910-41,6
-function GetSum(val,precision) {
-  if(typeof (precision) == "undefined" || precision < 0) { precision = 0; }
-  // Возводим в степень точности 10 для округления
-  var p = Math.pow(10,precision);
-  try {return Math.round(parseFloat(eval(val.toString().replace(/\s/gi, "").replace(/,/gi, ".")))*p)/p;} catch (e) {return 0;}
-}
-
-// Форматирует цену
-function number_format(n,e,t,r){var i=n,a=e,o=function(n,e){var t=Math.pow(10,e);return(Math.round(n*t)/t).toString()};i=isFinite(+i)?+i:0,a=isFinite(+a)?Math.abs(a):0;var u,d,f="undefined"==typeof r?",":r,h="undefined"==typeof t?".":t,l=a>0?o(i,a):o(Math.round(i),a),s=o(Math.abs(i),a);s>=1e3?(u=s.split(/\D/),d=u[0].length%3||3,u[0]=l.slice(0,d+(0>i))+u[0].slice(d).replace(/(\d{3})/g,f+"$1"),l=u.join(h)):l=l.replace(".",h);var c=l.indexOf(h);return a>=1&&-1!==c&&l.length-c-1<a?l+=new Array(a-(l.length-c-1)).join(0)+"0":a>=1&&-1===c&&(l+=h+new Array(a).join(0)+"0"),l}
-
 // Функция определения ширины экрана пользователя
-function getClientWidth() {return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth;}
+function getClientWidth() {
+  return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth;
+}
 
-// Работа с cookie файлами. 
+// Работа с cookie файлами.
 // Получение переменной из cookie
 function getCookie(name) {
   var matches = document.cookie.match(new RegExp(
@@ -90,48 +59,13 @@ function sendError (desc, page, line) {
 // Функция определения браузера
 function userAgent(){
   var ua = detect.parse(navigator.userAgent);
-  if (ua.browser.family === 'Safari') {
-    $('body').addClass('Safari');
-  }
-  if (ua.browser.family === 'IE') {
-    $('body').addClass('IE');
-  }
-  if (ua.browser.family === 'Edge') {
-    $('body').addClass('Edge');
-  }
-  if (ua.browser.family === 'Firefox') {
-    $('body').addClass('Firefox');
-  }
-  if (ua.browser.family === 'Opera') {
-    $('body').addClass('Opera');
-  }
-  if (ua.browser.family === 'Chrome') {
-    $('body').addClass('Chrome');
-  }
-  if (ua.os.family === 'iOS') {
-    $('body').addClass('iOS');
-  }
-  if (ua.os.family === 'Android') {
-    $('body').addClass('Android');
-  }
+  $('body').addClass(ua.browser.family);
 }
 
-// Наверх
-function toTop() {
-  $("#toTop").hide();
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > 100) {
-      $('#toTop').fadeIn();
-    } else {
-      $('#toTop').fadeOut();
-    }
-  });
-  $('.toTop').click(function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 800);
-    return false;
-  });
+// Добавляет пробел 1000 -> 1 000  /  10000 -> 10 000
+function addSpaces(nStr){
+  nStr = String(nStr)
+	return nStr.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ')
 }
 
 // Предзагрузчик
@@ -142,13 +76,79 @@ function preload() {
   preloader.delay(1000).fadeOut('slow');
 }
 
+// Наверх
+function toTop() {
+  $("#toTop").hide();
+  $(window).on('scroll', function () {
+    if ($(this).scrollTop() > 100) {
+      $('#toTop').fadeIn();
+    } else {
+      $('#toTop').fadeOut();
+    }
+  });
+  $('.toTop').on('click', function () {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+}
+
+// Превращает поле пароля в текстовое поле и обратно
+// @LinkObject - ссылка по которой кликнули
+// @InputObject - объект у которого нужно изменить тип поля
+function ChangePasswordFieldType (LinkObject, InputObject) {
+  var
+    // Ссылка по которой кликнули
+    LObject = $(LinkObject),
+    // Объект у которого изменяем тип с password на text
+    IObject = $(InputObject),
+    // Старый текст ссылки
+    txtOld = LObject.text(),
+    // Новый текст ссылки
+    txtNew = LObject.attr('rel');
+  // Если объекты не получены, завершим работу функции
+  if( LObject.length==0 || IObject.length==0 ) {
+    return false;
+  }
+  // Изменяем у ссылки текст со старого на новый
+  //LObject.html(txtNew);
+  // Старый текст ссылки сохраняем в атрибуте rel
+  //LObject.attr('rel', txtOld);
+  // Изменяем тип input поля
+  if(IObject[0].type == 'text') {
+    IObject[0].type = 'password';
+  } else {
+    IObject[0].type = 'text';
+  }
+}
+
+// Показать пароль
+function showPass() {
+  $('.showPassBlock').on('click', function(event){
+    ChangePasswordFieldType(this, $('#sites_client_pass'));
+    ChangePasswordFieldType(this, $('.sites_client_pass'));
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+    } else {
+      $(this).addClass('active');
+    }
+    return false;
+  });
+}
+
+// Проверка вводимых значений в количестве товара
+function keyPress(oToCheckField, oKeyEvent) {
+  return oKeyEvent.charCode === 0 || /\d/.test(String.fromCharCode(oKeyEvent.charCode));
+}
+
 
 ///////////////////////////////////////////////////////
 /* Валидаторы */
 //////////////////////////////////////////////////////
-// Валидаторы для телефона в "консультация"
-function validName(){
-  var name = $('#callback').find('.form__person');
+// Валидаторы для Имени
+function validName(id){
+  var name = $(id).find('.form__person');
   if(name.val() != ''){
     name.removeClass('error');
     name.parent().removeClass('error');
@@ -161,135 +161,28 @@ function validName(){
     return false;
   }
 }
-function validPhone(){
-  var tel = $('#callback').find('.form__phone');
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
-  if(check == true && check != ''){
-    tel.removeClass('error');
-    tel.parent().removeClass('error');
-    tel.attr('placeholder','Введите номер');
-    return true;
-  }
-  else{
-    tel.addClass('error');
-    tel.parent().addClass('error');
-    tel.attr('placeholder','Вы не ввели номер');
-    return false;
-  }
-}
-// Проверка телефона в обратном звонке.
-function validSubmit(){
-  var name = validName();
-  var phone = validPhone();
-  return name && phone;
-}
-// Проверка отправки формы
-$(function(){
-  $('#callback .form__callback').submit(validSubmit);
-});
 
-// Валидаторы для Имени и телефона в "Обратный звонок" модальное окно
-function validNameFancy(){
-  var name = $('#fancybox__callback').find('.form__person');
-  if(name.val() != ''){
-    name.removeClass('error');
-    name.parent().removeClass('error');
-    name.attr('placeholder','Введите Имя');
-    return true;
-  }else{
-    name.addClass('error');
-    name.parent().addClass('error');
-    name.attr('placeholder','Вы не ввели Имя');
-    return false;
-  }
-}
-function validPhoneFancy(){
-  var tel = $('#fancybox__callback').find('.form__phone');
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
+// Валидаторы для телефона
+function validPhone(id){
+  var phone = $(id).find('.form__phone');
+  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(phone.val());
   if(check == true && check != ''){
-    tel.removeClass('error');
-    tel.parent().removeClass('error');
-    tel.attr('placeholder','Введите номер');
+    phone.removeClass('error');
+    phone.parent().removeClass('error');
+    phone.attr('placeholder','Введите номер');
     return true;
   }
   else{
-    tel.addClass('error');
-    tel.parent().addClass('error');
-    tel.attr('placeholder','Вы не ввели номер');
+    phone.addClass('error');
+    phone.parent().addClass('error');
+    phone.attr('placeholder','Вы не ввели номер');
     return false;
   }
 }
-function validSubmitFancy(){
-  var name = validNameFancy();
-  var phone = validPhoneFancy();
-  return name && phone;
-}
-// Проверка отправки формы
-$(function(){
-  $('#fancybox__callback .form__callback').submit(validSubmitFancy);
-});
 
-// Валидаторы для Имени и телефона в "Обратная связь" модальное окно
-function validNameFeedback(){
-  var name = $('#fancybox__feedback').find('.form__person');
-  if(name.val() != ''){
-    name.removeClass('error');
-    name.parent().removeClass('error');
-    name.attr('placeholder','Введите Имя');
-    return true;
-  }else{
-    name.addClass('error');
-    name.parent().addClass('error');
-    name.attr('placeholder','Вы не ввели Имя');
-    return false;
-  }
-}
-function validPhoneFeedback(){
-  var tel = $('#fancybox__feedback').find('.form__phone');
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
-  if(check == true && check != ''){
-    tel.removeClass('error');
-    tel.parent().removeClass('error');
-    tel.attr('placeholder','Введите номер');
-    return true;
-  }
-  else{
-    tel.addClass('error');
-    tel.parent().addClass('error');
-    tel.attr('placeholder','Вы не ввели номер');
-    return false;
-  }
-}
-function validSubmitFeedback(){
-  var name = validNameFeedback();
-  var phone = validPhoneFeedback();
-  return name && phone;
-}
-// Проверка отправки формы
-$(function(){
-  $('#fancybox__feedback .form__callback').submit(validSubmitFeedback);
-});
-
-// Валидаторы для телефона в "Подписаться" в подвале
-function validPhoneSubscribe(){
-  var tel = $('#subscribe').find('.form__phone');
-  var check = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{5,10}$/.test(tel.val());
-  if(check == true && check != ''){
-    tel.removeClass('error');
-    tel.parent().removeClass('error');
-    tel.attr('placeholder','Введите номер');
-    return true;
-  }
-  else{
-    tel.addClass('error');
-    tel.parent().addClass('error');
-    tel.attr('placeholder','Вы не ввели номер');
-    return false;
-  }
-}
-// Подписаться. Валидатор почты в "Подписаться"
-function validEmailSubscribe(){
-  var email = $('#subscribe').find('.form__email');
+// Валидаторы для почты
+function validEmail(id){
+  var email = $(id).find('.form__email');
   var check = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.val());
   if(check == true && check != ''){
     email.removeClass('error');
@@ -304,15 +197,97 @@ function validEmailSubscribe(){
     return false;
   }
 }
-function validSubmitSubscribe(){
-  var email = validEmailSubscribe();
-  var phone = validPhoneSubscribe();
-  return email || phone;
+
+
+///////////////////////////////////////////////////////
+/* Аякс Отправка формы без обновления страницы */
+//////////////////////////////////////////////////////
+function ajaxForms(id,flag,successMessage,errorMessage){
+  var flag = false;
+  console.log('ajaxForms id - ', id)
+  var form = $(id).find('.form__callback');
+  form.on('submit',function(event){
+    event.preventDefault();
+    if(!flag){
+      t = $(this);
+      var url = t.prop('action');
+      var formData = t.serializeArray();
+      formData.push({name: 'ajax_q', value: 1});
+      formData.push({name: 'only_body', value: 1});
+      $.ajax({
+        method: 'POST',
+        cache: false,
+        url: url,
+        data: formData,
+        success: function(d){
+          var serverCall = JSON.parse(d).status;
+          if(serverCall == "ok"){
+            $.fancybox.close();
+            t.hide();
+            t.find('.form__input').val(' ');
+            t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
+            new Noty({
+              text: '<div class="noty__addto"><i class="icon-check"></i><div class="noty__message">' + successMessage + '</div></div>',
+              layout:"bottomRight",
+              type:"success",
+              easing:"swing",
+              animation: {
+                open: 'animated fadeInUp',
+                close: 'animated fadeOutDown',
+                easing: 'swing',
+                speed: 400
+              },
+              timeout:"2000",
+              progressBar:true
+            }).show();
+            flag = true;
+          }
+        }
+      });
+    }else{
+      function callBackError(type) {
+        t.find('.form__input').val(' ');
+        t.parent().find('.form__text').hide();
+        new Noty({
+          text: '<div class="noty__addto"><i class="icon-close"></i><div class="noty__message">' + errorMessage + '</div></div>',
+          layout:"bottomRight",
+          type:"warning",
+          easing:"swing",
+          animation: {
+            open: 'animated fadeInUp',
+            close: 'animated fadeOutDown',
+            easing: 'swing',
+            speed: 400
+          },
+          timeout:"2000",
+          progressBar:true
+        }).show();
+      }
+      callBackError();
+    }
+  });
+
+  // Валидация при клике
+  form.on('click',function(event){
+    console.log('click - ', id)
+    validName(form);
+    validPhone(form);
+    validEmail(form);
+  });
 }
-// Проверка отправки формы
-$(function(){
-  $('#subscribe .form__callback').submit(validSubmitSubscribe);
-});
+
+// "Обратный звонок".
+ajaxForms('#callback','callbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
+// "Обратный звонок" в модальном окне.
+ajaxForms('#fancybox__callback','fancyCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
+// "Обратная связь" в модальном окне.
+ajaxForms('#fancybox__feedback','fancyFeedbackFlag','Спасибо за обращение! Мы свяжемся с вами в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+// "Обратная связь".
+ajaxForms('.form__feedback','feedbackFlag','Спасибо за обращение! Мы свяжемся с вами в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+// "Подписаться".
+ajaxForms('#subscribe','subscribeFlag','Спасибо за обращение! Вы подписались на наши уведомления','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+// "Уведомить" в модальном окне.
+ajaxForms('#fancybox__notify','notifyFlag','Спасибо за обращение! Вы подписались на уведомления о поступлении товара','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 
 
 ///////////////////////////////////////////////////////
@@ -349,14 +324,16 @@ function removeFromFavorites(e){
         var obj = $('.add-favorites[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
           obj.attr("data-action-is-add", "1")
-              .removeAttr("title")
-              .removeClass("added")
-              .attr("href", obj.attr("href").replace(obj.attr('data-action-delete-url'), obj.attr('data-action-add-url')));
+          .removeAttr("title")
+          .removeClass("added")
+          .attr("href", obj.attr("href")
+          .replace(obj.attr('data-action-delete-url'), obj.attr('data-action-add-url')));
         }
       }
     });
   }
 }
+
 // Удаление ВСЕХ товаров из Избранного без обновлении страницы
 function removeFromFavoritesAll(e){
   event.preventDefault();
@@ -409,9 +386,10 @@ function removeFromCompare(e){
         var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
         if(obj.length) {
           obj.attr("data-action-is-add", "1")
-              .removeAttr("title")
-              .removeClass("added")
-              .attr("href", obj.attr("href").replace(obj.attr('data-action-delete-url'), obj.attr('data-action-add-url')));
+          .removeAttr("title")
+          .removeClass("added")
+          .attr("href", obj.attr("href")
+          .replace(obj.attr('data-action-delete-url'), obj.attr('data-action-add-url')));
         }
       }
     });
@@ -525,7 +503,7 @@ function openMenu() {
   // Открытие элементов
   $('.dropdown__open').on('click', function(event){
     event.preventDefault();
-    $('div').removeClass('opened');
+    $('div, a, form').removeClass('opened');
     var value = $(this).data('open');
     if ($('.dropdown__content[data-content="'+ value +'"]').hasClass('opened')){
       $(this).removeClass('opened');
@@ -545,14 +523,17 @@ function openMenu() {
   // Открытие каталога с сохранением вложенности
   $('.catalog__item .open').on('click', function(event){
     event.preventDefault();
-    if ($(this).closest('.parent').hasClass('opened')) {
-      $(this).parent().next('.sub').slideUp(600);
-      $(this).closest('.parent').removeClass('opened');
-      $(this).closest('.open').removeClass('opened');
+    var parent = $(this).closest('.parent');
+    var sub = $(this).parent().next('.sub');
+    var open = $(this).closest('.open');
+    if (parent.hasClass('opened')) {
+      sub.slideUp(600);
+      parent.removeClass('opened');
+      open.removeClass('opened');
     } else {
-      $(this).parent().next('.sub').slideDown(600);
-      $(this).closest('.parent').addClass('opened');
-      $(this).closest('.open').addClass('opened');
+      sub.slideDown(600);
+      parent.addClass('opened');
+      open.addClass('opened');
     }
   });
 
@@ -588,7 +569,7 @@ function openMenu() {
       t.css('order', count)
       // Добавляем кнопку "Еще" если больше 4 подкатегорий
       if(item1.length > 4) {
-        t.append('<div class="catalog__more"><a href="'+ href +'" class="catalog__link">Еще...</a></div>');
+        t.find('.sub').append('<div class="catalog__more"><a href="'+ href +'" class="catalog__link">Еще...</a></div>');
       }
       // Если в категории нет подкатегорий, переносим ее в конец
       if(item1.length == 0) {
@@ -616,7 +597,8 @@ function mainnavHeader(){
       mainnav.find('.mainnav__list').append($(this));
     });
   }
-  var menuWidth = mainnav.width();
+  var menuHeight = 2;
+  var menuWidth = mainnav.width() * menuHeight;
   var menuCount = mainnav.find('.mainnav__list li').length + 1;
   var nextCheck = 0;
   for(var i=1; i < menuCount;  i++){
@@ -630,7 +612,7 @@ function mainnavHeader(){
       mainnav.find('.mainnav__replaced').each(function(){
         mainnav.find('.overflowMenu').append($(this));
       });
-      mainnav.find('.mainnav__list').append('<li class="mainnav__item mainnav__more"><a class="mainnav__list-link"><span>Ещё</span><i class="icon-arrow_drop_down"></i></a></li>');
+      mainnav.find('.mainnav__list').append('<li class="mainnav__item mainnav__more"><a class="mainnav__link"><span>Ещё</span><i class="icon-arrow_drop_down"></i></a></li>');
       mainnav.find('.mainnav__more').on('click',function(){
         mainnav.find('.overflowMenu').hasClass('opened') ? mainnav.find('.overflowMenu').removeClass('opened') : mainnav.find('.overflowMenu').addClass('opened');
         mainnav.hasClass('opened') ? mainnav.removeClass('opened') : mainnav.addClass('opened');
@@ -650,8 +632,7 @@ function mainnavHeader(){
   }
 }
 
-
-// Функция показать больше для Каталога на главной странице
+// Функция Слайдер категорий Каталога на всех страницах.
 function pdtCatalog() {
   $('#catalog .owl-carousel').owlCarousel({
     items: 6,
@@ -685,60 +666,44 @@ function pdtCatalog() {
   });
 }
 
-
-// Превращает поле пароля в текстовое поле и обратно
-// @LinkObject - ссылка по которой кликнули
-// @InputObject - объект у которого нужно изменить тип поля
-function ChangePasswordFieldType (LinkObject, InputObject) {
-  var
-      // Ссылка по которой кликнули
-      LObject = $(LinkObject),
-      // Объект у которого изменяем тип с password на text
-      IObject = $(InputObject),
-      // Старый текст ссылки
-      txtOld = LObject.text(),
-      // Новый текст ссылки
-      txtNew = LObject.attr('rel');
-  // Если объекты не получены, завершим работу функции
-  if( LObject.length==0 || IObject.length==0 ) {
-    return false;
-  }
-  // Изменяем у ссылки текст со старого на новый
-  //LObject.html(txtNew);
-  // Старый текст ссылки сохраняем в атрибуте rel
-  //LObject.attr('rel', txtOld);
-  // Изменяем тип input поля
-  if(IObject[0].type == 'text') {
-    IObject[0].type = 'password';
-  } else {
-    IObject[0].type = 'text';
-  }
-}
-
-// Показать пароль
-function showPass() {
-  $('.showPassBlock').on('click', function(event){
-    ChangePasswordFieldType(this, $('#sites_client_pass'));
-    ChangePasswordFieldType(this, $('.sites_client_pass'));
-    if ($(this).hasClass('active')) {
-      $(this).removeClass('active');
-    } else {
-      $(this).addClass('active');
+// Функция слайдера для "Вы смотрели" на главной странице
+function viewed() {
+  $('#viewed .owl-carousel').owlCarousel({
+    items: 5,
+    margin: 32,
+    loop: false,
+    rewind: true,
+    lazyLoad: true,
+    nav: true,
+    navContainer: '#viewed .owl-nav',
+    navText: [ , ],
+    dots: false,
+    autoHeight: true,
+    autoHeightClass: 'owl-height',
+    autoplay: false,
+    autoplayHoverPause: true,
+    smartSpeed: 500,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    responsiveClass: true,
+    responsiveRefreshRate: 100,
+    responsive: {
+      0:{items:1},
+      320:{items:1},
+      540:{items:2},
+      640:{items:3},
+      768:{items:3},
+      992:{items:4},
+      1200:{items:5}
     }
-    return false;
   });
-}
-
-
-// Проверка вводимых значений в количестве товара
-function keyPress(oToCheckField, oKeyEvent) {
-  return oKeyEvent.charCode === 0 || /\d/.test(String.fromCharCode(oKeyEvent.charCode));
 }
 
 // Функция + - для товара
 function quantity() {
   //Regulator Up копки + в карточке товара при добавлении в корзину
-  $('.qty__plus').off('click').click(function(){
+  $('.qty__plus').off('click').on('click', function(){
     var quantity = $(this).parent().find('.quantity, .cartqty');
     var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
@@ -749,7 +714,7 @@ function quantity() {
     return false;
   });
   //Regulator Down копки - в карточке товара при добавлении в корзину
-  $('.qty__minus').off('click').click(function(){
+  $('.qty__minus').off('click').on('click', function(){
     var quantity = $(this).parent().find('.quantity, .cartqty');
     var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
@@ -761,8 +726,54 @@ function quantity() {
   });
 }
 
+// Загрузчик файлов
+function loadFile(fileName, ext, cb){
+  if(!fileName){console.error('Не передано имя загружаемого файла');return;}
+  if(!ext){console.error('Не передано расширение загружаемого файла');return;}
+  if(!(typeof cb === 'function')){cb = function(){}};
 
+  var $file = $('#' + fileName + '-' + ext);
+  var attrName = (ext === 'css') ? 'href' : 'src';
 
+  if(!$file.length){
+    console.error(fileName + '.' + ext + ' - Файл не найден в разметке и не может быть загружен');
+    return;
+  }
+  // Если файл уже загружен
+  if($file.attr(attrName)){
+    cb();
+    console.log($file, ' - Already loaded');
+    return (true);
+  }
+  $file.on('load', cb)
+  $file.attr(attrName, $file.data(attrName));
+  console.log($file, ' - loaded');
+}
+
+// Уведомления
+function notyStart(text, type) {
+  new Noty({
+    text: text,
+    layout: "bottomCenter",
+    type: type,
+    theme: "",
+    textAlign: "center",
+    animation: {
+      open: 'animated fadeInUp',
+      close: 'animated fadeOutDown',
+      easing: 'swing',
+      speed: 400
+    },
+    timeout: "2000",
+    progressBar: true,
+    closable: true,
+    closeOnSelfClick: true,
+    modal: false,
+    dismissQueue: false,
+    onClose: true,
+    killer: false
+  }).show();
+}
 
 // Загрузка основных функций шаблона
 $(document).ready(function(){
@@ -823,84 +834,7 @@ function addOpened(obj){obj.hasClass('opened') ? obj.removeClass('opened') : obj
 function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj.addClass('active')}
 
 
-// Загрузчик файлов
-function loadFile(fileName, ext, cb){
-  if(!fileName){console.error('Не передано имя загружаемого файла');return;}
-  if(!ext){console.error('Не передано расширение загружаемого файла');return;}
-  if(!(typeof cb === 'function')){cb = function(){}};
 
-  var $file = $('#' + fileName + '-' + ext);
-  var attrName = (ext === 'css') ? 'href' : 'src';
-
-  if(!$file.length){
-    console.error(fileName + '.' + ext + ' - Файл не найден в разметке и не может быть загружен');
-    return;
-  }
-  // Если файл уже загружен
-  if($file.attr(attrName)){
-    cb();
-    // console.log('Already loaded');
-    return (true);
-  }
-  $file.on('load', cb)
-  $file.attr(attrName, $file.data(attrName));
-}
-
-// Уведомления
-function notyStart(text, type) {
-  new Noty({
-    text: text,
-    layout: "bottomCenter",
-    type: type,
-    theme: "",
-    textAlign: "center",
-    animation: {
-      open: 'animated fadeInUp',
-      close: 'animated fadeOutDown',
-      easing: 'swing',
-      speed: 400
-    },
-    timeout: "2000",
-    progressBar: true,
-    closable: true,
-    closeOnSelfClick: true,
-    modal: false,
-    dismissQueue: false,
-    onClose: true,
-    killer: false
-  }).show();
-}
-
-// Функция слайдера для "Вы смотрели" на главной странице
-function viewed() {
-  $('#viewed .owl-carousel').owlCarousel({
-    items: 4,
-    margin: 32,
-    loop: false,
-    rewind: true,
-    lazyLoad: true,
-    nav: true,
-    navContainer: '#viewed .owl-nav',
-    navText: [ , ],
-    dots: false,
-    autoHeight: false,
-    autoHeightClass: 'owl-height',
-    autoplay: false,
-    autoplayHoverPause: true,
-    smartSpeed: 500,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1, autoHeight: true},
-      540:{items:2},
-      768:{items:3},
-      1200:{items:4}
-    }
-  });
-}
 
 
 

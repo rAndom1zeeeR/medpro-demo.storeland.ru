@@ -299,7 +299,6 @@
 			</div>
 		</header>
 
-
 		<!-- Слайдшоу -->
 		<section id="slideshow">
 			<div class="container">
@@ -307,11 +306,23 @@
 				<div class="slider owl-carousel">
 					<!-- Слайд 1 -->
 					<div class="slider__item lozad" data-background-image="{ASSETS_IMAGES_PATH}slide_1.png?design=THEMENAME">
-						<a href="{CATALOG_URL}" class="slider__title">Скидка на всё стоматологическое оборудование 7% длинный заголовок слайда</a>
-						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
-						<div class="slider__buttons">
-							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
-							<div class="owl-nav"></div>
+						<div class="slider__content">
+							<a href="{CATALOG_URL}" class="slider__title">Скидка на всё стоматологическое оборудование 7% длинный заголовок слайда</a>
+							<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
+							<div class="slider__buttons flex">
+								<a class="slider__button button button3" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
+								<div class="slider__nav flex">
+									<div class="owl-prev"></div>
+									<div class="owl-dots"></div>
+									<div class="owl-next"></div>
+									<div class="owl-count"></div>
+								</div>
+							</div>
+						</div>
+						<div class="slider__catalog">
+							<div class="slider__catalog-icon">
+								<i class="icon-catalog"></i>
+							</div>
 						</div>
 					</div>
 
@@ -321,7 +332,12 @@
 						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
 						<div class="slider__buttons">
 							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
-							<div class="owl-nav"></div>
+							<div class="slider__nav">
+								<div class="owl-prev"></div>
+								<div class="owl-dots"></div>
+								<div class="owl-next"></div>
+								<div class="owl-count"></div>
+							</div>
 						</div>
 					</div>
 
@@ -331,12 +347,88 @@
 						<div class="slider__subtitle">Срок проведения акции с 12.02.2020 по 3.04.2020</div>
 						<div class="slider__buttons">
 							<a class="slider__button" href="{CATALOG_URL}" title="Перейти в каталог"><span>Подробнее</span></a>
-							<div class="owl-nav"></div>
+							<div class="slider__nav">
+								<div class="owl-prev"></div>
+								<div class="owl-dots"></div>
+								<div class="owl-next"></div>
+								<div class="owl-count"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<!-- Промо -->
+		<section id="promo">
+			<div class="container">
+				<div class="row">
+					<div class="promo__items flex">
+						<!-- Промо 1 -->
+						<div class="promo__item flex">
+							<div class="promo__icon">
+								<i class="icon-guarantee"></i>
+							</div>
+							<div class="promo__text">Гарантия от производителя</div>
+						</div>
+						<!-- Промо 2 -->
+						<div class="promo__item flex">
+							<div class="promo__icon">
+								<i class="icon-contract"></i>
+							</div>
+							<div class="promo__text">Договор каждым клиентом</div>
+						</div>
+						<!-- Промо 3 -->
+						<div class="promo__item flex">
+							<div class="promo__icon">
+								<i class="icon-payment"></i>
+							</div>
+							<div class="promo__text">Оплата наличными или картой</div>
+						</div>
+						<!-- Промо 4 -->
+						<div class="promo__item flex">
+							<div class="promo__icon">
+								<i class="icon-delivery"></i>
+							</div>
+							<div class="promo__text">Гарантия от производителя </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Баннеры -->
+		<section id="banners">
+			<div class="container">
+				<div class="row">
+					<div class="banners__items flex">
+						<!-- Баннер 1 -->
+						<div class="banners__item flex lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_1.jpg?design=THEMENAME">
+							<div class="banners__content">
+								<a class="banners__title" href="{CATALOG_URL}">
+									<span>Большой выбор</span>
+									<span>увлажнителей воздуха</span>
+								</a>
+								<a class="banners__button button button3" href="{CATALOG_URL}"><span>Подробнее</span></a>
+							</div>
+						</div>
+						<!-- Баннер 2 -->
+						<div class="banners__item flex lozad" data-background-image="{ASSETS_IMAGES_PATH}banner_2.jpg?design=THEMENAME">
+							<div class="banners__content">
+								<a class="banners__title" href="{CATALOG_URL}">
+									<span>При покупке от 20000</span>
+									<span>тонометр в подарок!</span>
+								</a>
+								<a class="banners__button button button3" href="{CATALOG_URL}"><span>Подробнее</span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
 
 
 
