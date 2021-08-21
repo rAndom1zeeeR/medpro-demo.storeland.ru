@@ -30,3 +30,20 @@
 .banners__title {font-size: 1.5rem;font-weight: bold;display: block;line-height: 2.5rem;}
 .banners__title span {display: block;}
 .banners__button {margin-top: 2rem;}
+
+
+/*** Преимущества ***/
+.advantage__item {width: calc(25% - 2rem);margin: 0 1rem;text-align: center;flex-direction: column;}
+.advantage__title {margin-top: 1rem;font-size: 1rem;font-weight: bold;}
+.advantage__text {margin-top: 1rem;padding: 0 2rem;}
+.advantage__icon {width: 10rem;height: 10rem;border: 1px solid #00acc5;border-radius: 100%;font-size: 4rem;display: flex;align-items: center;justify-content: center;position: relative;}
+.advantage__index {position: absolute;top: .25rem;right: .25rem;font-size: 1.25rem;color: #ffffff;background-color: #00acc5;border-radius: 100%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;}
+
+
+
+
+
+
+
+
+

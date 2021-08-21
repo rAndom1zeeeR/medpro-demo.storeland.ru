@@ -91,6 +91,19 @@ input:focus, select:focus, textarea:focus {
 /*** Общие блоки ***/
 section {margin: 2rem 0;}
 
+/*** Заголовки ***/
+h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.2;margin: 0;padding: 0;font-weight: bold;}
+h1 {font-size: 2rem;}
+h2 {font-size: 1.75rem;}
+h3 {font-size: 1.5rem;}
+h4 {font-size: 1.25rem;}
+h5 {font-size: 1rem;}
+h6 {font-size: 0.875rem;}
+
+/*** Блок Заголовка ***/
+.block__title {margin-bottom: 2rem;text-align: center;position: relative;}
+
+
 /*** Шапка ***/
 .header__top {padding: 2rem 0;position: relative;}
 
@@ -168,7 +181,7 @@ header .contacts {width: 27rem;}
 
 
 
-
+.block__title {margin-bottom: 2rem;position: relative;}
 
 
 

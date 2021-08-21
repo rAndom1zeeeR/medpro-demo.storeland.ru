@@ -7,7 +7,7 @@
 .owl-prev:hover, .owl-next:hover {color: #00acc5;}
 .owl-prev {float: left;left: 0;}
 .owl-next {float: right;right: 0;}
-.owl-prev:before {content: '\e900';}
+.owl-prev:before {content: '\e915';}
 .owl-next:before {content: '\e900';}
 .owl-nav.disable, .owl-nav [class^="owl-"].disable:hover {cursor: default;color: #dae6ec;}
 .owl-nav.disabled {display: none;}
