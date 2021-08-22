@@ -486,6 +486,46 @@
 			</div>
 		</section>
 
+		<!-- Подвал -->
+		<footer id="footer">
+			<!-- Подвал. Верхняя часть -->
+			<div class="footer__top">
+				<div class="container">
+					<!-- Подвал. Логотип -->
+					<div class="logo" itemscope itemtype="http://schema.org/Organization">
+						<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
+							<img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
+							<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
+							<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+								<meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" />
+							</span>
+						</a>
+					</div>
+					<!-- Подвал. Меню -->
+					<div class="menu">
+						<!-- Меню -->
+					<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+						<!-- Меню. Верхнее -->
+						<ul class="mainnav__list unstyled flex">
+							{% FOR menu %}
+								{% FOR footer %}
+									{% FOR links %}
+									<li>
+										<a class="mainnav__list-link {% IF menu.footer.links.SELECTED %}active{%ENDIF%} {% IF menu.footer.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.footer.links.URL}" title="{% IF menu.footer.links.TITLE %}{menu.footer.links.TITLE}{% ELSE%}{menu.footer.links.NAME}{% ENDIF %}" itemprop="url">
+											<span itemprop="name">{menu.footer.links.NAME}</span>
+										</a>
+									</li>
+									{% ENDFOR %}
+								{% ENDFOR %}
+							{% ENDFOR %}
+						</ul>
+						<!-- Меню. Еще -->
+						<ul class="overflowMenu unstyled"></ul>
+					</nav><!-- //END Меню -->
+					</div>
+				</div>
+			</div>
+		</footer>
 
 
 

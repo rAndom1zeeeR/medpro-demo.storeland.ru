@@ -587,8 +587,8 @@ function openMenu() {
 }
 
 // Дополнительные пункты меню в шапке Перенос пунктов меню
-function mainnavHeader(){
-  var mainnav = $('header .mainnav');
+function mainnav(id,rows){
+  var mainnav = $(id);
   var overMenuExist = mainnav.find('.overflowMenu li').length;
   if(overMenuExist){
     mainnav.find('.overflowMenu li').removeClass('mainnav__replaced');
@@ -597,7 +597,7 @@ function mainnavHeader(){
       mainnav.find('.mainnav__list').append($(this));
     });
   }
-  var menuHeight = 2;
+  var menuHeight = rows;
   var menuWidth = mainnav.width() * menuHeight;
   var menuCount = mainnav.find('.mainnav__list li').length + 1;
   var nextCheck = 0;
@@ -782,7 +782,8 @@ $(document).ready(function(){
   closeMenu();
   showPass();
   quantity();
-  mainnavHeader();
+  mainnav('header .mainnav', '2');
+  mainnav('footer .mainnav', '1');
   pdtCatalog();
   toTop();
   viewed();

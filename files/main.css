@@ -164,8 +164,8 @@ header .contacts {width: 27rem;}
 
 /* Шапка. Меню */
 .mainnav {width: calc(100% - 15rem - 10rem);padding: 0 1rem;}
-.mainnav__list-link {margin: 0 1.5rem;}
-.mainnav .mainnav__list {height: 3rem;}
+.mainnav__list-link {margin: 0 1.5rem;line-height: 2.2;}
+.mainnav .mainnav__list {height: 3.75rem;}
 .mainnav.opened .mainnav__list {height: auto;}
 .mainnav .overflowMenu {display: none;}
 .mainnav .overflowMenu.opened {display: inline-block;}
