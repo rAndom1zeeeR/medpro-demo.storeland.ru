@@ -180,10 +180,12 @@ header .contacts {width: 27rem;}
 
 
 
-
-
-
-
+/*** Подвал ***/
+/* Подвал. Верхняя часть */
+.footer__top {background-color: #eef2f4;padding: 3rem 0;}
+/* Подвал. Меню */
+footer .mainnav {width: calc(100% - 15rem);padding: 0;}
+footer .mainnav__list {justify-content: flex-end;}
 
 
 
