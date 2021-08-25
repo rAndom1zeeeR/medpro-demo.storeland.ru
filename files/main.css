@@ -109,11 +109,11 @@ h6 {font-size: 0.875rem;}
 
 /* Шапка. Контакты */
 header .contacts {width: 27rem;}
-.contacts__block + .contacts__block {margin-left: 2.5rem;}
+header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .contacts__block-icon {font-size: 2.25rem;line-height: 1;}
 .contacts__block-content {width: calc(100% - 2.25rem);padding-left: 1rem;flex-direction: column;}
 .contacts__block-link {font-weight: bold;max-width: 10rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
-.contacts__block-fancy {color: #a0adb4;margin-top: .25rem;}
+.contacts__block-fancy {color: #a0adb4;margin-top: .25rem;display: block;}
 .contacts__block-fancy:hover {color: #004e7c;}
 
 /* Шапка. ЛК, Избр, Срав */
@@ -181,23 +181,25 @@ header .contacts {width: 27rem;}
 
 
 /*** Подвал ***/
-/* Подвал. Верхняя часть */
 .footer__top {background-color: #eef2f4;padding: 3rem 0;}
+.footer__middle {padding: 3rem 0;}
+.footer__bottom {background-color: #eef2f4;padding: 3rem 0;}
 /* Подвал. Меню */
 footer .mainnav {width: calc(100% - 15rem);padding: 0;}
 footer .mainnav__list {justify-content: flex-end;}
-
-
-
-
-
-
-
-
-
-
-
-
+/* Подвал. Контакты */
+footer .contacts__block {width: 25%;padding: 0 1rem;flex-grow: 1;}
+footer .contacts__block-content {padding-left: 2rem;}
+footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
+/* Подвал. Соц Сети */
+.social-links a {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
+.social-links a:hover {border-color: #00acc5}
+.social-links span {display: none;}
+/* Подвал. Копирайт */
+.copyright {width: 100%;margin-top: 1rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+/* Подвал. Оплата */
+.payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
+.payments i:hover {border-color: #00acc5}
 
 
 
