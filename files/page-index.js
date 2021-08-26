@@ -246,6 +246,14 @@ function slideShow() {
 			owlS.trigger('to.owl.carousel', [$(this).index(), 300]);
 		});
 	}
+	// Навигация при клике НАЗАД
+	$('.slider__nav .owl-prev').on('click', function () {
+		owlS.trigger('prev.owl.carousel');
+	});
+	// Навигация при клике ВПЕРЕД
+	$('.slider__nav .owl-next').on('click', function () {
+		owlS.trigger('next.owl.carousel');
+	});
 }
 
 // Новости
