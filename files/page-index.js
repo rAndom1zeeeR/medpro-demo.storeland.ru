@@ -213,14 +213,15 @@ function slideShow() {
 		navText: [ , ],
 		navContainer: '',
 		dots: true,
-		dotsContainer: '#slideshow .owl-dots',
+		dotsContainer: '',
+		dotsData: false,
+		dotsSpeed: 400,
+		smartSpeed: 500,
 		URLhashListener: true,
 		autoplay: false,
 		autoplayHoverPause: true,
 		autoHeight: true,
 		autoHeightClass: 'owl-height',
-		smartSpeed: 500,
-		dotsSpeed: 400,
 		mouseDrag: true,
 		touchDrag: true,
 		pullDrag: true,
@@ -228,10 +229,22 @@ function slideShow() {
 		onChanged: counter
 	});
 	function counter(event) {
-		var items = event.item.count;     // Number of items
-		var item = event.item.index + 1;  // Position of the current item
+		var items = event.item.count;
+		var item = event.item.index + 1;
+		var dotsCont = $('.slider > .owl-dots').html();
+		// Удаляем счетчик слайдов
 		$('#slideshow .count').remove();
+		// Добавляем счетчик слайдов
 		$('#slideshow .owl-count').append('<span class="count">0'+ item + '/0' + items +'</span>')
+
+		// Удаляем старую навигацию
+		$('.slider__nav .owl-dot').remove();
+		// Добавляем клонированную навигацию
+		$('.slider__nav .owl-dots').append(dotsCont);
+		// Навигация при клике на кнопку
+		$('.slider__nav .owl-dot').on('click', function () {
+			owlS.trigger('to.owl.carousel', [$(this).index(), 300]);
+		});
 	}
 }
 
