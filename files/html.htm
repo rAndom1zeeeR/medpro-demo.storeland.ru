@@ -29,67 +29,7 @@
 	<!-- Основные Стили магазина для всех страниц -->
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />
-	<!-- Страница: Главная и НЕ главная -->
-	{% IF index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-index.css?design=THEMENAME" />
-	{% ELSE %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-not-index.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Акции -->
-	{% IF MOD_LNAME = discount %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-discount.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Сравнение -->
-	{% IF MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-compare.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Обратная связь -->
-	{% IF MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-feedback.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Новости -->
-	{% IF MOD_LNAME = news %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-news.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: ЛК -->
-	{% IF MOD_LNAME = user || MOD_LNAME = feedback %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Стили: Товары -->
-	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = goods || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = user && ACT=favorites %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-products.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Стили: Категории -->
-	{% IF MOD_LNAME = catalog || index_page %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-categories.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Каталог -->
-	{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-catalog.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Оформление заказа -->
-	{% IF MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-order.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-user.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Корзина -->
-	{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-cart.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Быстрый заказ -->
-	{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-	<link rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	{% ENDIF %}
-	<!-- Страница: Товар -->
-	{% IF MOD_LNAME = goods %}
-	<link id="page-goods-css" rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
-	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	<link id="page-orderfast-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-orderfast.css?design=THEMENAME" />
-	{% ELSE %}
-	<link id="page-goods-css" rel="stylesheet" type="text/css" data-href="{ASSETS_STYLES_PATH}page-goods.css?design=THEMENAME" />
-	{% ENDIF %}
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />	
 	<!-- Скрипты магазина -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=THEMENAME"></script>
 	<!-- Дополнительные скрипты -->
