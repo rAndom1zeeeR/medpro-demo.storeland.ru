@@ -40,10 +40,13 @@
 .advantage__index {position: absolute;top: .25rem;right: .25rem;font-size: 1.25rem;color: #ffffff;background-color: #00acc5;border-radius: 100%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;}
 
 
-
-
-
-
+/*** Товары на главной ***/
+.pdt__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: wrap;}
+.pdt__tab {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
+.pdt__tab:first-child {border-left: 0;}
+.pdt__tab.active, .pdt__tab:hover {background-color: #dae6ec;color: #656d72;}
+#pdt [data-content] {display: none;}
+#pdt [data-content].active {display: block;}
 
 
 

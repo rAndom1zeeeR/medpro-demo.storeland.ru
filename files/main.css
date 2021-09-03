@@ -1,6 +1,6 @@
 /*** Переменные цветов шаблона ***/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
-body {background-color: #f0f7f5;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
+body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
 
 /*** Основной контейнер ***/
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
@@ -77,19 +77,20 @@ input:focus, select:focus, textarea:focus {
 	transition: all 0.3s ease;
 }
 
-.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {
-	background-color: #0066a0;
-}
-
+.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #0066a0;}
 .button2 {color: #ffffff;background-color: #0066a0;}
 .button2:hover {color: #ffffff;background-color: #00acc5;}
-
 .button3 {color: #656d72;background-color: #ffffff;}
 .button3:hover {color: #ffffff;background-color: #00acc5;}
 
+.button.empty {color: #656d72;background-color: #eef2f5;}
+.button.empty:hover {color: #656d72;background-color: #eef2f5;}
 
-/*** Общие блоки ***/
-section {margin: 2rem 0;}
+/*** Цены ***/
+.price__old {color: #9facb3;text-decoration: line-through;}
+.price__now {font-weight: bold;font-size: 1.125rem;}
+.num + span {display: none;}
+.num:after {content: "руб.";line-height: 1;margin-left: 0.125rem;}
 
 /*** Заголовки ***/
 h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.2;margin: 0;padding: 0;font-weight: bold;}
@@ -99,6 +100,10 @@ h3 {font-size: 1.5rem;}
 h4 {font-size: 1.25rem;}
 h5 {font-size: 1rem;}
 h6 {font-size: 0.875rem;}
+
+
+/*** Общие блоки ***/
+section {margin: 2rem 0;}
 
 /*** Блок Заголовка ***/
 .block__title {margin-bottom: 2rem;text-align: center;position: relative;}

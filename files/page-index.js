@@ -138,65 +138,17 @@ function pdtSlider() {
 		}
 	});
 
-	// Функция слайдера для Хитов продаж на главной странице
-	$('#popular .owl-carousel').owlCarousel({
-		items: 3,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: false,
-		navContainer: '',
-		navText: [ , ],
-		dots: true,
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1},
-			540:{items:2},
-			768:{items:3}
-		}
-	});
-
-	// Функция слайдера для Хитов продаж на главной странице
-	$('#advantages .owl-carousel').owlCarousel({
-		items: 3,
-		margin: 32,
-		loop: false,
-		rewind: true,
-		lazyLoad: true,
-		nav: false,
-		navContainer: '',
-		navText: [ , ],
-		dots: true,
-		autoHeight: false,
-		autoHeightClass: 'owl-height',
-		autoplay: false,
-		autoplayHoverPause: true,
-		smartSpeed: 500,
-		mouseDrag: true,
-		touchDrag: true,
-		pullDrag: true,
-		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:1},
-			320:{items:1, autoHeight: true},
-			480:{items:1},
-			641:{items:2},
-			768:{items:3},
-			992:{items:3},
-			1200:{items:3}
-		}
-	});
+	// Табы в товарах
+  $('#pdt .pdt__tab').on('click', function (event) {
+    event.preventDefault();
+    var content = $(this).attr('data-open');
+    $('#pdt [data-content]').prepend('<div class="preloader"><div class="loading"></div></div>');
+    preload();
+    $('#pdt .pdt__tab').removeClass('active')
+    $('#pdt [data-content]').removeClass('active');
+    $(this).addClass('active');
+    $('#pdt [data-content="'+ content +'"').addClass('active');
+  });
 
 }
 

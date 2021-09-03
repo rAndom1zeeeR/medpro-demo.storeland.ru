@@ -1,1 +1,50 @@
 /*** Избранное, Сравнение, В коризну, Уведомить, Нет в наличии ***/
+[class^="add-"]:after {font-family: 'icomoon';line-height: 1;}
+.add-compare:hover, .add-favorites:hover, .quickview:hover {color: #00acc5;}
+.add-compare.added, .add-favorites.added {color: #00acc5;}
+.add-favorites:after {content: '\e909';}
+.add-compare:after {content: '\e907';}
+.icon-notify:after {content: "\e906";}
+
+/*** Иконки Новинка, Хит, Скидка ***/
+.product__ico {position: absolute;top: 1.25rem;left: 1.25rem;display: flex;align-items: center;justify-content: flex-start;z-index: 2;}
+.product__ico label {display: none;}
+.product__ico span {color: #ffffff;font-size: .75rem;margin: 0 .25rem;padding: .25rem 1rem;border-radius: 1.5rem;text-transform: lowercase;display: flex;align-items: center;justify-content: center;}
+.ico__sales {background: #0066a0;}
+.ico__sale {background: #0066a0;}
+.ico__sale:before {content: 'sale';}
+.ico__best {background: #f44d69;}
+.ico__best:before {content: 'hit';}
+.ico__new {background: #00acc5;}
+.ico__new:before {content: 'new';}
+
+
+/*** Товары таблицей ***/
+.products__grid {display: flex;flex-wrap: wrap;align-items: stretch;}
+.product__item {position: relative;}
+.product__item form {padding: 1.25rem;border: 1px solid #dae6ec;transition: all 0.3s ease;}
+.product__item:hover form {border-color: #00acc5;}
+.product__image {margin-bottom: 1rem;}
+.product__img {height: 14.125rem;display: flex;align-items: center;justify-content: center;}
+.product__links {position: absolute;top: 1.25rem;right: 1.25rem;}
+.product__links a {font-size: 1.5rem;}
+.product__links a + a {margin-left: .5rem;}
+
+.product__shop {text-align: center;}
+.product__name {margin-bottom: 1rem;height: 3.5rem;overflow: hidden;display: block;}
+.product__price {margin-bottom: 1rem;}
+.product__item .price__old {margin-right: 1rem;}
+.product__addCart i {margin: 0 .5rem;font-size: 1rem;vertical-align: middle;}
+.product__addCart .label {vertical-align: middle;}
+.product__addedInCart {display: none;color: #00acc5;border: 1px solid #00acc5;border-radius: 2rem;padding-right: 1rem;transition: all 0.3s ease;}
+.inCart .product__addInCart {display: none;}
+.inCart .product__addedInCart {display: inline-block;}
+.empty .product__addedInCart {display: inline-block;border-color: #eef2f5;}
+.product__addCart:hover .product__addedInCart {color: #0066a0;border-color: #0066a0;}
+.product__addCart:hover .button {color: #ffffff;background-color: #0066a0;}
+
+
+
+
+
+

@@ -8,9 +8,9 @@ function quickViewMod() {
 				// Удаляем все блоки, которые не отображаются в быстром просмотре.
 				$(this).children().not('.productView').remove();
 				$(this).prepend(
-			'<div class="modal__title block__title">' +
-								'<div class="title">Выбор модификации</div>' +
-							'</div>'
+					'<div class="modal__title block__title">' +
+						'<div class="title">Выбор модификации</div>' +
+					'</div>'
 				);
 			});
 			block.removeClass('productViewQuick');
@@ -150,7 +150,7 @@ function goodsModRest() {
 // Добавление товара в корзину
 function addCart() {
 	$('.productView__form, .goodsListForm').off('submit').submit(function() {
-		// Выносим функции из шаблонов
+		// Быстрый заказ
 		if ($(this).attr('rel') === 'quick') {
 			quickOrder(this);
 			$('.cart, .addto__cart').addClass("hasItems");
@@ -169,6 +169,11 @@ function addCart() {
 		}
 		// Получаем данные формы, которые будем отправлять на сервер
 		var formData = formBlock.serializeArray();
+		console.log('formData', formData)
+		var t = $(this);
+		console.log('t', t)
+		var id = t.find('input[name="form[goods_mod_id]"]').val()
+		console.log('id', id)
 		// Сообщаем серверу, что мы пришли через ajax запрос
 		formData.push({name: 'ajax_q', value: 1});
 		// Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа
@@ -238,6 +243,8 @@ function addCart() {
 							killer:false
 						}).show();
 					}
+					// Добавляем активный класс если товар успешно добавился в корзину
+					t.addClass("inCart");
 				}
 				// Скрытое обновление корзины
 				$('.hiddenUpdate').html(data);
