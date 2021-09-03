@@ -1,6 +1,6 @@
-///////////////////////////////////////////////////////
+///////////////////////////////////////
 /* Общие функции */
-//////////////////////////////////////////////////////
+///////////////////////////////////////
 // Функция определения ширины экрана пользователя
 function getClientWidth() {
   return document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth;
@@ -143,9 +143,9 @@ function keyPress(oToCheckField, oKeyEvent) {
 }
 
 
-///////////////////////////////////////////////////////
+///////////////////////////////////////
 /* Валидаторы */
-//////////////////////////////////////////////////////
+///////////////////////////////////////
 // Валидаторы для Имени
 function validName(id){
   var name = $(id).find('.form__person');
@@ -199,9 +199,9 @@ function validEmail(id){
 }
 
 
-///////////////////////////////////////////////////////
+///////////////////////////////////////
 /* Аякс Отправка формы без обновления страницы */
-//////////////////////////////////////////////////////
+///////////////////////////////////////
 function ajaxForms(id,flag,successMessage,errorMessage){
   var flag = false;
   console.log('ajaxForms id - ', id)
@@ -290,9 +290,9 @@ ajaxForms('#subscribe','subscribeFlag','Спасибо за обращение! 
 ajaxForms('#fancybox__notify','notifyFlag','Спасибо за обращение! Вы подписались на уведомления о поступлении товара','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 
 
-///////////////////////////////////////////////////////
+///////////////////////////////////////
 /* Действия */
-//////////////////////////////////////////////////////
+///////////////////////////////////////
 // Удаление товара из Избранного без обновлении страницы
 function removeFromFavorites(e){
   event.preventDefault();
@@ -473,7 +473,10 @@ function removeFromCartAll(e){
   }
 }
 
+
+///////////////////////////////////////
 // Закрытие элементов
+///////////////////////////////////////
 function closeMenu() {
   // Закрытие всего при нажатии на темную часть
   $('#overlay').on('click', function(e){
@@ -498,6 +501,7 @@ function closeMenu() {
     $('#overlay').removeClass('opened');
   });
 }
+
 // Открытие Контактов, Меню, Сравнения, Избранного
 function openMenu() {
   // Открытие элементов
@@ -632,75 +636,9 @@ function mainnav(id,rows){
   }
 }
 
-// Функция Слайдер категорий Каталога на всех страницах.
-function pdtCatalog() {
-  $('#catalog .owl-carousel').owlCarousel({
-    items: 6,
-    margin: 0,
-    loop: false,
-    rewind: true,
-    lazyLoad: true,
-    nav: false,
-    navContainer: '',
-    navText: [ , ],
-    dots: false,
-    autoHeight: false,
-    autoHeightClass: 'owl-height',
-    autoplay: true,
-    autoplayHoverPause: true,
-    smartSpeed: 500,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1},
-      320:{items:1},
-      375:{items:2},
-      640:{items:3},
-      768:{items:4},
-      992:{items:5},
-      1200:{items:6}
-    }
-  });
-}
-
-// Функция слайдера для "Вы смотрели" на главной странице
-function viewed() {
-  $('#viewed .owl-carousel').owlCarousel({
-    items: 5,
-    margin: 32,
-    loop: false,
-    rewind: true,
-    lazyLoad: true,
-    nav: true,
-    navContainer: '#viewed .owl-nav',
-    navText: [ , ],
-    dots: false,
-    autoHeight: true,
-    autoHeightClass: 'owl-height',
-    autoplay: false,
-    autoplayHoverPause: true,
-    smartSpeed: 500,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    responsiveClass: true,
-    responsiveRefreshRate: 100,
-    responsive: {
-      0:{items:1},
-      320:{items:1},
-      540:{items:2},
-      640:{items:3},
-      768:{items:3},
-      992:{items:4},
-      1200:{items:5}
-    }
-  });
-}
-
+///////////////////////////////////////
 // Функция + - для товара
+///////////////////////////////////////
 function quantity() {
   //Regulator Up копки + в карточке товара при добавлении в корзину
   $('.qty__plus').off('click').on('click', function(){
@@ -726,31 +664,10 @@ function quantity() {
   });
 }
 
-// Загрузчик файлов
-function loadFile(fileName, ext, cb){
-  if(!fileName){console.error('Не передано имя загружаемого файла');return;}
-  if(!ext){console.error('Не передано расширение загружаемого файла');return;}
-  if(!(typeof cb === 'function')){cb = function(){}};
 
-  var $file = $('#' + fileName + '-' + ext);
-  var attrName = (ext === 'css') ? 'href' : 'src';
-
-  if(!$file.length){
-    console.error(fileName + '.' + ext + ' - Файл не найден в разметке и не может быть загружен');
-    return;
-  }
-  // Если файл уже загружен
-  if($file.attr(attrName)){
-    cb();
-    console.log($file, ' - Already loaded');
-    return (true);
-  }
-  $file.on('load', cb)
-  $file.attr(attrName, $file.data(attrName));
-  console.log($file, ' - loaded');
-}
-
+///////////////////////////////////////
 // Уведомления
+///////////////////////////////////////
 function notyStart(text, type) {
   new Noty({
     text: text,
@@ -775,7 +692,9 @@ function notyStart(text, type) {
   }).show();
 }
 
+///////////////////////////////////////
 // Загрузка основных функций шаблона
+///////////////////////////////////////
 $(document).ready(function(){
   userAgent();
   openMenu();
@@ -784,25 +703,25 @@ $(document).ready(function(){
   quantity();
   mainnav('header .mainnav', '2');
   mainnav('footer .mainnav', '1');
-  pdtCatalog();
   toTop();
-  viewed();
-  // Стили для новых селектов
-  /*$('.select').styler();*/
+
   // Ленивая загрузка
   $(function(){
     var observer = lozad(); // lazy loads elements with default selector as '.lozad'
     observer.observe();
   });
+  
   // Отправка формы по Ctrl+Enter
   $('form').bind('keypress', function(e){
     if((e.ctrlKey) && ((e.which==10)||(e.which==13))) {$(this).submit();}
-  // Отправка данных формы по нажатию на Enter в случае если курсор находится в input полях (В некоторых браузерах при нажатии по enter срабатывает клик по первому submit полю, которое является кнопкой назад. Для этого написан этот фикс)
+    // Отправка данных формы по нажатию на Enter в случае если курсор находится в input полях (В некоторых браузерах при нажатии по enter срабатывает клик по первому submit полю, которое является кнопкой назад. Для этого написан этот фикс)
   }).find('input').bind('keypress', function(e){
     if(((e.which==10)||(e.which==13))) { try{$(this.form).submit();} catch(e){} return false; }
   });
+
   // Маска ввода телефона
-  $(".form__phone").mask("+7 (999) 999-9999"); // будет грузится в нескольких местах
+  $(".form__phone").mask("+7 (999) 999-9999");
+
   // Возврашаем пользователя на страницу с которой был сделан обратный звонок
   $('.callbackredirect').val(document.location.href);
 });
@@ -815,6 +734,7 @@ $(document).ready(function(){
     $('body').removeClass('landscape');
   }
 });
+
 // Запуск функций при изменении экрана
 $(window).resize(function(){
   if(getClientWidth() > 481 && window.outerHeight < 630){
@@ -836,7 +756,252 @@ function addActive(obj){obj.hasClass('active') ? obj.removeClass('active') : obj
 
 
 
+///////////////////////////////////////
+///////////////////////////////////////
 
+
+// Отсчет даты до окончания акции
+function counterDate() {
+	// Устанавливаем дату обратного отсчета ММ-ДД-ГГ
+	var end = $('.counter').attr('end');
+	var countDownDate = new Date(end).getTime();
+	// Обновление счетчика каждую секунду
+	var x = setInterval(function() {
+		var now = new Date().getTime();
+		var distance = countDownDate - now;
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Вывод
+		$('.counter .days span').text(days);
+		$('.counter .hours span').text(hours);
+		$('.counter .minutes span').text(minutes);
+		$('.counter .seconds span').text(seconds);
+		// Счетчик завершен
+		if (distance < 0) {
+			clearInterval(x);
+			$('.counter').hide();
+		}
+	}, 1000);
+}
+
+// Функция слайдеров на главной
+function pdtSlider() {
+	// Функция слайдер для "Акции" на главной странице
+	$('#pdt__sales .products__grid.owl-carousel').owlCarousel({
+		items: 1,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#pdt__sales .owl-nav',
+		navText: [ , ],
+		dots: false,
+		dotsContainer: '',
+		autoHeight: true,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100
+	});
+
+	// Функция слайдера для "Лидеры продаж" на главной странице
+	$('#pdt__best .owl-carousel').owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#pdt__best .owl-nav',
+		navText: [ , ],
+		dots: false,
+		dotsContainer: '',
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			540:{items:2},
+			768:{items:3},
+			1200:{items:4}
+		}
+	});
+
+	// Функция слайдера для Новинок на главной странице
+	$('#pdt__new .owl-carousel').owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#pdt__new .owl-nav',
+		navText: [ , ],
+		dots: false,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			540:{items:2},
+			768:{items:3},
+			1200:{items:4}
+		}
+	});
+
+	// Функция слайдера для Хитов продаж на главной странице
+	$('#pdt__sale .owl-carousel').owlCarousel({
+		items: 4,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#pdt__sale .owl-nav',
+		navText: [ , ],
+		dots: false,
+		autoHeight: false,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			540:{items:2},
+			768:{items:3},
+			1200:{items:4}
+		}
+	});
+
+	// Табы в товарах
+  $('#pdt .pdt__tab').on('click', function (event) {
+    event.preventDefault();
+    var content = $(this).attr('data-open');
+    $('#pdt [data-content]').prepend('<div class="preloader"><div class="loading"></div></div>');
+    preload();
+    $('#pdt .pdt__tab').removeClass('active')
+    $('#pdt [data-content]').removeClass('active');
+    $(this).addClass('active');
+    $('#pdt [data-content="'+ content +'"').addClass('active');
+  });
+
+}
+
+// Слайдер для главной страницы
+function slideShow() {
+	// Слайдер на главной
+	var owlS = $('#slideshow .owl-carousel');
+	owlS.owlCarousel({
+		items: 1,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: false,
+		navText: [ , ],
+		navContainer: '',
+		dots: true,
+		dotsContainer: '',
+		dotsData: false,
+		dotsSpeed: 400,
+		smartSpeed: 500,
+		URLhashListener: true,
+		autoplay: false,
+		autoplayHoverPause: true,
+		autoHeight: true,
+		autoHeightClass: 'owl-height',
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		onInitialized: counter,
+		onChanged: counter
+	});
+
+	function counter(event) {
+		var items = event.item.count;
+		var item = event.item.index + 1;
+		var dotsCont = $('.slider > .owl-dots').html();
+		// Удаляем счетчик слайдов
+		$('#slideshow .count').remove();
+		// Добавляем счетчик слайдов
+		$('#slideshow .owl-count').append('<span class="count">0'+ item + '/0' + items +'</span>')
+
+		// Удаляем старую навигацию
+		$('.slider__nav .owl-dot').remove();
+		// Добавляем клонированную навигацию
+		$('.slider__nav .owl-dots').append(dotsCont);
+		// Навигация при клике на кнопку
+		$('.slider__nav .owl-dot').on('click', function () {
+			owlS.trigger('to.owl.carousel', [$(this).index(), 300]);
+		});
+	}
+
+	// Навигация при клике НАЗАД
+	$('.slider__nav .owl-prev').on('click', function () {
+		owlS.trigger('prev.owl.carousel');
+	});
+
+	// Навигация при клике ВПЕРЕД
+	$('.slider__nav .owl-next').on('click', function () {
+		owlS.trigger('next.owl.carousel');
+	});
+}
+
+// Новости
+function newsCarousel() {
+	$("#news .owl-carousel").owlCarousel({
+		items: 2,
+		margin: 32,
+		loop: false,
+		rewind: true,
+		lazyLoad: true,
+		nav: true,
+		navContainer: '#news .owl-nav',
+		navText: [ , ],
+		dots: false,
+		autoHeight: true,
+		autoHeightClass: 'owl-height',
+		autoplay: false,
+		autoplayHoverPause: true,
+		smartSpeed: 500,
+		mouseDrag: true,
+		touchDrag: true,
+		pullDrag: true,
+		responsiveClass: true,
+		responsiveRefreshRate: 100,
+		responsive: {
+			0:{items:1, autoHeight: true},
+			540:{items:2},
+			768:{items:3}
+		}
+	});
+}
 
 
 

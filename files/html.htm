@@ -1373,56 +1373,25 @@
 	}, 1000);
 </script>
 {% ENDIF %}
+
+{% IF index_page %}
+<script type="text/javascript">	
+// Загрузка основных функций шаблона для главной страницы
+$(document).ready(function(){
+	counterDate();
+	slideShow();
+	newsCarousel();
+	pdtSlider();
+});
+</script>
+{% ENDIF %}
+
 <!-- Слайдер. Карусель -->
-<link rel="preload"
-      type="text/css"
-      href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME">
 </noscript>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}owl-carousel.js?design=THEMENAME"></script>
-<!-- Скрипты: Главная  -->
-{% IF MOD_LNAME = feedback || MOD_LNAME = callback %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-feedback.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Скрипты: Корзина -->
-{% IF MOD_LNAME = cart || MOD_LNAME = order %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-cart.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Скрипты: Сравнение -->
-{% IF MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-compare.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Скрипты: Главная  -->
-{% IF index_page %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-index.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Скрипты: Товары, Акции, Поиск -->
-{% IF MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-catalog.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Скрипты: Товары -->
-{% IF index_page || MOD_LNAME = catalog || MOD_LNAME = discount || MOD_LNAME = search || MOD_LNAME = goods || MOD_LNAME = user && ACT=favorites || MOD_LNAME = compare %}
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-products.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods-mod.js?design=Deluxe"></script>
-<script id="air-datepicker-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script id="page-orderfast-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-{% ENDIF %}
-<!-- Страница: Товар -->
-{% IF MOD_LNAME = goods %}
-<script id="page-goods-js" defer type="text/javascript" src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}air-datepicker.js?design=THEMENAME"></script>
-<script defer type="text/javascript" src="{ASSETS_JS_PATH}page-orderfast.js?design=THEMENAME"></script>
-{% ELSE %}
-<script id="page-goods-js" defer type="text/javascript" data-src="{ASSETS_JS_PATH}page-goods.js?design=THEMENAME"></script>
-{% ENDIF %}
 <!-- Скрипты магазина-->
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
