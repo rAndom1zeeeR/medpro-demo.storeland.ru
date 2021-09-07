@@ -356,10 +356,10 @@
 		{% IF index_page_goods_empty=0 || index_page_new_goods=0 || index_page_favorites_goods=0 %}
 		<section id="pdt">
 			<div class="container">
-				<div class="pdt__tabs flex">
-					{% IFNOT index_page_goods_empty %}<a href="{CATALOG_INDEX_PAGE_URL}" class="pdt__tab active" data-open="pdt__sale">Товары на главной</a>{% ENDIF %}
-					{% IFNOT index_page_new_goods %}<a href="{CATALOG_NEW_URL}" class="pdt__tab {% IF index_page_goods_empty %}active{% ENDIF %}" data-open="pdt__new">Новинки нашей сети</a>{% ENDIF %}
-					{% IFNOT index_page_favorites_goods %}<a href="{CATALOG_TOP_SALES_URL}" class="pdt__tab {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}" data-open="pdt__best">Специальные предложения</a>{% ENDIF %}
+				<div class="nav__tabs flex">
+					{% IFNOT index_page_goods_empty %}<a href="{CATALOG_INDEX_PAGE_URL}" class="nav__tab active" data-open="pdt__sale">Товары на главной</a>{% ENDIF %}
+					{% IFNOT index_page_new_goods %}<a href="{CATALOG_NEW_URL}" class="nav__tab {% IF index_page_goods_empty %}active{% ENDIF %}" data-open="pdt__new">Новинки нашей сети</a>{% ENDIF %}
+					{% IFNOT index_page_favorites_goods %}<a href="{CATALOG_TOP_SALES_URL}" class="nav__tab {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}" data-open="pdt__best">Специальные предложения</a>{% ENDIF %}
 				</div>
 				<!-- Товары на главной -->
 				{% IFNOT index_page_goods_empty %}
@@ -497,7 +497,7 @@
 								<!-- Информация товара -->
 								<div class="product__shop">
 									<!-- Название товара -->
-									<a class="product__name" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}">
+									<a class="product__name flex-center" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}">
 										<span itemprop="name">{index_page_goods.NAME}</span>
 									</a>
 									<!-- Артикул товара -->
@@ -707,7 +707,7 @@
 								<!-- Информация товара -->
 								<div class="product__shop">
 									<!-- Название товара -->
-									<a class="product__name" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}">
+									<a class="product__name flex-center" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}">
 										<span itemprop="name">{index_page_new_goods.NAME}</span>
 									</a>
 									<!-- Артикул товара -->
@@ -917,7 +917,7 @@
 								<!-- Информация товара -->
 								<div class="product__shop">
 									<!-- Название товара -->
-									<a class="product__name" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}">
+									<a class="product__name flex-center" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}">
 										<span itemprop="name">{index_page_favorites_goods.NAME}</span>
 									</a>
 									<!-- Артикул товара -->
@@ -1213,7 +1213,7 @@
 							<!-- Информация товара -->
 							<div class="product__shop">
 								<!-- Название товара -->
-								<a class="product__name" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
+								<a class="product__name flex-center" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
 									<span itemprop="name">{index_page_sale_goods.NAME}</span>
 								</a>
 								<!-- Артикул товара -->
@@ -1289,7 +1289,7 @@
 					{% ENDFOR %}
 				</div>
 			</div>
-		</section>						
+		</section>
 
 		<!-- Описание главной страницы -->
 		<section id="index">
@@ -1300,6 +1300,116 @@
 				<div class="body">{BODY}</div>
 			</div>
 		</section>
+
+		<!-- Новости -->
+		{% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 || news_list_mass_media_empty=0 %}
+		<section id="news">
+			<div class="container">
+				<div class="nav__tabs flex">
+					{% IFNOT news_list_all_empty %}<a href="#" class="nav__tab active" data-open="news_list_all">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_shop_empty %}<a href="#" class="nav__tab active" data-open="news_list_shop">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="nav__tab {% IF news_list_shop_empty %}active{% ENDIF %}" data-open="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="nav__tab {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-open="news_list_mass_media">Блог</a>{% ENDIF %}
+				</div>
+				<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
+				{% IFNOT news_list_all_empty %}
+				<div class="news_list_all active" data-content="news_list_all">
+					<div class="owl-carousel">
+						{% FOR news_list_all %}
+						<div class="news__item">
+							<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+								<noscript>
+								<img src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+								</noscript>
+								<img class="owl-lazy script__on" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+							</a>
+							{% IF news_list_all.SHOW_TIME %}
+							<div class="news__date">
+								<span>{news_list_all.TIME | date("d.m.Y")}</span>
+							</div>
+							{% ENDIF %}
+							<a class="news__title flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>{news_list_all.TITLE}</span></a>
+							<a class="button button4" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>Читать далее</span></a>
+						</div>
+						{% ENDFOR %}
+					</div>
+				</div>
+				{% ENDIF %}
+				<!-- Список Новости -->
+				{% IFNOT news_list_shop_empty %}
+				<div class="news_list_shop active" data-content="news_list_shop">
+					<div class="owl-carousel">
+						{% FOR news_list_shop %}
+						<div class="news__item">
+							<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+								<noscript>
+								<img src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+								</noscript>
+								<img class="owl-lazy script__on" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+							</a>
+							{% IF news_list_shop.SHOW_TIME %}
+							<div class="news__date">
+								<span>{news_list_shop.TIME | date("d.m.Y")}</span>
+							</div>
+							{% ENDIF %}
+							<a class="news__title flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>{news_list_shop.TITLE}</span></a>
+							<a class="button button4" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>Читать далее</span></a>
+						</div>
+						{% ENDFOR %}
+					</div>
+				</div>
+				{% ENDIF %}
+				<!-- Список Статьи -->
+				{% IFNOT news_list_articles_empty %}
+				<div class="news_list_articles" data-content="news_list_articles">
+					<div class="owl-carousel">
+						{% FOR news_list_articles %}
+						<div class="news__item">
+							<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+								<noscript>
+								<img src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+								</noscript>
+								<img class="owl-lazy script__on" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+							</a>
+							{% IF news_list_articles.SHOW_TIME %}
+							<div class="news__date">
+								<span>{news_list_articles.TIME | date("d.m.Y")}</span>
+							</div>
+							{% ENDIF %}
+							<a class="news__title flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>{news_list_articles.TITLE}</span></a>
+							<a class="button button4" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>Читать далее</span></a>
+						</div>
+						{% ENDFOR %}
+					</div>
+				</div>
+				{% ENDIF %}
+				<!-- Список Блог -->
+				{% IFNOT news_list_mass_media_empty %}
+				<div class="news_list_mass_media" data-content="news_list_mass_media">
+					<div class="owl-carousel">
+						{% FOR news_list_mass_media %}
+						<div class="news__item">
+							<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+								<noscript>
+								<img src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+								</noscript>
+								<img class="owl-lazy script__on" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+							</a>
+							{% IF news_list_mass_media.SHOW_TIME %}
+							<div class="news__date">
+								<span>{news_list_mass_media.TIME | date("d.m.Y")}</span>
+							</div>
+							{% ENDIF %}
+							<a class="news__title flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>{news_list_mass_media.TITLE}</span></a>
+							<a class="button button4" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>Читать далее</span></a>
+						</div>
+						{% ENDFOR %}
+					</div>
+				</div>
+				{% ENDIF %}
+			</div>
+		</section>
+		{% ENDIF %}
 
 		{% ENDIF index_page %}
 
@@ -1608,7 +1718,7 @@
 $(document).ready(function(){
 	//counterDate();
 	slideShow();
-	//newsCarousel();
+	newsCarousel();
 	pdtSlider();
 });
 </script>
