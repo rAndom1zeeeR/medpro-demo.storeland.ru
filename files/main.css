@@ -3,6 +3,7 @@
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
 body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
+section {margin: 2rem 0;}
 
 /*** Основной контейнер ***/
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
@@ -32,20 +33,26 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 .fadein, .in {opacity: 1;filter: alpha(opacity=100);}
 .tc {color: #00acc5 !important;}
 .text-center {text-align: center;}
-.flex {display: flex;flex-wrap: wrap;align-items: center;}
-.inner {display: flex;flex-wrap: wrap;align-items: flex-start;}
-.flex-center {display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.flex {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
+.inner {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: flex-start;-webkit-align-items: flex-start;-webkit-box-align: flex-start;align-items: flex-start;}
+.flex-center {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-webkit-justify-content: center;justify-content: center;}
 .mask {overflow: hidden;mask-image: linear-gradient(to bottom, black 50%, transparent 90%);}
 .noscript {position: relative;text-align: center;background-color: #00acc5;color: #ffffff;padding: 1rem;}
 .blockquote {padding: 0 0 0 1rem;margin: 0 0 1.5rem;border-left: .25rem solid #00acc5;}
 .DescriptionBlock {margin: 2rem 0 0 0;}
 .htmlDataBlock {overflow: hidden;}
 
+
+/**************************************/
 /*** Инпут поля ***/
+/**************************************/
 input, select, textarea {height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 1.5rem;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;width: 100%;}
 input:focus, select:focus, textarea:focus {border-color: #00acc5;}
 
+
+/**************************************/
 /*** Кнопки ***/
+/**************************************/
 .button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Ubuntu', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 .button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #0066a0;}
 .button2 {color: #ffffff;background-color: #0066a0;}
@@ -57,13 +64,19 @@ input:focus, select:focus, textarea:focus {border-color: #00acc5;}
 .button.empty {color: #656d72;background-color: #eef2f5;}
 .button.empty:hover {color: #656d72;background-color: #eef2f5;}
 
+
+/**************************************/
 /*** Цены ***/
+/**************************************/
 .price__old {color: #9facb3;text-decoration: line-through;}
 .price__now {font-weight: bold;font-size: 1.125rem;}
 .num + span {display: none;}
 .num:after {content: "руб.";line-height: 1;margin-left: 0.125rem;}
 
+
+/**************************************/
 /*** Заголовки ***/
+/**************************************/
 h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.2;margin: 0;padding: 0;font-weight: bold;}
 h1 {font-size: 2rem;}
 h2 {font-size: 1.75rem;}
@@ -73,12 +86,14 @@ h5 {font-size: 1rem;}
 h6 {font-size: 0.875rem;}
 
 
-/*** Общие блоки ***/
-section {margin: 2rem 0;}
-
-
-/*** Блок Заголовка ***/
+/**************************************/
+/*** Блок Заголовков ***/
+/**************************************/
 .block__title {margin-bottom: 2rem;text-align: center;position: relative;}
+.nav__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: wrap;}
+.nav__tab {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
+.nav__tab:first-child {border-left: 0;}
+.nav__tab.active, .nav__tab:hover {background-color: #dae6ec;color: #656d72;}
 
 
 /**************************************/
@@ -117,7 +132,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 /* Шапка. Корзина */
 .page-cart .cart {display: none;}
 .cart {width: 10rem;}
-.cart__block {border-radius: 1.5rem;padding: 1rem;justify-content: center;transition: all 0.3s ease;}
+.cart__block {border-radius: 1.5rem;padding: 1rem;transition: all 0.3s ease;}
 .cart__block-icon {margin-right: .75rem;font-size: 1.125rem;}
 
 /* Шапка. Поиск */
@@ -138,6 +153,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 	0% {transform: rotate(0deg);}
 	100% {transform: rotate(360deg);}
 }
+
 /** Поисковая выдача **/
 #search__result {display: none;width: 100%;max-height: 450px;position: absolute;top: 6rem;right: 0;padding: 1rem;border-radius: 1rem;background: #ffffff;overflow-y: auto;z-index: 3;}
 #search__result .inner {flex-direction: column;}
@@ -175,11 +191,10 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .social-links a:hover {border-color: #00acc5}
 .social-links span {display: none;}
 /* Подвал. Копирайт */
-.copyright {width: 100%;margin-top: 1rem;display: flex;flex-wrap: wrap;align-items: center;justify-content: center;}
+.copyright {width: 100%;margin-top: 1rem;}
 /* Подвал. Оплата */
 .payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
 .payments i:hover {border-color: #00acc5}
-
 
 
 /**************************************/
@@ -197,7 +212,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .slider__subtitle {margin-top: 3rem;}
 .slider__buttons {margin-top: 3rem;}
 .slider__catalog {position: absolute;bottom: 1rem;left: 1rem;}
-.slider__catalog-icon {width: 7rem;height: 7rem;font-size: 2rem;color: #ffffff;background-color: #0066a0;border: .375rem solid #ffffff;border-radius: 100%;display: flex;align-items: center;justify-content: center;}
+.slider__catalog-icon {width: 7rem;height: 7rem;font-size: 2rem;color: #ffffff;background-color: #0066a0;border: .375rem solid #ffffff;border-radius: 100%;}
 .slider__nav {margin: 0 2rem;}
 .slider__nav .owl-dots {margin: 0 1rem;}
 .slider__nav .owl-count {margin-left: 2rem;}
@@ -208,6 +223,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #slideshow .owl-next {right: auto;}
 #slideshow .owl-prev:before {content: '\e915';}
 #slideshow .owl-next:before {content: '\e900';}
+
 
 /**************************************/
 /*** Промо ***/
@@ -233,8 +249,20 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .advantage__item {width: calc(25% - 2rem);margin: 0 1rem;text-align: center;flex-direction: column;}
 .advantage__title {margin-top: 1rem;font-size: 1rem;font-weight: bold;}
 .advantage__text {margin-top: 1rem;padding: 0 2rem;}
-.advantage__icon {width: 10rem;height: 10rem;border: 1px solid #00acc5;border-radius: 100%;font-size: 4rem;display: flex;align-items: center;justify-content: center;position: relative;}
+.advantage__icon {width: 10rem;height: 10rem;border: 1px solid #00acc5;border-radius: 100%;font-size: 4rem;position: relative;}
 .advantage__index {position: absolute;top: .25rem;right: .25rem;font-size: 1.25rem;color: #ffffff;background-color: #00acc5;border-radius: 100%;width: 2.5rem;height: 2.5rem;line-height: 2.5rem;}
+
+
+/**************************************/
+/*** Новости ***/
+/**************************************/
+#news [data-content] {display: none;}
+#news [data-content].active {display: block;}
+.news__item {text-align: center;}
+.news__image {height: 16.25rem;}
+.news__date {margin: 1rem 0;color: #00acc5;}
+.news__title {margin: 1rem 0;height: 3.5rem;overflow: hidden;}
+.news__title span {max-height: 3.5rem;overflow: hidden;display: block;}
 
 
 /**************************************/
@@ -242,10 +270,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 #pdt [data-content] {display: none;}
 #pdt [data-content].active {display: block;}
-.nav__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: wrap;}
-.nav__tab {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
-.nav__tab:first-child {border-left: 0;}
-.nav__tab.active, .nav__tab:hover {background-color: #dae6ec;color: #656d72;}
 
 
 /**************************************/
@@ -262,7 +286,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Иконки Новинка, Хит, Скидка ***/
 .product__ico {color: #ffffff;position: absolute;top: 1.25rem;left: 1.25rem;display: flex;align-items: center;justify-content: flex-start;z-index: 2;}
 .product__ico label {display: none;}
-.product__ico span {font-size: .75rem;margin: 0 .25rem;padding: .25rem 1rem;border-radius: 1.5rem;text-transform: lowercase;display: flex;align-items: center;justify-content: center;}
+.product__ico span {font-size: .75rem;margin: 0;padding: .25rem 1rem;border-radius: 1.5rem;text-transform: lowercase;display: flex;align-items: center;justify-content: center;}
 .ico__sales {background: #eef2f4;color: #656d72;}
 .ico__sale {background: #0066a0;z-index: 2;}
 .ico__sale:before {content: 'sale';}
@@ -281,7 +305,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .product__item form {padding: 1.25rem;border: 1px solid #dae6ec;transition: all 0.3s ease;}
 .product__item:hover form {border-color: #00acc5;}
 .product__image {margin-bottom: 1rem;}
-.product__img {height: 14.125rem;display: flex;align-items: center;justify-content: center;}
+.product__img {height: 13.625rem;}
 .product__links {position: absolute;top: 1.25rem;right: 1.25rem;}
 .product__links a {font-size: 1.5rem;}
 .product__links a + a {margin-left: .5rem;}
@@ -307,16 +331,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 
 
 
-/**************************************/
-/*** Новости ***/
-/**************************************/
-#news [data-content] {display: none;}
-#news [data-content].active {display: block;}
-.news__item {text-align: center;}
-.news__image {height: 16.25rem;}
-.news__date {margin: 1rem 0;color: #00acc5;}
-.news__title {margin: 1rem 0;height: 3.5rem;overflow: hidden;}
-.news__title span {max-height: 3.5rem;overflow: hidden;display: block;}
 
 
 
@@ -342,7 +356,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Фиксы для Firefox ***/
 /**************************************/
 .Firefox .inputText {-moz-appearance: textfield;}
-
 
 /**************************************/
 /*** Адаптивность ***/
@@ -380,21 +393,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.container {width: 1168px;}
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-}
-
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-}
-
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-}
-
-/* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
-}
 
 @media (max-width: 1199.98px) {
 }
@@ -408,31 +406,11 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 @media (max-width: 639.98px) {
 }
 
+@media (max-width: 575.98px) {
+}
+
 @media (max-width: 479.98px) {
 }
 
 @media (max-width: 374.98px) {
 }
-
-/***	Основные цвета шаблона
-display: flex;flex-wrap: wrap;align-items: center;
-display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;
-1.25rem = 20px;
-1rem = 16px
-.875rem = 14px
-.75rem = 12px
-.625rem = 10px
-.125rem = 2px;
-*/
-
-.primary-color {background-color: #00acc5;}
-.secondary-color {background-color: #9facb3;}
-.primary-border-color {border-color: #dae6ec;}
-.third-background-color {background-color: #f0f7f5;}
-.hover-color:hover {color: #6aa344;}
-
-/*
-
-border-color: #dae6ec;
-
- */
