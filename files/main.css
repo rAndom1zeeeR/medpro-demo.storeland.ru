@@ -34,8 +34,9 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 .tc {color: #00acc5 !important;}
 .text-center {text-align: center;}
 .flex {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
-.inner {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: flex-start;-webkit-align-items: flex-start;-webkit-box-align: flex-start;align-items: flex-start;}
+.flex-start {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: flex-start;-webkit-align-items: flex-start;-webkit-box-align: flex-start;align-items: flex-start;}
 .flex-center {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-webkit-justify-content: center;justify-content: center;}
+.justify-between {justify-content: space-between;}
 .mask {overflow: hidden;mask-image: linear-gradient(to bottom, black 50%, transparent 90%);}
 .noscript {position: relative;text-align: center;background-color: #00acc5;color: #ffffff;padding: 1rem;}
 .blockquote {padding: 0 0 0 1rem;margin: 0 0 1.5rem;border-left: .25rem solid #00acc5;}
@@ -120,7 +121,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .logo {width: 15rem;}
 
 /* Шапка. Меню */
-.mainnav {width: calc(100% - 15rem - 10rem);padding: 0 1rem;}
+.mainnav {width: calc(100% - 15rem - 12rem);padding: 0 1rem;}
 .mainnav__list-link {margin: 0 1.5rem;line-height: 2.2;}
 .mainnav .mainnav__list {height: 3.75rem;}
 .mainnav.opened .mainnav__list {height: auto;}
@@ -131,9 +132,11 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 
 /* Шапка. Корзина */
 .page-cart .cart {display: none;}
-.cart {width: 10rem;}
-.cart__block {border-radius: 1.5rem;padding: 1rem;transition: all 0.3s ease;}
+header .cart {width: 12rem;}
+.cart__block {border-radius: 2rem;padding: 1rem;transition: all 0.3s ease;}
 .cart__block-icon {margin-right: .75rem;font-size: 1.125rem;}
+.cart__block-empty {display: none;}
+.empty .cart__block-empty {display: block;}
 
 /* Шапка. Поиск */
 .search {width: calc(100% - 27rem - 12rem - 2.5rem);margin-left: 2.5rem;}
@@ -156,7 +159,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 
 /** Поисковая выдача **/
 #search__result {display: none;width: 100%;max-height: 450px;position: absolute;top: 6rem;right: 0;padding: 1rem;border-radius: 1rem;background: #ffffff;overflow-y: auto;z-index: 3;}
-#search__result .inner {flex-direction: column;}
+#search__result .flex-start {flex-direction: column;}
 #search__result .result__item {display: none;width: 100%;line-height: 20px;padding: 10px 0;}
 #search__result .result__item:nth-child(-n+6) {display: block;}
 #search__result .result__item a {font-size: 1rem;display: flex;flex-wrap: wrap;align-items: center;}
@@ -185,14 +188,16 @@ footer .mainnav__list {justify-content: flex-end;}
 /* Подвал. Контакты */
 footer .contacts__block {width: 25%;padding: 0 1rem;flex-grow: 1;}
 footer .contacts__block-content {padding-left: 2rem;}
+footer .contacts__block-link {white-space: normal;}
 footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /* Подвал. Соц Сети */
-.social-links a {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
+.social-links a {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.875rem;display: inline-block;text-align: center;}
 .social-links a:hover {border-color: #00acc5}
 .social-links span {display: none;}
 /* Подвал. Копирайт */
 .copyright {width: 100%;margin-top: 1rem;}
 /* Подвал. Оплата */
+.payments a {}
 .payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
 .payments i:hover {border-color: #00acc5}
 

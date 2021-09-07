@@ -72,7 +72,7 @@ function SearchFieldInit(obj) {
 		},20);
 	}).bind('cut', function(e){
 		$('#search__result').hide();
-		$('#search__result .inner > div').remove();
+		$('#search__result .flex-start > div').remove();
 		obj.__SearchFieldCheck();
 	});
 
@@ -130,7 +130,7 @@ function SearchFieldInit(obj) {
 	obj.s_reset.click(function(){
 		obj.s_search.val('').focus();
 		$('#search__result').hide();
-		$('#search__result .inner .result__item').remove();
+		$('#search__result .flex-start .result__item').remove();
 	});
 	// Проверка данных в форме после инициализации функционала. Возможно браузер вставил туда какой-либо текст, нужно обработать и такой вариант
 	obj.__SearchFieldCheck();

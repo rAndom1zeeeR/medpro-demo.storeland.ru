@@ -150,7 +150,7 @@
 
 						<!-- Результаты поиска -->
 						<div id="search__result" style="display: none;">
-							<div class="inner">
+							<div class="flex-start">
 								<div class="result__category"></div>
 								<div class="result__goods"></div>
 								<div class="result__showAll button">все результаты</div>
@@ -1032,7 +1032,7 @@
 					<div class="block__title">
 						<h2 class="title">Как мы работаем?</h2>
 					</div>
-					<div class="advantage__items inner">
+					<div class="advantage__items flex-start">
 						<!-- Преимущество 1 -->
 						<div class="advantage__item flex">
 							<div class="advantage__icon flex-center">
@@ -1457,7 +1457,7 @@
 				<div class="container">
 					<div class="row">
 						<!-- Контакты -->
-						<div class="contacts inner" itemscope itemtype="https://schema.org/Organization">
+						<div class="contacts flex-start" itemscope itemtype="https://schema.org/Organization">
 							<!-- Телефоны -->
 							{% IF SETTINGS_STORE_PHONE_NUMBER1 || SETTINGS_STORE_PHONE_NUMBER2 || SETTINGS_STORE_PHONE_NUMBER3 %}
 							<div class="contacts__block phone flex">
@@ -1550,7 +1550,7 @@
 			<!-- Подвал. Центральная часть -->
 			<div class="footer__bottom">
 				<div class="container">
-					<div class="flex">
+					<div class="flex justify-between">
 						<!-- Подвал. Соц Сети -->
 						<div class="social-links flex">
 
@@ -1632,7 +1632,7 @@
 						</div>
 						<!-- Подвал. Способы оплаты -->
 						<div class="payments">
-							<a href="#" title="Способы оплаты">
+							<a class="flex-center" href="#" title="Способы оплаты">
 								<i class="icon-mastercard"></i>
 								<i class="icon-mir"></i>
 								<i class="icon-qiwi"></i>
