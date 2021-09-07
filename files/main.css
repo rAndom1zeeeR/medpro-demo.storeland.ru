@@ -202,7 +202,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .slider__nav .owl-dots {margin: 0 1rem;}
 .slider__nav .owl-count {margin-left: 2rem;}
 .slider__nav .owl-count .count {transform: rotate(-90deg);display: inline-block;}
-
+#slideshow .owl-prev, #slideshow .owl-next {position: relative;top: auto;background-color: transparent;border: 0;color: #656d72;width: auto;height: auto;font-size: 1.25rem;}
+#slideshow .owl-prev:hover, #slideshow .owl-next:hover {color: #00acc5;}
+#slideshow .owl-prev {left: auto;}
+#slideshow .owl-next {right: auto;}
+#slideshow .owl-prev:before {content: '\e915';}
+#slideshow .owl-next:before {content: '\e900';}
 
 /**************************************/
 /*** Промо ***/
