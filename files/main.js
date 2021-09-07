@@ -1155,8 +1155,6 @@ function quickViewMod() {
 				$.get(href, function(content) {
 					// Сохраняем контент, необходимый для быстрого просмотра в специально созданный для этого массив
 					document.quickviewPreload[href] = $(content).getColumnContent();
-					loadFile('page-goods', 'css');
-					loadFile('page-goods', 'js');
 				})
 				// Если загрузить страницу не удалось, удаляем отметку о том, что мы подгрузили эту страницу
 				.fail(function() {

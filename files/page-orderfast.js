@@ -19,27 +19,19 @@ function quickOrder(formSelector) {
 		cache	  : false,
 		url		  : formBlock.attr('action'),
 		data		: formData,
-		beforeSend: function () {
-			loadFile('page-orderfast', 'css');
-			loadFile('page-orderfast', 'js');
-			loadFile('air-datepicker', 'js');
-		},
 		success: function(data) {
 			$.fancybox.open(data, {
 				keyboard: false,
 				baseClass: "fastOrder",
 				afterShow: function(){
-					var loaded = loadFile('page-orderfast', 'css') && loadFile('page-orderfast', 'js') && loadFile('air-datepicker', 'js');
-					if(loaded) {
-						showPass();
-						orderScripts();
-						orderScriptsSelect();
-						coupons();
-						preload();
-						$('.fastOrder__form').validate({
-							errorPlacement: function(error, element) { }
-						});
-					}
+					showPass();
+					orderScripts();
+					orderScriptsSelect();
+					coupons();
+					preload();
+					$('.fastOrder__form').validate({
+						errorPlacement: function(error, element) { }
+					});
 				}
 			})
 
