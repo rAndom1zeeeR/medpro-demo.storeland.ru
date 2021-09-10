@@ -39,4 +39,5 @@
 <glyph unicode="&#xe91d;" glyph-name="arrow_drop_down" d="M0 704.001l512.002-512.002 511.998 512.002z" />
 <glyph unicode="&#xe91e;" glyph-name="arrow_drop_right" d="M255.88-64l512.24 511.76-512.24 512.24z" />
 <glyph unicode="&#xe91f;" glyph-name="arrow_drop_left" d="M768.12 960l-512.24-512.24 512.24-511.76z" />
+<glyph unicode="&#xe920;" glyph-name="menu" d="M0 220.445h1024v-113.779h-1024v113.779zM0 504.888h1024v-113.779h-1024v113.779zM0 789.333h1024v-113.779h-1024v113.779z" />
 </font></defs></svg>

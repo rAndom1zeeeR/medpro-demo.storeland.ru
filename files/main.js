@@ -701,7 +701,7 @@ $(document).ready(function(){
   closeMenu();
   showPass();
   quantity();
-  mainnav('header .mainnav', '2');
+  mainnav('header .mainnav', '1');
   mainnav('footer .mainnav', '1');
   toTop();
 

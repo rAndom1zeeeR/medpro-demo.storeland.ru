@@ -79,46 +79,183 @@
 
 		<!-- Шапка -->
 		<header id="header">
-			<div class="container">
-				<!-- Верхняя часть шапки -->
-				<div class="header__top flex">
-					<!-- Контакты-->
-					<div class="contacts flex">
-						<!-- Телефон 1 -->
-						{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
-						<div class="contacts__block phone flex">
-							<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__callback">
-								<i class="icon-call"></i>
-							</a>
-							<div class="contacts__block-content">
-								<a class="contacts__block-link phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
-									<span>{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
+			<!-- Верхняя часть шапки -->
+			<div class="header__top">
+				<div class="container">
+					<div class="flex justify-between">
+						<!-- Контакты-->
+						<div class="contacts flex">
+							<!-- Телефон 1 -->
+							{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
+							<div class="contacts__block phone flex">
+								<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__callback">
+									<i class="icon-call"></i>
 								</a>
-								<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__callback">
-									<span>заказать звонок</span>
+								<div class="contacts__block-content">
+									<a class="contacts__block-link phone" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
+										<span>{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
+									</a>
+									<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__callback">
+										<span>заказать звонок</span>
+									</a>
+								</div>
+							</div><!-- //END Телефон 1 -->
+							{% ENDIF SETTINGS_STORE_PHONE_NUMBER1 %}
+
+							<!-- Почта -->
+							{% IF SETTINGS_STORE_EMAIL_MAIN %}
+							<div class="contacts__block email flex">
+								<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
+									<i class="icon-mail"></i>
+								</a>
+								<div class="contacts__block-content">
+									<a class="contacts__block-link email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
+										<span>{SETTINGS_STORE_EMAIL_MAIN}</span>
+									</a>
+									<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
+										<span>написать нам</span>
+									</a>
+								</div>
+							</div><!-- //END Почта -->
+							{% ENDIF SETTINGS_STORE_EMAIL_MAIN %}
+						</div><!-- //END Контакты-->
+
+						<!-- Поиск -->
+						<div class="search" itemscope itemtype="https://schema.org/WebSite">
+							<link itemprop="url" href="{INDEX_PAGE_URL}" />
+							<!-- Форма поиска -->
+							<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+								<meta itemprop="target" content="{SEARCH_URL}?q={{EMPTY}q}" />
+								<input type="hidden" name="goods_search_field_id" value="0" />
+								<input type="text" name="q" value="{FORM_SEARCH_Q}" class="search__input" placeholder="Искать" autocomplete="off" itemprop="query-input" />
+
+								<!-- Найти -->
+								<button type="submit" class="search__submit" title="Искать">
+									<i class="icon-search"></i>
+								</button>
+
+								<!-- Кружок обновления -->
+								<div class="lds-ring">
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+								</div>
+
+								<!-- Закрыть -->
+								<a href="javascript:;" class="search__reset">
+									<i class="icon-close"></i>
+								</a>
+
+							</form><!-- //END Форма поиска -->
+
+							<div class="search__icon search__submit button">
+								<i class="icon-search"></i>
+							</div>
+
+							<!-- Результаты поиска -->
+							<div id="search__result" style="display: none;">
+								<div class="flex-start">
+									<div class="result__category"></div>
+									<div class="result__goods"></div>
+									<div class="result__showAll button">все результаты</div>
+								</div>
+							</div>
+
+						</div><!-- //END Поиск -->
+
+						<!-- ЛК, Избр, Срав -->
+						<div class="addto flex">
+							<!-- Войти -->
+							{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
+							<div class="addto__block login">
+								<a class="addto__label login__icon" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login" data-fancybox data-src="#fancybox__login">
+									<i class="icon-user"></i>
 								</a>
 							</div>
-						</div><!-- //END Телефон 1 -->
-						{% ENDIF SETTINGS_STORE_PHONE_NUMBER1 %}
+							{% ENDIF %}
 
-						<!-- Почта -->
-						{% IF SETTINGS_STORE_EMAIL_MAIN %}
-						<div class="contacts__block email flex">
-							<a class="contacts__block-icon" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
-								<i class="icon-mail"></i>
-							</a>
-							<div class="contacts__block-content">
-								<a class="contacts__block-link email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
-									<span>{SETTINGS_STORE_EMAIL_MAIN}</span>
-								</a>
-								<a class="contacts__block-fancy" href="javascript:;" data-fancybox data-src="#fancybox__feedback">
-									<span>написать нам</span>
+							<!-- Избранное -->
+							<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+								<a class="addto__label favorites__icon" href="{FAVORITES_URL}" title="Избранное" data-open="favorites" data-fancybox data-src="#fancybox__favorites">
+									<i class="icon-favorites"></i>
+									<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 								</a>
 							</div>
-						</div><!-- //END Почта -->
-						{% ENDIF SETTINGS_STORE_EMAIL_MAIN %}
-					</div><!-- //END Контакты-->
 
+							<!-- Сравнение -->
+							{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
+							<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
+								<a class="addto__label compare__icon" href="{COMPARE_URL}" title="Сравнение" data-open="compare" data-fancybox data-src="#fancybox__compare">
+									<i class="icon-compare"></i>
+									<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
+								</a>
+							</div>
+							{% ENDIF %}
+						</div><!-- //END ЛК, Избр, Срав -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Центральная часть шапки -->
+			<div class="header__middle">
+				<div class="container">
+					<div class="flex">
+						<!-- Логотип -->
+						<div class="logo" itemscope itemtype="http://schema.org/Organization">
+							<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
+								<img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
+								<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
+								<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+									<meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" />
+								</span>
+							</a>
+						</div>
+
+						<!-- Меню -->
+						<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+							<!-- Меню. Верхнее -->
+							<ul class="mainnav__list unstyled flex">
+								{% FOR menu %}
+									{% FOR header %}
+										{% FOR links %}
+										<li>
+											<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+												<span itemprop="name">{menu.header.links.NAME}</span>
+											</a>
+										</li>
+										{% ENDFOR %}
+									{% ENDFOR %}
+								{% ENDFOR %}
+							</ul>
+							<!-- Меню. Еще -->
+							<ul class="overflowMenu unstyled flex"></ul>
+							<!-- Меню. Адаптивность -->
+							<div class="mainnav__icon flex button button3">
+								<span>Меню</span>
+								<i class="icon-arrow_drop_down"></i>
+							</div>
+						</nav><!-- //END Меню -->
+
+						<!-- Корзина -->
+						<div class="cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
+							<a class="cart__block button2 flex-center" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
+								<div class="cart__block-icon">
+									<i class="icon-cart"></i>
+								</div>
+								<div class="cart__block-content">
+									<span class="cart__block-empty">Корзина</span>
+									<span class="cart__block-price cartSumNow {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
+								</div>
+							</a>
+						</div><!-- //END Корзина -->
+					</div>
+				</div>
+			</div>
+
+			<!-- Нижняя часть шапки -->
+			<div class="header__bottom">
+				<div class="container">
 					<!-- Поиск -->
 					<div class="search" itemscope itemtype="https://schema.org/WebSite">
 						<link itemprop="url" href="{INDEX_PAGE_URL}" />
@@ -148,6 +285,10 @@
 
 						</form><!-- //END Форма поиска -->
 
+						<div class="search__icon search__submit button">
+							<i class="icon-search"></i>
+						</div>
+
 						<!-- Результаты поиска -->
 						<div id="search__result" style="display: none;">
 							<div class="flex-start">
@@ -158,83 +299,6 @@
 						</div>
 
 					</div><!-- //END Поиск -->
-
-					<!-- ЛК, Избр, Срав -->
-					<div class="addto flex">
-						<!-- Войти -->
-						{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
-						<div class="addto__block login">
-							<a class="addto__label login__icon" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login" data-fancybox data-src="#fancybox__login">
-								<i class="icon-user"></i>
-							</a>
-						</div>
-						{% ENDIF %}
-
-						<!-- Избранное -->
-						<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-							<a class="addto__label favorites__icon" href="{FAVORITES_URL}" title="Избранное" data-open="favorites" data-fancybox data-src="#fancybox__favorites">
-								<i class="icon-favorites"></i>
-								<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
-							</a>
-						</div>
-
-						<!-- Сравнение -->
-						{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
-						<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-							<a class="addto__label compare__icon" href="{COMPARE_URL}" title="Сравнение" data-open="compare" data-fancybox data-src="#fancybox__compare">
-								<i class="icon-compare"></i>
-								<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
-							</a>
-						</div>
-						{% ENDIF %}
-					</div><!-- //END ЛК, Избр, Срав -->
-				</div>
-
-				<!-- Центральная часть шапки -->
-				<div class="header__middle flex">
-					<!-- Логотип -->
-					<div class="logo" itemscope itemtype="http://schema.org/Organization">
-						<a href="{INDEX_PAGE_URL}" title="{SETTINGS_STORE_NAME}" itemprop="url">
-							<img src="{ASSETS_IMAGES_PATH}logo.png?design=THEMENAME" alt="{SETTINGS_STORE_NAME}" itemprop="logo">
-							<meta itemprop="name" content="{SETTINGS_STORE_NAME}">
-							<span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
-								<meta itemprop="addressLocality" content="{SETTINGS_STORE_REGION}" />
-							</span>
-						</a>
-					</div>
-
-					<!-- Меню -->
-					<nav class="mainnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
-						<!-- Меню. Верхнее -->
-						<ul class="mainnav__list unstyled flex">
-							{% FOR menu %}
-								{% FOR header %}
-									{% FOR links %}
-									<li>
-										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
-											<span itemprop="name">{menu.header.links.NAME}</span>
-										</a>
-									</li>
-									{% ENDFOR %}
-								{% ENDFOR %}
-							{% ENDFOR %}
-						</ul>
-						<!-- Меню. Еще -->
-						<ul class="overflowMenu unstyled flex"></ul>
-					</nav><!-- //END Меню -->
-
-					<!-- Корзина -->
-					<div class="cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
-						<a class="cart__block button2 flex-center" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
-							<div class="cart__block-icon flex">
-								<i class="icon-cart"></i>
-							</div>
-							<div class="cart__block-content">
-								<span class="cart__block-empty">Корзина</span>
-								<span class="price__now cartSumNow {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
-							</div>
-						</a>
-					</div><!-- //END Корзина -->
 				</div>
 			</div>
 		</header>
