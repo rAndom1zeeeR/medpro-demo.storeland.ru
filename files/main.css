@@ -367,12 +367,22 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.slider__item {background-position: 20% 0;}
 }
 
+
 /**************************************/
 /*** Промо ***/
 /**************************************/
 .promo__item {width: 25%;padding: 0 1rem;align-items: center;}
 .promo__icon {font-size: 3rem;}
 .promo__text {width: calc(100% - 3rem);padding-left: 2rem;}
+@media (max-width: 1199.98px) {
+	.promo__icon {font-size: 2rem;}
+	.promo__text {width: calc(100% - 2rem);padding-left: 1rem;font-size: 13px;}
+}
+@media (max-width: 767.98px) {
+	.promo__item {width: 50%;}
+	.promo__item:nth-child(-n+2) {margin-bottom: 1rem;}
+}
+
 
 
 /**************************************/
