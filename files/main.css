@@ -125,6 +125,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .contacts__block-link {font-weight: bold;max-width: 10rem;display: block;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .contacts__block-fancy {color: #a0adb4;margin-top: .5rem;display: block;}
 .contacts__block-fancy:hover {color: #004e7c;}
+/* Шапка. Контакты. Адаптивность */
 @media (max-width: 767.98px) {
 	header .contacts {width: 24rem;height: auto;}
 	.contacts__block-fancy {margin-top: .25rem;}
@@ -153,6 +154,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .addto__label {font-size: 1.5rem;position: relative;}
 .addto__label [data-count] {position: absolute;top: -.75rem;right: -.75rem;font-size: .75rem;display: none;}
 .hasItems .addto__label [data-count] {display: block;}
+/* Шапка. ЛК, Избр, Срав. Адаптивность */
 @media (max-width: 1199.98px) {
 	.addto {width: 10.5rem;}
 	.addto__block {margin-left: 2rem;}
@@ -165,6 +167,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 /* Шапка. Логотип */
 .logo {width: 15rem;}
 .logo a {display: block;}
+/* Шапка. Логотип. Адаптивность */
 @media (max-width: 639.98px) {
 	.logo {flex-grow: 1;}
 }
@@ -182,6 +185,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .mainnav__more i {font-size: .625rem;padding-left: .5rem;}
 .mainnav.opened .mainnav__more {display: none;}
 .mainnav__icon {display: none;}
+/* Шапка. Меню. Адаптивность */
 @media (max-width: 991.98px) {
 	.mainnav ul {display: none;}
 	.mainnav__icon {display: inline-block;}
@@ -206,6 +210,7 @@ header .cart {width: 10rem;}
 .cart__block-icon {margin-right: .75rem;font-size: 1.125rem;line-height: 0;}
 .cart__block-empty {display: none;}
 .empty .cart__block-empty {display: block;}
+/* Шапка. Корзина. Адаптивность */
 @media (max-width: 639.98px) {
 	header .cart {width: 9rem;}
 }
@@ -309,9 +314,9 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /* TODO В макете есть тени у слайдера, нельзя просто раскидать теней по странице, нужно привязать их к какому то элементу. Какая тень у кнопки Подробнее?
 ***/
 #slideshow {height: 27.5rem;overflow: hidden;}
-.slider__item {height: 27.5rem;overflow: hidden;background-repeat: no-repeat;background-size: contain;display: flex;align-items: center;}
+.slider__item {height: 27.5rem;overflow: hidden;background-repeat: no-repeat;background-size: cover;display: flex;align-items: center;}
 .slider__content {width: 55%;margin: 0 0 0 auto;padding: 2rem 2rem 2rem 0;}
-.slider__title {font-size: 2rem;font-weight: bold;}
+.slider__title {font-size: 2rem;font-weight: bold;line-height: 1.5;}
 .slider__subtitle {margin-top: 3rem;}
 .slider__buttons {margin-top: 3rem;}
 .slider__catalog {position: absolute;bottom: 1rem;left: 1rem;}
@@ -326,7 +331,41 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #slideshow .owl-next {right: auto;}
 #slideshow .owl-prev:before {content: '\e915';}
 #slideshow .owl-next:before {content: '\e900';}
-
+/* Слайдшоу. Адаптивность */
+@media (max-width: 1199.98px) {
+	#slideshow {height: 23rem;}
+	.slider__item {height: 23rem;}
+	.slider__title {font-size: 1.5rem;}
+	.slider__subtitle {margin-top: 2.5rem;}
+	.slider__buttons {margin-top: 2.5rem;}
+}
+@media (max-width: 991.98px) {
+	#slideshow {height: 18rem;}
+	.slider__item {height: 18rem;}
+	.slider__content {padding-right: 1rem;}
+	.slider__title {font-size: 1.25rem;}
+	.slider__subtitle {margin-top: 2rem;}
+	.slider__buttons {margin-top: 2rem;}
+	.slider__nav {margin: 0 0 0 2rem;}
+	.slider__nav .owl-dots {margin: 0 .5rem;}
+	.slider__nav .owl-dots .owl-dot {margin: 0 .25rem;}
+	.slider__nav .owl-count {margin-left: 1rem;}
+}
+@media (max-width: 767.98px) {
+	#slideshow {height: 14rem;}
+	.slider__item {height: 14rem;}
+	.slider__title {font-size: 1rem;}
+	.slider__subtitle {display: none;}
+	.slider__buttons {justify-content: flex-end;}
+	.slider__button {display: none;}
+	.slider__catalog {bottom: 0;left: 0;}
+}
+@media (max-width: 639.98px) {
+	.slider__nav .owl-prev, .slider__nav .owl-next {display: none;}
+	.slider__nav .owl-count {display: none;}
+	.slider__catalog-icon {width: 5rem;height: 5rem;font-size: 1.5rem;}
+	.slider__item {background-position: 20% 0;}
+}
 
 /**************************************/
 /*** Промо ***/
