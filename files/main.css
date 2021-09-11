@@ -101,11 +101,15 @@ h6 {font-size: 0.875rem;}
 /*** Блок Заголовков ***/
 /**************************************/
 .block__title {margin-bottom: 2rem;text-align: center;position: relative;}
-.nav__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: wrap;}
+.nav__tabs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: nowrap;}
 .nav__tab {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
 .nav__tab:first-child {border-left: 0;}
 .nav__tab.active, .nav__tab:hover {background-color: #dae6ec;color: #656d72;}
-
+/* Блок Заголовков. Адаптивность */
+@media (max-width: 479.98px) {
+	.nav__tabs {flex-wrap: wrap;}
+	.nav__tab:nth-child(3) {border-left: 0;border-top: 1px solid #dae6ec;width: 100%;}
+}
 
 /**************************************/
 /*** Шапка ***/
@@ -178,7 +182,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 /* Шапка. Меню */
 .mainnav {width: calc(100% - 15rem - 10rem);padding: 0 1rem;}
 .mainnav__list-link {margin: 0 1.5rem;line-height: 2.2;}
-.mainnav .mainnav__list {height: 2rem;}
+.mainnav .mainnav__list {height: 2rem;overflow: hidden;}
 .mainnav.opened .mainnav__list {height: auto;}
 .mainnav .overflowMenu {display: none;}
 .mainnav .overflowMenu.opened {display: flex;}
@@ -314,7 +318,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /* TODO В макете есть тени у слайдера, нельзя просто раскидать теней по странице, нужно привязать их к какому то элементу. Какая тень у кнопки Подробнее?
 ***/
 #slideshow {height: 27.5rem;overflow: hidden;}
-.slider__item {height: 27.5rem;overflow: hidden;background-repeat: no-repeat;background-size: cover;display: flex;align-items: center;}
+.slider__item {height: 27.5rem;overflow: hidden;background-color: #eef2f5;background-repeat: no-repeat;background-size: cover;display: flex;align-items: center;}
 .slider__content {width: 55%;margin: 0 0 0 auto;padding: 2rem 2rem 2rem 0;}
 .slider__title {font-size: 2rem;font-weight: bold;line-height: 1.5;}
 .slider__subtitle {margin-top: 3rem;}
@@ -384,15 +388,31 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 }
 
 
-
 /**************************************/
 /*** Баннеры ***/
 /**************************************/
-.banners__item {width: calc(50% - 2rem);margin: 0 1rem;background-repeat: no-repeat;background-size: contain;}
+.banners__item {width: calc(50% - 2rem);margin: 0 1rem;background-color: #eef2f5;background-position: right;background-repeat: no-repeat;background-size: cover;}
 .banners__content {padding: 3rem;}
-.banners__title {font-size: 1.5rem;font-weight: bold;display: block;line-height: 2.5rem;}
+.banners__title {font-size: 1.5rem;font-weight: bold;display: block;line-height: 1.5;}
 .banners__title span {display: block;}
 .banners__button {margin-top: 2rem;}
+@media (max-width: 1199.98px) {
+	.banners__content {padding: 3rem 2rem;}
+	.banners__title {font-size: 1.25rem;}
+}
+@media (max-width: 991.98px) {
+	.banners__button {display: none;}
+}
+@media (max-width: 767.98px) {
+	.banners__item {height: 10rem;}
+	.banners__content {padding: 0 2rem;}
+}
+@media (max-width: 639.98px) {
+	.banners__item {width: 100%;}
+	.banners__item + .banners__item {margin-top: 2rem;}
+	.banners__content {padding: 1rem 0 1rem 1.5rem;width: 70%;}
+	.banners__title span {display: inline;}
+}
 
 
 /**************************************/
@@ -420,6 +440,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Товары на главной ***/
 /**************************************/
+#pdt {display: none;}
 #pdt [data-content] {display: none;}
 #pdt [data-content].active {display: block;}
 
