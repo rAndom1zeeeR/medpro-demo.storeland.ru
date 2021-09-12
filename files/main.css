@@ -114,6 +114,14 @@ h6 {font-size: 0.875rem;}
 	.nav__tab:nth-child(3) {border-left: 0;border-top: 1px solid #dae6ec;width: 100%;}
 }
 
+
+/**************************************/
+/*** Обесцвечивание изображений ***/
+/**************************************/
+.grayscale {-webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: grayscale(100%);filter: gray;}
+.grayscale:hover {-webkit-filter: grayscale(0);-moz-filter: grayscale(0);-ms-filter: grayscale(0);-o-filter: grayscale(0);filter: grayscale(0);filter: none;}
+
+
 /**************************************/
 /*** Шапка ***/
 /**************************************/
@@ -566,7 +574,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Блок заголовков страниц ***/
 /**************************************/
-#page__title {background-color: #eef2f4;padding: 2rem 4rem;border-radius: 0 0 0 10rem;position: relative;}
+#page__title {margin-bottom: 3rem;padding: 2rem 4rem;background-color: #eef2f4;border-radius: 0 0 0 10rem;position: relative;}
 #page__title .slider__catalog {bottom: -2rem;}
 
 /*** Хлебные крошки ***/
@@ -577,6 +585,28 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #breadcrumbs ul {justify-content: flex-end;}
 #breadcrumbs ul li:before {content: "/";margin: 0 1.5rem;}
 #breadcrumbs ul li:first-child::before {display: none;}
+
+
+/**************************************/
+/*** Каталог ***/
+/**************************************/
+.products .row {margin-top: -2rem;}
+.categories__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;}
+.categories__image {height: 16.25rem;background-color: #f6f6f6;}
+.categories__name {padding: 1rem;color: #ffffff;background-color: #0066a0;border-top: 1px solid #ffffff;}
+.categories__item:hover .categories__name {color: #ffffff;background-color: #00acc5;}
+.categories__name i {border: 2px solid #ffffff;border-radius: 100%;padding: .5rem;margin-right: 1rem;}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -597,15 +627,18 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .nojs .owl-carousel {display: block;}
 .nojs .scriptOff {display: none;}
 
+
 /**************************************/
 /*** Фиксы для IE 11 ***/
 /**************************************/
 .IE .owl-carousel .animated {animation-duration:0;animation-fill-mode:both}
 
+
 /**************************************/
 /*** Фиксы для Firefox ***/
 /**************************************/
 .Firefox .inputText {-moz-appearance: textfield;}
+
 
 /**************************************/
 /*** Адаптивность ***/

@@ -3,16 +3,16 @@
 	<!-- Вывод категорий -->
 	{% IFNOT nested_categories_list_empty %}
 	<div class="row">
-		<div class="categories__list {% IF index_page %}index{% ENDIF %}">
+		<div class="categories__list flex {% IF index_page %}index{% ENDIF %}">
 			{% FOR nested_categories_list %}
 			<div class="categories__item" data-id="{nested_categories_list.ID}" {% IF nested_categories_list.LEVEL> 0 %}style="display: none;"{% ENDIF %}>
-				<a class="categories__image" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+				<a class="categories__image flex-center grayscale" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
 					<img class="goods-cat-image-medium" src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
 				</a>
-				<div class="categories__content">
-					<a class="categories__count" href="{nested_categories_list.URL}">{nested_categories_list.GOODS_COUNT} товар{nested_categories_list.GOODS_COUNT | gen_word_end("","а","ов")}</a>
-					<a class="categories__name" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;"><span>{nested_categories_list.NAME}</span></a>
-				</div>
+				<a class="categories__name flex" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+					<i class="icon-check"></i>
+					<span>{nested_categories_list.NAME}</span>
+				</a>
 			</div>
 			{% ENDFOR %}
 		</div>
