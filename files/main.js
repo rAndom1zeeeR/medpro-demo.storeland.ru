@@ -811,7 +811,7 @@ function pdtSlider() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -841,7 +841,7 @@ function pdtSlider() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -870,7 +870,7 @@ function pdtSlider() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -899,7 +899,7 @@ function pdtSlider() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -1003,7 +1003,7 @@ function newsCarousel() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -1032,7 +1032,7 @@ function newsCarousel() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -1061,7 +1061,7 @@ function newsCarousel() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}
@@ -1090,7 +1090,7 @@ function newsCarousel() {
 		responsiveRefreshRate: 100,
 		responsive: {
 			0:{items:1, autoHeight: true},
-			540:{items:2},
+			480:{items:2},
 			768:{items:3},
 			1200:{items:4}
 		}

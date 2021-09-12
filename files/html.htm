@@ -422,7 +422,7 @@
 			<div class="container">
 				<div class="nav__tabs flex">
 					{% IFNOT index_page_goods_empty %}<a href="{CATALOG_INDEX_PAGE_URL}" class="nav__tab active" data-open="pdt__sale">Товары на главной</a>{% ENDIF %}
-					{% IFNOT index_page_new_goods %}<a href="{CATALOG_NEW_URL}" class="nav__tab {% IF index_page_goods_empty %}active{% ENDIF %}" data-open="pdt__new">Новинки нашей сети</a>{% ENDIF %}
+					{% IFNOT index_page_new_goods %}<a href="{CATALOG_NEW_URL}" class="nav__tab {% IF index_page_goods_empty %}active{% ENDIF %}" data-open="pdt__new">Новинки сети</a>{% ENDIF %}
 					{% IFNOT index_page_favorites_goods %}<a href="{CATALOG_TOP_SALES_URL}" class="nav__tab {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}" data-open="pdt__best">Специальные предложения</a>{% ENDIF %}
 				</div>
 				<!-- Товары на главной -->
@@ -1511,6 +1511,11 @@
 							</ul>
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled"></ul>
+							<!-- Меню. Адаптивность -->
+							<div class="mainnav__icon flex button button3">
+								<span>Меню</span>
+								<i class="icon-arrow_drop_down"></i>
+							</div>
 						</nav><!-- //END Меню -->
 					</div>
 				</div>

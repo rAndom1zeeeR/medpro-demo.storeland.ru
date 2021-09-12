@@ -74,7 +74,7 @@ input:focus, select:focus, textarea:focus {border-color: #00acc5;}
 .button.empty:hover {color: #656d72;background-color: #eef2f5;}
 .button i {vertical-align: middle;}
 .button span + i {margin-left: .5rem;}
-.button i + span {margin-right: .5rem;}
+.button i + span {margin-left: .5rem;}
 
 /**************************************/
 /*** Цены ***/
@@ -303,10 +303,20 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .social-links a:hover {border-color: #00acc5}
 .social-links span {display: none;}
 /* Подвал. Копирайт */
-.copyright {width: 100%;margin-top: 1rem;}
+.copyright {width: 100%;margin-top: 2rem;}
 /* Подвал. Оплата */
 .payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
 .payments i:hover {border-color: #00acc5}
+/* Подвал. Адаптивность */
+@media (max-width: 991.98px) {
+	footer .contacts__block {width: 50%;margin-top: 2rem;}
+	footer .contacts__block:nth-child(-n+2) {margin-top: 0;}
+}
+@media (max-width: 479.98px) {
+	footer .contacts__block {width: 100%;}
+	footer .contacts__block:nth-child(2) {margin-top: 2rem;}
+	footer .contacts__block-link {max-width: 100%;}
+}
 
 
 /**************************************/
@@ -370,7 +380,9 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.slider__catalog-icon {width: 5rem;height: 5rem;font-size: 1.5rem;}
 	.slider__item {background-position: 20% 0;}
 }
-
+@media (max-width: 479.98px) {
+	.slider__content {width: 60%;}
+}
 
 /**************************************/
 /*** Промо ***/
@@ -448,12 +460,23 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .news__date {margin: 1rem 0;color: #00acc5;}
 .news__title {margin: 1rem 0;height: 3.5rem;overflow: hidden;}
 .news__title span {max-height: 3.5rem;overflow: hidden;display: block;}
-
+@media (max-width: 991.98px) {
+	.news__image {height: 13.25rem;}
+}
+@media (max-width: 767.98px) {
+	.news__image {height: 18rem;}
+}
+@media (max-width: 639.98px) {
+	.news__image {height: 13rem;}
+}
+@media (max-width: 479.98px) {
+	.news__image {height: 18rem;}
+	.news__title {height: auto;}
+}
 
 /**************************************/
 /*** Товары на главной ***/
 /**************************************/
-#pdt {display: none;}
 #pdt [data-content] {display: none;}
 #pdt [data-content].active {display: block;}
 
@@ -500,11 +523,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .product__name span {max-height: 3.5rem;overflow: hidden;display: block;}
 .product__price {margin-bottom: 1rem;}
 .product__price .price__old {margin-right: 1rem;}
-.product__addCart i {margin: 0 1rem;font-size: 1rem;vertical-align: middle;}
+.product__addCart i {font-size: 1rem;vertical-align: middle;}
 .product__addCart .label {vertical-align: middle;}
 .product__addedInCart {display: none;align-items: center;color: #00acc5;border: 1px solid #00acc5;border-radius: 2rem;padding-right: .5rem;transition: all 0.3s ease;}
-.product__addedInCart .button {flex-grow: 1;}
-.product__addInCart {width: 100%;}
+.product__addedInCart .button {flex-grow: 1;padding: 0 1rem;}
+.product__addedInCart i {margin: 0 1rem;}
+.product__addInCart {width: 100%;padding: 0 1rem;}
 .inCart .product__addInCart {display: none;}
 .inCart .product__addedInCart {display: flex;}
 .empty .product__addedInCart {display: flex;border-color: #eef2f5;}
@@ -514,10 +538,24 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 
 
 
-
-
-
-
+@media (max-width: 1199.98px) {
+	.product__img {height: 15.375rem;}
+}
+@media (max-width: 991.98px) {
+	.product__img {height: 10.75rem;}
+	.product__price .price__old {display: block;margin: 0 0 .25rem 0;}
+}
+@media (max-width: 767.98px) {
+	.product__img {height: 14.875rem;}
+}
+@media (max-width: 639.98px) {
+	.product__item form {padding: .75rem;}
+	.product__img {height: 10.875rem;}
+}
+@media (max-width: 479.98px) {
+	.product__img {height: 16.5rem;}
+	.product__name {height: auto;}
+}
 
 
 

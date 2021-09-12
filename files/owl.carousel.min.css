@@ -23,5 +23,10 @@
 .owl-carousel .owl-stage {display: flex;flex-wrap: wrap;align-items: stretch;}
 
 /*** Навигация на главной ***/
-.index .owl-prev {position: absolute;top: calc(50% - 2rem);left: -2rem;}
-.index .owl-next {position: absolute;top: calc(50% - 2rem);right: -2rem;}
+.index .owl-prev, .index .owl-next {position: absolute;top: calc(50% - 2rem);}
+.index .owl-prev {left: -2rem;}
+.index .owl-next {right: -2rem;}
+@media (max-width: 991.98px) {
+  .index .owl-prev {left: 0;}
+  .index .owl-next {right: 0;}
+}
