@@ -3,7 +3,10 @@
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
 body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
-section {margin: 2rem 0;}
+section {margin: 3rem 0;}
+@media (max-width: 991.98px) {
+	section {margin: 2rem 0;}
+}
 
 /*** Основной контейнер ***/
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
@@ -292,7 +295,7 @@ header .cart {width: 10rem;}
 .footer__bottom {background-color: #eef2f4;padding: 3rem 0;}
 /* Подвал. Меню */
 footer .mainnav {width: calc(100% - 15rem);padding: 0;}
-footer .mainnav__list {justify-content: flex-end;}
+footer .mainnav ul {justify-content: flex-end;}
 /* Подвал. Контакты */
 footer .contacts__block {width: 25%;padding: 0 1rem;flex-grow: 1;}
 footer .contacts__block-content {padding-left: 2rem;}
@@ -303,7 +306,8 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .social-links a:hover {border-color: #00acc5}
 .social-links span {display: none;}
 /* Подвал. Копирайт */
-.copyright {width: 100%;margin-top: 2rem;}
+.copyright {width: 100%;margin-top: 2rem;flex-direction: column;}
+.copyright div + div {margin-top: .25rem;}
 /* Подвал. Оплата */
 .payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;}
 .payments i:hover {border-color: #00acc5}
