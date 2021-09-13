@@ -627,23 +627,14 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .view__icon.active {color: #0066a0;}
 
 
-
-/** Каталог
-.catalog .catalog__link[data-level="0"] {padding: 1rem;font-size: 16px;}
-.catalog .catalog__link {padding: .75rem 1rem;font-size: 14px;}
-.addto__catalog .catalog__link {padding: .75rem;display: flex;flex-wrap: nowrap;align-items: center;}
-.addto__catalog .catalog__item + .catalog__item {border-top: 1px solid #f8e9e6;}
-.addto__catalog .catalog__item .open {margin-left: 0.5rem;vertical-align: middle;width: 1.25rem;height: 1.25rem;line-height: 1.25rem;display: inline-block;text-align: center;}
-.addto__catalog .catalog__item .open:before {content: "\e917";font-family: 'icomoon';font-size: 1rem;}
-.addto__catalog .catalog__item .open.opened:before {content: "\e915";}
-.addto__catalog .catalog__item .sub {padding-left: 1rem;display: none;}
- **/
-
-
+/**************************************/
+/*** Сайдбар. Правая часть ***/
+/**************************************/
 .sidebar__title {background-color: #eef2f4;padding: 1rem;text-align: center;font-size: 1rem;display: block;}
 .sidebar__content {padding: 1rem;border: 1px solid #dae6ec;border-top: 0;}
 .sidebar__buttons {margin-top: 1rem;text-align: center;}
-/** Каталог **/
+
+/** Сайдбар. Каталог **/
 .catalog__item .sub {padding-left: 1rem;display: none;}
 .catalog__item.opened > .sub {display: block;}
 .catalog__link {padding: .75rem 0;}
@@ -654,7 +645,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .catalog__item.parent > .catalog__link .open:before {content: '\e91f';opacity: 1;}
 .catalog__item.parent > .catalog__link:hover .open:before, .parent.opened > .catalog__link > .open:before {content: '\e91d'}
 
-/** Фильтры **/
+/** Сайдбар. Фильтры **/
 .filter__item + .filter__item {margin-top: 1rem;}
 .filter__item input {margin-right: 1rem;}
 .filter__item label {width: calc(100% - 2.5rem);}
@@ -667,6 +658,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .goodsFilterPriceSubmit .button span {display: none;}
 .goodsFilterPriceSubmit .button i {margin: 0;}
 
+/** Сайдбар. Фильтры цены **/
 .filters-price #goods-filter-price-slider {width: 100%;position: relative;border: 0;height: 6px;margin: 1rem 0.5rem 1rem 0px;background: #dae6ec;cursor: pointer;}
 .filters-price .ui-slider-horizontal .ui-slider-handle {top: -5px;}
 .filters-price .ui-slider-handle {position: absolute;width: 1rem;height: 1rem;background: #0066a0;margin: 0 0 0 -1px;z-index: 2;}
