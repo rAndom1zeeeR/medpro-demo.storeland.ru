@@ -1746,10 +1746,39 @@
 					</div>
 
 					<!-- Правая часть -->
-					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
+					{% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}
 					<div class="mainBlock-right sidebar">
+						<!--Каталог-->
+						<div class="sidebar__block catalog">
+							<div class="sidebar__title">
+								<span>Каталог товаров</span>
+							</div>
+							<div class="sidebar__content" data-content="catalog">
+								<div class="catalog__items">
+									{% FOR catalog_full %}
+										{% IF catalog_full.FIRST && catalog_full.LEVEL > 0 %}
+										<div data-level="{catalog_full.LEVEL}" class="sub">
+										{% ENDIF %}
+											<div {% IF catalog_full.HIDE %}style="display:none;" {% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+												<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+													<span class="open"></span>
+													<span>{catalog_full.NAME}</span>
+												</a>
+											{% IF catalog_full.ISSET_SUB=0 %}
+											</div>
+											{% ENDIF %}
+									{% IF catalog_full.LAST %}
+										{% FOR out %}
+										</div>
+										{% IFNOT catalog_full.out.LAST %}</div>{% ENDIF %}
+										{% ENDFOR %}
+									{% ENDIF %}
+								{% ENDFOR catalog_full %}
+							</div>
+						</div>
+						{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
-						<div id="filters" data-content="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}hasFilters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
+						<div id="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 							<div class="sidebar__title">
 								<span>Фильтры</span>
 							</div>
@@ -1829,8 +1858,9 @@
 								<a href="{PAGE_CANONICAL}" class="goodsFilterClear button button4" title="Очистить фильры"><span>Сбросить фильтры</span></a>
 							</div>
 						</div>
+						{% ENDIF filters %}
 					</div>
-					{% ENDIF %}
+					{% ENDIF catalog %}
 				</div>
 
 			</div>

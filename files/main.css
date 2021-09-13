@@ -611,7 +611,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .categories__name {padding: 1rem;color: #ffffff;background-color: #0066a0;border-top: 1px solid #ffffff;}
 .categories__item:hover .categories__name {color: #ffffff;background-color: #00acc5;}
 .categories__name i {border: 2px solid #ffffff;border-radius: 100%;padding: .5rem;margin-right: 1rem;}
-
+.categories__name i + span {width: calc(100% - 3.125rem);}
 
 /**************************************/
 /*** Тулбар ***/
@@ -626,8 +626,30 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 
 
 
+/** Каталог
+.catalog .catalog__link[data-level="0"] {padding: 1rem;font-size: 16px;}
+.catalog .catalog__link {padding: .75rem 1rem;font-size: 14px;}
+.addto__catalog .catalog__link {padding: .75rem;display: flex;flex-wrap: nowrap;align-items: center;}
+.addto__catalog .catalog__item + .catalog__item {border-top: 1px solid #f8e9e6;}
+.addto__catalog .catalog__item .open {margin-left: 0.5rem;vertical-align: middle;width: 1.25rem;height: 1.25rem;line-height: 1.25rem;display: inline-block;text-align: center;}
+.addto__catalog .catalog__item .open:before {content: "\e917";font-family: 'icomoon';font-size: 1rem;}
+.addto__catalog .catalog__item .open.opened:before {content: "\e915";}
+.addto__catalog .catalog__item .sub {padding-left: 1rem;display: none;}
+ **/
 
+.sidebar__block {}
+.sidebar__title {background-color: #eef2f4;padding: 1rem;text-align: center;font-size: 1rem;}
+.sidebar__content {padding: 1rem;border: 1px solid #dae6ec;border-top: 0;}
 
+.catalog__item .sub {padding-left: 1rem;display: none;}
+.catalog__item.opened > .sub {display: block;}
+.catalog__link {padding: .75rem 0;}
+.catalog__link .open:before {content: '\e91e';font-family: 'icomoon';font-size: 1rem;margin-right: .75rem;padding: .25rem;opacity: 0;transition: all 0.3s ease;}
+.catalog__item.parent > .catalog__link .open:before {content: '\e91f';opacity: 1;}
+.catalog__item.parent > .catalog__link:hover .open:before, .parent.opened > .catalog__link > .open:before {content: '\e91d'}
+.catalog__link:hover {color: #0066a0;}
+.catalog__link.opened, .catalog__item.opened > .catalog__link {color: #0066a0;font-weight: bold;}
+.catalog__link span + span {width: calc(100% - 2.25rem);}
 
 
 
