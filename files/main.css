@@ -63,8 +63,10 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /*** Инпут поля ***/
 /**************************************/
 input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 1.5rem;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;cursor: pointer;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
-input:focus, select:focus, textarea:focus {border-color: #00acc5;}
-
+input:focus, select:focus, textarea:focus {border-color: #0066a0;}
+.square {width: 1.5rem;height: 1.5rem;border-radius: 0;margin: 0;padding: 0;}
+.square:checked {background-color: #0066a0;}
+.square:disabled {background-color: #dae6ec;cursor: default}
 
 /**************************************/
 /*** Селекты ***/
@@ -637,19 +639,43 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .addto__catalog .catalog__item .sub {padding-left: 1rem;display: none;}
  **/
 
-.sidebar__block {}
-.sidebar__title {background-color: #eef2f4;padding: 1rem;text-align: center;font-size: 1rem;}
-.sidebar__content {padding: 1rem;border: 1px solid #dae6ec;border-top: 0;}
 
+.sidebar__title {background-color: #eef2f4;padding: 1rem;text-align: center;font-size: 1rem;display: block;}
+.sidebar__content {padding: 1rem;border: 1px solid #dae6ec;border-top: 0;}
+.sidebar__buttons {margin-top: 1rem;text-align: center;}
+/** Каталог **/
 .catalog__item .sub {padding-left: 1rem;display: none;}
 .catalog__item.opened > .sub {display: block;}
 .catalog__link {padding: .75rem 0;}
-.catalog__link .open:before {content: '\e91e';font-family: 'icomoon';font-size: 1rem;margin-right: .75rem;padding: .25rem;opacity: 0;transition: all 0.3s ease;}
-.catalog__item.parent > .catalog__link .open:before {content: '\e91f';opacity: 1;}
-.catalog__item.parent > .catalog__link:hover .open:before, .parent.opened > .catalog__link > .open:before {content: '\e91d'}
 .catalog__link:hover {color: #0066a0;}
 .catalog__link.opened, .catalog__item.opened > .catalog__link {color: #0066a0;font-weight: bold;}
 .catalog__link span + span {width: calc(100% - 2.25rem);}
+.catalog__link .open:before {content: '\e91e';font-family: 'icomoon';font-size: 1rem;margin-right: .75rem;padding: .25rem;opacity: 0;transition: all 0.3s ease;}
+.catalog__item.parent > .catalog__link .open:before {content: '\e91f';opacity: 1;}
+.catalog__item.parent > .catalog__link:hover .open:before, .parent.opened > .catalog__link > .open:before {content: '\e91d'}
+
+/** Фильтры **/
+.filter__item + .filter__item {margin-top: 1rem;}
+.filter__item input {margin-right: 1rem;}
+.filter__item label {width: calc(100% - 2.5rem);}
+.filter__name {border-bottom: 1px solid #dae6ec;}
+.goodsFilterPriceRangePointers {flex-wrap: nowrap;}
+.goodsFilterPriceRangePointers input {border-radius: 0;padding: 0 1rem;flex-grow: 1;text-align: center;}
+.goodsFilterPriceRangePointers .separator {margin: 0 .5rem;width: 1rem;height: 1px;background-color: #dae6ec;}
+.goodsFilterPriceSubmit {display: none;}
+.goodsFilterPriceSubmit .button {width: 3rem;height: 3rem;padding: 0;border-radius: 0;font-size: 1rem;line-height: 2.75rem;}
+.goodsFilterPriceSubmit .button span {display: none;}
+.goodsFilterPriceSubmit .button i {margin: 0;}
+
+.filters-price #goods-filter-price-slider {width: 100%;position: relative;border: 0;height: 6px;margin: 1rem 0.5rem 1rem 0px;background: #dae6ec;cursor: pointer;}
+.filters-price .ui-slider-horizontal .ui-slider-handle {top: -5px;}
+.filters-price .ui-slider-handle {position: absolute;width: 1rem;height: 1rem;background: #0066a0;margin: 0 0 0 -1px;z-index: 2;}
+.filters-price .ui-slider-handle:last-child {left: auto;right: 0;margin-left: -1rem;}
+.filters-price .ui-slider-handle.ui-state-hover, .filters-price .ui-slider-handle.ui-state-focus {background: #0066a0;cursor: pointer;}
+.filters-price .ui-slider .ui-slider-range {position: absolute;top: 0;height: 6px;background: #0066a0;border: 1px solid #0066a0;border-radius: 0;cursor: pointer;}
+
+
+
 
 
 

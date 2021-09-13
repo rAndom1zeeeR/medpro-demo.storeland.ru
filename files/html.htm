@@ -1779,81 +1779,73 @@
 						{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 						<div id="filters" class="sidebar__block filters {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
-							<div class="sidebar__title">
-								<span>Фильтры</span>
-							</div>
-							<div class="sidebar__content">
-								<form action="" method="get" class="form__filters">
-									<!-- Если есть возможность фильтрации товаров по ценам -->
-									{% IF SHOW_GOODS_PRICE_FILTERS %}
-									<div class="filters-price filter__list collapsible active">
-										<a href="javascript:;" class="filter__name collapsible__click">
-											<i class="icon-arrow_right"></i>
-											<span>Цена</span>
-										</a>
-										<div class="filter__items collapsible__content">
-											<div class="priceSlider">
-												<input type="hidden" name="form[filter][available_price][min]" value="{GOODS_FILTER_MIN_AVAILABLE_PRICE}" />
-												<input type="hidden" name="form[filter][available_price][max]" value="{GOODS_FILTER_MAX_AVAILABLE_PRICE}" />
-												<!-- Фильтры по цене -->
-												<div class="goodsFilterPriceRangePointers">
-													<span class="min" style="display:none;">{GOODS_FILTER_MIN_AVAILABLE_PRICE}</span>
-													<span class="max" style="display:none;">{GOODS_FILTER_MAX_AVAILABLE_PRICE}</span>
-													<input id="goods-filter-min-price" class="inputText" type="text" name="form[filter][price][min]" value="{% IF GOODS_FILTER_MIN_PRICE %}{GOODS_FILTER_MIN_PRICE}{% ELSE %}{GOODS_FILTER_MIN_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
-													<span class="separator"></span>
-													<input id="goods-filter-max-price" class="inputText" type="text" name="form[filter][price][max]" value="{% IF GOODS_FILTER_MAX_PRICE %}{GOODS_FILTER_MAX_PRICE}{% ELSE %}{GOODS_FILTER_MAX_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
-												</div>
-												<div id="goods-filter-price-slider"></div>
-												<div class="goodsFilterPriceSubmit">
-													<button class="button button5" type="submit" title="Показать"><span>Показать</span></button>
-													<a href="{PAGE_CANONICAL}" class="clear button button5" title="Очистить фильры"><span>Очистить</span></a>
-												</div>
+							<form action="" method="get" class="form__filters">
+								<!-- Если есть возможность фильтрации товаров по ценам -->
+								{% IF SHOW_GOODS_PRICE_FILTERS %}
+								<div class="filters-price filter__list collapsible">
+									<a href="javascript:;" class="filter__name collapsible__click sidebar__title">
+										<span>Цена</span>
+									</a>
+									<div class="filter__items collapsible__content sidebar__content">
+										<div class="priceSlider">
+											<input type="hidden" name="form[filter][available_price][min]" value="{GOODS_FILTER_MIN_AVAILABLE_PRICE}" />
+											<input type="hidden" name="form[filter][available_price][max]" value="{GOODS_FILTER_MAX_AVAILABLE_PRICE}" />
+											<!-- Фильтры по цене -->
+											<div class="goodsFilterPriceRangePointers flex justify-between">
+												<span class="min" style="display:none;">{GOODS_FILTER_MIN_AVAILABLE_PRICE}</span>
+												<span class="max" style="display:none;">{GOODS_FILTER_MAX_AVAILABLE_PRICE}</span>
+												<input id="goods-filter-min-price" class="inputText" type="text" name="form[filter][price][min]" value="{% IF GOODS_FILTER_MIN_PRICE %}{GOODS_FILTER_MIN_PRICE}{% ELSE %}{GOODS_FILTER_MIN_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
+												<span class="separator"></span>
+												<input id="goods-filter-max-price" class="inputText" type="text" name="form[filter][price][max]" value="{% IF GOODS_FILTER_MAX_PRICE %}{GOODS_FILTER_MAX_PRICE}{% ELSE %}{GOODS_FILTER_MAX_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
+											</div>
+											<div id="goods-filter-price-slider"></div>
+											<div class="goodsFilterPriceSubmit flex justify-between">
+												<button class="button button3" type="submit" title="Показать"><span>Показать</span><i class="icon-check"></i></button>
+												<a href="{PAGE_CANONICAL}" class="clear button button3" title="Очистить фильры"><span>Очистить</span><i class="icon-close"></i></a>
 											</div>
 										</div>
 									</div>
-									{% ENDIF %}
-									<!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
-									{% FOR filter_attr_list %}
-									<div class="filter__list collapsible {% FOR values %}{% IF filter_attr_list.values.CHECKED %}active {% ENDIF %}{% ENDFOR %}">
-										<a href="javascript:;" class="filter__name collapsible__click">
-											<i class="icon-arrow_right"></i>
-											<span>{filter_attr_list.NAME}</span>
-										</a>
-										<div class="filter__items collapsible__content">
-											{% FOR values %}
-											<div class="filter__item {% IF filter_attr_list.values.CHECKED %}checked{% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
-												<input type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" class="square" {% IF filter_attr_list.values.CHECKED %}checked="checked" {% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
-												<label for="filterAttrVal{filter_attr_list.values.ID}">
-													<span>{filter_attr_list.values.VALUE}</span>
-													<span>({filter_attr_list.values.NB_GOODS_ALL})</span>
-												</label>
-											</div>
-											{% ENDFOR %}
+								</div>
+								{% ENDIF %}
+								<!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) {% FOR values %}{% IF filter_attr_list.values.CHECKED %}active {% ENDIF %}{% ENDFOR %} -->
+								{% FOR filter_attr_list %}
+								<div class="filter__list collapsible">
+									<a href="javascript:;" class="filter__name collapsible__click sidebar__title">
+										<span>{filter_attr_list.NAME}</span>
+									</a>
+									<div class="filter__items collapsible__content sidebar__content">
+										{% FOR values %}
+										<div class="filter__item flex {% IF filter_attr_list.values.CHECKED %}checked{% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
+											<input type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" class="square" {% IF filter_attr_list.values.CHECKED %}checked="checked" {% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
+											<label for="filterAttrVal{filter_attr_list.values.ID}">
+												<span>{filter_attr_list.values.VALUE}</span>
+												<span>({filter_attr_list.values.NB_GOODS_ALL})</span>
+											</label>
 										</div>
+										{% ENDFOR %}
 									</div>
-									{% ENDFOR %}
-									<!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
-									{% FOR filter_prop_list %}
-									<div class="filter__list collapsible {% FOR values %}{% IF filter_prop_list.values.CHECKED %}active {% ENDIF %}{% ENDFOR %}">
-										<a href="javascript:;" class="filter__name collapsible__click">
-											<i class="icon-arrow_right"></i>
-											<span>{filter_prop_list.NAME}</span>
-										</a>
-										<div class="filter__items collapsible__content">
-											{% FOR values %}
-											<div class="filter__item {% IF filter_prop_list.values.CHECKED %}checked{% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
-												<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
-												<label for="filterPropVal{filter_prop_list.values.ID}">
-													<span>{filter_prop_list.values.VALUE}</span>
-													<span>({filter_prop_list.values.NB_GOODS_FILTERED})</span>
-												</label>
-											</div>
-											{% ENDFOR %}
+								</div>
+								{% ENDFOR %}
+								<!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) {% FOR values %}{% IF filter_prop_list.values.CHECKED %}active {% ENDIF %}{% ENDFOR %} -->
+								{% FOR filter_prop_list %}
+								<div class="filter__list collapsible">
+									<a href="javascript:;" class="filter__name collapsible__click sidebar__title">
+										<span>{filter_prop_list.NAME}</span>
+									</a>
+									<div class="filter__items collapsible__content sidebar__content">
+										{% FOR values %}
+										<div class="filter__item flex {% IF filter_prop_list.values.CHECKED %}checked{% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
+											<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
+											<label for="filterPropVal{filter_prop_list.values.ID}">
+												<span>{filter_prop_list.values.VALUE}</span>
+												<span>({filter_prop_list.values.NB_GOODS_FILTERED})</span>
+											</label>
 										</div>
+										{% ENDFOR %}
 									</div>
-									{% ENDFOR %}
-								</form>
-							</div>
+								</div>
+								{% ENDFOR %}
+							</form>
 							<div class="sidebar__buttons filter__buttons">
 								<a href="{PAGE_CANONICAL}" class="goodsFilterClear button button4" title="Очистить фильры"><span>Сбросить фильтры</span></a>
 							</div>
@@ -2181,6 +2173,17 @@ $(document).ready(function(){
 	pdtSlider();
 });
 </script>
+{% ENDIF %}
+{% IF MOD_LNAME = catalog %}
+<script type="text/javascript">	
+// Загрузка основных функций шаблона
+$(document).ready(function(){
+	catalog();
+	priceFilter();
+	filtersOpen();
+});
+</script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
 {% ENDIF %}
 
 <!-- Слайдер. Карусель -->
