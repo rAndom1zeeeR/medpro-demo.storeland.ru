@@ -1139,6 +1139,7 @@
 		</section>
 
 		<!-- Распродажа -->
+		{% IFNOT index_page_sale_goods_empty %}
 		<section id="pdt__sales" data-content="pdt__sales">
 			<div class="container">
 				<div class="block__title">
@@ -1354,6 +1355,7 @@
 				</div>
 			</div>
 		</section>
+		{% ENDIF %}
 
 		<!-- Описание главной страницы -->
 		<section id="index">
@@ -1737,12 +1739,12 @@
 				</div>
 
 				<!-- Основная часть -->
-				<div class="mainBlock">
+				<div class="mainBlock flex-start">
 					<!-- Левая часть -->
 					<div class="mainBlock-left {% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}has-sidebar{% ENDIF %}">
 						<div class="body">{BODY}</div>
 					</div>
-					
+
 					<!-- Правая часть -->
 					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 					<div class="mainBlock-right sidebar">

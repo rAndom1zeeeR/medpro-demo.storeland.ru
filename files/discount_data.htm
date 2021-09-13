@@ -38,12 +38,12 @@
 	{% IF goods_empty=0 || goods_filters_empty=0 %}
 	<!-- Верхний блок, изменяющий отображение данных выдачи товаров -->
 	<div class="toolbar">
-		<form action="" class="form__toolbar">
+		<form action="" class="form__toolbar flex">
 			<!-- Список фильтров, которые сейчас действуют на результаты поиска -->
 			{% FOR goods_filters %}
 			<input type="hidden" name="{goods_filters.NAME}" value="{goods_filters.VALUE}" />
 			{% ENDFOR %}
-			<div class="sort">
+			<div class="sort flex">
 				<!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
 				<div class="sort-by selectBox">
 					<!-- Сортировка выпадающим списком	-->
@@ -79,13 +79,13 @@
 				<!-- /END Показывать по: -->
 			</div>
 			<!-- Вид Таблица/Список -->
-			<div class="view__type">
+			<div class="view flex">
 				{% IF GOODS_VIEW_TYPE=1 %}
-				<div title="Таблица" class="view__icon active"><i class="icon-grid"></i></div>
-				<a href="?goods_view_type=2" class="view__icon" title="Список"><i class="icon-list"></i></a>
+				<div title="Таблица" class="view__icon active flex-center"><i class="icon-grid"></i></div>
+				<a href="?goods_view_type=2" class="view__icon flex-center" title="Список"><i class="icon-list"></i></a>
 				{% ELSE %}
-				<a href="?goods_view_type=1" title="Таблица" class="view__icon"><i class="icon-grid"></i></a>
-				<div title="Список" class="view__icon active"><i class="icon-list"></i></div>
+				<a href="?goods_view_type=1" title="Таблица" class="view__icon flex-center"><i class="icon-grid"></i></a>
+				<div title="Список" class="view__icon active flex-center"><i class="icon-list"></i></div>
 				{% ENDIF %}
 			</div>
 			<!-- /END Вид Таблица/Список -->

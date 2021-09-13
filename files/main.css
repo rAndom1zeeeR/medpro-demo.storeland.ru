@@ -58,8 +58,17 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /**************************************/
 /*** Инпут поля ***/
 /**************************************/
-input, select, textarea {height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 1.5rem;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;width: 100%;}
+input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 1.5rem;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;cursor: pointer;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 input:focus, select:focus, textarea:focus {border-color: #00acc5;}
+
+
+/**************************************/
+/*** Селекты ***/
+/**************************************/
+.selectBox {position: relative;}
+.selectBox:after {content: '\e91d';line-height: 3rem;right: 1rem;position: absolute;font-family: 'icomoon';pointer-events: none;}
+.selectBox select {padding-right: 3rem;background-color: #eef2f4;border: 0;border-radius: 0;}
+.selectBox:hover {color: #00acc5;}
 
 
 /**************************************/
@@ -522,11 +531,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Товары таблицей ***/
 /**************************************/
 .products__grid {display: flex;flex-wrap: wrap;align-items: stretch;}
-.product__item {position: relative;}
+.product__item {width: calc(33.333333% - 2rem);margin: 2rem 1rem 0 1rem;position: relative;}
 .product__item form {padding: 1.25rem;border: 1px solid #dae6ec;transition: all 0.3s ease;}
 .product__item:hover form {border-color: #00acc5;}
 .product__image {margin-bottom: 1rem;}
 .product__img {height: 13.625rem;}
+.product__img img {max-width: 100%;}
 .product__links {position: absolute;top: 1.25rem;right: 1.25rem;}
 .product__links a {font-size: 1.5rem;}
 .product__links a + a {margin-left: .5rem;}
@@ -588,7 +598,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 
 
 /**************************************/
-/*** Каталог ***/
+/*** Категории ***/
 /**************************************/
 .products .row {margin-top: -2rem;}
 .categories__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;}
@@ -598,18 +608,21 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .categories__name i {border: 2px solid #ffffff;border-radius: 100%;padding: .5rem;margin-right: 1rem;}
 
 
+/**************************************/
+/*** Тулбар ***/
+/**************************************/
+.toolbar {margin-bottom: 2rem;}
+.form__toolbar {justify-content: space-between;}
+.sort .selectBox:after {line-height: 4rem;}
+.sort .selectBox select {height: 4rem;}
+.sort .selectBox + .selectBox {margin-left: 2rem;}
+.view__icon {margin-left: 2rem;width: 4rem;height: 4rem;background-color: #eef2f4;}
+.view__icon.active {color: #0066a0;}
 
 
 
-
-
-
-
-
-
-
-
-
+.mainBlock-left {width: 75%;padding-right: 1rem;flex-grow: 1;}
+.mainBlock-right {width: 25%;padding-left: 1rem;flex-grow: 1;}
 
 
 

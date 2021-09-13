@@ -21,6 +21,7 @@
 /*** Изображения в слайдере ***/
 .owl-carousel .owl-item img {max-width: 100%;max-height: 100%;width: auto;}
 .owl-carousel .owl-stage {display: flex;flex-wrap: wrap;align-items: stretch;}
+.owl-carousel .product__item {width: 100%;margin: 0;}
 
 /*** Навигация на главной ***/
 .index .owl-prev, .index .owl-next {position: absolute;top: calc(50% - 2rem);}
@@ -30,3 +31,4 @@
   .index .owl-prev {left: 0;}
   .index .owl-next {right: 0;}
 }
+
