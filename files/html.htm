@@ -1790,6 +1790,8 @@
 										<div class="priceSlider">
 											<input type="hidden" name="form[filter][available_price][min]" value="{GOODS_FILTER_MIN_AVAILABLE_PRICE}" />
 											<input type="hidden" name="form[filter][available_price][max]" value="{GOODS_FILTER_MAX_AVAILABLE_PRICE}" />
+											<!-- Ползунок фильтров по цене -->
+											<div id="goods-filter-price-slider"></div>
 											<!-- Фильтры по цене -->
 											<div class="goodsFilterPriceRangePointers flex justify-between">
 												<span class="min" style="display:none;">{GOODS_FILTER_MIN_AVAILABLE_PRICE}</span>
@@ -1798,7 +1800,7 @@
 												<span class="separator"></span>
 												<input id="goods-filter-max-price" class="inputText" type="text" name="form[filter][price][max]" value="{% IF GOODS_FILTER_MAX_PRICE %}{GOODS_FILTER_MAX_PRICE}{% ELSE %}{GOODS_FILTER_MAX_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
 											</div>
-											<div id="goods-filter-price-slider"></div>
+											<!-- Кнопки Фильтров -->
 											<div class="goodsFilterPriceSubmit flex justify-between">
 												<button class="button button3" type="submit" title="Показать"><span>Показать</span><i class="icon-check"></i></button>
 												<a href="{PAGE_CANONICAL}" class="clear button button3" title="Очистить фильры"><span>Очистить</span><i class="icon-close"></i></a>

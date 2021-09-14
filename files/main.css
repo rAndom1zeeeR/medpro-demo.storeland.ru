@@ -6,10 +6,12 @@ body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif
 section {margin: 3rem 0;}
 .mainBlock-left {width: 75%;padding-right: 1rem;flex-grow: 1;}
 .mainBlock-right {width: 25%;padding-left: 1rem;flex-grow: 1;}
+@media (max-width: 1199.98px) {
+	.mainBlock-left {width: 100%;padding: 0;}
+	.mainBlock-right {width: 100%;padding: 2rem 0 0 0;display: none;}
+}
 @media (max-width: 991.98px) {
 	section {margin: 2rem 0;}
-	.mainBlock-left {width: 100%;padding: 0;}
-	.mainBlock-right {width: 100%;padding: 2rem 0 0 0;}
 }
 
 /*** Основной контейнер ***/
@@ -538,12 +540,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Товары таблицей ***/
 /**************************************/
 .products__grid {display: flex;flex-wrap: wrap;align-items: stretch;}
-.product__item {width: calc(33.333333% - 2rem);margin: 2rem 1rem 0 1rem;position: relative;}
+.product__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;position: relative;}
 .product__item form {padding: 1.25rem;border: 1px solid #dae6ec;transition: all 0.3s ease;}
 .product__item:hover form {border-color: #00acc5;}
 .product__image {margin-bottom: 1rem;}
 .product__img {height: 13.625rem;}
-.product__img img {max-width: 100%;}
+.product__img img {max-width: 100%;max-height: 100%;}
 .product__links {position: absolute;top: 1.25rem;right: 1.25rem;}
 .product__links a {font-size: 1.5rem;}
 .product__links a + a {margin-left: .5rem;}
@@ -560,19 +562,24 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .product__addInCart {width: 100%;padding: 0 1rem;}
 .inCart .product__addInCart {display: none;}
 .inCart .product__addedInCart {display: flex;}
-.empty .product__addedInCart {display: flex;border-color: #eef2f5;}
+.empty .product__addedInCart {display: flex;border-color: #eef2f5;color: #656d72;}
 .product__addCart:hover .product__addedInCart {color: #0066a0;border-color: #0066a0;}
 .product__addCart:hover .button {color: #ffffff;background-color: #0066a0;}
 .product__discount {color: #ffffff;background: #00acc5;text-align: center;padding: .75rem;}
 /* Товары таблицей. Адаптивность */
+@media (min-width: 992px) {
+.has-sidebar .product__item {width: calc(33.333333% - 2rem);}
+}
 @media (max-width: 1199.98px) {
 	.product__img {height: 15.375rem;}
 }
 @media (max-width: 991.98px) {
+	.product__item {width: calc(33.333333% - 2rem);}
 	.product__img {height: 10.75rem;}
 	.product__price .price__old {display: block;margin: 0 0 .25rem 0;}
 }
 @media (max-width: 767.98px) {
+	.product__item {width: calc(50% - 2rem);}
 	.product__img {height: 14.875rem;}
 }
 @media (max-width: 639.98px) {
@@ -580,6 +587,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.product__img {height: 10.875rem;}
 }
 @media (max-width: 479.98px) {
+	.product__item {width: calc(100% - 2rem);}
 	.product__img {height: 16.5rem;}
 	.product__name {height: auto;}
 }
@@ -615,22 +623,42 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .categories__name i {border: 2px solid #ffffff;border-radius: 100%;padding: .5rem;margin-right: 1rem;}
 .categories__name i + span {width: calc(100% - 3.125rem);}
 
+
 /**************************************/
 /*** Тулбар ***/
 /**************************************/
 .toolbar {margin-bottom: 2rem;}
 .form__toolbar {justify-content: space-between;}
-.sort .selectBox:after {line-height: 4rem;}
-.sort .selectBox select {height: 4rem;}
-.sort .selectBox + .selectBox {margin-left: 2rem;}
+.form__toolbar .selectBox:after {line-height: 4rem;}
+.form__toolbar .selectBox select {height: 4rem;}
+.form__toolbar .selectBox + .selectBox {margin-left: 2rem;}
+.sort {flex-grow: 1;}
 .view__icon {margin-left: 2rem;font-size: 1.5rem;width: 4rem;height: 4rem;background-color: #eef2f4;}
 .view__icon.active {color: #0066a0;}
-
+.filters__icon {display: none;}
+@media (max-width: 1199.98px) {
+.filters__icon {display: block;background-color: #eef2f4;margin-left: 2rem;padding: 0 3rem 0 1.5rem;height: 4rem;line-height: 4rem;font-size: 1rem;}
+.filters__icon:hover {color: #00acc5;cursor: pointer;}
+}
+@media (max-width: 767.98px) {
+	.sort .selectBox + .selectBox {margin-left: 1rem;}
+	.view__icon {margin-left: 1rem;}
+	.filters__icon {margin-left: 1rem;}
+}
+@media (max-width: 639.98px) {
+	.sort {width: 100%;margin-bottom: 1rem;}
+	.sort .sort-by {flex-grow: 1;}
+	.view__icon:first-child {margin-left: 0;}
+	.filters__icon {flex-grow: 1;}
+}
+@media (max-width: 479.98px) {
+	.filters__icon {padding: 0 2rem 0 1rem;}
+}
 
 /**************************************/
 /*** Сайдбар. Правая часть ***/
 /**************************************/
-.sidebar__title {background-color: #eef2f4;padding: 1rem;text-align: center;font-size: 1rem;display: block;}
+.sidebar__title {background-color: #eef2f4;padding: 1.5rem;font-size: 1rem;line-height: 1;text-align: center;display: block;}
 .sidebar__content {padding: 1rem;border: 1px solid #dae6ec;border-top: 0;}
 .sidebar__buttons {margin-top: 1rem;text-align: center;}
 
@@ -649,17 +677,17 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .filter__item + .filter__item {margin-top: 1rem;}
 .filter__item input {margin-right: 1rem;}
 .filter__item label {width: calc(100% - 2.5rem);}
-.filter__name {border-bottom: 1px solid #dae6ec;}
+.filter__name {border-bottom: 1px solid #dae6ec;padding: 1rem;}
 .goodsFilterPriceRangePointers {flex-wrap: nowrap;}
 .goodsFilterPriceRangePointers input {border-radius: 0;padding: 0 1rem;flex-grow: 1;text-align: center;}
 .goodsFilterPriceRangePointers .separator {margin: 0 .5rem;width: 1rem;height: 1px;background-color: #dae6ec;}
-.goodsFilterPriceSubmit {display: none;}
+.goodsFilterPriceSubmit {display: none;margin-top: 2rem;}
 .goodsFilterPriceSubmit .button {width: 3rem;height: 3rem;padding: 0;border-radius: 0;font-size: 1rem;line-height: 2.75rem;}
 .goodsFilterPriceSubmit .button span {display: none;}
 .goodsFilterPriceSubmit .button i {margin: 0;}
 
 /** Сайдбар. Фильтры цены **/
-.filters-price #goods-filter-price-slider {width: 100%;position: relative;border: 0;height: 6px;margin: 1rem 0.5rem 1rem 0px;background: #dae6ec;cursor: pointer;}
+.filters-price #goods-filter-price-slider {margin: 1rem 0 2rem 0;width: 100%;position: relative;border: 0;height: 6px;background: #dae6ec;cursor: pointer;}
 .filters-price .ui-slider-horizontal .ui-slider-handle {top: -5px;}
 .filters-price .ui-slider-handle {position: absolute;width: 1rem;height: 1rem;background: #0066a0;margin: 0 0 0 -1px;z-index: 2;}
 .filters-price .ui-slider-handle:last-child {left: auto;right: 0;margin-left: -1rem;}
