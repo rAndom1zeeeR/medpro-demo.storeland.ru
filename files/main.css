@@ -602,15 +602,25 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #page__title {margin-bottom: 3rem;padding: 2rem 4rem;background-color: #eef2f4;border-radius: 0 0 0 10rem;position: relative;}
 #page__title .slider__catalog {bottom: -2rem;}
 
-/*** Хлебные крошки ***/
+/** Хлебные крошки **/
 #page__title .block__title {text-align: right;margin-bottom: 1rem;}
 #page__title .results {display: none;}
 
-/*** Заголовки страниц ***/
-#breadcrumbs ul {justify-content: flex-end;}
+/** Заголовки страниц **/
+#breadcrumbs {overflow-x: auto;display: block;position: relative;}
+#breadcrumbs ul {justify-content: flex-end;flex-wrap: nowrap;}
+#breadcrumbs ul li {display: flex;}
 #breadcrumbs ul li:before {content: "/";margin: 0 1.5rem;}
 #breadcrumbs ul li:first-child::before {display: none;}
-
+#breadcrumbs::-webkit-scrollbar {width: 0;height: 0.5rem;}
+#breadcrumbs::-webkit-scrollbar-thumb {background-color: #00acc5;}
+#breadcrumbs::-webkit-scrollbar-track {background-color: #dae6ec;}
+@media (max-width: 991.98px) {
+	#page__title {padding: 1.5rem 10rem 1.5rem 1.5rem;border-radius: 0 0 20rem 0;}
+	#page__title .block__title {text-align: left;}
+	#page__title .slider__catalog {left: auto;right: 0;}
+	#breadcrumbs ul {justify-content: flex-start;}
+}
 
 /**************************************/
 /*** Категории ***/
@@ -637,8 +647,8 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .view__icon.active {color: #0066a0;}
 .filters__icon {display: none;}
 @media (max-width: 1199.98px) {
-.filters__icon {display: block;background-color: #eef2f4;margin-left: 2rem;padding: 0 3rem 0 1.5rem;height: 4rem;line-height: 4rem;font-size: 1rem;}
-.filters__icon:hover {color: #00acc5;cursor: pointer;}
+	.filters__icon {display: block;background-color: #eef2f4;margin-left: 2rem;padding: 0 3rem 0 1.5rem;height: 4rem;line-height: 4rem;font-size: 1rem;}
+	.filters__icon:hover {color: #00acc5;cursor: pointer;}
 }
 @media (max-width: 767.98px) {
 	.sort .selectBox + .selectBox {margin-left: 1rem;}
@@ -654,6 +664,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 @media (max-width: 479.98px) {
 	.filters__icon {padding: 0 2rem 0 1rem;}
 }
+
 
 /**************************************/
 /*** Сайдбар. Правая часть ***/
