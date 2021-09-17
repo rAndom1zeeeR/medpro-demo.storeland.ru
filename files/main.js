@@ -2254,13 +2254,13 @@ function RefreshImageAction(img,num,cnt) {
 function pageGoods() {
 	// Слайдер доп. изображений
 	$('.thumblist .owl-carousel').owlCarousel({
-		items: 4,
-		margin: 16,
+		items: 1,
+		margin: 0,
 		loop: false,
 		rewind: true,
 		lazyLoad: true,
 		dots: false,
-		nav: false,
+		nav: true,
 		navText: [ , ],
 		autoplay: true,
 		autoplayHoverPause: true,
@@ -2270,16 +2270,7 @@ function pageGoods() {
 		touchDrag: true,
 		pullDrag: true,
 		responsiveClass: true,
-		responsiveRefreshRate: 100,
-		responsive: {
-			0:{items:2},
-			320:{items:2},
-			480:{items:3},
-			641:{items:4},
-			768:{items:4},
-			992:{items:3},
-			1200:{items:4}
-		}
+		responsiveRefreshRate: 100
 	});
 	// Сопутствующие товары Слайдер
 	$('.related__goods .owl-carousel').owlCarousel({

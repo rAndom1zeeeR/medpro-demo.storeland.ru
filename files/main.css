@@ -568,6 +568,14 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #pdt [data-content] {display: none;}
 #pdt [data-content].active {display: block;}
 
+/*** Навигация на главной ***/
+.index .owl-prev, .index .owl-next {position: absolute;top: calc(50% - 2rem);}
+.index .owl-prev {left: -2rem;}
+.index .owl-next {right: -2rem;}
+@media (max-width: 991.98px) {
+  .index .owl-prev {left: 0;}
+  .index .owl-next {right: 0;}
+}
 
 /**************************************/
 /*** Товары таблицей ***/
@@ -784,8 +792,15 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Карточка товара ***/
 /**************************************/
-.productView__images {width: calc(50% - 1rem);margin-right: 1rem;}
-
+.productView__images {width: calc(50% - 1rem);margin-right: 1rem;position: relative;background-color: #eef2f4;}
+.thumblist__item a {height: 34rem;}
+.thumblist .owl-prev {left: -1rem;}
+.thumblist .owl-next {right: -1rem;}
+.productView__links {position: absolute;top: 1.25rem;right: 1.25rem;z-index: 2;}
+.productView__links a {font-size: 2rem;}
+.productView__links a + a {margin-left: 1rem;}
+.productView__links a span {display: none;}
+.productView__images .product__ico span {font-size: 1rem;padding: .5rem 1.5rem;}
 .productView__shop {width: calc(50% - 1rem);margin-left: 1rem;}
 .productView__inner {margin-bottom: 1.5rem;}
 .productView__available i {margin-right: .5rem;}
@@ -829,11 +844,10 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .zone__list {display: none;}
 .zone__list .delivery__name {text-align: left;margin-bottom: .5rem;}
 [class^="zone-"] {margin-top: 1rem;}
-.zone__price label {}
 .zone__price {margin-top: .5rem;}
 .zone__open {margin-top: 1rem;color: #00acc5;display: inline-block;}
 .zone__open:hover, .zone__open.active {text-decoration: underline;}
-.delivery__item {width: calc(25% - 2rem);margin: 2rem 1rem 0 1rem;padding: 1rem;background-color: #ffffff;border: 1px solid #dae6ec;position: relative;}
+.delivery__item {width: calc(33.333333% - 2rem);margin: 2rem 1rem 0 1rem;padding: 1rem;background-color: #ffffff;border: 1px solid #dae6ec;position: relative;}
 .delivery__name {margin-bottom: 1rem;font-size: 1.25rem;font-weight: bold;text-align: center;}
 .delivery__index {display: none;margin-right: .5rem;}
 .delivery__text {text-align: center;}

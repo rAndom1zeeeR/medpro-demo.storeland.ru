@@ -7,21 +7,23 @@
 				<div class="loading"></div>
 			</div>
 			
-			<a class="productView__image flex-center" href="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=marketplace{% ELSE %}{GOODS_IMAGE_LARGE}{% ENDIF %}" data-fancybox="images">
+			<!-- <a class="productView__image flex-center" href="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=marketplace{% ELSE %}{GOODS_IMAGE_LARGE}{% ENDIF %}" data-fancybox="images">
 				<noscript>
-				<img class="goods-image-large"  src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=marketplace{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" title="{GOODS_NAME}" alt="{GOODS_NAME}" itemprop="image" />
+				<img class="goods-image-large" src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=marketplace{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" title="{GOODS_NAME}" alt="{GOODS_NAME}" itemprop="image" />
 				</noscript>
 				<img class="goods-image-large lozad scriptOff" data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=marketplace{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" title="{GOODS_NAME}" alt="{GOODS_NAME}" itemprop="image" />
-				<div class="product__ico">
-					{% IF GOODS_IS_NEW %}
-					<span class="ico__new"></span>
-					{% ELSEIF GOODS_IS_TOP %}
-					<span class="ico__best"></span>
-					{% ELSEIF GOODS_IS_PLACE_ON_INDEX_PAGE %}
-					<span class="ico__sale"></span>
-					{% ENDIF %}
-				</div>
-			</a>
+			</a> -->
+			
+			<!-- Стикеры -->
+			<div class="product__ico">
+				{% IF GOODS_IS_NEW %}
+				<span class="ico__new"></span>
+				{% ELSEIF GOODS_IS_TOP %}
+				<span class="ico__best"></span>
+				{% ELSEIF GOODS_IS_PLACE_ON_INDEX_PAGE %}
+				<span class="ico__sale"></span>
+				{% ENDIF %}
+			</div>
 			
 			<!-- Добавление в избранное и сравнение -->
 			<div class="productView__links {% IF GOODS_MOD_IS_HAS_IN_COMPARE_LIST || GOODS_MOD_IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
@@ -131,13 +133,12 @@
 			{% ENDFOR %}
 
 			{% IFNOT goods_images_empty %}
-			<div class="thumblist">
+			<div class="thumblist index">
 				<div class="thumblist__items owl-carousel">
 					{% FOR goods_images %}
-					{% IF goods_images.ID = GOODS_IMAGE_ID %}{continue}{% ENDIF %}
 					<div class="thumblist__item" data-index="{goods_images.index}">
-						<a href="{goods_images.LARGE}" data-fancybox="images">
-							<img class="goods-image-icon lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=marketplace" data-src="{goods_images.ICON}" alt="{goods_images.NAME}" itemprop="image" />
+						<a href="{goods_images.LARGE}" data-fancybox="images" class="flex-center">
+							<img class="goods-image-icon lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=marketplace" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
 						</a>
 					</div>
 					{% ENDFOR %}
@@ -210,8 +211,8 @@
 			{% IF GOODS_MOD_MAX_DISCOUNT_ID %}
 			<div class="productView__campaign">
 				<span>Акция </span>
-				<strong class="productView__campaign-discount">-{GOODS_MOD_MAX_DISCOUNT}%</strong>
 				<strong class="productView__campaign-name">&laquo;{GOODS_MOD_MAX_DISCOUNT_CAMPAIGN_NAME}&raquo;</strong>
+				<strong class="productView__campaign-discount">-{GOODS_MOD_MAX_DISCOUNT}%</strong>
 				<span>продлится до </span>
 				<strong class="productView__campaign-date">{GOODS_MOD_MAX_DISCOUNT_EXPIRED_AT | date('d.m.Y')}</strong>
 			</div>
