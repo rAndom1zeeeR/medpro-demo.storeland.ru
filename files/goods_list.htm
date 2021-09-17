@@ -100,8 +100,8 @@
 			{% IF GOODS_VIEW_TYPE=1 %}
 			<div class="products__grid">
 				{% FOR goods %}
-				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm {%IF goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
@@ -244,14 +244,7 @@
 								<meta itemprop="offerCount" content="{% FOR mods %}{% IF goods.mods.last %}{goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 							</div>
 							<!-- Цена -->
-							<div class="product__price {CURRENCY_CHAR_CODE}
-								{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}
-									hasOldPrice
-								{% ELSEIF goods.MIN_PRICE_OLD>goods.MIN_PRICE_NOW %}
-									hasOldPrice
-								{% ENDIF %}"
-								itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-							>
+							<div class="product__price {CURRENCY_CHAR_CODE} {% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF goods.MIN_PRICE_OLD>goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 								<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 								<meta itemprop="availability" content="{% IF goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 								<meta itemprop="priceValidUntil" content="{goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -307,8 +300,8 @@
 			<!-- Вывод товаров СПИСКОМ -->
 			<div class="products__list">
 				{% FOR goods %}
-				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm {%IF goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
@@ -434,14 +427,7 @@
 								<meta itemprop="offerCount" content="{% FOR mods %}{% IF goods.mods.last %}{goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 							</div>
 							<!-- Цена -->
-							<div class="product__price {CURRENCY_CHAR_CODE}
-								{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}
-									hasOldPrice
-								{% ELSEIF goods.MIN_PRICE_OLD>goods.MIN_PRICE_NOW %}
-									hasOldPrice
-								{% ENDIF %}"
-								itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-							>
+							<div class="product__price flex {CURRENCY_CHAR_CODE} {% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF goods.MIN_PRICE_OLD>goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 								<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 								<meta itemprop="availability" content="{% IF goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 								<meta itemprop="priceValidUntil" content="{goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -451,6 +437,7 @@
 								<span class="price__old {CURRENCY_CHAR_CODE}">{goods.MIN_PRICE_OLD | money_format}</span>
 								{% ENDIF %}
 								<span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{goods.MIN_PRICE_NOW}">{goods.MIN_PRICE_NOW | money_format}</span>
+								<i class="icon-check"></i>
 							</div><!-- //END Цена -->
 							<!-- Добавление в ... -->
 							<div class="product__addCart">
@@ -491,11 +478,11 @@
 	
 	<!-- Страницы -->
 	{% IF show_pages %}
-	<div class="toolbar bottom">
-		<ol class="pages">
+	<div class="toolbar-bottom">
+		<ol class="pages flex-center unstyled">
 			{% IF GOODS_PAGES_SHOW_FIRST %}
 			<li class="first">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-arrow_left"></i></span></a>
+				<a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-arrow_drop_left"></i></span></a>
 			</li>
 			<li class="prev">
 				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_PREVIOUS}" title="Предыдущая страница"><span>{GOODS_PAGES_PREVIOUS}</span></a>
@@ -507,7 +494,7 @@
 				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_NEXT}" title="Следующая страница"><span>{GOODS_PAGES_NEXT}</span></a>
 			</li>
 			<li class="last">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-arrow_right"></i></span></a>
+				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-arrow_drop_right"></i></span></a>
 			</li>
 			{% ENDIF %}
 		</ol>

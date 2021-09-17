@@ -430,8 +430,8 @@
 				<div id="pdt__sale" data-content="pdt__sale" class="active">
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_goods %}
-						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_goods.MIN_PRICE_NOW_ID} goodsListForm {%IF index_page_goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_goods.MIN_PRICE_NOW_ID} goodsListForm">
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_goods.MIN_PRICE_NOW_ID}" />
@@ -574,14 +574,7 @@
 										<meta itemprop="offerCount" content="{% FOR mods %}{% IF index_page_goods.mods.last %}{index_page_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 									</div>
 									<!-- Цена -->
-									<div class="product__price {CURRENCY_CHAR_CODE}
-										{% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ELSEIF index_page_goods.MIN_PRICE_OLD>index_page_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ENDIF %}"
-										itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-									>
+									<div class="product__price {CURRENCY_CHAR_CODE} {% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_goods.MIN_PRICE_OLD>index_page_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 										<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 										<meta itemprop="availability" content="{% IF index_page_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 										<meta itemprop="priceValidUntil" content="{index_page_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -640,8 +633,8 @@
 				<div id="pdt__new" data-content="pdt__new" {% IF index_page_goods_empty %}class="active"{% ENDIF %}>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_new_goods %}
-						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_new_goods.MIN_PRICE_NOW_ID} goodsListForm {%IF index_page_new_goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_new_goods.MIN_PRICE_NOW_ID} goodsListForm">
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
@@ -784,14 +777,7 @@
 										<meta itemprop="offerCount" content="{% FOR mods %}{% IF index_page_new_goods.mods.last %}{index_page_new_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 									</div>
 									<!-- Цена -->
-									<div class="product__price {CURRENCY_CHAR_CODE}
-										{% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_new_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ELSEIF index_page_new_goods.MIN_PRICE_OLD>index_page_new_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ENDIF %}"
-										itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-									>
+									<div class="product__price {CURRENCY_CHAR_CODE} {% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_new_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_new_goods.MIN_PRICE_OLD>index_page_new_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 										<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 										<meta itemprop="availability" content="{% IF index_page_new_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 										<meta itemprop="priceValidUntil" content="{index_page_new_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -850,8 +836,8 @@
 				<div id="pdt__best" data-content="pdt__best" {% IF index_page_goods_empty && index_page_new_goods %}class="active"{% ENDIF %}>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_favorites_goods %}
-						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_favorites_goods.MIN_PRICE_NOW_ID} goodsListForm {%IF index_page_favorites_goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_favorites_goods.MIN_PRICE_NOW_ID} goodsListForm">
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" />
@@ -994,14 +980,7 @@
 										<meta itemprop="offerCount" content="{% FOR mods %}{% IF index_page_favorites_goods.mods.last %}{index_page_favorites_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 									</div>
 									<!-- Цена -->
-									<div class="product__price {CURRENCY_CHAR_CODE}
-										{% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_favorites_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ELSEIF index_page_favorites_goods.MIN_PRICE_OLD>index_page_favorites_goods.MIN_PRICE_NOW %}
-											hasOldPrice
-										{% ENDIF %}"
-										itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-									>
+									<div class="product__price {CURRENCY_CHAR_CODE} {% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_favorites_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_favorites_goods.MIN_PRICE_OLD>index_page_favorites_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 										<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 										<meta itemprop="availability" content="{% IF index_page_favorites_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 										<meta itemprop="priceValidUntil" content="{index_page_favorites_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -1147,8 +1126,8 @@
 				</div>
 				<div class="products__grid owl-carousel">
 					{% FOR index_page_sale_goods %}
-					<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}hasMod{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
-						<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_sale_goods.MIN_PRICE_NOW_ID} goodsListForm {%IF index_page_sale_goods.NB_GOODS_IN_CART%}inCart{% ENDIF %}">
+					<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_sale_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+						<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_sale_goods.MIN_PRICE_NOW_ID} goodsListForm">
 							<input type="hidden" name="hash" value="{HASH}" />
 							<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_sale_goods.MIN_PRICE_NOW_ID}" />
@@ -1291,14 +1270,7 @@
 									<meta itemprop="offerCount" content="{% FOR mods %}{% IF index_page_sale_goods.mods.last %}{index_page_sale_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 								</div>
 								<!-- Цена -->
-								<div class="product__price {CURRENCY_CHAR_CODE}
-									{% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}
-										hasOldPrice
-									{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD>index_page_sale_goods.MIN_PRICE_NOW %}
-										hasOldPrice
-									{% ENDIF %}"
-									itemprop="offers" itemscope itemtype="https://schema.org/Offer"
-								>
+								<div class="product__price {CURRENCY_CHAR_CODE} {% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD>index_page_sale_goods.MIN_PRICE_NOW %}has-oldPrice{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 									<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
 									<meta itemprop="availability" content="{% IF index_page_sale_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
 									<meta itemprop="priceValidUntil" content="{index_page_sale_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
@@ -1741,7 +1713,7 @@
 				<!-- Основная часть -->
 				<div class="mainBlock flex-start">
 					<!-- Левая часть -->
-					<div class="mainBlock-left {% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}has-sidebar{% ENDIF %}">
+					<div class="mainBlock-left {% IFNOT IS_FULL_CATALOG && MOD_LNAME = catalog %}has-sidebar{% ENDIF %}">
 						<div class="body">{BODY}</div>
 					</div>
 
@@ -2176,9 +2148,10 @@ $(document).ready(function(){
 });
 </script>
 {% ENDIF %}
+
 {% IF MOD_LNAME = catalog %}
 <script type="text/javascript">	
-// Загрузка основных функций шаблона
+// Загрузка основных функций шаблона Товары
 $(document).ready(function(){
 	catalog();
 	priceFilter();
@@ -2186,6 +2159,19 @@ $(document).ready(function(){
 });
 </script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jqueryui.js?design=THEMENAME"></script>
+{% ENDIF %}
+
+{% IF MOD_LNAME = goods %}
+<script type="text/javascript">	
+// Загрузка основных функций шаблона Товар
+$(document).ready(function(){
+	pageGoods();
+	goodsModification();
+	prodQty();
+	monthNames();
+});
+</script>
+<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
 {% ENDIF %}
 
 <!-- Слайдер. Карусель -->

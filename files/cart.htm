@@ -53,10 +53,10 @@
 		          {% IF cart_items.ORDER_LINE_PRICE_OLD > 0 %}<div class="price__old">{cart_items.ORDER_LINE_PRICE_OLD | money_format}</div>{% ENDIF %}
 	          </div>
 	          <div class="cart__qty">
-	            <div class="qty">
-	              <a href="javascript:void(0)" class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></a>
+	            <div class="qty flex">
+	              <a href="javascript:void(0)" class="qty__minus unselectable" title="Уменьшить"><i class="icon-arrow_drop_down"></i></a>
 	              <input type="text" name="form[quantity][{cart_items.GOODS_MOD_ID}]" maxlength="4" value="{cart_items.ORDER_LINE_QUANTITY}" max="{cart_items.GOODS_MOD_REST_VALUE}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" class="cartqty" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-	              <a href="javascript:void(0)" class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></a>
+	              <a href="javascript:void(0)" class="qty__plus unselectable" title="Увеличить"><i class="icon-arrow_drop_up"></i></a>
 	            </div>
 	          </div>
           </div>
