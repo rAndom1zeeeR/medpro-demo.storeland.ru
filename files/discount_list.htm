@@ -6,24 +6,29 @@
 	<div class="row">
 	  <div class="products__grid promotion__grid">
 	  {% FOR promotion_campaign %}
-	  <div class="promotion__item {% IFNOT promotion_campaign.IS_WORK %}empty{% ENDIF %}">
-	    <a class="promotion__inner" href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}">
-		    <div class="promotion__name">
-			    <span>{promotion_campaign.NAME}</span>
-		    </div>
-		    <div class="promotion__percentage">
-	        <span>- {promotion_campaign.PERCENTAGE}%</span>
-	      </div>
-		    <div class="promotion__date">
-		      {% IF promotion_campaign.IS_WORK %}
-	        <span>{promotion_campaign.BEGINNING_TIME | date('d.m.Y')}</span>
-	        <span> - </span>
-	        <span>{promotion_campaign.EXPIRED_TIME | date('d.m.Y')}</span>
-		      {% ELSE %}
-			    <span>Акция закончилась</span>
-		      {% ENDIF %}
-		    </div>
-	    </a>
+	  <div class="promotion__item product__item {% IFNOT promotion_campaign.IS_WORK %}empty{% ENDIF %}">
+			<div class="product__form-{promotion_campaign.ID}">
+				<a class="promotion__inner" href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}">
+					<div class="promotion__icon">
+						<i class="icon-order"></i>
+					</div>
+					<div class="promotion__name">
+						<span>{promotion_campaign.NAME}</span>
+					</div>
+					<div class="promotion__percentage button small">
+						<span>- {promotion_campaign.PERCENTAGE}%</span>
+					</div>
+					<div class="promotion__date">
+						{% IF promotion_campaign.IS_WORK %}
+						<span>{promotion_campaign.BEGINNING_TIME | date('d.m.Y')}</span>
+						<span> - </span>
+						<span>{promotion_campaign.EXPIRED_TIME | date('d.m.Y')}</span>
+						{% ELSE %}
+						<span>Акция закончилась</span>
+						{% ENDIF %}
+					</div>
+				</a>
+			</div>
 	  </div>
 	  {% ENDFOR promotion_campaign %}
 	  </div>

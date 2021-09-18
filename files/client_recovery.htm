@@ -1,9 +1,9 @@
 <div class="row">
-	<div class="client">
+	<div class="client flex-start justify-between">
 	  <div class="client__block">
 	    <h3 class="client__title">Восстановление доступа</h3>
 	    <p>Забыли пароль? Ничего страшного. Сейчас мы его восстановим!<br> Для этого укажите свою почту, на которую будет отправлена ссылка для активации аккаунта, и новый пароль, с которым Вы будете заходить на сайт.</p>
-	    <form action="{USER_RECOVERY_URL}" method="post" class="form__client">
+	    <form action="{USER_RECOVERY_URL}" method="post" class="form__client flex">
 	      <input type="hidden" name="hash" value="{HASH}" />
 	      <input type="hidden" name="from" value="{FROM}" />
 	      <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->

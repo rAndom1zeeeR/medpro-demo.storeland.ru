@@ -2174,6 +2174,15 @@ $(document).ready(function(){
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
 {% ENDIF %}
 
+{% IF MOD_LNAME = compare %}
+<script type="text/javascript">	
+// Загрузка основных функций шаблона Сравнения
+$(document).ready(function(){
+	compare()
+});
+</script>
+{% ENDIF %}
+
 <!-- Слайдер. Карусель -->
 <link rel="preload" type="text/css" href="{ASSETS_STYLES_PATH}owl.carousel.min.css?design=THEMENAME" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>

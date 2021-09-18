@@ -1,4 +1,4 @@
-<div class="pageCompare">
+<div class="page-compare">
 {% IF compare_list_empty %}
   <div class="attention">Ваш список сравнения пуст. Вы можете добавлять сюда товары из <a href="{CATALOG_URL}">каталога</a> и сравнивать их между собой.</div>
   <div class="buttons">
@@ -65,12 +65,12 @@
         {% FOR goods_mod_info %}
           <div class="compare-td compare-td-{goods_mod_info.index} bold">
             <div class="product__price {CURRENCY_CHAR_CODE} goodsToCartFromCompareForm{goods_mod_info.GOODS_MOD_ID}">
-	            <span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{goods_mod_info.PRICE_NOW}">{goods_mod_info.PRICE_NOW | money_format}</span>
 	            {% IF goods_mod_info.PRICE_NOW_WITHOUT_DISCOUNT>goods_mod_info.PRICE_NOW %}
                 <span class="price__old {CURRENCY_CHAR_CODE}">{goods_mod_info.PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
               {% ELSEIF goods_mod_info.PRICE_OLD>goods_mod_info.PRICE_NOW %}
                 <span class="price__old {CURRENCY_CHAR_CODE}">{goods_mod_info.PRICE_OLD | money_format}</span>
               {% ENDIF %}
+                <span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{goods_mod_info.PRICE_NOW}">{goods_mod_info.PRICE_NOW | money_format}</span>
             </div>
           </div>
         {% ENDFOR %}
@@ -139,7 +139,7 @@
           <div class="content owl-carousel">
           {% FOR values %}
             <div class="compare-td compare-td-{goods_attr_list.values.index}">
-              <span>{% IF goods_attr_list.values.VALUE %}{goods_attr_list.values.VALUE}{% ELSE %}<i class="icon-arrow_drop_down"></i>{% ENDIF %}</span>
+              <span>{% IF goods_attr_list.values.VALUE %}{goods_attr_list.values.VALUE}{% ELSE %}<i class="icon-close"></i>{% ENDIF %}</span>
             </div>
           {% ENDFOR %}
           </div>

@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="client">
-	  <form action="{USER_SETTINGS_URL}" method="post" class="form__client">
+	  <form action="{USER_SETTINGS_URL}" method="post" class="form__client flex-start justify-between">
 	    <input type="hidden" name="hash" value="{HASH}" />
 	    <input type="hidden" name="from" value="{FROM}" />
 	    <!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 	    {ANTISPAM_CODE}
-	    <div class="client__blocks">
+	    <div class="client__blocks flex-start justify-between">
 	      <div class="client__block">
 	        <h3 class="client__title">Персональные данные</h3>
 	        <div class="form__list">
@@ -67,7 +67,7 @@
 	        </div>
 	      </div>
 	    </div>
-	    <div class="client__blocks">
+	    <div class="client__blocks flex-start justify-between">
 	      <div class="client__block">
 	        <h3 class="client__title">Юридическая информация</h3>
 	        <div class="form__list">

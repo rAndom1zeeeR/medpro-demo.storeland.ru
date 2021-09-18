@@ -5,7 +5,7 @@
   <div class="news__list">
 	  {% FOR news_list %}
 	  <div class="news__item">
-	    <h4 class="news__title"><a href="{news_list.URL}" title="Перейти к странице новости">{news_list.TITLE}</a></h4>
+	    <h4><a class="news__title" href="{news_list.URL}" title="Перейти к странице новости"><span>{news_list.TITLE}</span></a></h4>
 	    <div class="news__text">{news_list.TEXT_SHORT}</div>
 	    {% IF news_list.SHOW_TIME %}<div class="news__date">{news_list.TIME | date("d M Y")}</div>{% ENDIF %}
 	  </div>

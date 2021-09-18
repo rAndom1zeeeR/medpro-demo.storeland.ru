@@ -2,26 +2,17 @@
 {% IF FORM_NOTICE %}
 <div class="message {% IF FORM_NOTICE_IS_GOOD %}success{% ELSE %}warning{% ENDIF %}">{FORM_NOTICE | nl2br}</div>{% ENDIF %}
 <!-- Информация об акции -->
-<div class="promotion__container">
-	
-	<div class="promotion__icon">
-		<i class="icon-hot"></i>
-	</div>
-	
+<div class="promotion__container">	
 	<div class="promotion__content">
-		<div class="promotion__title">&laquo;{PROMOTIONAL_CAMPAIGN_NAME}&raquo;</div>
-		
-		<div class="promotion__block">
-			<div class="promotion__block-subtitle">
-				<div class="promotion__subtitle">Скидка на все товары акции</div>
-				<div class="promotion__date">
-					<span>{PROMOTIONAL_CAMPAIGN_BEGINNING_TIME | date('d.m.Y')}</span>
-					<span> - </span>
-					<span>{PROMOTIONAL_CAMPAIGN_EXPIRED_TIME | date('d.m.Y')}</span>
-				</div>
-			</div>
-			
-			<div class="promotion__percentage">- {PROMOTIONAL_CAMPAIGN_DISCOUNT_PERCENTAGE}%</div>
+		<span>Скидки</span>
+		<strong class="promotion__percentage">- {PROMOTIONAL_CAMPAIGN_DISCOUNT_PERCENTAGE}%</strong> 
+		<span>на все товары акции</span>
+		<strong class="promotion__name">&laquo;{PROMOTIONAL_CAMPAIGN_NAME}&raquo;</strong>
+		<div class="promotion__date">
+			<span>Общий срок проведения Акции: </span>
+			<strong>{PROMOTIONAL_CAMPAIGN_BEGINNING_TIME | date('d.m.Y')}</strong>
+			<span> - </span>
+			<strong>{PROMOTIONAL_CAMPAIGN_EXPIRED_TIME | date('d.m.Y')}</strong>
 		</div>
 	</div>
 	
