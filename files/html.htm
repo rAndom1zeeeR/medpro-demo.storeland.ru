@@ -430,11 +430,12 @@
 				<div id="pdt__sale" data-content="pdt__sale" class="active">
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_goods %}
-						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{index_page_goods.ID}" itemscope itemtype="https://schema.org/Product">
 							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_goods.MIN_PRICE_NOW_ID} goodsListForm">
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_goods.MIN_PRICE_NOW_ID}" />
+								<input type="hidden" name="form[goods_id][{index_page_goods.ID}]" value="{index_page_goods.ID}" />
 								<link itemprop="image" href="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 								<!-- Изображение товара -->
 								<div class="product__image">
@@ -633,11 +634,12 @@
 				<div id="pdt__new" data-content="pdt__new" {% IF index_page_goods_empty %}class="active"{% ENDIF %}>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_new_goods %}
-						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{index_page_new_goods.ID}" itemscope itemtype="https://schema.org/Product">
 							<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_new_goods.MIN_PRICE_NOW_ID} goodsListForm">
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_new_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_new_goods.MIN_PRICE_NOW_ID}" />
+								<input type="hidden" name="form[goods_id][{index_page_new_goods.ID}]" value="{index_page_new_goods.ID}" />
 								<link itemprop="image" href="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 								<!-- Изображение товара -->
 								<div class="product__image">
@@ -841,6 +843,7 @@
 								<input type="hidden" name="hash" value="{HASH}" />
 								<input type="hidden" name="form[goods_from]" value="{index_page_favorites_goods.GOODS_FROM}" />
 								<input type="hidden" name="form[goods_mod_id]" value="{index_page_favorites_goods.MIN_PRICE_NOW_ID}" />
+								<input type="hidden" name="form[goods_id][{index_page_favorites_goods.ID}]" value="{index_page_favorites_goods.ID}" />
 								<link itemprop="image" href="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 								<!-- Изображение товара -->
 								<div class="product__image">
@@ -1126,11 +1129,12 @@
 				</div>
 				<div class="products__grid owl-carousel">
 					{% FOR index_page_sale_goods %}
-					<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_sale_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+					<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_sale_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_sale_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{index_page_sale_goods.ID}" itemscope itemtype="https://schema.org/Product">
 						<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{index_page_sale_goods.MIN_PRICE_NOW_ID} goodsListForm">
 							<input type="hidden" name="hash" value="{HASH}" />
 							<input type="hidden" name="form[goods_from]" value="{index_page_sale_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{index_page_sale_goods.MIN_PRICE_NOW_ID}" />
+							<input type="hidden" name="form[goods_id][{index_page_sale_goods.ID}]" value="{index_page_sale_goods.ID}" />
 							<link itemprop="image" href="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">

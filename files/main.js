@@ -437,7 +437,7 @@ function removeFromCart(e){
         $('.cart__word').html($(d).find('.cart__word').html());
         var flag = 0;
         if(newCount != 0){
-          $('.addto__cart .addto__item').each(function(){
+          $('.cart .addto__item').each(function(){
             if(flag == 0){
               if($(this).css('display') == 'none'){
                 $(this).css('display', 'flex');
@@ -448,7 +448,7 @@ function removeFromCart(e){
         }else{
           $('.cart').removeClass("hasItems");
           $('.cart__count').attr('data-count', '0').text("0");
-          $('.addto__cart .addto__item').remove();
+          $('.cart .addto__item').remove();
         }
       }
     });
@@ -459,7 +459,7 @@ function removeFromCartAll(e){
   event.preventDefault();
   if(confirm('Вы точно хотите очистить корзину?')){
     // Предзагрузчик анимации
-    $('.addto__cart').prepend('<div class="preloader small"><div class="loading"></div></div>');
+    $('.cart').prepend('<div class="preloader small"><div class="loading"></div></div>');
     e.parent().fadeOut().remove();
     var href = e.attr('href');
     $.ajax({
@@ -469,8 +469,8 @@ function removeFromCartAll(e){
         $('.totalSum').html($(d).find('.totalSum').html());
         $('.cart').removeClass("hasItems");
         $('.cart__count').attr('data-count', '0').text("0");
-        $('.addto__cart .addto__item').remove();
-        $('.addto__cart .preloader').hide();
+        $('.cart .addto__item').remove();
+        $('.cart .preloader').hide();
       }
     });
   }
@@ -1248,10 +1248,10 @@ function addCart() {
 		// Быстрый заказ
 		if ($(this).attr('rel') === 'quick') {
 			quickOrder(this);
-			$('.cart, .addto__cart').addClass("hasItems");
+			$('.cart').addClass("hasItems");
 			return (false);
 		}
-		$('.cart, .addto__cart').addClass("hasItems");
+		$('.cart').addClass("hasItems");
 		$('.cart__count').animate({opacity: 0,display: "none"},500);
 		$('.cart__count').animate({display: "inline",opacity: 1},500);
 		// Находим форму, которую отправляем на сервер, для добавления товара в корзину
@@ -1266,8 +1266,7 @@ function addCart() {
 		var formData = formBlock.serializeArray();
 		console.log('formData', formData)
 		var t = $(this);
-		console.log('t', t)
-		var id = t.find('input[name="form[goods_mod_id]"]').val()
+		var id = t.find('input[name="form[goods_id]"]').val()
 		console.log('id', id)
 		// Сообщаем серверу, что мы пришли через ajax запрос
 		formData.push({name: 'ajax_q', value: 1});
@@ -1340,6 +1339,9 @@ function addCart() {
 					}
 					// Добавляем активный класс если товар успешно добавился в корзину
 					t.addClass("inCart");
+					$('.product__item').each(function(){
+						$(this).data(id).parent().addClass("inCart");
+					});
 				}
 				// Скрытое обновление корзины
 				$('.hiddenUpdate').html(data);

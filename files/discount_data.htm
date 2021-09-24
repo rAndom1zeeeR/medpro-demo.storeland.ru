@@ -92,11 +92,12 @@
 			{% IF GOODS_VIEW_TYPE=1 %}
 			<div class="products__grid">
 				{% FOR goods %}
-				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{goods.ID}" itemscope itemtype="https://schema.org/Product">
 					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
+						<input type="hidden" name="form[goods_id][{goods.ID}]" value="{goods.ID}" />
 						<link itemprop="image" href="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<!-- Изображение товара -->
 						<div class="product__image">
@@ -292,11 +293,12 @@
 			<!-- Вывод товаров СПИСКОМ -->
 			<div class="products__list">
 				{% FOR goods %}
-				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+				<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{goods.ID}" itemscope itemtype="https://schema.org/Product">
 					<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{goods.MIN_PRICE_NOW_ID} goodsListForm">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
+						<input type="hidden" name="form[goods_id][{goods.ID}]" value="{goods.ID}" />
 						<link itemprop="image" href="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<!-- Изображение товара -->
 						<div class="product__image flex">

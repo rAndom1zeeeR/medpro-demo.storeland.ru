@@ -92,6 +92,7 @@
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
+						<input type="hidden" name="form[goods_id]" value="{goods.ID}" />
 						<link itemprop="image" href="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<!-- Изображение товара -->
 						<div class="product__image">
@@ -292,6 +293,7 @@
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 						<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
+						<input type="hidden" name="form[goods_id]" value="{goods.ID}" />
 						<link itemprop="image" href="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" />
 						<!-- Изображение товара -->
 						<div class="product__image flex">

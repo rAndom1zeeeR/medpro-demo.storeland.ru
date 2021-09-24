@@ -467,9 +467,9 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .page-cart .cart {display: none;}
 header .cart {width: 10rem;}
 .cart__block {border-radius: 2rem;padding: 1rem;transition: all 0.3s ease;}
-.cart__block-icon {margin-right: .75rem;font-size: 1.125rem;line-height: 0;}
-.cart__block-empty {display: none;}
-.empty .cart__block-empty {display: block;}
+.cart__block-icon {font-size: 1.125rem;line-height: 0;}
+.cart__block-content {margin-left: .75rem;}
+.hasItems .cart__block-empty {display: none;}
 /* Шапка. Корзина. Адаптивность */
 @media (max-width: 639.98px) {
 	header .cart {width: 9rem;}
@@ -747,7 +747,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Товары на главной ***/
 /**************************************/
-#pdt [data-content] {display: none;}
+#pdt [data-content] {display: none;position: relative;overflow: hidden;}
 #pdt [data-content].active {display: block;}
 
 /*** Навигация на главной ***/

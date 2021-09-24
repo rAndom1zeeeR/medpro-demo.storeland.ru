@@ -6,7 +6,7 @@
 	<div class="row">
 	  <div class="products__grid promotion__grid">
 	  {% FOR promotion_campaign %}
-	  <div class="promotion__item product__item {% IFNOT promotion_campaign.IS_WORK %}empty{% ENDIF %}">
+	  <div class="promotion__item product__item {% IFNOT promotion_campaign.IS_WORK %}empty{% ENDIF %}" data-id="{promotion_campaign.ID}">
 			<div class="product__form-{promotion_campaign.ID}">
 				<a class="promotion__inner" href="{promotion_campaign.URL | url_amp}" title="{promotion_campaign.NAME}">
 					<div class="promotion__icon">
