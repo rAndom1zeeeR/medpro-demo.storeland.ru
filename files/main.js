@@ -1267,7 +1267,6 @@ function addCart() {
 		console.log('formData', formData)
 		var t = $(this);
 		var id = t.find('input[name="form[goods_id]"]').val()
-		console.log('id', id)
 		// Сообщаем серверу, что мы пришли через ajax запрос
 		formData.push({name: 'ajax_q', value: 1});
 		// Так же сообщим ему, что нужно сразу отобразить форму быстрого заказа

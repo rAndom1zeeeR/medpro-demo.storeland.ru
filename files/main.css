@@ -718,7 +718,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Новости ***/
 /**************************************/
-#news [data-content] {display: none;height: 26.875rem;overflow: hidden;position: relative;}
+#news [data-content] {display: none;height: 26.875rem;position: relative;}
 #news [data-content].active {display: block;}
 #news .news__item {text-align: center;}
 #news .news__image {height: 16.25rem;}
@@ -747,7 +747,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Товары на главной ***/
 /**************************************/
-#pdt [data-content] {display: none;position: relative;overflow: hidden;}
+#pdt [data-content] {display: none;position: relative;}
 #pdt [data-content].active {display: block;}
 
 /*** Навигация на главной ***/
