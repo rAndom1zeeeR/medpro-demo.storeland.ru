@@ -291,9 +291,20 @@
 					<!-- Количество -->
 					<div class="productView__qty">
 						<div class="qty flex">
-							<a href="javascript:void(0)" class="qty__minus unselectable" title="Уменьшить"><i class="icon-arrow_drop_down"></i></a>
-							<input type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" max="{GOODS_MOD_REST_VALUE}" title="Количество" class="quantity" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-							<a href="javascript:void(0)" class="qty__plus unselectable" title="Увеличить"><i class="icon-arrow_drop_up"></i></a>
+							<a href="javascript:void(0)" class="qty__minus flex-center unselectable" title="Уменьшить"><i class="icon-arrow_caret_left"></i></a>
+							<input class="quantity"
+								type="text"
+								name="form[goods_mod_quantity]"
+								maxlength="4"
+								value="1"
+								min="1"
+								{% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{GOODS_MOD_REST_VALUE}"{% ENDIF %}
+								title="Количество"
+								onkeypress="return keyPress(this, event);"
+								onpaste="return false;"
+								autocomplete="off" 
+							/>
+							<a href="javascript:void(0)" class="qty__plus flex-center unselectable" title="Увеличить"><i class="icon-arrow_caret_right"></i></a>
 						</div>
 					</div>
 
@@ -378,7 +389,7 @@
 						{% FOR goods_delivery %}
 						<div class="delivery__item">
 							<div class="delivery__icon">
-								<i class="icon-goods"></i>
+								<i class="icon-box"></i>
 							</div>
 							<div class="delivery__name">
 								<span class="delivery__index">{goods_delivery.index}</span><span>{goods_delivery.NAME}</span></div>

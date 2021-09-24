@@ -23,24 +23,24 @@
 .noty_modal.noty_modal_open {opacity: 0;-webkit-animation: noty_modal_in .3s ease-out;animation: noty_modal_in .3s ease-out;}
 .noty_modal.noty_modal_close {-webkit-animation: noty_modal_out .3s ease-out;animation: noty_modal_out .3s ease-out;-webkit-animation-fill-mode: forwards;animation-fill-mode: forwards;}
 /*sourceMappingURL=noty.css.map*/
-.noty_bar {border-radius: 3rem;margin: 0 0 4px 0;overflow: hidden;position: relative;box-shadow: none;}
+.noty_bar {margin: 0 0 4px 0;overflow: hidden;position: relative;box-shadow: none;}
 .noty_has_progressbar .noty_progressbar {display: block;position: absolute;left: 0;bottom: 0;height: .375rem;width: 100%;background-color: #000;opacity: 0.2;filter: alpha(opacity=20);}
 .noty_bar .noty_body {padding: 0;font-size: 14px;}
-.noty_type__success i {background-color: #6aa344;color: #fff;}
-.noty_type__warning i {background-color: #db5c77;color: #fff;}
 .noty_type__info, .noty_theme__metroui.noty_type__information {background-color: #03A9F4;color: #FFF;}
 .noty_type__alert, .noty_theme__metroui.noty_type__notification {background-color: #fff;color: #1d1d1d;}
 .noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: #C8E6C9;}
 .noty_type__warning a, .noty_type__warning a:visited, .noty_type__warning a:focus, .noty_type__warning a:hover {color: #FFCCBC;}
 /*** Страница: Ajax добавление товара в корзину ***/
 .noty_layout {border-radius: 3rem;}
-.noty__addto {background: #ffffff;display: flex;align-items: center;flex-wrap: wrap;}
-.noty__addto i {width: 6rem;height: 6rem;font-size: 3rem;border-radius: 100%;display: flex;align-items: center;justify-content: center;}
+.noty__addto {color: #ffffff;display: flex;align-items: center;flex-wrap: wrap;}
+.noty_type__success .noty__addto {background-color: #00acc5;}
+.noty_type__warning .noty__addto {background-color: #f44d69;}
+.noty__addto i {width: 6rem;height: 6rem;font-size: 3rem;display: flex;align-items: center;justify-content: center;}
 .noty__addto a {font-weight: bold;}
 .noty__message {width: calc(100% - 6rem);padding: 1rem;}
 .noty_type__success a, .noty_type__success a:visited, .noty_type__success a:focus, .noty_type__success a:hover {color: inherit;}
-.noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #6aa344;opacity: 1;}
-.noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #df5642;opacity: 1;}
+.noty_type__success.noty_has_progressbar .noty_progressbar {background-color: #0194aa;opacity: 1;}
+.noty_type__warning.noty_has_progressbar .noty_progressbar {background-color: #8d2b3b;opacity: 1;}
 
 .animated {
 -webkit-animation-duration: 1s;
