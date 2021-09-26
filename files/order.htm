@@ -42,9 +42,9 @@
           </div>
         </div>
         <div class="text-italic">Зарегистрируйтесь для дальнейшего удобства</div>
-        <div class="form__fields form__wantRegister flex">
-          <input type="checkbox" class="square" id="form__wantRegister" name="form[contact][want_register]" value="1" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}checked="checked"{% ENDIF %}>
-          <label for="form__wantRegister"><span>Я хочу зарегистрироваться</span></label>
+        <div class="form__fields form__register flex">
+          <input type="checkbox" class="square" id="form__registration" name="form[contact][want_register]" value="1" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}checked="checked"{% ENDIF %}>
+          <label for="form__registration"><span>Я хочу зарегистрироваться</span></label>
         </div>
       </div>
       {% ENDIF %}
@@ -62,7 +62,7 @@
           <input id="sites_client_email" type="email" name="form[contact][email]" value="{ORDER_FORM_CONTACT_EMAIL}" maxlength="255" class="form__input" type="text" placeholder="email@email.ru" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}/>
         </div>
         {% IFNOT CLIENT_IS_LOGIN %}
-        <div class="form__fields form__WantRegisterPass" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display: none;"{% ENDIF %}>
+        <div class="form__fields form__pass" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display: none;"{% ENDIF %}>
           <label for="sites_client_pass">Придумайте пароль</label>
           <input id="sites_client_pass" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="form__input {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Придумайте пароль *"/>
           <div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>

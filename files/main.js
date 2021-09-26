@@ -74,7 +74,7 @@ function preload() {
   var spinner = preloader.find('.loading');
   spinner.fadeOut();
   preloader.delay(1000).fadeOut('slow');
-	console.log('preloaded')
+	//console.log('preloaded')
 }
 
 // Наверх
@@ -205,7 +205,7 @@ function validEmail(id){
 ///////////////////////////////////////
 function ajaxForms(id,flag,successMessage,errorMessage){
   var flag = false;
-  console.log('ajaxForms id - ', id)
+  //console.log('ajaxForms loaded ', id)
   var form = $(id).find('.form__callback');
   form.on('submit',function(event){
     event.preventDefault();
@@ -270,7 +270,6 @@ function ajaxForms(id,flag,successMessage,errorMessage){
 
   // Валидация при клике
   form.on('click',function(event){
-    console.log('click - ', id)
     validName(form);
     validPhone(form);
     validEmail(form);
@@ -303,7 +302,7 @@ function removeFromFavorites(e){
     e.parent().parent().parent().fadeOut().remove();
     var href = e.attr('href');
     var oldCount = $('.favorites__count').attr('data-count');
-    var goodsModId = e.attr('data-goods-mod-id');
+    var goodsModId = e.attr('data-id');
     $.ajax({
       cache : false,
       url		: href,
@@ -321,7 +320,7 @@ function removeFromFavorites(e){
             }
           });
         }else{
-          $('.favorites').removeClass("hasItems");
+          $('.favorites').removeClass("has-items");
           $('.favorites__count').attr('data-count', '0').text('0');
         }
         var obj = $('.add-favorites[data-mod-id="' + goodsModId + '"]');
@@ -348,7 +347,7 @@ function removeFromFavoritesAll(e){
       cache  : false,
       url		 : href,
       success: function(d){
-        $('.favorites').removeClass("hasItems");
+        $('.favorites').removeClass("has-items");
         $('.favorites__count').attr('data-count', '0').text("0");
         $('.addto__favorites .addto__item').remove();
         $('.addto__favorites .preloader').hide();
@@ -365,7 +364,7 @@ function removeFromCompare(e){
     e.parent().parent().parent().fadeOut().remove();
     var href = e.attr('href');
     var oldCount = $('.compare__count').attr('data-count');
-    var goodsModId = e.attr('data-goods-mod-id');
+    var goodsModId = e.attr('data-id');
     $.ajax({
       cache : false,
       url		: href,
@@ -383,7 +382,7 @@ function removeFromCompare(e){
             }
           });
         }else{
-          $('.compare').removeClass("hasItems");
+          $('.compare').removeClass("has-items");
           $('.compare__count').attr('data-count', '0').text('0');
         }
         var obj = $('.add-compare[data-mod-id="' + goodsModId + '"]');
@@ -409,7 +408,7 @@ function removeFromCompareAll(e){
       cache  : false,
       url		 : href,
       success: function(d){
-        $('.compare').removeClass("hasItems");
+        $('.compare').removeClass("has-items");
         $('.compare__count').attr('data-count', '0').text("0");
         $('.addto__compare .addto__item').remove();
         $('.addto__compare .preloader').hide();
@@ -446,7 +445,7 @@ function removeFromCart(e){
             }
           })
         }else{
-          $('.cart').removeClass("hasItems");
+          $('.cart').removeClass("has-items");
           $('.cart__count').attr('data-count', '0').text("0");
           $('.cart .addto__item').remove();
         }
@@ -467,7 +466,7 @@ function removeFromCartAll(e){
       url		 : href,
       success: function(d){
         $('.totalSum').html($(d).find('.totalSum').html());
-        $('.cart').removeClass("hasItems");
+        $('.cart').removeClass("has-items");
         $('.cart__count').attr('data-count', '0').text("0");
         $('.cart .addto__item').remove();
         $('.cart .preloader').hide();
@@ -619,7 +618,7 @@ function mainnav(id,rows){
 function quantity() {
   //Regulator Up копки + в карточке товара при добавлении в корзину
   $('.qty__plus').off('click').on('click', function(){
-		console.log('qty__plus')
+		//console.log('qty__plus')
     var quantity = $(this).parent().find('.quantity, .cartqty');
     var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
@@ -631,7 +630,7 @@ function quantity() {
   });
   //Regulator Down копки - в карточке товара при добавлении в корзину
   $('.qty__minus').off('click').on('click', function(){
-		console.log('qty__minus')
+		//console.log('qty__minus')
     var quantity = $(this).parent().find('.quantity, .cartqty');
     var currentVal = parseInt(quantity.val());
     if (!isNaN(currentVal)){
@@ -1248,10 +1247,10 @@ function addCart() {
 		// Быстрый заказ
 		if ($(this).attr('rel') === 'quick') {
 			quickOrder(this);
-			$('.cart').addClass("hasItems");
+			$('.cart').addClass("has-items");
 			return (false);
 		}
-		$('.cart').addClass("hasItems");
+		$('.cart').addClass("has-items");
 		$('.cart__count').animate({opacity: 0,display: "none"},500);
 		$('.cart__count').animate({display: "inline",opacity: 1},500);
 		// Находим форму, которую отправляем на сервер, для добавления товара в корзину
@@ -1264,7 +1263,6 @@ function addCart() {
 		}
 		// Получаем данные формы, которые будем отправлять на сервер
 		var formData = formBlock.serializeArray();
-		console.log('formData', formData)
 		var t = $(this);
 		var id = t.find('input[name="form[goods_id]"]').val()
 		// Сообщаем серверу, что мы пришли через ajax запрос
@@ -1338,8 +1336,9 @@ function addCart() {
 					}
 					// Добавляем активный класс если товар успешно добавился в корзину
 					t.addClass("inCart");
-					$('.product__item').each(function(){
-						$(this).data(id).parent().addClass("inCart");
+					$('.product__item[data-id="' + id + '"]').each(function(){
+						$(this).addClass("inCart");
+						console.log('inCart added class', $(this))
 					});
 				}
 				// Скрытое обновление корзины
@@ -1407,17 +1406,21 @@ function addTo() {
 				success: function(data) {
 					if(flag == 0){
 						$('.addto__compare .addto__items').prepend('' +
-              '<div class="addto__item" data-id="'+ pDataid +'">' +
-              '<a href="'+ pUrl +'" title="'+ pName +'" class="addto__image"><img src="'+ pImg +'" class="goods-image-icon" /></a>' +
-              '<div class="addto__shop">' +
-              '<a href="'+ pUrl +'" class="addto__name" title="'+ pName +'"><span>'+ pName +'</span></a>' +
-              '<div class="addto__price  '+ pDataChar +'">' +
-              '<div class="price__now"><span title="'+ pDataPrice +' российских рублей"><span class="num">'+ pDataPrice +'</span> <span>р.</span></span></div>' +
-              '<a href="'+ delUrl +'?id='+ pDataMod +'" data-goods-mod-id="'+ pDataMod +'" class="addto__remove remove" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))"><span>Удалить</span></a>' +
+              '<div class="addto__item flex" data-id="'+ pDataid +'">' +
+								'<a href="'+ pUrl +'" title="'+ pName +'" class="addto__image flex-center"><img src="'+ pImg +'" class="goods-image-icon" /></a>' +
+								'<div class="addto__content flex">' +
+									'<div class="addto__info">' +
+										'<a href="'+ pUrl +'" class="addto__name" title="'+ pName +'"><span>'+ pName +'</span></a>' +
+										'<div class="addto__price  '+ pDataChar +'">' +
+											'<div class="price__now"><span title="'+ pDataPrice +' российских рублей"><span class="num">'+ pDataPrice +'</span> <span>р.</span></span></div>' +
+										'</div>' +
+									'</div>' +
+									'<div class="addto__actions flex">' +
+              			'<a href="'+ delUrl +'?id='+ pDataMod +'" data-id="'+ pDataMod +'" class="addto__remove remove flex-center" title="Убрать товар из списка сравнения" onclick="removeFromCompare($(this))"><i class="icon-close"></i></a>' +
+              		'</div>' +
+              	'</div>' +
               '</div>' +
-              '</div>' +
-              '</div>' +
-              '');
+						'');
 					}
 					if('ok' == data.status) {
 						if(isAdd == 1) {
@@ -1455,9 +1458,9 @@ function addTo() {
 								sidecount.text(data.compare_goods_count);
 								$('.compare__count').attr('data-count', data.compare_goods_count);
 								if(data.compare_goods_count > 0){
-									$('.compare').addClass("hasItems");
+									$('.compare').addClass("has-items");
 								}else{
-									$('.compare').removeClass("hasItems");
+									$('.compare').removeClass("has-items");
 									$('.compare__count').attr('data-count', '0').text("0");
 									$('.add-compare').removeAttr("title").removeClass("added");
 								}
@@ -1589,16 +1592,21 @@ function addTo() {
 				success: function(data) {
 					if(flag == 0){
 						$('.addto__favorites .addto__items').prepend('' +
-								'<div class="addto__item" data-id="'+ pDataid +'">' +
-								'<a href="'+ pUrl +'" title="'+ pName +'" class="addto__image"><img src="'+ pImg +'" class="goods-image-icon" /></a>' +
-								'<div class="addto__shop"><a href="'+ pUrl +'" class="addto__name" title="'+ pName +'"><span>'+ pName +'</span></a>' +
-								'<div class="addto__price '+ pDataChar +'">' +
-								'<div class="price__now"><span title="'+ pDataPrice +' российских рублей"><span class="num">'+ pDataPrice +'</span> <span>р.</span></span></div>' +
-								'<a href="'+ delUrl +'?id='+ pDataMod +'" data-goods-mod-id="'+ pDataMod +'" class="addto__remove remove" title="Убрать товар из списка избранного" onclick="removeFromFavorites($(this))"><span>Удалить</span></a>' +
-								'</div>' +
-								'</div>' +
-								'</div>' +
-								'');
+              '<div class="addto__item flex" data-id="'+ pDataid +'">' +
+								'<a href="'+ pUrl +'" title="'+ pName +'" class="addto__image flex-center"><img src="'+ pImg +'" class="goods-image-icon" /></a>' +
+								'<div class="addto__content flex">' +
+									'<div class="addto__info">' +
+										'<a href="'+ pUrl +'" class="addto__name" title="'+ pName +'"><span>'+ pName +'</span></a>' +
+										'<div class="addto__price  '+ pDataChar +'">' +
+											'<div class="price__now"><span title="'+ pDataPrice +' российских рублей"><span class="num">'+ pDataPrice +'</span> <span>р.</span></span></div>' +
+										'</div>' +
+									'</div>' +
+									'<div class="addto__actions flex">' +
+              			'<a href="'+ delUrl +'?id='+ pDataMod +'" data-id="'+ pDataMod +'" class="addto__remove remove flex-center" title="Убрать товар из списка сравнения" onclick="removeFromFavorites($(this))"><i class="icon-close"></i></a>' +
+              		'</div>' +
+              	'</div>' +
+              '</div>' +
+						'');
 					}
 					if('ok' == data.status) {
 						if(isAdd == 1) {
@@ -1636,9 +1644,9 @@ function addTo() {
 								sidecount.text(data.favorites_goods_count);
 								$('.favorites__count').attr('data-count', data.favorites_goods_count);
 								if(data.favorites_goods_count > 0){
-									$('.favorites').addClass("hasItems");
+									$('.favorites').addClass("has-items");
 								}else{
-									$('.favorites').removeClass("hasItems");
+									$('.favorites').removeClass("has-items");
 									$('.favorites__count').attr('data-count', '0').text("0");
 									$('.add-favorites').removeAttr("title").removeClass("added");
 								}
@@ -1805,16 +1813,16 @@ function orderScripts() {
 		minDate: new Date()
 	});
 	// При оформлении заказа дадим возможность зарегистрироваться пользователю
-	$('#form__wantRegister').click(function(){
+	$('#form__registration').click(function(){
 		if($(this).prop("checked")) {
-			$('.form__WantRegisterPass').show();
+			$('.form__pass').show();
 			$('#sites_client_email').addClass('required');
 			$('#sites_client_email').attr("required", true);
 			$(this).parent().addClass('active');
 			$(this).attr("checked", true);
 			$('.form__fields.email label').addClass('required');
 		} else {
-			$('.form__WantRegisterPass').hide();
+			$('.form__pass').hide();
 			$('#sites_client_email').removeClass('required');
 			$('#sites_client_email').attr("required", false);
 			$(this).parent().removeClass('active');
@@ -1862,9 +1870,6 @@ function orderScripts() {
 		// Обновление цены с учетом доставки
 		var cartSumTotalHide = $('.cartSumDiscount:eq(0) .num').text().toString().replace(/\s/g, '');
 		var newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
-		console.log('cartSumTotalHide', cartSumTotalHide)
-		console.log('priceBlock.text()', priceBlock.text())
-		console.log('newSum', newSum)
 		$('.cartSumTotal .num').text(addSpaces(newSum));
 		// Скрытие необязательных полей при выборе самовывоза
 		if($(this).data('name') == 'Самовывоз'){
@@ -1903,10 +1908,6 @@ function orderScripts() {
 		// Обновление цены с учетом доставки
 		var cartSumTotalHide = $('.cartSumTotalHide:eq(0) .num').text().toString().replace(/\s/g, '');
 		var newSum = parseInt(cartSumTotalHide) + parseInt(priceBlock.text());
-		
-		console.log('cartSumTotalHide 2', cartSumTotalHide)
-		console.log('priceBlock.text() 2', priceBlock.text())
-		console.log('newSum 2', newSum)
 		$('.cartSumTotal .num').text(addSpaces(newSum));
 		$('.cartSumDelivery .num').text(addSpaces(price));
 	});
@@ -2190,8 +2191,6 @@ function priceFilter() {
 		if(priceInputMin.length) {
 			priceInputMin.css('width', (priceInputMin.val().length*8 + 32) + 'px');
 			priceInputMax.css('width', (priceInputMax.val().length*8 + 32) + 'px');
-			console.log('priceInputMin.val().length', priceInputMin.val().length)
-			console.log('priceInputMax.val().length', priceInputMax.val().length)
 		}
 	}
 
@@ -2947,7 +2946,7 @@ function startOrder(){
 			});
 			// Валидация формы на странице оформления заказа
 			$(".total__buttons button, #makeOrder").on('click', function(){
-				console.log('start')
+				//console.log('start order')
 				var form = $(".fastOrder__form");
 				form.validate({
 					errorPlacement: function(error, element) { }

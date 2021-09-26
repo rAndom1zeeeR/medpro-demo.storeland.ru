@@ -20,11 +20,11 @@
 	          <label for="sites_client_mail" class="required">Электронная почта <em>*</em></label>
 	          <input id="sites_client_mail" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_MAIL}]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input email" placeholder="Email" required />
 	        </div>
-	        <div class="form__fields">
+	        <div class="form__fields form__pass">
 	          <label for="sites_client_pass" class="required">Придумайте пароль <em>*</em></label>
 	          <input id="sites_client_pass" type="password" name="form[{ANTISPAM_FORM_FIELD_NAME_SITES_CLIENT_PASS}]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Придумайте пароль" required />
 	          {% IFNOT user_agent_ie %}
-	            <div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+						<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
 	          {% ENDIF %}
 	          <div id="capslock">
 	            <div><i class="icon-warning"></i></div>

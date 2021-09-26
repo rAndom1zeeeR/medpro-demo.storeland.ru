@@ -21,11 +21,11 @@
 	            <label for="sites_client_mail" class="required">Электронная почта <em>*</em></label>
 	            <input id="sites_client_mail" type="text" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" class="form__input email" placeholder="Электронная почта" required/>
 	          </div>
-	          <div class="form__fields">
+	          <div class="form__fields form__pass">
 	            <label for="sites_client_pass" class="required">Пароль <em>*</em></label>
 	            <input id="sites_client_pass" type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" class="form__input" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Пароль" required/>
 	            {% IFNOT user_agent_ie %}
-	              <div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+							<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
 	            {% ENDIF %}
 	            <div id="capslock">
 	              <div><i class="icon-warning"></i></div>

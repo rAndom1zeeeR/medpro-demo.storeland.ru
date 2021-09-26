@@ -35,11 +35,11 @@
 							</div>
 							<!-- Если в тарифном плане подключен раздел личного кабинета -->
 							{% IFNOT CLIENT_IS_LOGIN %}
-							<div class="form__fields form__wantRegister flex">
-								<input type="checkbox" class="square" id="form__wantRegister" name="form[contact][want_register]" value="1" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}checked="checked"{% ENDIF %}>
-								<label for="form__wantRegister"><span>Я хочу зарегистрироваться</span></label>
+							<div class="form__fields form__registration flex">
+								<input type="checkbox" class="square" id="form__registration" name="form[contact][want_register]" value="1" {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}checked="checked"{% ENDIF %}>
+								<label for="form__registration"><span>Я хочу зарегистрироваться</span></label>
 							</div>
-							<div class="form__fields form__WantRegisterPass flex" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display: none;"{% ENDIF %}>
+							<div class="form__fields form__pass" {% IFNOT ORDER_FORM_CONTACT_WANT_REGISTER %}style="display: none;"{% ENDIF %}>
 								<input id="sites_client_pass" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="form__input {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Придумайте пароль *"/>
 								<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
 								<div id="capslock">
@@ -349,64 +349,61 @@
   {CART_COUNT_TOTAL}
 </div>
 <div style="display:none;" id="newCartData">
-	<div class="modal__title block__title">
-		<a href="{CART_URL}" class="title">Корзина</a>
-	</div>
-	<div class="modal__content">
-		{% IFNOT cart_items_empty %}
-		<div class="addto__items">
-			{% FOR cart_items %}
-			<div class="addto__item" data-id="{cart_items.GOODS_ID}">
-				<a href="{cart_items.GOODS_URL}"
-				   title="{cart_items.GOODS_NAME}"
-				   class="addto__image"><img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}"
-				                             alt="{cart_items.GOODS_NAME}"
-				                             class="goods-image-icon" /></a>
-				<div class="addto__shop">
+	{% IFNOT cart_items_empty %}
+	<div class="addto__title">В корзине</div>
+	<div class="addto__items">
+		{% FOR cart_items %}
+		<div class="addto__item flex" data-id="{cart_items.GOODS_ID}">
+			<a class="addto__image flex-center" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+				<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}"/>
+			</a>
+			<div class="addto__content flex">
+				<div class="addto__info">
 					<!-- Название -->
-					<a href="{cart_items.GOODS_URL}"
-					   class="addto__name"
-					   title="{cart_items.GOODS_NAME}"><span>{cart_items.GOODS_NAME}</span></a>
+					<a class="addto__name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+						<span>{cart_items.GOODS_NAME}</span>
+					</a>
 					{% IFNOT cart_items.distinctive_properties_empty %}
 					<div class="addto__mod">({% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %}, {% ENDIF %}{% ENDFOR %})</div>
 					{% ENDIF %}
 					<!-- Цена -->
 					<div class="addto__price {CURRENCY_CHAR_CODE}">
-						<span class="price__qty">{cart_items.ORDER_LINE_QUANTITY} x </span>
 						<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">
-										{cart_items.GOODS_MOD_PRICE_NOW | money_format}
-									</span>
-						<!-- Удаление -->
-						<a class="addto__remove remove"
-						   href="{cart_items.ORDER_LINE_DELETE_URL}"
-						   data-qty="{cart_items.ORDER_LINE_QUANTITY}"
-						   title="Удалить позицию"
-						   data-id="{cart_items.GOODS_ID}"
-						   onclick="removeFromCart($(this))"><span>Удалить</span></a>
+							{cart_items.GOODS_MOD_PRICE_NOW | money_format}
+						</span>
 					</div>
 				</div>
+				<div class="addto__actions flex">
+					<span class="addto__qty flex-center">{cart_items.ORDER_LINE_QUANTITY}</span>
+					<!-- Удаление -->
+					<a class="addto__remove remove flex-center"
+						href="{cart_items.ORDER_LINE_DELETE_URL}"
+						data-qty="{cart_items.ORDER_LINE_QUANTITY}"
+						title="Удалить позицию"
+						data-id="{cart_items.GOODS_ID}"
+						onclick="removeFromCart($(this))">
+						<i class="icon-close"></i>
+					</a>
+				</div>
 			</div>
-			{% ENDFOR %}
 		</div>
-		<div class="addto__total {CURRENCY_CHAR_CODE}">
-						<span class="cartCountTotal">
-							<span class="cart__count">{CART_COUNT_TOTAL}</span>
-							<span class="cart__word">товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")}</span>
-						</span>
-			<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
-		</div>
-		{% ENDIF %}
-		<div class="addto__empty">
-			<div class="addto__title">В корзине пока ничего нет</div>
-			<a href="{CATALOG_URL}" class="button addto__close" title="Продолжить покупки">Каталог</a>
-		</div>
-		<div class="addto__buttons">
-			<a href="{CART_TRUNCATE_URL}"
-			   onclick="removeFromCartAll($(this))"
-			   class="button button4 removeAll"
-			   title="Очистить корзину"><span>Очистить</span></a>
-			<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
-		</div>
+		{% ENDFOR %}
+	</div>
+	<div class="addto__total {CURRENCY_CHAR_CODE}">
+		<span class="cartCountTotal">
+			<span class="cart__count">{CART_COUNT_TOTAL}</span>
+			<span class="cart__word">товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")}</span>
+		</span>
+		<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
+	</div>
+	{% ENDIF %}
+	<div class="addto__empty">В корзине пока ничего нет</div>
+	<div class="addto__buttons flex justify-between">
+		<a href="{CART_TRUNCATE_URL}"
+			onclick="removeFromCartAll($(this))"
+			class="button button4 removeAll"
+			title="Очистить корзину"><span>Очистить</span></a>
+		<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
 	</div>
 </div>
 <!-- Обновление данных корзины -->

@@ -168,28 +168,142 @@
 						<div class="addto flex">
 							<!-- Войти -->
 							{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
-							<div class="addto__block login">
-								<a class="addto__label login__icon" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login" data-fancybox data-src="#fancybox__login">
+							<div class="addto__block login dropdown has-items">
+								<a class="addto__block-link login__icon dropdown__open" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login">
 									<i class="icon-user"></i>
 								</a>
+								<div class="addto__login dropdown__content" data-content="login">
+									<div class="addto__title">Личный кабинет</div>
+									{% IF CLIENT_IS_LOGIN %}
+									<!-- ЛК для авторизованных пользователей -->
+									<ul class="mainnav__links">
+										<li><a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a></li>
+										<li><a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a></li>
+										<li><a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a></li>
+										{% IF SETTINGS_COMPARE_DISABLE=0 %}<li><a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a></li>{% ENDIF %}
+										<li><a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a></li>
+									</ul>
+									{% ELSE %}
+									<!-- Форма входа и регистрации -->
+									<form action="{USER_LOGIN_URL}" method="post" class="form__client">
+										<input type="hidden" name="hash" value="{HASH}" />
+										<input type="hidden" name="from" value="{FROM}" />
+										<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+										{ANTISPAM_CODE}
+										<div class="form__text">
+											<p>Для входа в аккаунт введите свои данные</p>
+										</div>
+										<div class="form__list">
+											<div class="form__fields">
+												<input class="form__input sites_client_mail email" type="email" name="form[sites_client_mail]" value="{FORM_SITES_CLIENT_MAIL}" maxlength="255" placeholder="Email" required />
+											</div>
+											<div class="form__fields form__pass">
+												<input class="form__input sites_client_pass" type="password" name="form[sites_client_pass]" value="{FORM_SITES_CLIENT_PASS}" maxlength="50" minlength="6" placeholder="Пароль" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" required />
+												{% IFNOT user_agent_ie %}
+												<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
+												{% ENDIF %}
+												<div id="capslock">
+													<div><i class="icon-warning"></i></div>
+													<div><strong>Caps Lock включен.</strong></div>
+													<div>Пароль может быть введен неверно.</div>
+												</div>
+											</div>
+										</div>
+										<div class="addto__buttons flex justify-between">
+											<button type="submit" name="send" class="button" title="Войти">Войти</button>
+											<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
+										</div>
+									</form>
+									{% ENDIF %}
+								</div>
 							</div>
 							{% ENDIF %}
 
 							<!-- Избранное -->
-							<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-								<a class="addto__label favorites__icon" href="{FAVORITES_URL}" title="Избранное" data-open="favorites" data-fancybox data-src="#fancybox__favorites">
+							<div class="addto__block favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+								<a class="addto__block-link favorites__icon dropdown__open" href="{FAVORITES_URL}" title="Избранное" data-open="favorites">
 									<i class="icon-favorites"></i>
 									<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 								</a>
+								<div class="addto__favorites dropdown__content" data-content="favorites">
+									<div class="addto__title">В Избранном</div>
+									<div class="addto__items">
+										{% FOR favorites_goods %}
+										<div class="addto__item flex" data-id="{favorites_goods.ID}">
+											<a class="addto__image flex-center" href="{favorites_goods.URL}"title="{favorites_goods.NAME}">
+												<img class="goods-image-icon" src="{% IF favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{favorites_goods.IMAGE_ICON}{% ENDIF %}" alt="{favorites_goods.NAME}" />
+											</a>
+											<div class="addto__content flex">
+												<div class="addto__info">
+													<!-- Название -->
+													<a class="addto__name" href="{favorites_goods.URL}" title="{favorites_goods.NAME}">
+														<span>{favorites_goods.NAME}</span>
+													</a>
+													<!-- Цена -->
+													<div class="addto__price {CURRENCY_CHAR_CODE}">
+														<div class="price__now" data-price="{favorites_goods.MIN_PRICE_NOW}">{favorites_goods.MIN_PRICE_NOW | money_format}</div>
+													</div>
+												</div>
+												<div class="addto__actions flex">
+													<!-- Удаление -->
+													<a class="addto__remove remove flex-center" href="{FAVORITES_DELETE_URL}?id={favorites_goods.MIN_PRICE_NOW_ID}" onclick="removeFromFavorites($(this))" data-id="{favorites_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка избранного">
+														<i class="icon-close"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+										{% ENDFOR %}
+									</div>
+									<div class="addto__empty">Ваш список избранного пуст</div>
+									<div class="addto__buttons flex justify-between">
+										<a class="button button4 removeAll" href="{FAVORITES_RESET_URL}" onclick="removeFromFavoritesAll($(this))" title="Очистить список избранного"><span>Очистить</span></a>
+										<a href="{FAVORITES_URL}" class="button" title="Перейти к Избранное">В Избранное</a>
+									</div>
+								</div>
 							</div>
 
 							<!-- Сравнение -->
 							{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
-							<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}hasItems{% ENDIF %}">
-								<a class="addto__label compare__icon" href="{COMPARE_URL}" title="Сравнение" data-open="compare" data-fancybox data-src="#fancybox__compare">
+							<div class="addto__block compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+								<a class="addto__block-link compare__icon dropdown__open" href="{COMPARE_URL}" title="Сравнение" data-open="compare">
 									<i class="icon-compare"></i>
 									<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
 								</a>
+								<div class="addto__compare dropdown__content" data-content="compare">
+									<div class="addto__title">В Сравнении</div>
+									<div class="addto__items">
+										{% FOR compare_goods %}
+										<div class="addto__item flex" data-id="{compare_goods.ID}">
+											<a class="addto__image flex-center" href="{compare_goods.URL}"title="{compare_goods.NAME}">
+												<img class="goods-image-icon" src="{% IF compare_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{compare_goods.IMAGE_ICON}{% ENDIF %}" alt="{compare_goods.NAME}" />
+											</a>
+											<div class="addto__content flex">
+												<div class="addto__info">
+													<!-- Название -->
+													<a class="addto__name" href="{compare_goods.URL}" title="{compare_goods.NAME}">
+														<span>{compare_goods.NAME}</span>
+													</a>
+													<!-- Цена -->
+													<div class="addto__price {CURRENCY_CHAR_CODE}">
+														<div class="price__now" data-price="{compare_goods.MIN_PRICE_NOW}">{compare_goods.MIN_PRICE_NOW | money_format}</div>
+													</div>
+												</div>
+												<div class="addto__actions flex">
+													<!-- Удаление -->
+													<a class="addto__remove remove flex-center" href="{COMPARE_DELETE_URL}?id={compare_goods.MIN_PRICE_NOW_ID}" onclick="removeFromCompare($(this))" data-id="{compare_goods.MIN_PRICE_NOW_ID}" title="Убрать товар из списка сравнения">
+														<i class="icon-close"></i>
+													</a>
+												</div>
+											</div>
+										</div>
+										{% ENDFOR %}
+									</div>
+									<div class="addto__empty">Ваш список сравнения пуст</div>
+									<div class="addto__buttons flex justify-between">
+										<a class="button button4 removeAll" href="{COMPARE_RESET_URL}" onclick="removeFromCompareAll($(this))" title="Очистить список сравнения"><span>Очистить</span></a>
+										<a href="{COMPARE_URL}" class="button" title="Перейти к Сравнению">В Сравнение</a>
+									</div>
+								</div>
 							</div>
 							{% ENDIF %}
 						</div><!-- //END ЛК, Избр, Срав -->
@@ -238,8 +352,8 @@
 						</nav><!-- //END Меню -->
 
 						<!-- Корзина -->
-						<div class="cart {% IF CART_COUNT_TOTAL > 0 %}hasItems{% ENDIF %}">
-							<a class="cart__block button2 flex-center" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
+						<div class="cart dropdown {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}">
+							<a class="cart__block button2 flex-center dropdown__open" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
 								<div class="cart__block-icon">
 									<i class="icon-cart"></i>
 								</div>
@@ -248,6 +362,55 @@
 									<span class="cart__block-price cartSumNow {CURRENCY_CHAR_CODE}">{CART_SUM_NOW | money_format}</span>
 								</div>
 							</a>
+							<!-- Выпадаюзая Корзина -->
+							<div class="addto__cart dropdown__content" data-content="cart">
+								{% IFNOT cart_items_empty %}
+								<div class="addto__title">В корзине</div>
+								<div class="addto__items">
+									{% FOR cart_items %}
+									<div class="addto__item flex" data-id="{cart_items.GOODS_ID}">
+										<a class="addto__image flex-center" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+											<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" />
+										</a>
+										<div class="addto__content flex">
+											<div class="addto__info">
+												<!-- Название -->
+												<a class="addto__name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
+													<span>{cart_items.GOODS_NAME}</span>
+												</a>
+												{% IFNOT cart_items.distinctive_properties_empty %}
+												<div class="addto__mod">({% FOR distinctive_properties %}{cart_items.distinctive_properties.NAME}: {cart_items.distinctive_properties.VALUE}{% IFNOT cart_items.distinctive_properties.last %}, {% ENDIF %}{% ENDFOR %})</div>
+												{% ENDIF %}
+												<!-- Цена -->
+												<div class="addto__price {CURRENCY_CHAR_CODE}">
+													<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</span>
+												</div>
+											</div>
+											<div class="addto__actions flex">
+												<span class="addto__qty flex-center">{cart_items.ORDER_LINE_QUANTITY}</span>
+												<!-- Удаление -->
+												<a class="addto__remove remove flex-center" href="{cart_items.ORDER_LINE_DELETE_URL}" data-qty="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" data-id="{cart_items.GOODS_ID}" onclick="removeFromCart($(this))">
+													<i class="icon-close"></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									{% ENDFOR %}
+								</div>
+								<div class="addto__total {CURRENCY_CHAR_CODE}">
+									<span class="cartCountTotal">
+										<span class="cart__count">{CART_COUNT_TOTAL}</span>
+										<span class="cart__word">товар{CART_COUNT_TOTAL | gen_word_end("","а","ов")}</span>
+									</span>
+									<span class="price__now cartSumNow">{CART_SUM_NOW | money_format}</span>
+								</div>
+								{% ENDIF %}
+								<div class="addto__empty">В корзине пока ничего нет</div>
+								<div class="addto__buttons flex justify-between">
+									<a class="button button4 removeAll" href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" title="Очистить корзину"><span>Очистить</span></a>
+									<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
+								</div>
+							</div>
 						</div><!-- //END Корзина -->
 					</div>
 				</div>
