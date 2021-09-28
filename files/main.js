@@ -2472,6 +2472,7 @@ function initTabs() {
 	// Биндим изменение хэша - проверка какой таб нужно открыть.
 	$(window).bind('hashchange', function() { checkTabHash(); });
 }
+
 // Переключение табов
 function tabSwitch(nb) {
 	console.log('tabSwitch id - ', nb)
@@ -2482,7 +2483,7 @@ function tabSwitch(nb) {
 	tabs.find('[data-tab-content]').removeClass('active');
 	tab.addClass('active');
 	content.addClass('active');
-	document.location.hash = "#show_tab_" + nb;
+	document.location.hash = "#tab_" + nb;
 }
 
 // Проверяет хэш, переданый пользователем и открывает соответствующий раздел
@@ -2490,13 +2491,13 @@ function checkTabHash() {
 	// Определяем текущий хэш страницы
 	var hash = window.location.hash.substr(1);
 	if(hash == 'goodsDataOpinionAdd') {
-		hash = 'show_tab_4';
+		hash = 'tab_4';
 	}
-	if(!hash.length || hash.indexOf('show_tab_') == -1) {
+	if(!hash.length || hash.indexOf('tab_') == -1) {
 		return false;
 	}
 	// Открываем тот таб, который был указан в hash-е
-	tabSwitch(hash.replace("show_tab_", ''))
+	tabSwitch(hash.replace("tab_", ''))
 }
 
 // Изменение кол-ва в карточке
