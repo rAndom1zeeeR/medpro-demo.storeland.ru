@@ -335,34 +335,34 @@
 	<div class="productView__tabs">
 		<div class="tabs__nav flex">
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
-			<div class="tabs__tab" data-tab="1"><span>Описание</span></div>
+			<a href="javascript:tabSwitch(1);" class="tabs__tab active" data-tab="1"><span>Описание</span></a>
 			{% ENDIF %}
 			{% IFNOT goods_features_empty %}
-			<div class="tabs__tab" data-tab="2"><span>Характеристики</span></div>
+			<a href="javascript:tabSwitch(2);" class="tabs__tab {% IFNOT GOODS_DESCRIPTION_LARGE %}active{% ENDIF %}" data-tab="2"><span>Характеристики</span></a>
 			{% ENDIF %}
 			{% IFNOT goods_delivery_empty %}
-			<div class="tabs__tab" data-tab="3"><span>Доставка</span></div>
+			<a href="javascript:tabSwitch(3);" class="tabs__tab {% IFNOT GOODS_DESCRIPTION_LARGE && goods_features_empty %}active{% ENDIF %}" data-tab="3"><span>Доставка</span></a>
 			{% ENDIF %}
 			{% IF SETTINGS_OPINION_DISABLE=0 %}
-			<div class="tabs__tab" data-tab="4"><span>Отзывы ({GOODS_OPINION_RATING_CNT_ALL})</span></div>
+			<a href="javascript:tabSwitch(4);" class="tabs__tab {% IFNOT GOODS_DESCRIPTION_LARGE && goods_features_empty && goods_delivery_empty %}active{% ENDIF %}" data-tab="4"><span>Отзывы ({GOODS_OPINION_RATING_CNT_ALL})</span></a>
 			{% ENDIF %}
 		</div>
 		<div class="tabs__content">
 			<!-- Описание -->
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
-			<div class="productView__description active" data-tab="1">
+			<div class="productView__description active" data-tab-content="1">
 				<!-- Блок описания товара. Показываем его если есть описание товара -->
 				<div class="htmlDataBlock">
 					{% IF GOODS_DESCRIPTION_LARGE %}
-					<p>{GOODS_DESCRIPTION_LARGE}</p>
+					<p class="GOODS_DESCRIPTION_LARGE">{GOODS_DESCRIPTION_LARGE}</p>
 					{% ENDIF %}
 					<!-- Короткое SEO-описание -->
 					{% IF GOODS_SEO_DESCRIPTION_SHORT %}
-					<p>{GOODS_SEO_DESCRIPTION_SHORT}</p>
+					<p class="GOODS_SEO_DESCRIPTION_SHORT">{GOODS_SEO_DESCRIPTION_SHORT}</p>
 					{% ENDIF %}
 					<!-- Полное SEO-описание -->
 					{% IF GOODS_SEO_DESCRIPTION_LARGE %}
-					<p>{GOODS_SEO_DESCRIPTION_LARGE}</p>
+					<p class="GOODS_SEO_DESCRIPTION_LARGE">{GOODS_SEO_DESCRIPTION_LARGE}</p>
 					{% ENDIF %}
 				</div>
 			</div>
@@ -370,7 +370,7 @@
 
 			<!-- Характеристики -->
 			{% IFNOT goods_features_empty %}
-			<div class="productView__features {% IF GOODS_DESCRIPTION_LARGE=1 || GOODS_SEO_DESCRIPTION_SHORT=1 || GOODS_SEO_DESCRIPTION_LARGE=1 %}active{% ENDIF %}" data-tab="2">
+			<div class="productView__features {% IFNOT GOODS_DESCRIPTION_LARGE %}active{% ENDIF %}" data-tab-content="2">
 				<div class="features__items">
 					{% FOR goods_features %}
 					<div class="features__item flex">
@@ -384,7 +384,7 @@
 
 			<!-- Условия доставки -->
 			{% IFNOT goods_delivery_empty %}
-			<div class="productView__delivery {% IF GOODS_DESCRIPTION_LARGE=1 && goods_features_empty %}active{% ENDIF %}" data-tab="3">
+			<div class="productView__delivery {% IFNOT GOODS_DESCRIPTION_LARGE && goods_features_empty %}active{% ENDIF %}" data-tab-content="3">
 				<div class="row">
 					<div class="delivery__items flex-start">
 						{% FOR goods_delivery %}
@@ -452,7 +452,7 @@
 
 			<!-- Отзывы -->
 			{% IFNOT SETTINGS_OPINION_DISABLE %}
-			<div class="productView__opinion" data-tab="4">
+			<div class="productView__opinion {% IFNOT GOODS_DESCRIPTION_LARGE && goods_features_empty && goods_delivery_empty %}active{% ENDIF %}" data-tab-content="4">
 				<div class="flex-start">
 					<div class="opinion__content">
 						<!-- Средний рейтинг товара -->

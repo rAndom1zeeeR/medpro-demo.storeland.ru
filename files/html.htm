@@ -345,9 +345,20 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled flex"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex button button3">
+							<div class="mainnav__icon flex button button3 dropdown__open" data-open="header-menu">
 								<span>Меню</span>
-								<i class="icon-arrow_drop_down"></i>
+								<i class="icon-arrow_caret_down"></i>
+							</div>
+							<div class="mainnav__dropdown dropdown__content" data-content="header-menu">
+								{% FOR menu %}
+									{% FOR header %}
+										{% FOR links %}
+										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+											<span itemprop="name">{menu.header.links.NAME}</span>
+										</a>
+										{% ENDFOR %}
+									{% ENDFOR %}
+								{% ENDFOR %}
 							</div>
 						</nav><!-- //END Меню -->
 
@@ -466,6 +477,34 @@
 			</div>
 		</header>
 
+		<!-- Открытый каталог -->
+		<div class="catalog">
+			<div class="container">
+				<div class="catalog__content dropdown__content" data-content="catalog">
+					<div class="dropdown__label"><span>Каталог товаров</span></div>
+					<div class="catalog__items flex">
+						{% FOR catalog_full %}
+							{% IF catalog_full.FIRST && catalog_full.LEVEL > 0 %}
+							<div data-level="{catalog_full.LEVEL}" class="sub">
+							{% ENDIF %}
+								<div {% IF catalog_full.HIDE %}style="display:none;" {% ENDIF %} data-level="{catalog_full.LEVEL}" class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
+									<a href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}" class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}">
+										<span>{catalog_full.NAME}</span>
+									</a>
+								{% IF catalog_full.ISSET_SUB=0 %}
+								</div>
+								{% ENDIF %}
+						{% IF catalog_full.LAST %}
+							{% FOR out %}
+							</div>
+							{% IFNOT catalog_full.out.LAST %}</div>{% ENDIF %}
+							{% ENDFOR %}
+						{% ENDIF %}
+					{% ENDFOR catalog_full %}
+				</div>
+			</div>
+		</div>
+
 		{% IF index_page %}
 		<!-- Слайдшоу -->
 		<section id="slideshow">
@@ -487,11 +526,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="slider__catalog">
-							<div class="slider__catalog-icon flex-center">
-								<i class="icon-catalog"></i>
-							</div>
-						</div>
 					</div>
 
 					<!-- Слайд 2 -->
@@ -507,11 +541,6 @@
 									<div class="owl-next"></div>
 									<div class="owl-count"></div>
 								</div>
-							</div>
-						</div>
-						<div class="slider__catalog">
-							<div class="slider__catalog-icon flex-center">
-								<i class="icon-catalog"></i>
 							</div>
 						</div>
 					</div>
@@ -531,11 +560,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="slider__catalog">
-							<div class="slider__catalog-icon flex-center">
-								<i class="icon-catalog"></i>
-							</div>
-						</div>
+					</div>
+				</div>
+				<!-- Открыть каталог -->
+				<div class="slider__catalog">
+					<div class="catalog__icon flex-center" data-open="catalog">
+						<i class="icon-catalog"></i>
 					</div>
 				</div>
 			</div>
@@ -1870,7 +1900,7 @@
 					
 					<!-- Открыть каталог -->
 					<div class="slider__catalog">
-						<div class="slider__catalog-icon flex-center">
+						<div class="catalog__icon flex-center">
 							<i class="icon-catalog"></i>
 						</div>
 					</div>
@@ -2035,9 +2065,20 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex button button3">
+							<div class="mainnav__icon flex button button3 dropdown__open" data-open="footer-menu">
 								<span>Меню</span>
-								<i class="icon-arrow_drop_down"></i>
+								<i class="icon-arrow_caret_down"></i>
+							</div>
+							<div class="mainnav__dropdown dropdown__content" data-content="footer-menu">
+								{% FOR menu %}
+									{% FOR header %}
+										{% FOR links %}
+										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+											<span itemprop="name">{menu.header.links.NAME}</span>
+										</a>
+										{% ENDFOR %}
+									{% ENDFOR %}
+								{% ENDFOR %}
 							</div>
 						</nav><!-- //END Меню -->
 					</div>
@@ -2247,31 +2288,78 @@
 			</div>
 		</footer>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!-- Модальные окна -->
 		<noindex>
-
 			<!-- Скрытое обновление корзины -->
 			<div class="hiddenUpdate" style="display: none;"></div>
+
+			<!-- Обратный звонок в модальном окне -->
+			<div id="fancybox__callback" class="modal modal-bg" style="display:none">
+				<div class="modal__title block__title">
+					<h2 class="title">Вам нужен звонок?</h2>
+				</div>
+				<div class="modal__content">
+					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+						<input type="hidden" name="hash" value="{HASH}" />
+						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+						{ANTISPAM_CODE}
+
+						<div class="form__fields">
+							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
+						</div>
+
+						<div class="form__fields">
+							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
+						</div>
+
+						<div class="form__buttons">
+							<button type="submit" title="Заказать звонок" class="form__button button button3">Заказать звонок</button>
+						</div>
+
+						<div class="form__pp">
+							<span>Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с</span>
+							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Обратный звонок в модальном окне -->
+			<div id="fancybox__feedback" class="modal modal-bg" style="display:none">
+				<div class="modal__title block__title">
+					<h2 class="title">Вам нужен совет?</h2>
+				</div>
+				<div class="modal__content">
+					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+						<input type="hidden" name="hash" value="{HASH}" />
+						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+						{ANTISPAM_CODE}
+
+						<div class="form__fields">
+							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
+						</div>
+
+						<div class="form__fields">
+							<input id="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
+						</div>
+
+						<div class="form__fields">
+							<textarea id="callback_comment" class="textarea" rows="2" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_COMMENT}]" placeholder="Суть вопроса" >{FORM_CALLBACK_COMMENT}</textarea>
+						</div>
+
+						<div class="form__buttons">
+							<button type="submit" title="Отправить" class="form__button button button3">Отправить</button>
+						</div>
+
+						<div class="form__pp">
+							<span>Нажимая на кнопку &laquo;Отправить&raquo;, Вы соглашаетесь с</span>
+							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
+						</div>
+					</form>
+				</div>
+			</div>
 
 		</noindex>
 	</div>
@@ -2337,6 +2425,7 @@ $(document).ready(function(){
 	quantity();
 	prodQty();
 	monthNames();
+	initTabs();	
 });
 </script>
 <script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery-star-rating.js?design=Deluxe"></script>
