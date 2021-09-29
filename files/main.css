@@ -113,22 +113,23 @@ textarea.error:-ms-input-placeholder {color: red;}
 /*** Кнопки ***/
 /**************************************/
 .button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Ubuntu', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
-.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover {color: #ffffff;background-color: #0066a0;}
+.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened {color: #ffffff;background-color: #0066a0;}
 .button2 {color: #ffffff;background-color: #0066a0;}
-.button2:hover {color: #ffffff;background-color: #00acc5;}
-.button3 {color: #656d72;background-color: #ffffff;border: 1px solid #eef2f4;}
-.button3:hover {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
+.button2:hover, .button2.active, .button2.opened {color: #ffffff;background-color: #00acc5;}
+.button3 {color: #656d72;background-color: #ffffff;border: 1px solid #eef2f4;line-height: 2.875rem;}
+.button3:hover, .button3.active, .button3.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
 .button4 {color: #656d72;background-color: #eef2f4;}
-.button4:hover {color: #ffffff;background-color: #00acc5;}
-.button5 {color: #00acc5;background-color: #ffffff;border: 1px solid #00acc5;}
-.button5:hover {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
+.button4:hover, .button4.active, .button4.opened {color: #ffffff;background-color: #00acc5;}
+.button5 {color: #00acc5;background-color: #ffffff;border: 1px solid #00acc5;line-height: 2.875rem;}
+.button5:hover, .button5.active, .button5.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
 .button.empty {color: #656d72;background-color: #eef2f5;}
 .button.empty:hover {color: #656d72;background-color: #eef2f5;}
 .button i {vertical-align: middle;}
 .button span + i {margin-left: .5rem;}
 .button i + span {margin-left: .5rem;}
 .small {line-height: 2rem;padding: 0 1rem;}
-
+.remove i, .fancybox-close-small i {transition: all 0.3s ease;display: inline-block;}
+.remove:hover i, .fancybox-close-small:hover i {transform: rotate(90deg);}
 
 /**************************************/
 /*** Иконки Товаров ***/
@@ -260,7 +261,7 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 .fancybox-close-small {line-height: 1;}
 .fancybox-close-small:hover {color: #ffffff;}
-.fancybox-content {padding: 2.75rem 2rem 2rem 2rem;}
+.fancybox-content {padding: 2.75rem 2rem 2rem 2rem;max-width: 50rem;}
 @media (max-width: 639.98px) {
 	.fancybox-content {padding: 2.75rem 1rem 1rem 1rem;}
 }
@@ -495,7 +496,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 .page-cart .cart {display: none;}
 header .cart {width: 10rem;}
 .cart__block {border-radius: 2rem;padding: 1rem;transition: all 0.3s ease;}
-.cart__block-icon {color: #ffffff;font-size: 1.125rem;line-height: 0;}
+.cart__block-icon {font-size: 1.125rem;line-height: 0;}
 .cart__block-content {margin-left: .75rem;}
 .cart__block-price {display: none;}
 .has-items .cart__block-price {display: block;}
@@ -579,7 +580,7 @@ header .cart {width: 10rem;}
 /* Подвал. Меню */
 footer .mainnav {width: calc(100% - 15rem);padding: 0;}
 footer .mainnav ul {justify-content: flex-end;}
-footer .mainnav .dropdown__content {top: auto;bottom: 4rem;}
+footer .mainnav .dropdown__content {top: auto;bottom: 4rem;display: none !important;}
 /* Подвал. Контакты */
 footer .contacts__block {width: 25%;padding: 0 1rem;flex-grow: 1;}
 footer .contacts__block-content {padding-left: 2rem;}
@@ -600,6 +601,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 @media (max-width: 991.98px) {
 	footer .contacts__block {width: 50%;margin-top: 2rem;}
 	footer .contacts__block:nth-child(-n+2) {margin-top: 0;}
+	footer .mainnav .dropdown__content.opened {display: block !important;right: 0;}
 }
 @media (max-width: 639.98px) {
 	.social-links {width: 100%;justify-content: center;}
@@ -678,11 +680,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Открытие Каталога ***/
 /**************************************/
 .catalog .container {position: relative;}
-.slider__catalog {position: absolute;bottom: 1rem;left: 1rem;z-index: 3;}
+.slider__catalog {position: absolute;bottom: 1rem;left: 1rem;z-index: 4;}
 .catalog__icon {width: 8rem;height: 8rem;font-size: 2rem;color: #ffffff;background-color: #0066a0;border: .375rem solid #ffffff;border-radius: 100%;cursor: pointer;}
-.opened .catalog__icon i:before {content: '\e906';}
-.catalog__content.dropdown__content {padding: 2rem 2rem 2rem 16rem;top: 3rem;left: 1rem;width: calc(100% - 2rem);height: 27.5rem;background-color: #0066a0;border: 0;border-radius: 0 0 0 17rem;overflow: hidden;z-index: 2;}
-.catalog__content.dropdown__content a {color: #fff;}
+.catalog__icon i:before {transition: all 0.3s ease;display: inline-block;}
+.opened .catalog__icon i:before {content: '\e906';transform: rotate(90deg);}
+.catalog__content.dropdown__content {padding: 2rem 2rem 2rem 16rem;top: 3rem;left: 1rem;width: calc(100% - 2rem);height: 27.5rem;background-color: #0066a0;border: 0;border-radius: 0 0 0 17rem;overflow: hidden;z-index: 3;}
+.catalog__content.dropdown__content a {color: #ffffff;}
 .catalog__content .catalog__item {width: 33.333333%;}
 .catalog__content .catalog__link {padding: 1.125rem 0;}
 .catalog__content .catalog__link:before {content: '\e904';font-family: 'icomoon';padding: .5rem;line-height: 1;border: 2px solid #ffffff;border-radius: 100%;color: #ffffff;transition: all 0.3s ease;}
@@ -1495,7 +1498,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 .modal-bg {background-color: #0066a0;max-width: 24rem;padding: 2rem 3rem 4rem 3rem;border-radius: 0 0 0 6rem;overflow: visible;}
 .modal-bg .fancybox-close-small {color: #fff;background-color: #0066a0;border: .25rem solid #ffffff;border-radius: 100%;width: 4rem;height: 4rem;bottom: 0;left: 0;top: auto;right: auto;opacity: 1;}
-.modal__title {color: #ffffff;}
+.modal-bg .modal__title {color: #ffffff;}
 .modal .form__fields input, .modal .form__fields textarea {color: #ffffff;background-color: transparent;padding-left: 0;border-radius: 0;border: 0;border-bottom: 2px solid #ffffff;}
 .modal .form__fields input::-webkit-input-placeholder {color: rgba(255,255,255,0.7);}
 .modal .form__fields input::-moz-placeholder {color: rgba(255,255,255,0.7);}

@@ -210,8 +210,8 @@
 											</div>
 										</div>
 										<div class="addto__buttons flex justify-between">
-											<button type="submit" name="send" class="button" title="Войти">Войти</button>
 											<a href="{USER_RECOVERY_URL}" class="button button5">Забыли пароль?</a>
+											<button type="submit" name="send" class="button" title="Войти">Войти</button>
 										</div>
 									</form>
 									{% ENDIF %}
@@ -2358,6 +2358,71 @@
 							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
 						</div>
 					</form>
+				</div>
+			</div>
+
+			<!-- Уведомить о поступлении в модальном окне -->
+			<div id="fancybox__notify" class="modal modal-bg" style="display:none">
+				<div class="modal__title block__title">
+					<h2 class="title">Уведомить</h2>
+				</div>
+				<div class="modal__content">
+					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+						<input type="hidden" name="hash" value="{HASH}" />
+						<input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect" />
+						<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>
+						<input type="hidden" name="form[goods_mod_id]" value="" id="fancy__info"/>
+						<input type="hidden" name="form[Имя_Товара]" value="{GOODS_NAME}" id="fancy__name" />
+						<input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy__art" />
+						<!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->
+						<!-- input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /-->
+						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+						{ANTISPAM_CODE}
+						<!-- Для использования почты для уведомлений необходимо удалить блок с телефоном -->
+						<div class="form__fields">
+							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (987) 654-3210" autocomplete="off" required />
+						</div>
+						<!-- Для использования почты для уведомлений необходимо удалить ниже style="display: none;" -->
+						<div class="form__fields" style="display: none;">
+							<input class="form__input form__email" type="email" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_EMAIL}]" value="{FORM_CALLBACK_EMAIL}" placeholder="email@email.ru *" autocomplete="off" />
+						</div>
+
+						<div class="form__buttons">
+							<button type="submit" title="Уведомить" class="form__button button button3">Отправить</button>
+						</div>
+
+						<div class="form__pp">
+							<span>Нажимая на кнопку &laquo;Отправить&raquo;, Вы соглашаетесь с</span>
+							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<!-- Политика конфиденциальности в модальном окне -->
+			<div id="fancybox__pp" class="modal" style="display:none">
+				<div class="modal__title block__title">
+					<h2 class="title">Политика приватности</h2>
+				</div>
+				<div class="modal__content">
+					<div>
+						<h4 class="title">Общие положения</h4>
+						<br />
+						<p>Некоторые объекты, размещенные на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
+						<p>На сайте StoreLand имеются ссылки, позволяющие перейти на другие сайты. Компания StoreLand не несет ответственности за сведения, публикуемые на этих сайтах и предоставляет ссылки на них только в целях обеспечения удобства для посетителей своего сайта.</p>
+					</div>
+					<br />
+					<div>
+						<h4 class="title">Личные сведения и безопасность</h4>
+						<br />
+						<p>Компания StoreLand гарантирует, что никакая полученная от Вас информация никогда и ни при каких условиях не будет предоставлена третьим лицам, за исключением случаев, предусмотренных действующим законодательством Российской Федерации.</p>
+						<p>В определенных обстоятельствах компания StoreLand может попросить Вас зарегистрироваться и предоставить личные сведения. Предоставленная информация используется исключительно в служебных целях, а также для предоставления доступа к специальной информации.</p>
+						<p>Личные сведения можно изменить, обновить или удалить в любое время в разделе "Аккаунт" > "Профиль".</p>
+						<p>Чтобы обеспечить Вас информацией определенного рода, компания StoreLand с Вашего явного согласия может присылать на указанный при регистрации адрес электронный почты информационные сообщения. В любой момент Вы можете изменить тематику такой рассылки или отказаться от нее.</p>
+						<p>Как и многие другие сайты, StoreLand использует технологию cookie, которая может быть использована для продвижения нашего продукта и измерения эффективности рекламы. Кроме того, с помощь этой технологии StoreLand настраивается на работу лично с Вами. В частности без этой технологии невозможна работа с авторизацией в панели управления.</p>
+						<p>Сведения на данном сайте имеют чисто информативный характер, в них могут быть внесены любые изменения без какого-либо предварительного уведомления.</p>
+						<p>Чтобы отказаться от дальнейших коммуникаций с нашей компанией, изменить или удалить свою личную информацию, напишите нам через форму обратной связи</p>
+					</div>
 				</div>
 			</div>
 
