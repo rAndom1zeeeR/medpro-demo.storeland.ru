@@ -425,56 +425,7 @@
 						</div><!-- //END Корзина -->
 					</div>
 				</div>
-			</div>
-
-			<!-- Нижняя часть шапки -->
-			<div class="header__bottom">
-				<div class="container">
-					<!-- Поиск -->
-					<div class="search" itemscope itemtype="https://schema.org/WebSite">
-						<link itemprop="url" href="{INDEX_PAGE_URL}" />
-						<!-- Форма поиска -->
-						<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-							<meta itemprop="target" content="{SEARCH_URL}?q={{EMPTY}q}" />
-							<input type="hidden" name="goods_search_field_id" value="0" />
-							<input type="text" name="q" value="{FORM_SEARCH_Q}" class="search__input" placeholder="Искать" autocomplete="off" itemprop="query-input" />
-
-							<!-- Найти -->
-							<button type="submit" class="search__submit" title="Искать">
-								<i class="icon-search"></i>
-							</button>
-
-							<!-- Кружок обновления -->
-							<div class="lds-ring">
-								<div></div>
-								<div></div>
-								<div></div>
-								<div></div>
-							</div>
-
-							<!-- Закрыть -->
-							<a href="javascript:;" class="search__reset">
-								<i class="icon-close"></i>
-							</a>
-
-						</form><!-- //END Форма поиска -->
-
-						<div class="search__icon search__submit button">
-							<i class="icon-search"></i>
-						</div>
-
-						<!-- Результаты поиска -->
-						<div id="search__result" style="display: none;">
-							<div class="flex-start">
-								<div class="result__category"></div>
-								<div class="result__goods"></div>
-								<div class="result__showAll button">все результаты</div>
-							</div>
-						</div>
-
-					</div><!-- //END Поиск -->
-				</div>
-			</div>
+			</div>			
 		</header>
 
 		<!-- Открытый каталог -->
