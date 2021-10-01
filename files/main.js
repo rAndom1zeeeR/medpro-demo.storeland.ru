@@ -501,7 +501,7 @@ $('#overlay').on('click', function(e){
 // Открытие Контактов, Меню, Сравнения, Избранного
 function openMenu() {
   // Открытие элементов
-  $('.dropdown__open').on('click', function(event){
+  $('.dropdown__open[data-open]').on('click', function(event){
     event.preventDefault();
     $('div, a, form').removeClass('opened');
     var value = $(this).data('open');
@@ -554,10 +554,10 @@ function openMenu() {
   });
 
   // Имитация клика по каталогу в меню
-  $('.mainnav__catalog').on('click', function (event){
-    event.preventDefault();
-    $('.catalog__icon').click();
-  });
+  // $('.mainnav__catalog').on('click', function (event){
+  //   event.preventDefault();
+  //   $('.catalog__icon').click();
+  // });
 }
 
 // Дополнительные пункты меню в шапке Перенос пунктов меню

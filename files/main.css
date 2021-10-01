@@ -3,9 +3,9 @@
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
 body {background-color: #ffffff;color: #656d72;font-family: 'Ubuntu', sans-serif;font-size: .875rem;line-height: 1.3;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
-section {margin: 3rem 0;position: relative;overflow: hidden;}
-.mainBlock-left {width: 100%;padding-right: 0;flex-grow: 1;}
-.mainBlock-left.has-sidebar  {width: 75%;padding-right: 1rem;flex-grow: 1;}
+section {margin: 3rem 0;position: relative;}
+.mainBlock-left {width: 100%;flex-grow: 1;}
+.mainBlock-left.has-sidebar {width: 75%;padding-right: 1rem;flex-grow: 1;}
 .mainBlock-right {width: 25%;padding-left: 1rem;flex-grow: 1;}
 @media (max-width: 1199.98px) {
 	.mainBlock-left {width: 100%;padding: 0;}
@@ -65,11 +65,12 @@ ol.unstyled, ul.unstyled {margin: 0;padding: 0;list-style: none;}
 /**************************************/
 /*** Инпут поля ***/
 /**************************************/
-input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 1.5rem;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input, select, textarea {width: 100%;height: 3rem;padding: 0 1.5rem;color: #656d72;background-color: #ffffff;border-color: #dae6ec;border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: 1rem;font-weight: 400;font-family: 'Ubuntu', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 input:focus, select:focus, textarea:focus {border-color: #0066a0;}
 textarea {height: auto;padding-top: 1rem;}
-input, select {cursor: pointer;}
+select {cursor: pointer;}
 input.error {border-color: red;}
+input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
 .square {width: 1.5rem;height: 1.5rem;line-height: 1.5rem;border-radius: 0;margin: 0;padding: 0;text-align: center;}
 .square:checked, .square:hover {background-color: #0066a0;}
 .square:checked:after, .square:hover:after {content: '\e904';font-family: 'icomoon';color: #ffffff;}
@@ -284,7 +285,7 @@ h6 {font-size: 0.875rem;}
 .form__field {position: relative;}
 .form__pp {font-size: .75rem;margin-top: 1rem;}
 .form__pp a {text-decoration: underline;}
-.form__buttons {margin-top: 1rem;}
+.form__buttons {margin-top: 2rem;}
 .form__field i {position: absolute;top: 0;left: 0;font-size: 24px;width: 40px;height: 40px;display: none;align-items: center;justify-content: center;}
 @media all and (max-width: 767.98px) {
 	.form__fields {margin-bottom: 1rem;}
@@ -314,22 +315,38 @@ h6 {font-size: 0.875rem;}
 
 
 /**************************************/
+/*** Страница: Связь с администрацией ***/
+/**************************************/
+.page-feedback .maps {width: 100%;margin-top: 2rem;}
+/* Страница: Связь с администрацией. Контакты */
+.page-feedback .contacts__content {margin: 0;padding: 0;list-style: none;width: 100%;}
+.page-feedback .contacts__block {margin-bottom: 2rem;width: 100%;}
+.page-feedback .contacts__block label {display: none;}
+.page-feedback .contacts__block-link {white-space: normal;max-width: 100%;}
+.page-feedback .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
+
+
+/**************************************/
 /*** Страницы новостей ***/
 /**************************************/
 /*** Страница: Список новостей ***/
-.news__list .news__item {border-bottom: 1px solid #dae6ec;margin-bottom: 2rem;padding-bottom: 2rem;border-radius: 0;}
+.news__list .news__item {margin-bottom: 2rem;padding: 1.5rem;border: 1px solid #dae6ec;}
 .news__list .news__item:last-child {margin-bottom: 0;}
 .news__list .news__title {margin: 0 0 1rem 0;font-weight: bold;display: block;}
 .news__list .news__text {word-break: break-all;font-size: 0.875rem;}
 .news__list .news__date {margin: .5rem 0 0 0;position: relative;text-align: right;}
 .news__list + .pages {margin-top: 2rem;}
+@media all and (max-width: 639.98px) {
+	.news__list .news__item {padding: 1rem;}
+}
 
 /*** Страница: Просмотр новости ***/
 .news__buttons {margin-top: 1.5rem;}
 .news__buttons a {padding: 0 1.5rem;}
 .newsListBlockItemFiles {margin-top: 1rem;overflow: hidden;word-break: break-all;}
-.pageNews .news__date {position: relative;text-align: right;margin-top: 1rem;}
-.pageNews .htmlDataBlock img {margin-bottom: 1rem;}
+.page-news .news__date {position: relative;text-align: right;margin-top: 1rem;}
+.page-news .htmlDataBlock {padding: 1.5rem;border: 1px solid #dae6ec;}
+.page-news .htmlDataBlock img {margin-bottom: 1rem;}
 
 
 /**************************************/
@@ -432,7 +449,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 }
 
 /* Шапка. ЛК, Избр, Срав */
-.addto {width: 12rem;}
+.addto {width: 12rem;justify-content: flex-end;}
 .addto__block {margin-left: 2.5rem;}
 .addto__block-link {font-size: 1.5rem;position: relative;}
 .addto__block-link [data-count] {position: absolute;top: -.75rem;right: -.75rem;font-size: .75rem;display: none;}
@@ -444,7 +461,7 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 	.addto__block {margin-left: 2rem;}
 }
 @media (max-width: 767.98px) {
-	.addto__block-link, header .contacts__block-icon, .contacts__block-link {color: #ffffff}
+	.addto__block-link, header .contacts__block-icon, header .contacts__block-link {color: #ffffff}
 }
 @media (max-width: 639.98px) {
 	.addto {width: 7.5rem;}
@@ -464,16 +481,19 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 
 /* Шапка. Меню */
 .mainnav {width: calc(100% - 15rem - 10rem);padding: 0 1rem;position: relative;}
+.page-cart .mainnav {width: calc(100% - 15rem);}
 .mainnav__list-link {margin: 0 1.5rem;line-height: 2.2;}
 .mainnav .mainnav__list {height: 2rem;overflow: hidden;}
 .mainnav.opened .mainnav__list {height: auto;}
 .mainnav .overflowMenu {display: none;}
-.mainnav .overflowMenu.opened {display: flex;}
+.mainnav .overflowMenu.opened {display: flex;flex-direction: column;top: 3rem;}
 .mainnav__more i {font-size: .625rem;padding-left: .5rem;}
-.mainnav.opened .mainnav__more {display: none;}
 .mainnav__icon {display: none;}
 .mainnav .dropdown__content {padding: .5rem 2rem;width: auto;right: 1rem;text-align: left;}
 .mainnav .dropdown__content a {display: block;margin: .5rem 0;white-space: nowrap;}
+@media (min-width: 991.98px) {
+.mainnav__dropdown {display: none !important;}
+}
 /* Шапка. Меню. Адаптивность */
 @media (max-width: 991.98px) {
 	.mainnav ul {display: none;}
@@ -515,7 +535,7 @@ header .cart {width: 10rem;}
 /* Шапка. Поиск */
 .search {width: calc(100% - 27rem - 12rem - 2.5rem);margin-left: 2.5rem;}
 .search__form {position: relative;}
-.search__input {height: 3.125rem;padding: 0 5rem 0 2rem;cursor: auto;}
+.search__input {height: 3.125rem;padding: 0 5rem 0 2rem;cursor: auto;border-radius: 1.5rem;}
 .search__submit {width: 3rem;height: 3rem;line-height: 2.75rem;padding: 0;background-color: #9facb3;border-color: #9facb3;font-size: 1.125rem;position: absolute;top: 1px;right: 0;}
 .search__submit:hover, .search__submit:focus, .search__input:focus + .search__submit {background-color: #00acc5;border-color: #00acc5;}
 .search__reset {opacity: 0;font-size: .875rem;position: absolute;top: 1rem;right: 4rem;}
@@ -540,7 +560,7 @@ header .cart {width: 10rem;}
 .search {text-align: right;}
 .search__form {display: none;}
 .search__icon {display: inline-block;}
-.search.opened {position: absolute;left: 0;margin: 0;width: calc(100% - 10.5rem);}
+.search.opened {position: absolute;left: 0;margin: 0;width: calc(100% - 10.5rem);z-index: 10;}
 .search.opened .search__form {display: block;}
 .search.opened .search__icon {display: none;}
 }
@@ -796,7 +816,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Новости ***/
 /**************************************/
-#news [data-content] {display: none;height: 26.875rem;position: relative;}
+#news [data-content] {display: none;height: 26.875rem;position: relative;overflow: hidden;}
 #news [data-content].active {display: block;}
 #news .news__item {text-align: center;}
 #news .news__image {height: 16.25rem;}
@@ -825,7 +845,8 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Товары на главной ***/
 /**************************************/
-#pdt [data-content] {display: none;position: relative;height: 27.5rem;}
+#pdt {overflow: hidden;}
+#pdt [data-content] {display: none;height: 27.5rem;position: relative;}
 #pdt [data-content].active {display: block;}
 @media (max-width: 1199.98px) {
 	#pdt [data-content] {height: 29.25rem;}
@@ -976,7 +997,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #page__title .slider__catalog {bottom: -2rem;}
 
 /* Хлебные крошки */
-#page__title .block__title {text-align: right;margin-bottom: 1rem;}
+#page__title .block__title {text-align: right;margin-bottom: 1rem;max-height: 9rem;overflow: hidden;}
 #page__title .results {display: none;}
 
 /* Заголовки страниц */
@@ -985,6 +1006,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #breadcrumbs ul li {display: flex;white-space: nowrap;}
 #breadcrumbs ul li:before {content: "/";margin: 0 1.5rem;}
 #breadcrumbs ul li:first-child::before {display: none;}
+#breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 20rem;display: inline-block;vertical-align: middle;}
 #breadcrumbs::-webkit-scrollbar {width: 0;height: 0.5rem;}
 #breadcrumbs::-webkit-scrollbar-thumb {background-color: #00acc5;}
 #breadcrumbs::-webkit-scrollbar-track {background-color: #dae6ec;}
@@ -992,11 +1014,11 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /* Блок заголовков страниц. Адаптивность */
 @media (max-width: 991.98px) {
 	#page__title {padding: 1.5rem 1.5rem 1.5rem 10rem;border-radius: 0 0 0 8rem;}
-	#breadcrumbs ul {justify-content: flex-start;}
 }
 @media (max-width: 479.98px) {
 	#page__title {padding: 1.5rem 1.5rem 1.5rem 6rem;border-radius: 0 0 0 6rem;}
 	#page__title .slider__catalog {bottom: -1rem;}
+	#breadcrumbs ul {justify-content: flex-start;}
 }
 
 
@@ -1030,7 +1052,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .toolbar-bottom {margin: 2rem 0 0 0;}
 .form__toolbar {justify-content: space-between;}
 .form__toolbar .selectBox:after {line-height: 4rem;}
-.form__toolbar .selectBox select {height: 4rem;background-color: #eef2f4;border: 0;border-radius: 0;}
+.form__toolbar .selectBox select {height: 4rem;background-color: #eef2f4;border: 0;}
 .form__toolbar .selectBox + .selectBox {margin-left: 2rem;}
 .sort {flex-grow: 1;}
 .view__icon {margin-left: 2rem;font-size: 1.5rem;width: 4rem;height: 4rem;background-color: #eef2f4;}
@@ -1122,6 +1144,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .goodsModificationsBlock {margin-bottom: .5rem;}
 .goodsModificationsProperty {width: calc(50% - 2rem);margin: 0 1rem 1rem 1rem;}
 .goodsModificationsProperty label {display: none;}
+.goodsModificationsProperty select {border-radius: 1.5rem;}
 .productView__qty {margin: 0 1rem 1.5rem 1rem;}
 .empty .productView__qty {display: none;}
 .qty {width: 9.125rem;border: 1px solid #dae6ec;border-radius: 1.5rem;}
@@ -1225,7 +1248,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .opinion__label {margin-bottom: 1rem;font-size: 2rem;font-weight: bold;}
 .opinion__sublabel {margin-bottom: 1rem;}
 .opinion__block {margin-top: 1rem;}
-.opinion__block input, .opinion__block textarea {border-radius: 0;}
 .opinion__block label {display: none;}
 .opinion__block.rating span {padding: 0 1.5rem;}
 .opinion__captcha {position: relative;}
@@ -1252,6 +1274,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Выбор модификации ***/
 /**************************************/
+.productViewMod {max-width: 22rem;}
 .productViewMod .productView__images {display: none;}
 .productViewMod .productView__ratings {display: none;}
 .productViewMod .productView__available {display: none;}
@@ -1259,6 +1282,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .productViewMod .productView__text {display: none;}
 .productViewMod .productView__shop {width: 100%;margin: 0;}
 .productViewMod .goodsModificationsProperty {width: 100%;}
+.productViewMod .productView__addto .button {flex-grow: 1;}
 .productViewMod .productView__addto .button.quick {display: none;}
 @media (max-width: 639.98px) {
 	.productViewMod {max-width: 18rem;padding: 2rem;}
@@ -1307,15 +1331,17 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #closeOrder {display: none;}
 @media (max-width: 991.98px) {
 	.cartTable {width: 100%;margin: 0;}
-	.cartTotal {width: 100%;margin: 0;}
+	.cartTotal {width: 100%;margin: 2rem 0 0 0;}
 }
 @media (max-width: 479.98px) {
-	.cart__info {width: calc(100% - 6rem);}
+	.cart__content {justify-content: flex-end;}
+	.cart__info {width: 100%;}
 	.cart__name {height: auto;}
-	.cart__actions {flex-direction: row;padding-left: 1rem;}
+	.cart__actions {flex-direction: row;}
 	.cart__qty .qty {border-bottom: 0;border-top: 1px solid #dae6ec;}
 	.cart__delete {border: 1px solid #dae6ec;border-bottom: 0;height: 3.0625rem;}
 	.cart__item {align-items: center;}
+	.cart__delete {border-right: 0;}
 }
 
 
@@ -1329,7 +1355,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .fastOrder__title {font-size: 1rem;font-weight: bold;margin-bottom: 1rem;}
 .fastOrderForm label {display: none;}
 .fastOrderForm label.error {display: none !important;}
-.fastOrderForm input, .fastOrderForm select, .fastOrderForm textarea {border-radius: 0;min-height: 4rem;}
+.fastOrderForm input, .fastOrderForm select, .fastOrderForm textarea {min-height: 4rem;}
 .fastOrderForm .selectBox:after {line-height: 4rem;}
 .fastOrderForm .col-left {width: 50%;padding: 2rem 1rem 2rem 2rem;background-color: #eef2f4;}
 .fastOrderForm .col-right {width: 50%;padding: 2rem 2rem 2rem 1rem;background-color: #eef2f4;}
@@ -1358,6 +1384,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 @media (max-width: 991.98px) {
 	.fastOrderForm .col-left {width: 100%;padding: 2rem 2rem 1rem 2rem;}
 	.fastOrderForm .col-right {width: 100%;padding: 1rem 2rem 2rem 2rem;}
+	.fastOrderContent .total__pp {max-width: 100%;}
 	.total__summ-delivery {width: 50%;flex-direction: column;align-items: flex-start;}
 	.total__summary .total__delivery {margin: .5rem 0 0 0;}
 	.total__pp {order: 2;width: 100%;}

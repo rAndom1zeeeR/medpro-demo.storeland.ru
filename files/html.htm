@@ -169,7 +169,7 @@
 							<!-- Войти -->
 							{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
 							<div class="addto__block login dropdown has-items">
-								<a class="addto__block-link login__icon dropdown__open" href="{USER_LOGIN_URL}" title="Личный кабинет" data-open="login">
+								<a class="addto__block-link login__icon dropdown__open" href="{USER_LOGIN_URL}" title="Личный кабинет">
 									<i class="icon-user"></i>
 								</a>
 								<div class="addto__login dropdown__content" data-content="login">
@@ -221,7 +221,7 @@
 
 							<!-- Избранное -->
 							<div class="addto__block favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
-								<a class="addto__block-link favorites__icon dropdown__open" href="{FAVORITES_URL}" title="Избранное" data-open="favorites">
+								<a class="addto__block-link favorites__icon dropdown__open" href="{FAVORITES_URL}" title="Избранное">
 									<i class="icon-favorites"></i>
 									<span class="favorites__count" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 								</a>
@@ -265,7 +265,7 @@
 							<!-- Сравнение -->
 							{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
 							<div class="addto__block compare dropdown {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
-								<a class="addto__block-link compare__icon dropdown__open" href="{COMPARE_URL}" title="Сравнение" data-open="compare">
+								<a class="addto__block-link compare__icon dropdown__open" href="{COMPARE_URL}" title="Сравнение">
 									<i class="icon-compare"></i>
 									<span class="compare__count" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
 								</a>
@@ -343,7 +343,7 @@
 								{% ENDFOR %}
 							</ul>
 							<!-- Меню. Еще -->
-							<ul class="overflowMenu unstyled flex"></ul>
+							<ul class="overflowMenu unstyled flex dropdown__content"></ul>
 							<!-- Меню. Адаптивность -->
 							<div class="mainnav__icon flex button button3 dropdown__open" data-open="header-menu">
 								<span>Меню</span>
@@ -364,7 +364,7 @@
 
 						<!-- Корзина -->
 						<div class="cart dropdown {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}">
-							<a class="cart__block button2 flex-center dropdown__open" href="{CART_URL}" title="Корзина" data-open="cart" data-fancybox data-src="#fancybox__cart">
+							<a class="cart__block button2 flex-center dropdown__open" href="{CART_URL}" title="Корзина">
 								<div class="cart__block-icon">
 									<i class="icon-cart"></i>
 								</div>
@@ -646,14 +646,13 @@
 										{% ELSEIF index_page_goods.MIN_PRICE_OLD > index_page_goods.MIN_PRICE_NOW %}
 										<span class="ico__sales"></span>
 										{% ENDIF %}
-										{% IF index_page_goods.IS_TOP %}
-										<span class="ico__best"></span>
-										{% ENDIF %}
-										{% IF index_page_goods.IS_NEW %}
-										<span class="ico__new"></span>
-										{% ENDIF %} -->
 										{% IF index_page_goods.IS_PLACE_ON_INDEX_PAGE %}
 										<span class="ico__sale"></span>
+										{% ENDIF %} -->
+										{% IF index_page_goods.IS_TOP %}
+										<span class="ico__best"></span>
+										{% ELSEIF index_page_goods.IS_NEW %}
+										<span class="ico__new"></span>
 										{% ENDIF %}
 									</div><!-- //END Стикеры -->
 									<!-- Добавление товара в избранное и сравнение и в корзину -->
@@ -1710,8 +1709,10 @@
 							</li>
 							{% IF MOD_LNAME=cart %}
 							<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-								<span itemprop="name">{% IF cart_items_empty %}Корзина покупок пуста{% ELSE %}Корзина{% ENDIF %}</span>
-								<meta itemprop="position" content="2" />
+								<a itemprop="item" href="{CART_URL}" title="Перейти в корзину">
+									<span itemprop="name">{% IF cart_items_empty %}Корзина покупок пуста{% ELSE %}Корзина{% ENDIF %}</span>
+									<meta itemprop="position" content="2" />
+								</a>
 							</li>
 							{% ELSEIF MOD_LNAME=user && ACT=login %}
 							<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -1775,7 +1776,8 @@
 							</li>
 							{% ELSEIF MOD_LNAME=order && ACT=stage %}
 							<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-								<a itemprop="item" href="{CART_URL}" title="Перейти в корзину"><span itemprop="name">Корзина</span>
+								<a itemprop="item" href="{CART_URL}" title="Перейти в корзину">
+									<span itemprop="name">Корзина</span>
 									<meta itemprop="position" content="2" />
 								</a>
 							</li>

@@ -80,7 +80,10 @@
       
       <!-- Строка №6 В корзину -->
       <div class="CompareGoodsTableTbodyComparisonLine {% IF GOODS_MOD_COST_NOW_IS_SAME %}same{% ENDIF %}" >
-        <div class="cell"></div>
+        <div class="cell">
+          <input class="square" type="checkbox" id="compare_tb_check_cart" />
+          <label for="compare_tb_check_cart">Купить</label>
+        </div>
         <div class="content owl-carousel">
         {% FOR goods_mod_info %}
           <div class="compare-td compare-td-{goods_mod_info.index} bold">

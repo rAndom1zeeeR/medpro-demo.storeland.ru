@@ -19,6 +19,8 @@
 .owl-dots .owl-dot.active:before, .owl-dots .owl-dot:hover:before {content: '';width: 1rem;height: 1rem;background-color: #00acc5;border: .2rem solid #ffffff;border-radius: 100%;display: inline-block;transition: all 0.3s ease;}
 
 /*** Изображения в слайдере ***/
+.owl-carousel {overflow: hidden;}
+.owl-carousel.owl-loaded {overflow: visible;}
 .owl-carousel .owl-item img {max-width: 100%;max-height: 100%;width: auto;}
 .owl-carousel .owl-stage {display: flex;flex-wrap: wrap;align-items: stretch;}
 .owl-carousel .product__item {width: 100%;margin: 0;}
