@@ -113,18 +113,18 @@ textarea.error:-ms-input-placeholder {color: red;}
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;padding: 0 2rem;line-height: 3rem;border: 0;border-radius: 2rem;text-align: center;font-family: 'Ubuntu', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
-.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened {color: #ffffff;background-color: #0066a0;}
-.button2 {color: #ffffff;background-color: #0066a0;}
-.button2:hover, .button2.active, .button2.opened {color: #ffffff;background-color: #00acc5;}
-.button3 {color: #656d72;background-color: #ffffff;border: 1px solid #eef2f4;}
+.button, button, .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: #ffffff;background: #00acc5;border-color: #00acc5;padding: 0 2rem;line-height: 3rem;border-radius: 2rem;border-width: 1px;border-style: solid;text-align: center;font-family: 'Ubuntu', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+.button:hover, button:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, .button.active, .button.opened {color: #ffffff;background-color: #0066a0;border-color: #0066a0;}
+.button2 {color: #ffffff;background-color: #0066a0;border-color: #00acc5;}
+.button2:hover, .button2.active, .button2.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
+.button3 {color: #656d72;background-color: #ffffff;border-color: #eef2f4;}
 .button3:hover, .button3.active, .button3.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
-.button4 {color: #656d72;background-color: #eef2f4;}
-.button4:hover, .button4.active, .button4.opened {color: #ffffff;background-color: #00acc5;}
-.button5 {color: #00acc5;background-color: #ffffff;border: 1px solid #00acc5;}
+.button4 {color: #656d72;background-color: #eef2f4;border-color: #eef2f4;}
+.button4:hover, .button4.active, .button4.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
+.button5 {color: #00acc5;background-color: #ffffff;border-color: #00acc5;}
 .button5:hover, .button5.active, .button5.opened {color: #ffffff;background-color: #00acc5;border-color: #00acc5;}
-.button.empty {color: #656d72;background-color: #eef2f5;}
-.button.empty:hover {color: #656d72;background-color: #eef2f5;}
+.button.empty {color: #656d72;background-color: #eef2f5;border-color: #eef2f4;}
+.button.empty:hover {color: #656d72;background-color: #eef2f5;border-color: #eef2f4;}
 .button i {vertical-align: middle;}
 .button span + i {margin-left: .5rem;}
 .button i + span {margin-left: .5rem;}
@@ -209,7 +209,7 @@ h6 {font-size: 0.875rem;}
 /**************************************/
 /*** Предзагрузчик ***/
 /**************************************/
-.preloader {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: #ffffff;z-index: 40;display: flex;align-items: center;justify-content: center;}
+.preloader {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: #eef2f4;z-index: 40;display: flex;align-items: center;justify-content: center;}
 .preloader .loading {display: inline-block;width: 100px;height: 100px;}
 .preloader .loading:after {content: '';display: block;width: 100px;height: 100px;margin: 1px;border-radius: 50%;border: 5px solid #ffffff;border-color: #00acc5 transparent #00acc5 transparent;animation: loading 1.2s linear infinite;}
 .preloader.small .loading {display: inline-block;width: 3rem;height: 3rem;}
@@ -449,13 +449,17 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 	header .contacts__block.email {display: none;}
 }
 
-/* Шапка. ЛК, Избр, Срав */
+/** Шапка. ЛК, Избр, Срав **/
 .addto {width: 12rem;justify-content: flex-end;}
 .addto__block {margin-left: 2.5rem;}
 .addto__block-link {font-size: 1.5rem;position: relative;}
 .addto__block-link [data-count] {position: absolute;top: -.75rem;right: -.75rem;font-size: .75rem;display: none;}
 .has-items .addto__block-link [data-count] {display: block;}
 .addto .dropdown {position: initial;}
+/* ЛК */
+.login .addto__buttons {margin-top: 2rem;}
+.login .form__text {margin-bottom: 2rem;}
+.login li a {display: block;margin: .5rem 0;white-space: nowrap;line-height: 2.2;}
 /* Шапка. ЛК, Избр, Срав. Адаптивность */
 @media (max-width: 1199.98px) {
 	.addto {width: 10.5rem;}
@@ -816,7 +820,8 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 /*** Новости ***/
 /**************************************/
-#news [data-content] {display: none;height: 26.875rem;position: relative;overflow: hidden;}
+#news {overflow: hidden;}
+#news [data-content] {display: none;height: 27rem;position: relative;}
 #news [data-content].active {display: block;}
 #news .news__item {text-align: center;}
 #news .news__image {height: 16.25rem;}
@@ -824,15 +829,15 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #news .news__title {margin: 1rem 0;height: 3.5rem;overflow: hidden;}
 #news .news__title span {max-height: 3.5rem;overflow: hidden;display: block;}
 @media (max-width: 991.98px) {
-	#news [data-content] {height: 23.875rem;}
+	#news [data-content] {height: 24rem;}
 	#news .news__image {height: 13.25rem;}
 }
 @media (max-width: 767.98px) {
-	#news [data-content] {height: 26.875rem;}
+	#news [data-content] {height: 27rem;}
 	#news .news__image {height: 16.25rem;}
 }
 @media (max-width: 639.98px) {
-	#news [data-content] {height: 23.75rem;}
+	#news [data-content] {height: 23.5rem;}
 	#news .news__image {height: 12.5rem;}
 }
 @media (max-width: 479.98px) {
@@ -848,20 +853,27 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 #pdt {overflow: hidden;}
 #pdt [data-content] {display: none;height: 27.5rem;position: relative;}
 #pdt [data-content].active {display: block;}
+#pdt__sales {overflow: hidden;}
+#pdt__sales [data-content] {height: 30rem;position: relative;}
 @media (max-width: 1199.98px) {
 	#pdt [data-content] {height: 29.25rem;}
+	#pdt__sales [data-content] {height: 32rem;}
 }
 @media (max-width: 991.98px) {
 	#pdt [data-content] {height: 24.25rem;}
+	#pdt__sales [data-content] {height: 26.625rem;}
 }
 @media (max-width: 767.98px) {
 	#pdt [data-content] {height: 28.25rem;}
+	#pdt__sales [data-content] {height: 31rem;}
 }
 @media (max-width: 639.98px) {
 	#pdt [data-content] {height: 23.75rem;}
+	#pdt__sales [data-content] {height: 26.25rem;}
 }
 @media (max-width: 479.98px) {
 	#pdt [data-content] {height: 29.25rem;}
+	#pdt__sales [data-content] {height: 31rem;}
 }
 
 /*** Навигация на главной ***/
@@ -1490,7 +1502,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /**************************************/
 .addto__title {display: none;font-size: 1.25rem;font-weight: bold;margin-bottom: 2rem;}
 .addto__empty {font-size: 1.25rem;font-weight: bold;}
-.addto__items {max-height: 24.25rem;overflow-y: auto;}
+.addto__items {max-height: 24.375rem;overflow-y: auto;}
 .addto__item {margin-bottom: 2rem;border: 1px solid #dae6ec;transition: all 0.3s ease;align-items: stretch;}
 .addto__image {width: 6rem;height: 6rem;}
 .addto__content {width: calc(100% - 6rem);}
@@ -1500,7 +1512,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .addto__mod {display: none;}
 .addto__actions {flex-direction: column;}
 .addto__qty, .addto__remove {width: 3rem;height: 3rem;border-left: 1px solid #dae6ec;}
-.addto__qty {border-bottom: 1px solid #dae6ec;font-size: 1.25rem;}
+.addto__qty {border-bottom: 1px solid #dae6ec;font-size: 1rem;}
 .addto__remove {height: 6rem;}
 .addto__cart .addto__remove {height: 3rem;}
 .addto__total {display: none;}
@@ -1510,8 +1522,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .addto__buttons {display: none;}
 .has-items .addto__buttons {display: flex;}
 .addto__buttons .button {padding: 0 3rem;}
-.login .addto__buttons {margin-top: 2rem;}
-.login .form__text {margin-bottom: 2rem;}
 @media (max-width: 479.98px) {
 	.addto__info {width: 100%;}
 	.addto__actions {display: none;}
