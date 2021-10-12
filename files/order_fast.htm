@@ -43,7 +43,7 @@
 								<input id="sites_client_pass" type="password" name="form[contact][pass]" value="{ORDER_FORM_CONTACT_PASS}" maxlength="50" minlength="6" class="form__input {% IF ORDER_FORM_CONTACT_WANT_REGISTER %}required{% ENDIF %}" onkeyup="checkCapsWarning(event)" onfocus="checkCapsWarning(event)" onblur="removeCapsWarning()" placeholder="Придумайте пароль *"/>
 								<div class="showPassBlock"><a href="#" rel="Скрыть пароль" class="showPass">Показать пароль</a></div>
 								<div id="capslock">
-									<div><i class="icon-warning"></i></div>
+									<div><i class="icon-close"></i></div>
 									<div><strong>Caps Lock включен.</strong></div>
 									<div>Пароль может быть введен неверно.</div>
 								</div>
@@ -315,7 +315,7 @@
 							<span class="total__price"><span class="cartSumWithDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span></span>
 						</div>
 						<div class="total__item total__delivery">
-							<span class="total__label"><span>Стоимость доставк:</span></span>
+							<span class="total__label"><span>Стоимость доставки:</span></span>
 							<span class="total__price"><span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span></span>
 						</div>
 					</div>
@@ -355,7 +355,7 @@
 		{% FOR cart_items %}
 		<div class="addto__item flex" data-id="{cart_items.GOODS_ID}">
 			<a class="addto__image flex-center" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">
-				<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}"/>
+				<img class="goods-image-icon" src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo-icon.png?design=THEMENAME{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}" alt="{cart_items.GOODS_NAME}" />
 			</a>
 			<div class="addto__content flex">
 				<div class="addto__info">
@@ -368,20 +368,13 @@
 					{% ENDIF %}
 					<!-- Цена -->
 					<div class="addto__price {CURRENCY_CHAR_CODE}">
-						<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">
-							{cart_items.GOODS_MOD_PRICE_NOW | money_format}
-						</span>
+						<span class="price__now" data-price="{cart_items.GOODS_MOD_PRICE_NOW}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</span>
 					</div>
 				</div>
 				<div class="addto__actions flex">
 					<span class="addto__qty flex-center">{cart_items.ORDER_LINE_QUANTITY}</span>
 					<!-- Удаление -->
-					<a class="addto__remove remove flex-center"
-						href="{cart_items.ORDER_LINE_DELETE_URL}"
-						data-qty="{cart_items.ORDER_LINE_QUANTITY}"
-						title="Удалить позицию"
-						data-id="{cart_items.GOODS_ID}"
-						onclick="removeFromCart($(this))">
+					<a class="addto__remove remove flex-center" href="{cart_items.ORDER_LINE_DELETE_URL}" data-qty="{cart_items.ORDER_LINE_QUANTITY}" title="Удалить позицию" data-id="{cart_items.GOODS_ID}" onclick="removeFromCart($(this))">
 						<i class="icon-close"></i>
 					</a>
 				</div>
@@ -399,20 +392,17 @@
 	{% ENDIF %}
 	<div class="addto__empty">В корзине пока ничего нет</div>
 	<div class="addto__buttons flex justify-between">
-		<a href="{CART_TRUNCATE_URL}"
-			onclick="removeFromCartAll($(this))"
-			class="button button4 removeAll"
-			title="Очистить корзину"><span>Очистить</span></a>
+		<a class="button button4 removeAll" href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" title="Очистить корзину"><span>Очистить</span></a>
 		<a href="{CART_URL}" class="button" title="Перейти в Корзину"><span>В корзину</span></a>
 	</div>
 </div>
 <!-- Обновление данных корзины -->
 <script>
+$('.addto__cart').html($('#newCartData').html());
 $('.cart__word').html($('#newCartWord').html());
 $('.cartSumNow').html($('#newCartSum').html());
 $('.cart__count').html($('#newCartCount').html());
 $('.cart__count').attr('data-count', $('#newCartCount').html());
-$('.addto__cart').html($('#newCartData').html());
 // Закрытие элементов
 closeMenu();
 </script>

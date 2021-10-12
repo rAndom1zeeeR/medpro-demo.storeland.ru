@@ -470,6 +470,7 @@ function removeFromCartAll(e){
         $('.cart__count').attr('data-count', '0').text("0");
         $('.cart .addto__item').remove();
         $('.cart .preloader').hide();
+				$('.product__item').removeClass("inCart");
       }
     });
   }
@@ -1651,7 +1652,6 @@ function addTo() {
 								.attr('title', newTitle)
 								.attr('data-tooltipOFF', newTooltip)
 								.attr('data-action-is-add', newIsAddStatus);
-
 						// Если рядом с ссылкой в виде круга есть текстовая надпись с описанием действия
 						//if(aText.length) {
 						//  aText.text(aText.attr(isAdd == 1 ? 'data-action-text-del' : 'data-action-text-add'));
