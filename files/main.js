@@ -576,7 +576,7 @@ function mainnav(id,rows){
   var menuWidth = mainnav.width() * menuHeight;
   var menuCount = mainnav.find('.mainnav__list li').length + 1;
   var nextCheck = 0;
-  for(var i=1; i < menuCount;  i++){
+  for(var i=1; i < menuCount; i++){
     var currentWidth = parseInt(Math.ceil(mainnav.find('.mainnav__list li:nth-child('+i+')').width())) + 16;
     nextCheck += currentWidth;
     if(nextCheck > menuWidth){
@@ -591,6 +591,7 @@ function mainnav(id,rows){
       mainnav.find('.mainnav__more').on('click',function(){
         mainnav.find('.overflowMenu').hasClass('opened') ? mainnav.find('.overflowMenu').removeClass('opened') : mainnav.find('.overflowMenu').addClass('opened');
         mainnav.hasClass('opened') ? mainnav.removeClass('opened') : mainnav.addClass('opened');
+				$(this).hasClass('opened') ? $(this).removeClass('opened') : $(this).addClass('opened');
       });
       $(function($){
         $(document).mouseup(function (e){
@@ -599,6 +600,7 @@ function mainnav(id,rows){
           if (!div.is(e.target) && div.has(e.target).length === 0 && !btn.is(e.target)) {
             div.removeClass('opened');
             mainnav.removeClass('opened');
+            btn.removeClass('opened');
           }
         });
       });
@@ -2722,9 +2724,9 @@ function goodsModification() {
 				}
 				// Много Мало
 				if(modificationRestValue>10) {
-					goodsModRestValue.html('В наличии Много');
+					goodsModRestValue.html('В наличии много');
 				} else {
-					goodsModRestValue.html('В наличии Мало');
+					goodsModRestValue.html('В наличии мало');
 				}
 
 				// Покажем артикул модификации товара, если он указан

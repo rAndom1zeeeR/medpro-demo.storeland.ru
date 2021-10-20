@@ -181,7 +181,7 @@
 				<div class="productView__available">
 					<div class="available__true" {% IF GOODS_MOD_REST_VALUE=0 %}style="display:none;" {% ENDIF %}>
 						<i class="icon-check"></i>
-						<span class="goodsModRestValue" data-value="{GOODS_MOD_REST_VALUE}">В наличии {% IF GOODS_MOD_REST_VALUE > 10 %}Много{% ELSE %}Мало{% ENDIF %}</span>
+						<span class="goodsModRestValue" data-value="{GOODS_MOD_REST_VALUE}">В наличии {% IF GOODS_MOD_REST_VALUE > 10 %}много{% ELSE %}мало{% ENDIF %}</span>
 					</div>
 					<div class="available__false" {% IF GOODS_MOD_REST_VALUE > 0 %}style="display:none;"{% ENDIF %}>
 						<i class="icon-close"></i>
@@ -651,11 +651,12 @@
 		</div>		
 		<div class="products__grid owl-carousel">
 			{% FOR related_goods %}
-			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && related_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF related_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF related_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && related_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF related_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF related_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{related_goods.ID}" itemscope itemtype="https://schema.org/Product">
 				<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{related_goods.MIN_PRICE_NOW_ID} goodsListForm">
 					<input type="hidden" name="hash" value="{HASH}" />
 					<input type="hidden" name="form[goods_from]" value="{related_goods.GOODS_FROM}" />
 					<input type="hidden" name="form[goods_mod_id]" value="{related_goods.MIN_PRICE_NOW_ID}" />
+					<input type="hidden" name="form[goods_id][{related_goods.ID}]" value="{related_goods.ID}" />
 					<link itemprop="image" href="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 					<!-- Изображение товара -->
 					<div class="product__image">
@@ -668,20 +669,19 @@
 						</a>
 						<!-- Стикеры -->
 						<div class="product__ico">
-							{% IF related_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_goods.MIN_PRICE_NOW %}
-							<span class="ico__sale"></span><span class="ico__sales"></span>
+							<!-- {% IF related_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_goods.MIN_PRICE_NOW %}
+							<span class="ico__sales"></span>
 							{% ELSEIF related_goods.MIN_PRICE_OLD > related_goods.MIN_PRICE_NOW %}
-							<span class="ico__sale"></span><span class="ico__sales"></span>
-							{% ENDIF %}
-							<!-- {% IF related_goods.IS_TOP %}
-							<span class="ico__best"></span>
-							{% ENDIF %}
-							{% IF related_goods.IS_NEW %}
-							<span class="ico__new"></span>
+							<span class="ico__sales"></span>
 							{% ENDIF %}
 							{% IF related_goods.IS_PLACE_ON_INDEX_PAGE %}
 							<span class="ico__sale"></span>
 							{% ENDIF %} -->
+							{% IF related_goods.IS_TOP %}
+							<span class="ico__best"></span>
+							{% ELSEIF related_goods.IS_NEW %}
+							<span class="ico__new"></span>
+							{% ENDIF %}
 						</div><!-- //END Стикеры -->
 						<!-- Добавление товара в избранное и сравнение и в корзину -->
 						<div class="product__links {% IF related_goods.IS_HAS_IN_COMPARE_LIST || related_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
@@ -825,7 +825,7 @@
 								</span>
 							</a>
 							{% ELSE %}
-							<a class="{% IF related_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %}"
+							<a class="add-cart"
 								title="Добавить в корзину &laquo;{related_goods.NAME}&raquo;"
 								data-tooltipOFF="В корзину"
 								rel="nofollow"
@@ -857,11 +857,12 @@
 		</div>		
 		<div class="products__grid owl-carousel">
 			{% FOR related_views_goods %}
-			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && related_views_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF related_views_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF related_views_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
+			<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && related_views_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF related_views_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF related_views_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{related_views_goods.ID}" itemscope itemtype="https://schema.org/Product">
 				<form action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post" class="product__form-{related_views_goods.MIN_PRICE_NOW_ID} goodsListForm">
 					<input type="hidden" name="hash" value="{HASH}" />
 					<input type="hidden" name="form[goods_from]" value="{related_views_goods.GOODS_FROM}" />
 					<input type="hidden" name="form[goods_mod_id]" value="{related_views_goods.MIN_PRICE_NOW_ID}" />
+					<input type="hidden" name="form[goods_id][{related_views_goods.ID}]" value="{related_views_goods.ID}" />
 					<link itemprop="image" href="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 					<!-- Изображение товара -->
 					<div class="product__image">
@@ -874,20 +875,19 @@
 						</a>
 						<!-- Стикеры -->
 						<div class="product__ico">
-							{% IF related_views_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_views_goods.MIN_PRICE_NOW %}
-							<span class="ico__sale"></span><span class="ico__sales"></span>
+							<!-- {% IF related_views_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_views_goods.MIN_PRICE_NOW %}
+							<span class="ico__sales"></span>
 							{% ELSEIF related_views_goods.MIN_PRICE_OLD > related_views_goods.MIN_PRICE_NOW %}
-							<span class="ico__sale"></span><span class="ico__sales"></span>
-							{% ENDIF %}
-							<!-- {% IF related_views_goods.IS_TOP %}
-							<span class="ico__best"></span>
-							{% ENDIF %}
-							{% IF related_views_goods.IS_NEW %}
-							<span class="ico__new"></span>
+							<span class="ico__sales"></span>
 							{% ENDIF %}
 							{% IF related_views_goods.IS_PLACE_ON_INDEX_PAGE %}
 							<span class="ico__sale"></span>
 							{% ENDIF %} -->
+							{% IF related_views_goods.IS_TOP %}
+							<span class="ico__best"></span>
+							{% ELSEIF related_views_goods.IS_NEW %}
+							<span class="ico__new"></span>
+							{% ENDIF %}
 						</div><!-- //END Стикеры -->
 						<!-- Добавление товара в избранное и сравнение и в корзину -->
 						<div class="product__links {% IF related_views_goods.IS_HAS_IN_COMPARE_LIST || related_views_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
@@ -1031,7 +1031,7 @@
 								</span>
 							</a>
 							{% ELSE %}
-							<a class="{% IF related_views_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %}"
+							<a class="add-cart"
 								title="Добавить в корзину &laquo;{related_views_goods.NAME}&raquo;"
 								data-tooltipOFF="В корзину"
 								rel="nofollow"

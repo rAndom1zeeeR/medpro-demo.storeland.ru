@@ -85,7 +85,7 @@
 				{% ENDIF %}
 			</div>
 			<!-- /END Вид Таблица/Список -->
-			<div class="filters__icon selectBox">
+			<div class="filters__open filters__icon selectBox {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 				<i class="icon-filters"></i>
 				<span>Фильтры</span>
 			</div>
