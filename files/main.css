@@ -108,6 +108,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 .selectBox:after {content: '\e939';line-height: 3rem;right: 1rem;position: absolute;font-family: 'icomoon';pointer-events: none;}
 .selectBox select {padding-right: 3rem;}
 .selectBox:hover {color: #00acc5;}
+.selectBox option[disabled] {color: #dae6ec;}
 @media (max-width: 479.98px) {
 	.selectBox select {padding: 0 2rem 0 1rem;}
 }
@@ -188,7 +189,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 /*** Уведомления. Системные сообщения ***/
 /**************************************/
 .success, .warning, .attention, .information, .help {position: relative;width: 100%;min-height: 40px;margin-bottom: 1.5rem;padding: 1rem 3rem 1rem 1.5rem;text-shadow: none;overflow: hidden;font-size: 1.125rem;line-height: 1.25rem;border: 1px solid transparent;text-transform: none;font-weight: normal;}
-.success {background-color: #00acc5;border-color: #0066a0;color: #ffffff;}
+.success {background-color: #00acc5;border-color: #00acc5;color: #ffffff;}
 .warning {background-color: #b30020;border-color: #b30020;color: #ffffff;}
 .attention {background-color: #fcf8e3;border-color: #faebcc;color: #8a6d3b;}
 .information {background-color: #64b93a;border-color: #64b93a;color: #fff;}
@@ -405,6 +406,13 @@ h6 {font-size: 0.875rem;}
 
 
 /**************************************/
+/*** Наверх ***/
+/**************************************/
+.toTop {background-color: #00acc5;color: #ffffff;font-size: 1.5rem;width: 4rem;height: 4rem;line-height: 4rem;text-align: center;border-radius: 100%;position: fixed;right: 1rem;bottom: 1rem;display: none;transition: all 0.3s ease;z-index: 12;cursor: pointer;}
+.toTop:hover {background-color: #0066a0;}
+
+
+/**************************************/
 /*** Обесцвечивание изображений ***/
 /**************************************/
 .grayscale {-webkit-filter: grayscale(100%);-moz-filter: grayscale(100%);-ms-filter: grayscale(100%);-o-filter: grayscale(100%);filter: grayscale(100%);filter: gray;}
@@ -515,9 +523,9 @@ header .contacts__block + .contacts__block {margin-left: 2.5rem;}
 }
 @media (max-width: 575.98px) {
 	.mainnav {width: auto;}
-	.mainnav__icon {padding: 0;width: 3rem;height: 3rem;}
+	.mainnav__icon {padding: 0;width: 3rem;height: 3rem;display: flex;margin: 0 0 0 auto;}
 	.mainnav__icon span {display: none;}
-	.mainnav__icon i {margin: 0 !important;font-size: 1.5rem;}
+	.mainnav__icon i {margin: 0 !important;font-size: 1.25rem;}
 	.mainnav__icon i:before {content: '\e920'}
 }
 
@@ -583,10 +591,10 @@ header {padding-bottom: 4rem;}
 }
 
 /** Поисковая выдача **/
-#search__result {display: none;width: 100%;max-height: 30rem;position: absolute;top: 4rem;right: 0;padding: 1rem;border: 1px solid #dae6ec;background: #ffffff;text-align: left;overflow-y: auto;z-index: 11;}
+#search__result {display: none;width: 100%;max-height: 31rem;position: absolute;top: 4rem;right: 0;padding: 1rem;border: 1px solid #dae6ec;background: #ffffff;text-align: left;overflow-y: auto;z-index: 11;}
 #search__result .flex-start {flex-direction: column;}
 #search__result .result__item {display: none;width: 100%;line-height: 20px;padding: 10px 0;}
-#search__result .result__item:nth-child(-n+6) {display: block;}
+#search__result .result__item:nth-child(-n+4) {display: block;}
 #search__result .result__item a {font-size: 1rem;display: flex;flex-wrap: wrap;align-items: center;}
 #search__result .result__item a.active {color: #00acc5;}
 #search__result .result__item .result__image {width: 2.5rem;margin-right: 1.25rem;text-align: center;}
@@ -619,21 +627,26 @@ footer .contacts__block-content {padding-left: 2rem;}
 footer .contacts__block-link {white-space: normal;}
 footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /* Подвал. Соц Сети */
-.social-links a {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.875rem;display: inline-block;text-align: center;}
+.social-links {width: 30%;}
+.social-links a {margin: 0 .5rem .5rem 0;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.875rem;display: inline-block;text-align: center;}
 .social-links a:hover {border-color: #00acc5}
 .social-links span {display: none;}
 /* Подвал. Копирайт */
-.copyright {width: 100%;margin-top: 2rem;flex-direction: column;}
+.copyright {width: 40%;padding: 0 1rem;flex-direction: column;}
 .copyright div + div {margin-top: .25rem;}
 /* Подвал. Оплата */
+.payments {width: 30%;}
 .payments a:hover {color: #656d72;}
-.payments i {margin-right: .5rem;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;transition: all 0.3s ease;}
+.payments i {margin: 0 .5rem .5rem 0;border: 2px solid #9facb3;border-radius: 100%;font-size: 1rem;width: 2rem;height: 2rem;line-height: 1.75rem;display: inline-block;text-align: center;transition: all 0.3s ease;}
 .payments i:hover {border-color: #00acc5;color: #00acc5;}
 /* Подвал. Адаптивность */
 @media (max-width: 991.98px) {
 	footer .contacts__block {width: 50%;margin-top: 2rem;}
 	footer .contacts__block:nth-child(-n+2) {margin-top: 0;}
 	footer .mainnav .dropdown__content.opened {display: block !important;right: 0;}
+	.social-links {width: auto;}
+	.payments {width: auto;}
+	.copyright {width: 100%;order: 3;margin-top: 2rem;}
 }
 @media (max-width: 639.98px) {
 	.social-links {width: 100%;justify-content: center;}
@@ -688,7 +701,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.slider__nav {margin: 0 0 0 2rem;}
 	.slider__nav .owl-dots {margin: 0 .5rem;}
 	.slider__nav .owl-dots .owl-dot {margin: 0 .25rem;}
-	.slider__nav .owl-count {margin-left: 1rem;}
+	.slider__nav .owl-count {margin-left: 0;}
 }
 @media (max-width: 767.98px) {
 	#slideshow {height: 14rem;}
@@ -735,7 +748,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.catalog__content .catalog__link {padding: 1.25rem 0;}
 }
 @media (max-width: 991.98px) {
-	.slider__catalog {bottom: 0;left: 0;}
+	.slider__catalog {bottom: 0;}
 	.catalog__icon {width: 7rem;height: 7rem;font-size: 2rem;}
 	.catalog__content.dropdown__content {height: 18rem;border-radius: 0 0 0 12rem;top: 2rem;padding: 1.25rem 2rem 1.25rem 8rem;}
 	.catalog__content .catalog__link {padding: .5rem 0;}
@@ -924,6 +937,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .empty .product__addedInCart {display: flex;border-color: #eef2f5;color: #656d72;}
 .product__addCart:hover .product__addedInCart {color: #0066a0;border-color: #0066a0;}
 .product__addCart:hover .button {color: #ffffff;background-color: #0066a0;}
+.product__addCart:hover .button.empty {border-color: #0066a0;}
 .product__discount {color: #ffffff;background: #00acc5;text-align: center;padding: .75rem;}
 /* Товары таблицей. Адаптивность */
 @media (min-width: 1200px) {
@@ -1127,7 +1141,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .filter__item + .filter__item {margin-top: 1rem;}
 .filter__item input {margin-right: 1rem;}
 .filter__item label {width: calc(100% - 2.5rem);}
-.filter__name {border-bottom: 1px solid #dae6ec;padding: 1rem;}
+.filter__name {border: 1px solid #dae6ec;border-top: 0;padding: 1rem;}
 .goodsFilterPriceRangePointers {flex-wrap: nowrap;}
 .goodsFilterPriceRangePointers input {border-radius: 0;padding: 0 1rem;flex-grow: 1;text-align: center;}
 .goodsFilterPriceRangePointers .separator {margin: 0 .5rem;width: 1rem;height: 1px;background-color: #dae6ec;}
@@ -1343,12 +1357,12 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .cart__qty input {border-left: 1px solid #dae6ec;border-right: 1px solid #dae6ec;border-radius: 0;}
 .cart__delete {border-left: 1px solid #dae6ec;width: 3.125rem;height: 3rem;}
 .cartTotal .total__delivery {background-color: #ffffff;}
-.total__icon {font-size: 5rem;background-color: #ffffff;}
-.total__items {background-color: #eef2f4;border: 1px solid #dae6ec;text-align: center;}
-.total__item {padding-top: 1rem;}
-.total__item .button:hover {background-color: #00acc5;cursor: default;}
+.cartTotal .total__icon {font-size: 5rem;background-color: #ffffff;}
+.cartTotal .total__items {background-color: #eef2f4;border: 1px solid #dae6ec;text-align: center;}
+.cartTotal .total__item {padding-top: 1rem;}
+.cartTotal .total__item .button:hover {background-color: #00acc5;cursor: default;}
 .total__cart {padding-bottom: 1rem;font-size: 1.25rem;font-weight: bold;}
-.total__label {margin-right: .25rem;} 
+.total__label {margin-right: .5rem;} 
 .total__buttons {text-align: center;margin-top: 1rem;width: 100%;}
 .total__buttons .button {margin-top: 1rem;}
 .total__pp {font-size: .75rem;margin-top: 1rem;}
@@ -1356,7 +1370,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .cartTable.disable #makeOrder {display: inline-block;}
 #closeOrder {display: none;}
 @media (max-width: 991.98px) {
-	.cartTable {width: 100%;margin: 0;}
+	.cartTableList {width: 100%;margin: 0;}
 	.cartTotal {width: 100%;margin: 2rem 0 0 0;}
 }
 @media (max-width: 479.98px) {
@@ -1388,7 +1402,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .fastOrderForm .selectBox:after {line-height: 4rem;}
 .fastOrderForm .col-left {width: 50%;padding: 2rem 1rem 2rem 2rem;background-color: #eef2f4;}
 .fastOrderForm .col-right {width: 50%;padding: 2rem 2rem 2rem 1rem;background-color: #eef2f4;}
-.fastOrderForm .form__fields {margin-bottom: 2rem;display: flex;align-items: center;}
+.fastOrderForm .form__fields {margin-bottom: 1rem;display: flex;align-items: center;}
 .fastOrderForm .form__fields:last-child {margin-bottom: 0;}
 .form__registration input {height: 1.5rem;min-height: auto;}
 .form__registration input + label {width: calc(100% - 1.5rem);padding-left: 1rem;margin: 0;display: inline-block;}
@@ -1405,10 +1419,13 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .coupon__button {line-height: 3.875rem;position: absolute;right: 0;border-radius: 0;}
 .coupon__button i {display: none;}
 .coupon__code {padding-right: 9rem;}
+.coupon__reset {display: none;color: #d2d9cd;position: absolute;right: 10rem;bottom: 1.5rem;line-height: 1;cursor: pointer;}
+.coupon__reset.active {display: block;}
+.coupon__reset:after {content: "\e906";font-family: 'icomoon';}
 .total__summary {width: 100%;margin-top: 2rem;padding: 2rem;background-color: #eef2f4;}
-.total__summary .total__item {padding: 0;font-size: 1rem;}
-.total__summary .total__sum {flex-grow: 1;text-align: right;font-size: 1.5rem;font-weight: bold;margin-top: 1rem;}
-.total__summary .total__delivery {margin-left: 2rem;}
+.total__summary .total__item {font-size: 1rem;}
+.total__summary .total__sum {flex-grow: 1;text-align: right;font-size: 1.5rem;font-weight: bold;justify-content: flex-end;}
+.total__summary .total__price {font-weight: bold;white-space: nowrap;}
 .fastOrderContent .total__pp {max-width: 40%;}
 @media (max-width: 991.98px) {
 	.fastOrderForm .col-left {width: 100%;padding: 2rem 2rem 1rem 2rem;}
@@ -1419,8 +1436,8 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.total__pp {order: 2;width: 100%;}
 }
 @media (max-width: 639.98px) {
-	.total__summ-delivery {width: 100%;flex-direction: column;align-items: flex-start;}
-	.total__summary .total__sum {text-align: left;margin-top: .5rem;}
+	.total__summary .total__items {width: 100%;}
+	.total__summary .total__sum {width: 100%;margin-top: 1rem;justify-content: flex-start;}
 }
 @media (max-width: 479.98px) {
 	#globalOrder .block__title {padding: 1rem 1rem 0 1rem;}
@@ -1434,10 +1451,6 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 	.total__buttons {justify-content: center;}
 	.total__buttons .button.button4 {display: none;}
 }
-@media (max-width: 374.98px) {
-	.total__summary .total__price {font-weight: bold;white-space: nowrap;}
-}
-
 
 /**************************************/
 /*** Страница: Оформление заказа ***/
@@ -1508,7 +1521,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .dropdown__content {display: none;width: 28rem;margin-top: -1px;padding: 2rem;right: 0;top: 4rem;height: auto;background: #ffffff;border: 1px solid #dae6ec;position: absolute;z-index: 11;transition: all 0.3s ease-in-out;}
 .opened .dropdown__content, .dropdown__content.opened {display: block;}
 .dropdown__open {position: relative;cursor: pointer;}
-@media all and (min-width: 768px) {
+@media all and (min-width: 992px) {
 	.dropdown .dropdown__open:before {content: "";right: 0;bottom: -4rem;height: 5rem;width: 100%;display: block;position: absolute;}
 	.dropdown:hover .dropdown__content {display: block;}
 }

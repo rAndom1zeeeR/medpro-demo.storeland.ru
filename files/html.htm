@@ -166,28 +166,6 @@
 
 						<!-- ЛК, Избр, Срав -->
 						<div class="addto flex">
-							<!-- Войти -->
-							{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
-							<div class="addto__block login dropdown has-items">
-								<a class="addto__block-link login__icon dropdown__open" href="{USER_LOGIN_URL}" title="Личный кабинет">
-									<i class="icon-user"></i>
-								</a>
-								{% IF CLIENT_IS_LOGIN %}
-								<div class="addto__login dropdown__content" data-content="login">
-									<div class="addto__title">Личный кабинет</div>
-									<!-- ЛК для авторизованных пользователей -->
-									<ul class="mainnav__links unstyled">
-										<li><a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a></li>
-										<li><a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a></li>
-										<li><a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a></li>
-										{% IF SETTINGS_COMPARE_DISABLE=0 %}<li><a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a></li>{% ENDIF %}
-										<li><a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a></li>
-									</ul>
-								</div>
-								{% ENDIF %}
-							</div>
-							{% ENDIF %}
-
 							<!-- Избранное -->
 							<div class="addto__block favorites dropdown {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
 								<a class="addto__block-link favorites__icon dropdown__open" href="{FAVORITES_URL}" title="Избранное">
@@ -275,6 +253,28 @@
 								</div>
 							</div>
 							{% ENDIF %}
+							
+							<!-- Войти -->
+							{% IFNOT MOD_LNAME = user || CLIENT_IS_LOGIN %}
+							<div class="addto__block login dropdown has-items">
+								<a class="addto__block-link login__icon dropdown__open" href="{USER_LOGIN_URL}" title="Личный кабинет">
+									<i class="icon-user"></i>
+								</a>
+								{% IF CLIENT_IS_LOGIN %}
+								<div class="addto__login dropdown__content" data-content="login">
+									<div class="addto__title">Личный кабинет</div>
+									<!-- ЛК для авторизованных пользователей -->
+									<ul class="mainnav__links unstyled">
+										<li><a href="{USER_SETTINGS_URL}" title="Личный кабинет" rel="nofollow"><span>Мой кабинет</span></a></li>
+										<li><a href="{USER_HISTORY_LIST_URL}" title="История заказов" rel="nofollow"><span>История</span></a></li>
+										<li><a href="{FAVORITES_URL}" title="Избранные товары" rel="nofollow"><span>Избранное</span></a></li>
+										{% IF SETTINGS_COMPARE_DISABLE=0 %}<li><a href="{COMPARE_URL}" title="Сравнение" rel="nofollow">Сравнение</a></li>{% ENDIF %}
+										<li><a href="{USER_LOGOUT_URL}" title="Выход" rel="nofollow"><span>Выход</span></a></li>
+									</ul>
+								</div>
+								{% ENDIF %}
+							</div>
+							{% ENDIF %}
 						</div><!-- //END ЛК, Избр, Срав -->
 					</div>
 				</div>
@@ -314,7 +314,7 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled flex dropdown__content"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex button button3 dropdown__open" data-open="header-menu">
+							<div class="mainnav__icon flex-center button button3 dropdown__open" data-open="header-menu">
 								<span>Меню</span>
 								<i class="icon-arrow_caret_down"></i>
 							</div>
@@ -1803,7 +1803,7 @@
 											<input type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" class="square" {% IF filter_attr_list.values.CHECKED %}checked="checked" {% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 											<label for="filterAttrVal{filter_attr_list.values.ID}">
 												<span>{filter_attr_list.values.VALUE}</span>
-												<span>({filter_attr_list.values.NB_GOODS_ALL})</span>
+												<!-- <span>({filter_attr_list.values.NB_GOODS_ALL})</span> -->
 											</label>
 										</div>
 										{% ENDFOR %}
@@ -1822,7 +1822,7 @@
 											<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 											<label for="filterPropVal{filter_prop_list.values.ID}">
 												<span>{filter_prop_list.values.VALUE}</span>
-												<span>({filter_prop_list.values.NB_GOODS_FILTERED})</span>
+												<!-- <span>({filter_prop_list.values.NB_GOODS_FILTERED})</span> -->
 											</label>
 										</div>
 										{% ENDFOR %}
@@ -1992,7 +1992,7 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex button button3 dropdown__open" data-open="footer-menu">
+							<div class="mainnav__icon flex-center button button3 dropdown__open" data-open="footer-menu">
 								<span>Меню</span>
 								<i class="icon-arrow_caret_down"></i>
 							</div>
@@ -2190,6 +2190,13 @@
 							</a>
 
 						</div>
+						<!-- Подвал. Копирайт -->
+						<div class="copyright flex-center">
+							<div>&copy;{DATE_YEAR} {SETTINGS_STORE_NAME}. Все права защищены.</div>
+							<div>{SETTINGS_STORE_ORG_NAME}.</div>
+							<div>{COPYRIGHT_FOR_DESIGN_nails}</div>
+							<div style="display: none;">{SETTINGS_STORE_HTML_CODE}</div>
+						</div>
 						<!-- Подвал. Способы оплаты -->
 						<div class="payments">
 							<a class="flex-center" href="#" title="Способы оплаты">
@@ -2203,13 +2210,6 @@
 								<i class="icon-yandex"></i>
 							</a>
 						</div>
-						<!-- Подвал. Копирайт -->
-						<div class="copyright flex-center">
-							<div>&copy;{DATE_YEAR} {SETTINGS_STORE_NAME}. Все права защищены.</div>
-							<div>{SETTINGS_STORE_ORG_NAME}.</div>
-							<div>{COPYRIGHT_FOR_DESIGN_nails}</div>
-							<div style="display: none;">{SETTINGS_STORE_HTML_CODE}</div>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -2219,6 +2219,11 @@
 		<noindex>
 			<!-- Скрытое обновление корзины -->
 			<div class="hiddenUpdate" style="display: none;"></div>
+
+			<!-- Наверх -->
+			<div class="toTop" id="toTop">
+				<i class="icon-arrow_caret_up"></i>
+			</div>
 
 			<!-- Обратный звонок в модальном окне -->
 			<div id="fancybox__callback" class="modal modal-bg" style="display:none">

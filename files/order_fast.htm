@@ -294,7 +294,6 @@
 									<input type="hidden" name="oldPromoDiscount" value="0">
 									<input type="hidden" name="orderSumDefaul" value="{CART_SUM_NOW}">
 									<input class="coupon__code form__input" type="text" name="form[coupon_code]" value="{ORDER_FORM_COUPON_CODE}" placeholder="Введите код"/>
-									<i class="icon-coupon"></i>
 									<a href="javascript:void(0)" class="coupon__button button" title="Применить">
 										<span>Применить</span>
 										<i class="icon-check"></i>
@@ -309,26 +308,51 @@
 		    {% ENDIF SETTINGS %}
 	      <!-- END Если скидки по купонам активированы в панели управления магазином -->
 		    <div class="total__summary flex justify-between">
-					<div class="total__summ-delivery flex">
-						<div class="total__item total__discount">
-							<span class="total__label"><span>Товаров на сумму:</span></span>
-							<span class="total__price"><span class="cartSumWithDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span></span>
+					<div class="total__items">
+						<!-- Скидки, действующие на заказ -->
+						{% FOR cart_discount %}
+						{% IF cart_discount.DISCOUNT_IS_ENABLED %}
+						<div class="total__item total__discount {CURRENCY_CHAR_CODE} flex">
+							<div class="total__label"><span>{cart_discount.DISCOUNT_NAME}:</span></div>
+							<div class="total__price">
+								<span class="discount__value" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}</span>
+								{% IF cart_discount.IS_PERCENT %}
+								<span class="percent">%</span>
+								{% ELSE %}
+								<span class="rub">р</span>
+								{% ENDIF %}
+							</div>
 						</div>
-						<div class="total__item total__delivery">
-							<span class="total__label"><span>Стоимость доставки:</span></span>
-							<span class="total__price"><span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span></span>
+						{% ENDIF %}
+						{% ENDFOR %}
+
+						<!-- Купон -->
+						<div class="total__item total__coupons {CURRENCY_CHAR_CODE} flex" style="display: none;">
+							<div class="total__label"><span>Купон:</span></div>
+							<div class="total__price"><span class="cartSumCoupons" data-value=""></span></div>
+						</div>
+
+						<!-- Доставка -->
+						<div class="total__item total__delivery flex">
+							<div class="total__label"><span>Стоимость доставки:</span></div>
+							<div class="total__price"><span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span></div>
 						</div>
 					</div>
-					<div class="total__item total__sum">
-						<span class="total__label"><span>Итого:</span></span>
-						<span class="total__price"><span class="cartSumTotal" data-value="{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT}">{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT | money_format}</span></span>
+					<div class="total__item total__sum flex">
+						<div class="total__label"><span>Итого:</span></div>
+						<div class="total__price"><span class="cartSumTotal" data-value="{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT}">{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT | money_format}</span></div>
 						<div style="display: none;" class="total__price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
 						<div style="display: none;" class="total__price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
 					</div>
+
+					<!-- <div class="total__item total__discount">
+						<span class="total__label"><span>Товаров на сумму:</span></span>
+						<span class="total__price"><span class="cartSumWithDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span></span>
+					</div> -->
 				</div>
 		    <div class="total__buttons flex justify-between">
 			    <input type="hidden" name="hash" value="{HASH}" />
-			    <a class="button button4" href="{CATALOG_URL}" title="Вернуться к покупкам"><span>Вернуться к покупкам</span></a>
+			    <a class="button button3" href="{CATALOG_URL}" title="Вернуться к покупкам"><span>Вернуться к покупкам</span></a>
 					<div class="total__pp">Нажимая на кнопку &laquo;Оформить заказ&raquo;, Вы соглашаетесь с <a data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</a></div>
 					<button type="submit" class="button disabled" titleOFF="Оформить заказ" data-tooltip="Заполните все поля"><span>Оформить </span><span>заказ</span></button>
 		    </div>

@@ -2047,7 +2047,7 @@ function orderScriptsSelect() {
 // Отправка купона при оформлении заказа
 function coupons() {
 	var submitBtn = $('.coupon__button');
-	var couponInput = $('#coupon__code');
+	var couponInput = $('.coupon__code');
 	var resetBtn = $('.coupon__reset');
 	submitBtn.on('click', function(){
 		var url = '/order/stage/confirm';
