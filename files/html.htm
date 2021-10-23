@@ -314,20 +314,9 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled flex dropdown__content"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex-center button button3 dropdown__open" data-open="header-menu">
+							<div class="mainnav__icon flex-center button button3" data-fancybox data-src="#fancybox__menu">
 								<span>Меню</span>
 								<i class="icon-arrow_caret_down"></i>
-							</div>
-							<div class="mainnav__dropdown dropdown__content" data-content="header-menu">
-								{% FOR menu %}
-									{% FOR header %}
-										{% FOR links %}
-										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
-											<span itemprop="name">{menu.header.links.NAME}</span>
-										</a>
-										{% ENDFOR %}
-									{% ENDFOR %}
-								{% ENDFOR %}
 							</div>
 						</nav><!-- //END Меню -->
 
@@ -336,6 +325,7 @@
 							<a class="cart__block button2 flex-center dropdown__open" href="{CART_URL}" title="Корзина">
 								<div class="cart__block-icon">
 									<i class="icon-cart"></i>
+									<span class="cart__count" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
 								</div>
 								<div class="cart__block-content">
 									<span class="cart__block-empty">Корзина</span>
@@ -1992,20 +1982,9 @@
 							<!-- Меню. Еще -->
 							<ul class="overflowMenu unstyled"></ul>
 							<!-- Меню. Адаптивность -->
-							<div class="mainnav__icon flex-center button button3 dropdown__open" data-open="footer-menu">
+							<div class="mainnav__icon flex-center button button3" data-fancybox data-src="#fancybox__menu">
 								<span>Меню</span>
 								<i class="icon-arrow_caret_down"></i>
-							</div>
-							<div class="mainnav__dropdown dropdown__content" data-content="footer-menu">
-								{% FOR menu %}
-									{% FOR header %}
-										{% FOR links %}
-										<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
-											<span itemprop="name">{menu.header.links.NAME}</span>
-										</a>
-										{% ENDFOR %}
-									{% ENDFOR %}
-								{% ENDFOR %}
 							</div>
 						</nav><!-- //END Меню -->
 					</div>
@@ -2219,6 +2198,28 @@
 		<noindex>
 			<!-- Скрытое обновление корзины -->
 			<div class="hiddenUpdate" style="display: none;"></div>
+
+			<!-- Политика конфиденциальности в модальном окне -->
+			<div id="fancybox__menu" class="modal modal-bg" style="display:none">
+				<div class="modal__title block__title">
+					<h2 class="title">Меню</h2>
+				</div>
+				<div class="modal__content">
+					<ul class="mainnav__list unstyled">
+						{% FOR menu %}
+							{% FOR header %}
+								{% FOR links %}
+								<li>
+									<a class="mainnav__list-link {% IF menu.header.links.SELECTED %}active{%ENDIF%} {% IF menu.header.links.NAME = Каталог %}mainnav__catalog{%ENDIF%}" href="{menu.header.links.URL}" title="{% IF menu.header.links.TITLE %}{menu.header.links.TITLE}{% ELSE%}{menu.header.links.NAME}{% ENDIF %}" itemprop="url">
+										<span itemprop="name">{menu.header.links.NAME}</span>
+									</a>
+								</li>
+								{% ENDFOR %}
+							{% ENDFOR %}
+						{% ENDFOR %}
+					</ul>
+				</div>
+			</div>
 
 			<!-- Наверх -->
 			<div class="toTop" id="toTop">
