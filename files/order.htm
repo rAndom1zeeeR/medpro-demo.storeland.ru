@@ -319,7 +319,11 @@
               {% IF cart_discount.DISCOUNT_IS_ENABLED %}
                 <tr class="discount">
                   <td colspan="2" class="name">{cart_discount.DISCOUNT_NAME}</td>
-                  {% IF cart_discount.IS_PERCENT %}<td colspan="2" class="percent">{cart_discount.DISCOUNT_VALUE}%</td>{% ELSE %}<td colspan="2" class="percent">{cart_discount.DISCOUNT_VALUE | money_format}</td>{% ENDIF %}
+                  {% IF cart_discount.IS_PERCENT %}
+                  <td colspan="2" class="percent">{cart_discount.DISCOUNT_VALUE}%</td>
+                  {% ELSE %}
+                  <td colspan="2" class="price__now RUB">{cart_discount.DISCOUNT_VALUE | money_format}</td>
+                  {% ENDIF %}
                 </tr>
               {% ENDIF %}
             {% ENDFOR %}

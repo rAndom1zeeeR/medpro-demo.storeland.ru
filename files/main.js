@@ -2067,18 +2067,22 @@ function coupons() {
 				// Получаем блок скидки
 				var discountBlock = $(data).closest('#myform').find('.discount');
 				var discountName = discountBlock.find('.name').text();
-				var discountPrice = discountBlock.find('.percent .num').text();
+				var discountPrice = discountBlock.find('.price__now').html();
 				var discountPercent = discountBlock.find('.percent').text();
-				if (discountPrice.length) {
-					discountPrice = discountPrice
-				}else{
+				console.log('discountPrice', discountPrice)
+				console.log('discountPercent', discountPercent)
+				if (discountPrice == undefined) {
 					discountPrice = discountPercent
+					console.log('discountPrice - ', discountPrice)
 				}
 				// Получаем новую итоговую стоимость заказа
 				var totalBlock = $(data).closest('#myform').find('.total');
 				var totalSum = totalBlock.find('.total-sum').data('total-sum');
-				var deliveryPrice = parseInt($('.cartSumDelivery .num').text());
+				var deliveryPrice = parseInt($('.cartSumDelivery:eq(0) .num').text());
 				var newTotalSum = totalSum + deliveryPrice;
+				console.log('totalSum', totalSum)
+				console.log('deliveryPrice', deliveryPrice)
+				console.log('newTotalSum', newTotalSum)
 				// Записываем название и размер скидки по купону
 				$('.total__coupons .total__label span').html(discountName);
 				$('.total__coupons .cartSumCoupons').html(discountPrice);

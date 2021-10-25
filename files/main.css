@@ -108,7 +108,7 @@ textarea.error:-ms-input-placeholder {color: red;}
 .selectBox:after {content: '\e939';line-height: 3rem;right: 1rem;position: absolute;font-family: 'icomoon';pointer-events: none;}
 .selectBox select {padding-right: 3rem;}
 .selectBox:hover {color: #00acc5;}
-.selectBox option[disabled] {color: #dae6ec;}
+.selectBox option[disabled] {color: #a0adb4;}
 @media (max-width: 479.98px) {
 	.selectBox select {padding: 0 2rem 0 1rem;}
 }
@@ -1368,7 +1368,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .total__buttons .button {margin-top: 1rem;}
 .total__pp {font-size: .75rem;margin-top: 1rem;}
 #makeOrder {display: none;}
-.cartTable.disable #makeOrder {display: inline-block;}
+.cartTable.disable #makeOrder {display: none;}
 #closeOrder {display: none;}
 @media (max-width: 991.98px) {
 	.cartTableList {width: 100%;margin: 0;}
@@ -1420,7 +1420,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .coupon__button {line-height: 3.875rem;position: absolute;right: 0;border-radius: 0;}
 .coupon__button i {display: none;}
 .coupon__code {padding-right: 9rem;}
-.coupon__reset {display: none;color: #d2d9cd;position: absolute;right: 10rem;bottom: 1.5rem;line-height: 1;cursor: pointer;}
+.coupon__reset {display: none;color: #d2d9cd;position: absolute;right: 10.5rem;bottom: 1.5rem;line-height: 1;cursor: pointer;}
 .coupon__reset.active {display: block;}
 .coupon__reset:after {content: "\e906";font-family: 'icomoon';}
 .total__summary {width: 100%;margin-top: 2rem;padding: 2rem;background-color: #eef2f4;}
