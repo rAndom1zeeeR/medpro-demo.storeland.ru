@@ -523,15 +523,14 @@
 		{% IF index_page_goods_empty=0 || index_page_new_goods_empty=0 || index_page_favorites_goods_empty=0 %}
 		<section id="pdt">
 			<div class="container">
-				<div class="tab__navs flex">
-					{% IFNOT index_page_goods_empty %}<a href="{CATALOG_INDEX_PAGE_URL}" data-tab="pdt__sale" class="tab__nav active">Товары на главной</a>{% ENDIF %}
-					{% IFNOT index_page_new_goods_empty %}<a href="{CATALOG_NEW_URL}" data-tab="pdt__new" class="tab__nav {% IF index_page_goods_empty %}active{% ENDIF %}">Новинки сети</a>{% ENDIF %}
-					{% IFNOT index_page_favorites_goods_empty %}<a href="{CATALOG_TOP_SALES_URL}" data-tab="pdt__best" class="tab__nav {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}">Специальные предложения</a>{% ENDIF %}
+				<div class="tabs__navs flex">
+					{% IFNOT index_page_goods_empty %}<a href="{CATALOG_INDEX_PAGE_URL}" data-tab="pdt__sale" class="tabs__nav active">Товары на главной</a>{% ENDIF %}
+					{% IFNOT index_page_new_goods_empty %}<a href="{CATALOG_NEW_URL}" data-tab="pdt__new" class="tabs__nav {% IF index_page_goods_empty %}active{% ENDIF %}">Новинки сети</a>{% ENDIF %}
+					{% IFNOT index_page_favorites_goods_empty %}<a href="{CATALOG_TOP_SALES_URL}" data-tab="pdt__best" class="tabs__nav {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}">Специальные предложения</a>{% ENDIF %}
 				</div>
 				<!-- Товары на главной -->
 				{% IFNOT index_page_goods_empty %}
 				<div id="pdt__sale" data-tab-content="pdt__sale" class="tabs__content active">
-					<div class="tc">index_page_goods_empty</div>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_goods %}
 						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{index_page_goods.ID}" itemscope itemtype="https://schema.org/Product">
@@ -735,7 +734,6 @@
 				<!-- Новинки -->
 				{% IFNOT index_page_new_goods_empty %}
 				<div id="pdt__new" data-tab-content="pdt__new" class="tabs__content {% IF index_page_goods_empty %}active{% ENDIF %}">
-					<div class="tc">index_page_new_goods_empty</div>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_new_goods %}
 						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_new_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" data-id="{index_page_new_goods.ID}" itemscope itemtype="https://schema.org/Product">
@@ -940,7 +938,6 @@
 				<!-- Хиты -->
 				{% IFNOT index_page_favorites_goods_empty %}
 				<div id="pdt__best" data-tab-content="pdt__best" class="tabs__content {% IF index_page_goods_empty && index_page_new_goods %}active{% ENDIF %}">
-					<div class="tc">index_page_favorites_goods_empty</div>
 					<div class="products__grid owl-carousel">
 						{% FOR index_page_favorites_goods %}
 						<div class="product__item {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE && index_page_favorites_goods.MAX_REST_VALUE=0 %}empty{% ENDIF %} {% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} {% IF index_page_favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" itemscope itemtype="https://schema.org/Product">
@@ -1843,15 +1840,15 @@
 		{% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 || news_list_mass_media_empty=0 %}
 		<section id="news" class="index">
 			<div class="container">
-				<div class="tab__navs flex">
-					{% IFNOT news_list_all_empty %}<a href="#" class="tab__nav active" data-open="news_list_all">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_shop_empty %}<a href="#" class="tab__nav active" data-open="news_list_shop">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_articles_empty %}<a href="#" class="tab__nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-open="news_list_articles">Статьи</a>{% ENDIF %}
-					{% IFNOT news_list_mass_media_empty %}<a href="#" class="tab__nav {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-open="news_list_mass_media">Блог</a>{% ENDIF %}
+				<div class="tabs__navs flex">
+					{% IFNOT news_list_all_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_all">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_shop_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_shop">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-tab="news_list_mass_media">Блог</a>{% ENDIF %}
 				</div>
 				<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
 				{% IFNOT news_list_all_empty %}
-				<div class="news_list_all active" data-content="news_list_all">
+				<div id="news_list_all" class="tabs__content active" data-content="news_list_all">
 					<div class="owl-carousel">
 						{% FOR news_list_all %}
 						<div class="news__item">
@@ -1875,7 +1872,7 @@
 				{% ENDIF %}
 				<!-- Список Новости -->
 				{% IFNOT news_list_shop_empty %}
-				<div class="news_list_shop active" data-content="news_list_shop">
+				<div id="news_list_shop" class="tabs__content active" data-content="news_list_shop">
 					<div class="owl-carousel">
 						{% FOR news_list_shop %}
 						<div class="news__item">
@@ -1899,7 +1896,7 @@
 				{% ENDIF %}
 				<!-- Список Статьи -->
 				{% IFNOT news_list_articles_empty %}
-				<div class="news_list_articles" data-content="news_list_articles">
+				<div id="news_list_articles" class="tabs__content {% IF news_list_shop_empty %}active{% ENDIF %}" data-content="news_list_articles">
 					<div class="owl-carousel">
 						{% FOR news_list_articles %}
 						<div class="news__item">
@@ -1923,7 +1920,7 @@
 				{% ENDIF %}
 				<!-- Список Блог -->
 				{% IFNOT news_list_mass_media_empty %}
-				<div class="news_list_mass_media" data-content="news_list_mass_media">
+				<div id="news_list_mass_media" class="tabs__content {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media">
 					<div class="owl-carousel">
 						{% FOR news_list_mass_media %}
 						<div class="news__item">

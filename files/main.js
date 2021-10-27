@@ -785,8 +785,8 @@ function pdtSlider() {
 		responsive: {
 			0:{items:1},
       320:{items:1},
-      481:{items:2},
-      641:{items:3},
+      480:{items:2},
+      640:{items:2},
       768:{items:3},
       992:{items:3},
       1200:{items:4}
@@ -818,8 +818,8 @@ function pdtSlider() {
 		responsive: {
 			0:{items:1},
       320:{items:1},
-      481:{items:2},
-      641:{items:3},
+      480:{items:2},
+      640:{items:2},
       768:{items:3},
       992:{items:3},
       1200:{items:4}
@@ -850,8 +850,8 @@ function pdtSlider() {
 		responsive: {
 			0:{items:1},
       320:{items:1},
-      481:{items:2},
-      641:{items:3},
+      480:{items:2},
+      640:{items:2},
       768:{items:3},
       992:{items:3},
       1200:{items:4}
@@ -882,8 +882,8 @@ function pdtSlider() {
 		responsive: {
 			0:{items:1},
       320:{items:1},
-      481:{items:2},
-      641:{items:3},
+      480:{items:2},
+      640:{items:2},
       768:{items:3},
       992:{items:3},
       1200:{items:4}
@@ -891,12 +891,12 @@ function pdtSlider() {
 	});
 
 	// Табы в товаров на главной
-  $('#pdt .tab__nav').on('click', function (event) {
+  $('#pdt .tabs__nav').on('click', function (event) {
     event.preventDefault();
     var id = $(this).attr('data-tab');
     $('#pdt .tabs__content').prepend('<div class="preloader"><div class="loading"></div></div>');
     preload();
-    $('#pdt .tab__nav').removeClass('active')
+    $('#pdt .tabs__nav').removeClass('active')
     $('#pdt .tabs__content').removeClass('active');
     $(this).addClass('active');
     $('#'+ id).addClass('active');
@@ -965,7 +965,7 @@ function slideShow() {
 // Новости
 function newsCarousel() {
 	// Функция слайдера для всех Новостей
-	$('.news_list_all .owl-carousel').owlCarousel({
+	$('#news_list_all .owl-carousel').owlCarousel({
 		items: 4,
 		margin: 32,
 		loop: false,
@@ -986,15 +986,18 @@ function newsCarousel() {
 		responsiveClass: true,
 		responsiveRefreshRate: 100,
 		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
+			0:{items:1},
+      320:{items:1},
+      480:{items:2},
+      640:{items:2},
+      768:{items:3},
+      992:{items:3},
+      1200:{items:4}
 		}
 	});
 
 	// Функция слайдера для Новостей
-	$('.news_list_shop .owl-carousel').owlCarousel({
+	$('#news_list_shop .owl-carousel').owlCarousel({
 		items: 4,
 		margin: 32,
 		loop: false,
@@ -1015,15 +1018,18 @@ function newsCarousel() {
 		responsiveClass: true,
 		responsiveRefreshRate: 100,
 		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
+			0:{items:1},
+      320:{items:1},
+      480:{items:2},
+      640:{items:2},
+      768:{items:3},
+      992:{items:3},
+      1200:{items:4}
 		}
 	});
 
 	// Функция слайдера для Статьи
-	$('.news_list_articles .owl-carousel').owlCarousel({
+	$('#news_list_articles .owl-carousel').owlCarousel({
 		items: 4,
 		margin: 32,
 		loop: false,
@@ -1044,15 +1050,18 @@ function newsCarousel() {
 		responsiveClass: true,
 		responsiveRefreshRate: 100,
 		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
+			0:{items:1},
+      320:{items:1},
+      480:{items:2},
+      640:{items:2},
+      768:{items:3},
+      992:{items:3},
+      1200:{items:4}
 		}
 	});
 
 	// Функция слайдера для Медиа
-	$('.news_list_mass_media .owl-carousel').owlCarousel({
+	$('#news_list_mass_media .owl-carousel').owlCarousel({
 		items: 4,
 		margin: 32,
 		loop: false,
@@ -1073,23 +1082,26 @@ function newsCarousel() {
 		responsiveClass: true,
 		responsiveRefreshRate: 100,
 		responsive: {
-			0:{items:1, autoHeight: true},
-			480:{items:2},
-			768:{items:3},
-			1200:{items:4}
+			0:{items:1},
+      320:{items:1},
+      480:{items:2},
+      640:{items:2},
+      768:{items:3},
+      992:{items:3},
+      1200:{items:4}
 		}
 	});
 
 	// Табы в товарах на главной
-	$('#news .tab__nav').on('click', function (event) {
+	$('#news .tabs__nav').on('click', function (event) {
 		event.preventDefault();
-		var content = $(this).attr('data-open');
-		$('#news [data-content]').prepend('<div class="preloader"><div class="loading"></div></div>');
+		var id = $(this).attr('data-tab');
+		$('#news .tabs__content').prepend('<div class="preloader"><div class="loading"></div></div>');
 		preload();
-		$('#news .tab__nav').removeClass('active')
-		$('#news [data-content]').removeClass('active');
+		$('#news .tabs__nav').removeClass('active')
+		$('#news .tabs__content').removeClass('active');
 		$(this).addClass('active');
-		$('#news [data-content="'+ content +'"').addClass('active');
+    $('#'+ id).addClass('active');
 	});
 }
 

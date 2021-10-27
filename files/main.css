@@ -1016,14 +1016,14 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 /*** Блок Заголовков ***/
 /**************************************/
 .block__title {margin-bottom: 2rem;text-align: center;position: relative;}
-.tab__navs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: nowrap;}
-.tab__nav {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
-.tab__nav:first-child {border-left: 0;}
-.tab__nav.active, .tab__nav:hover {background-color: #dae6ec;color: #656d72;}
+.tabs__navs {margin-bottom: 2rem;border: 1px solid #dae6ec;flex-wrap: nowrap;}
+.tabs__nav {padding: 1rem;text-align: center;flex-grow: 1;border-left: 1px solid #dae6ec;}
+.tabs__nav:first-child {border-left: 0;}
+.tabs__nav.active, .tabs__nav:hover {background-color: #dae6ec;color: #656d72;}
 /* Блок Заголовков. Адаптивность */
 @media (max-width: 479.98px) {
-	.tab__navs {flex-wrap: wrap;}
-	.tab__nav:nth-child(3) {border-left: 0;border-top: 1px solid #dae6ec;width: 100%;}
+	.tabs__navs {flex-wrap: wrap;}
+	.tabs__nav:nth-child(3) {border-left: 0;border-top: 1px solid #dae6ec;width: 100%;}
 }
 
 /** Блок заголовков страниц **/
