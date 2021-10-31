@@ -1218,14 +1218,15 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 
 /** Товар: Табы **/
 .productView__tabs {margin-top: 2rem;}
-.tabs__tab {padding: 1.25rem 2rem;transition: all 0.3s ease;}
-.tabs__tab:hover, .tabs__tab.active {background-color: #eef2f4;cursor: pointer;}
+.productView__tabs .tabs__navs {border: 0;margin: 0;}
+.productView__tabs .tabs__tab {padding: 1.25rem 2rem;transition: all 0.3s ease;}
+.productView__tabs .tabs__tab:hover, .productView__tabs .tabs__tab.active {background-color: #eef2f4;cursor: pointer;}
 .productView__tabs .tabs__content {padding: 2rem;background-color: #eef2f4;position: relative;}
 .productView__tabs .tabs__content > div {display: none;}
 .productView__tabs .tabs__content > .active {display: block;}
 @media (max-width: 639.98px) {
-	.tabs__nav {border: 1px solid #dae6ec;}
-	.tabs__tab {width: 50%;border: 1px solid #dae6ec;padding: 1.25rem 1rem;flex-grow: 1;text-align: center;}
+	.productView__tabs .tabs__nav {border: 1px solid #dae6ec;}
+	.productView__tabs .tabs__tab {width: 50%;border: 1px solid #dae6ec;padding: 1.25rem 1rem;flex-grow: 1;text-align: center;}
 	.productView__tabs .tabs__content {padding: 1rem;}
 }
 

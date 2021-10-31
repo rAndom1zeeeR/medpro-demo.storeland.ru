@@ -137,8 +137,8 @@
 				<div class="thumblist__items owl-carousel">
 					{% FOR goods_images %}
 					<div class="thumblist__item" data-index="{goods_images.index}">
-						<a href="{goods_images.LARGE}" data-fancybox="images" class="flex-center">
-							<img class="goods-image-icon lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=marketplace" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
+						<a href="{goods_images.LARGE}" data-fancybox="images" class="flex-center productView__imageOFF">
+							<img class="goods-image-icon lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=marketplace" data-src="{goods_images.MEDIUM}" data-default="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
 						</a>
 					</div>
 					{% ENDFOR %}
@@ -333,7 +333,7 @@
 
 	<!-- Табы Описание, Хар-ки, Доставка, Отзывы -->
 	<div class="productView__tabs">
-		<div class="tabs__nav flex">
+		<div class="tabs__navs flex">
 			{% IF GOODS_DESCRIPTION_LARGE || GOODS_SEO_DESCRIPTION_SHORT || GOODS_SEO_DESCRIPTION_LARGE %}
 			<a href="javascript:tabSwitch(1);" class="tabs__tab active" data-tab="1"><span>Описание</span></a>
 			{% ENDIF %}

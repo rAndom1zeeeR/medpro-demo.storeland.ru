@@ -2311,7 +2311,7 @@ function pageGoods() {
 		dots: false,
 		nav: true,
 		navText: [ , ],
-		autoplay: true,
+		autoplay: false,
 		autoplayHoverPause: true,
 		autoHeight: true,
 		smartSpeed: 500,
@@ -2321,6 +2321,14 @@ function pageGoods() {
 		responsiveClass: true,
 		responsiveRefreshRate: 100
 	});
+	
+	// onChange: defaultImages
+	// function defaultImages(){
+	// 	var imgBlock = $('.thumblist .owl-item.active img');
+	// 	var imgDefault = imgBlock.attr('data-default');
+	// 	imgBlock.attr('src', imgDefault).parent().attr('href', imgDefault);
+	// }
+
 	// Сопутствующие товары Слайдер
 	$('.related__goods .owl-carousel').owlCarousel({
 		items: 4,
@@ -2775,8 +2783,10 @@ function goodsModification() {
 				}
 				// Идентификатор товарной модификации
 				goodsModificationId.val(modificationId);
+				console.log('modificationId', modificationId)
 				$('.goodsDataMainModificationId').attr('name','form[goods_mod_id][' + modificationId + ']');
 				var goodsDataMainImage = $('.goodsDataMainImage').attr('data-src');
+				console.log('goodsDataMainImage', goodsDataMainImage)
 				// Меняет главное изображение товара на изображение с идентификатором goods_mod_image_id
 				function changePrimaryGoodsImage(goods_mod_image_id) {
 					// Если не указан идентификатор модификации товара, значит ничего менять не нужно.
@@ -2784,14 +2794,14 @@ function goodsModification() {
 						return true;
 					}
 					var
-							// Блок с изображением выбранной модификации товара
-							goodsModImageBlock = $('.productView__imageBox [data-id="' + parseInt(goods_mod_image_id) + '"'),
-							// Блок, в котором находится главное изображение товара
-							MainImageBlock = $('.productView__image'),
-							// Изображение модификации товара, на которое нужно будет изменить главное изображение товара.
-							MediumImageUrl = goodsModImageBlock.attr('data-href'),
-							// Главное изображение, в которое будем вставлять новое изображение
-							MainImage = MainImageBlock.find('img')
+						// Блок с изображением выбранной модификации товара
+						goodsModImageBlock = $('.productView__images [data-id="' + parseInt(goods_mod_image_id) + '"'),
+						// Блок, в котором находится главное изображение товара
+						MainImageBlock = $('.owl-item.active .productView__image'),
+						// Изображение модификации товара, на которое нужно будет изменить главное изображение товара.
+						MediumImageUrl = goodsModImageBlock.attr('data-href'),
+						// Главное изображение, в которое будем вставлять новое изображение
+						MainImage = MainImageBlock.find('img')
 					;
 					// Если изображение модификации товара найдено - изменяем главное изображение
 					MainImage.attr('src', MediumImageUrl).parent().attr('href', MediumImageUrl);
