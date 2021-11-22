@@ -1844,7 +1844,7 @@
 					{% IFNOT news_list_all_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_all">Новости</a>{% ENDIF %}
 					{% IFNOT news_list_shop_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_shop">Новости</a>{% ENDIF %}
 					{% IFNOT news_list_articles_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab="news_list_articles">Статьи</a>{% ENDIF %}
-					{% IFNOT news_list_mass_media_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-tab="news_list_mass_media">Блог</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-tab="news_list_mass_media">Блог</a>{% ENDIF %}
 				</div>
 				<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
 				{% IFNOT news_list_all_empty %}
@@ -1920,7 +1920,7 @@
 				{% ENDIF %}
 				<!-- Список Блог -->
 				{% IFNOT news_list_mass_media_empty %}
-				<div id="news_list_mass_media" class="tabs__content {% IF news_list_shop_empty || news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media">
+				<div id="news_list_mass_media" class="tabs__content {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-content="news_list_mass_media">
 					<div class="owl-carousel">
 						{% FOR news_list_mass_media %}
 						<div class="news__item">
@@ -2146,9 +2146,9 @@
 								<i class="icon-instagram"></i><span>Instagram</span>
 							</a>
 
-							<a class="whatsup"
-								 href="https://instagram.com/"
-								 title="Instagram.com"
+							<a class="whatsapp"
+								 href="https://whatsapp.com/"
+								 title="whatsapp.com"
 								 target="_blank">
 								<i class="icon-whatsapp"></i><span>whatsapp</span>
 							</a>

@@ -2319,15 +2319,15 @@ function pageGoods() {
 		touchDrag: true,
 		pullDrag: true,
 		responsiveClass: true,
-		responsiveRefreshRate: 100
+		responsiveRefreshRate: 100,
+		onChange: defaultImages
 	});
-	
-	// onChange: defaultImages
-	// function defaultImages(){
-	// 	var imgBlock = $('.thumblist .owl-item.active img');
-	// 	var imgDefault = imgBlock.attr('data-default');
-	// 	imgBlock.attr('src', imgDefault).parent().attr('href', imgDefault);
-	// }
+		
+	function defaultImages(){
+		var imgBlock = $('.thumblist .owl-item.active img');
+		var imgDefault = imgBlock.attr('data-default');
+		imgBlock.attr('src', imgDefault).parent().attr('href', imgDefault);
+	}
 
 	// Сопутствующие товары Слайдер
 	$('.related__goods .owl-carousel').owlCarousel({

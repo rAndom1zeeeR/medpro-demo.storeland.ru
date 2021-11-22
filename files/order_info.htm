@@ -16,7 +16,7 @@
         <td class="cell2">
           {ORDER_SUM | money}
           {% IF ORDER_SUM_WITHOUT_DISCONT != ORDER_SUM %}
-            <br /><span style="color:#888888;"><s>{ORDER_SUM_WITHOUT_DISCONT | money("i")}</s> без учета скидки</span>
+            <br /><span style="color:#888888;"><s>{ORDER_SUM_WITHOUT_DISCONT | money}</s> без учета скидки</span>
           {% ENDIF %}
         </td>
       </tr>
@@ -141,13 +141,15 @@
           <tr class="border" id="order-item-row-{order_lines.ID}">
             <!-- <td>{% IF order_lines.ART_NUMBER %}{order_lines.ART_NUMBER}{%ELSE%}&nbsp;{%ENDIF%}</td> -->
             <td>{% IF order_lines.GOODS_URL %}<a href="{order_lines.GOODS_URL}">{order_lines.NAME}</a>{% ELSE %}{order_lines.NAME}{% ENDIF %}</td> 
-            <td class="a-left" width="100"><span class="price-excl-tax"><span class="cart-price"><span>
+            <td class="a-left" width="100">
+              <span class="price-excl-tax">
+                <span class="cart-price"><span>
               <!-- Товарная позиция либо доставка -->
               {% IF order_lines.TYPE_ID=1 || order_lines.TYPE_ID=2 || order_lines.TYPE_ID=3 && order_lines.MEASURE_NAME!=% %}
                 {order_lines.LINE_PRICE | money}
               <!-- Скидка -->
               {% ELSEIF order_lines.TYPE_ID = 3%}
-                <span class="num">{order_lines.LINE_PRICE_NUMBER_FORMAT}</span> {order_lines.MEASURE_NAME}
+                <span class="">{order_lines.LINE_PRICE_NUMBER_FORMAT}</span> {order_lines.MEASURE_NAME}
               {%ENDIF%}
               </span></span></span>
             </td> 

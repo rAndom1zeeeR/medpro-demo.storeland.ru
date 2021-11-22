@@ -1363,6 +1363,7 @@ footer .contacts__block-link + .contacts__block-link {margin-top: .5rem;}
 .cartTotal .total__items {background-color: #eef2f4;border: 1px solid #dae6ec;text-align: center;}
 .cartTotal .total__item {padding-top: 1rem;}
 .cartTotal .total__item .button {background-color: #ffffff;border-color: #00acc5;color: #00acc5;cursor: default;}
+.cartTotal .total__item .total__price {display: inline-block;}
 .total__cart {padding-bottom: 1rem;font-size: 1.25rem;font-weight: bold;}
 .total__label {margin-right: .5rem;} 
 .total__buttons {text-align: center;margin-top: 1rem;width: 100%;}
