@@ -1361,7 +1361,7 @@ function addCart() {
 					// Закрытие модального окна
 					setTimeout(function () {
 						$.fancybox.close();
-					},1500)
+					},3000)
 				}
 				// Скрытое обновление корзины
 				$('.hiddenUpdate').html(data);
