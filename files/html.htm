@@ -2304,9 +2304,7 @@
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input type="hidden" name="return_to" value="{CALLBACK_URL}" class="callbackredirect" />
 						<input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Уведомить о поступлении товара"/>
-						<input type="hidden" name="form[goods_mod_id]" value="" id="fancy__info"/>
-						<input type="hidden" name="form[Имя_Товара]" value="{GOODS_NAME}" id="fancy__name" />
-						<input type="hidden" name="form[Артикул]" value="{GOODS_MOD_ART_NUMBER}" id="fancy__art" />
+						<input type="hidden" name="form[goods_mod_id]" value="" id="fancy-notify-goods-mod"/>
 						<!-- Для использования почты для уведомлений необходимо убрать комментарии для строки ниже -->
 						<!-- input type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="Уведомить по Email" /-->
 						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->

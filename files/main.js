@@ -1770,9 +1770,9 @@ $(document).ready(function(){
 
 	// Уведомить при отсутствии товара
 	$('.add-notify').on('click', function(){
-		$('#fancy__info').val('Уведомить -- ' + $(this).attr('data-name'));
-		$('#fancy__name').val($(this).attr('data-name'));
-		$('#fancy__art').val($(this).attr('data-art'));
+		var formBlock = $(this).closest('.goodsListForm');
+    var goodsMod = formBlock.find('[name="form[goods_mod_id]"]').val();
+    $('#fancy-notify-goods-mod').val(goodsMod)
 	});
 });
 
@@ -2928,7 +2928,7 @@ function cartQuantity(){
 					});
 					if(qty > c){
 						$('.cart__error').remove();
-						$('.cartTable').before('<div class="cart__error warning">Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div>');
+						$('.page-cartTable').before('<div class="cart__error warning">Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div>');
 						$('.cart__error').fadeIn(500).delay(2500).fadeOut(500, function(){$('.cartErr').remove();});
 						$('.cartqty').removeAttr('readonly');
 					}
@@ -2952,7 +2952,7 @@ function cartDelete(s){
 			url:url,
 			cache:false,
 			success:function(d){
-				$('.cartTable').html($(d).find('.cartTable').html());
+				$('.page-cartTable').html($(d).find('.page-cartTable').html());
 				cartQuantity();
 				$('#startOrder').on('click', function() {
 					startOrder();
